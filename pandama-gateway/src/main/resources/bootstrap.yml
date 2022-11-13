@@ -1,0 +1,20 @@
+server:
+  port: 9991
+
+spring:
+  application:
+    name: pandama-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 124.223.178.24:8848
+        group: pandama
+      discovery:
+        server-addr: 124.223.178.24:8848
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+    allow-circular-references: true

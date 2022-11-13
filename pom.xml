@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--项目标识需自定义-->
+    <artifactId>pandama</artifactId>
+    <groupId>com.pandama.top</groupId>
+    <version>1.0.0</version>
+    <name>pandama</name>
+    <packaging>pom</packaging>
+    <description>Pandama Framework For Spring Cloud Alibaba</description>
+
+    <!--模块依赖-->
+    <modules>
+        <module>pandama-gateway</module>
+        <module>pandama-commons</module>
+        <module>pandama-component</module>
+    </modules>
+
+    <properties>
+        <!--开发框架-->
+        <!--maven版本-->
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <maven.plugin.version>3.8.1</maven.plugin.version>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <!--jdk版本-->
+        <java.version>8</java.version>
+        <!--SpringBoot版本-->
+        <spring-boot.version>2.6.3</spring-boot.version>
+        <!--SpringCloud版本-->
+        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <!--SpringCloud Alibaba版本-->
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+
+        <!--中间件-->
+        <!--elasticsearch版本-->
+        <elasticsearch.version>4.3.5</elasticsearch.version>
+        <!--mongodb版本-->
+        <mongodb.version>2.6.3</mongodb.version>
+        <!--redis版本-->
+        <redis.version>2.6.3</redis.version>
+        <!--数据库连接池-->
+        <druid.version>1.2.6</druid.version>
+
+        <!--插件工具-->
+        <!--mybatis-plus版本-->
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <!--websocket版本-->
+        <websocket.version>2.7.4</websocket.version>
+        <!--lombok版本-->
+        <projectlombok.lombok.version>1.18.24</projectlombok.lombok.version>
+        <!--log4j2版本-->
+        <log4j2.version>2.7.4</log4j2.version>
+        <!--swagger版本-->
+        <swagger.version>3.0.0</swagger.version>
+        <!--jwt版本-->
+        <jwt.version>0.11.1</jwt.version>
+    </properties>
+
+    <!--依赖包管理器，提供子模块继承-->
+    <dependencyManagement>
+        <dependencies>
+            <!--spring boot 版本-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud 版本-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring cloud alibaba 版本-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${projectlombok.lombok.version}</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <!--2021版本的spring-cloud默认不加载bootstrap文件，如需加载，则引入额外依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!--阿里JSON工具包-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>2.0.14.graal</version>
+        </dependency>
+        <!--hutool工具包-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.8</version>
+        </dependency>
+        <!--apache的工具包依赖，例如StringUtils-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.0</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
