@@ -30,6 +30,12 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
             <version>${websocket.version}</version>
         </dependency>
+        <!--fileupload依赖-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
         <!--参数校验注解-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
