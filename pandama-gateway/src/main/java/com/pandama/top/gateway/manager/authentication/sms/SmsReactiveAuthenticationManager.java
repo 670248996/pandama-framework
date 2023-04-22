@@ -1,13 +1,17 @@
 package com.pandama.top.gateway.manager.authentication.sms;
 
 
+import com.pandama.top.gateway.bean.User;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManager;
 import com.pandama.top.gateway.service.UserService;
+import com.pandama.top.pojo.dto.PhoneNumberLoginDTO;
 import com.pandama.top.redis.utils.RedisUtils;
+import com.pandama.top.utils.BeanConvertUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
@@ -16,6 +20,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+
+import java.util.Objects;
 
 /**
  * @description: 短信登录会通过该处理类校验账号密码及账号信息
@@ -26,27 +32,20 @@ import reactor.core.publisher.Mono;
 @Component
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class SmsReactiveAuthenticationManager implements BaseAuthenticationManager<SmsAuthentication> {
-
     private final UserService userService;
-    private final RedisUtils redisUtils;
 
     @Override
     public Mono<Authentication> authenticate(SmsAuthentication authentication) {
         log.info("=====================手机号登录认证=====================");
-        // 获取输入的手机号
-        String phone = authentication.getPhone();
-        // 获取输入的验证码
-        String code = authentication.getSmsCode();
-        UserDetails user;
+        User user;
         try {
             // 获取用户信息
-            user = userService.loadUserByPhone(phone);
+            user = userService.loadUserByPhoneNumber(authentication.getPhoneNumber());
         } catch (UsernameNotFoundException ufe) {
             return Mono.error(ufe);
         }
-        // TODO 校验验证码
-        String authCodeKey = String.format(AuthConstant.PHONE_FORMAT, phone);
-        if (!redisUtils.get(authCodeKey).orElse("").equals(code)) {
+        // 判断用户短信验证码
+        if (Objects.isNull(user) || !StringUtils.equals(authentication.getSmsCode(), user.getSmsCode())) {
             return Mono.error(new BadCredentialsException(AuthErrorConstant.SMS_CODE_ERROR));
         }
         // 判断用户是否禁用
@@ -65,7 +64,7 @@ public class SmsReactiveAuthenticationManager implements BaseAuthenticationManag
         else if (!user.isCredentialsNonExpired()) {
             return Mono.error(new CredentialsExpiredException(AuthErrorConstant.LOGIN_EXPIRED));
         }
-        Authentication auth = new UsernamePasswordAuthenticationToken(user, code, user.getAuthorities());
+        Authentication auth = new UsernamePasswordAuthenticationToken(user, authentication.getSmsCode(), user.getAuthorities());
         // WebFlux方式默认没有放到context中，需要手动放入
         SecurityContextHolder.getContext().setAuthentication(auth);
         return Mono.just(auth);

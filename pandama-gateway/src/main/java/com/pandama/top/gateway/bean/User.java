@@ -1,12 +1,14 @@
 package com.pandama.top.gateway.bean;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pandama.top.pojo.vo.UserLoginVO;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,59 +18,47 @@ import java.util.List;
  */
 @Data
 public class User implements Serializable, UserDetails {
+    private static final long serialVersionUID = 4586107564176031016L;
 
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * id
-     */
+    @ApiModelProperty("用户id")
     private Long id;
 
-    /**
-     * 用户名
-     */
+    @ApiModelProperty("账号")
     private String username;
 
-    /**
-     * 密码
-     */
-    @JsonIgnore
+    @ApiModelProperty("密码")
     private String password;
 
-    /**
-     * 用户编号
-     */
-    private String code;
+    @ApiModelProperty("昵称")
+    private String nickName;
 
-    /**
-     * 真实姓名
-     */
+    @ApiModelProperty("姓名")
     private String realName;
 
-    /**
-     * 手机号
-     */
-    private String phone;
+    @ApiModelProperty("手机号")
+    private String phoneNumber;
 
-    /**
-     * 是否管理
-     */
+    @ApiModelProperty("性别")
+    private Integer gender;
+
+    @ApiModelProperty("是否是管理员")
     private Boolean isAdmin;
 
-    /**
-     * 角色代码列表
-     */
+    @ApiModelProperty("短信验证码")
+    private String smsCode;
+
+    @ApiModelProperty("密码到期时间")
+    private LocalDateTime passwordExpireTime;
+
+    @ApiModelProperty("角色编号列表")
     private List<String> roleCodeList;
 
-    /**
-     * 权限代码列表
-     */
-    @NotEmpty
+    @ApiModelProperty("权限编号列表")
     private List<String> permCodeList;
 
-    /**
-     * 资源代码列表
-     */
+    @ApiModelProperty("ip地址")
+    private String ipAddress;
+
     private List<String> uriCodeList;
 
     @JsonIgnore
@@ -127,30 +117,8 @@ public class User implements Serializable, UserDetails {
         return true;
     }
 
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
-
     public List<UserGrantedAuthority> getUris() {
         return uris;
-    }
-
-    public void setUris(List<UserGrantedAuthority> uris) {
-        this.uris = uris;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 }

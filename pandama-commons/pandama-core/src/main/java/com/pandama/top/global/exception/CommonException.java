@@ -1,6 +1,7 @@
 package com.pandama.top.global.exception;
 
 import com.pandama.top.global.response.ErrorResponse;
+import com.pandama.top.global.response.ResponseCode;
 
 /**
  * @description: 全局自定义异常类
@@ -19,6 +20,11 @@ public class CommonException extends RuntimeException implements ErrorResponse<I
 
     public CommonException(Integer code, String describe) {
         this.code = code;
+        this.describe = describe;
+    }
+
+    public CommonException(String describe) {
+        this.code = ResponseCode.FAIL.getCode();
         this.describe = describe;
     }
 

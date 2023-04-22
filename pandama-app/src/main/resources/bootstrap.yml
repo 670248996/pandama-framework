@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: pandama-app
+  profiles:
+    active: dev
+
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 124.223.178.24:8848
+        namespace: f15e71cc-5606-4806-acca-28421744c45f
+        group: PANDAMA
+      discovery:
+        server-addr: 124.223.178.24:8848
+        namespace: f15e71cc-5606-4806-acca-28421744c45f
+        group: PANDAMA

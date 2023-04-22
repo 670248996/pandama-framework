@@ -36,7 +36,7 @@ public interface BaseAuthenticationConverter {
      */
     @SneakyThrows
     default <T extends BaseAuthentication> Object mapToBean(Map<String, String> map, Class<T> beanClass) {
-        if (map == null) {
+            if (map == null) {
             return null;
         }
         Object obj = beanClass.newInstance();

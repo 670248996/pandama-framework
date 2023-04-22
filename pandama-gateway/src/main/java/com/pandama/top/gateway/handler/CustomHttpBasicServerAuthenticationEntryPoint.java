@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.ByteBufFlux;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 /**
  * @description: 未登录访问资源时的处理类
@@ -33,7 +34,8 @@ public class CustomHttpBasicServerAuthenticationEntryPoint extends HttpBasicServ
         ServerHttpResponse response = exchange.getResponse();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
-        Response<Integer> res = Response.fail(ResponseCode.FAIL, AuthErrorConstant.UN_LOGIN);
+        HashMap<Integer, String> res = new HashMap<>(16);
+        res.put(HttpStatus.FORBIDDEN.value(), AuthErrorConstant.UN_LOGIN);
         String json = JSON.toJSONString(res);
         return response.writeAndFlushWith(
                 Flux.just(ByteBufFlux.just(response.bufferFactory().wrap(json.getBytes(StandardCharsets.UTF_8)))));

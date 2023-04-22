@@ -1,5 +1,8 @@
 package com.pandama.top.gateway.service;
 
+import com.pandama.top.gateway.bean.User;
+import com.pandama.top.pojo.dto.PhoneNumberLoginDTO;
+import com.pandama.top.pojo.dto.UsernameLoginDTO;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,12 +15,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 public interface UserService extends UserDetailsService {
 
     /**
-     * @param phone 手机号
-     * @description: 根据手机号查询用户信息
+     * @param phoneNumber 电话号码
+     * @description: 加载用户电话号码
      * @author: 王强
-     * @date: 2022-10-26 20:01:18
-     * @return: UserDetails
+     * @date: 2023-04-22 00:14:46
+     * @return: User
      * @version: 1.0
      */
-    UserDetails loadUserByPhone(String phone) throws UsernameNotFoundException;
+    User loadUserByPhoneNumber(String phoneNumber) throws UsernameNotFoundException;
 }

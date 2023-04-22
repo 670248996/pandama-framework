@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.ByteBufFlux;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 /**
  * @description: 用户身份认证失败后的处理类
@@ -32,7 +33,8 @@ public class CustomAuthenticationFailureHandler implements ServerAuthenticationF
         ServerHttpResponse response = webFilterExchange.getExchange().getResponse();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
-        Response<Integer> res = Response.fail(ResponseCode.FAIL, e.getMessage());
+        HashMap<Object, Object> res = new HashMap<>(16);
+        res.put(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
         String json = JSON.toJSONString(res);
         return response.writeAndFlushWith(
                 Flux.just(ByteBufFlux.just(response.bufferFactory().wrap(json.getBytes(StandardCharsets.UTF_8)))));

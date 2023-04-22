@@ -9,16 +9,21 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * 作者： 创建时间：2018/3/7 必要描述:时间工具类
+ * @description: 时间工具类
+ * @author: 王强
+ * @dateTime: 2022-12-21 21:31:46
  */
 public class DateUtils {
 
-    // 默认时间格式
+    /**
+     * 默认datetime格式器
+     */
     private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER = TimeFormat.LONG_DATE_PATTERN_LINE.formatter;
 
-    // 无参数的构造函数,防止被实例化
-    private DateUtils() {
-    }
+    /**
+     * 无参数的构造函数,防止被实例化
+     */
+    private DateUtils() {}
 
     /**
      * String 转化为 LocalDateTime
@@ -69,7 +74,7 @@ public class DateUtils {
     /**
      * 获取当前时间
      *
-     * @return
+     * @return {@code String}
      */
     public static String getCurrentDateTime() {
         return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
@@ -78,7 +83,7 @@ public class DateUtils {
     /**
      * 获取当前时间
      *
-     * @return
+     * @return {@code String}
      */
     public static String now() {
         return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
@@ -88,7 +93,7 @@ public class DateUtils {
      * 获取当前时间
      *
      * @param timeFormat 时间格式
-     * @return
+     * @return {@code String}
      */
     public static String getCurrentDateTime(TimeFormat timeFormat) {
         return timeFormat.formatter.format(LocalDateTime.now());
@@ -117,6 +122,12 @@ public class DateUtils {
         return new Date(calendar.getTimeInMillis());
     }
 
+    /**
+     * 比较当前ym
+     *
+     * @param date 日期
+     * @return {@code Integer}
+     */
     public static Integer compareCurrentYM(Date date) {
         if (date != null) {
             BigDecimal queryYM = new BigDecimal(DateFormatUtils.format(date, "yyyyMM"));

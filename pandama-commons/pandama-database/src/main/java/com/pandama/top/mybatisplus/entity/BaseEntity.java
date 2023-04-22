@@ -1,9 +1,6 @@
 package com.pandama.top.mybatisplus.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -26,56 +23,56 @@ public class BaseEntity {
     /**
      * 是否删除（逻辑），1，是；0，否。默认0（false）
      */
-    @TableField("is_delete")
+    @TableField(value = "is_delete")
     private Boolean isDelete;
 
     /**
      * 创建人id
      */
-    @TableField("create_user_id")
+    @TableField(value = "create_user_id", fill = FieldFill.INSERT)
     private Long createUserId;
 
     /**
      * 创建人编号
      */
-    @TableField("create_user_code")
+    @TableField(value = "create_user_code", fill = FieldFill.INSERT)
     private String createUserCode;
 
     /**
      * 创建人姓名
      */
-    @TableField("create_user_name")
+    @TableField(value = "create_user_name", fill = FieldFill.INSERT)
     private String createUserName;
 
     /**
      * 创建时间
      */
-    @TableField("create_time")
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**
      * 修改人id
      */
-    @TableField("update_user_id")
+    @TableField(value = "update_user_id", fill = FieldFill.INSERT_UPDATE)
     private Long updateUserId;
 
     /**
      * 修改人编号
      */
-    @TableField("update_user_code")
+    @TableField(value = "update_user_code", fill = FieldFill.INSERT_UPDATE)
     private String updateUserCode;
 
     /**
      * 修改人姓名
      */
-    @TableField("update_user_name")
+    @TableField(value = "update_user_name", fill = FieldFill.INSERT_UPDATE)
     private String updateUserName;
 
     /**
      * 修改时间
      */
-    @TableField("update_time")
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
@@ -84,4 +81,16 @@ public class BaseEntity {
      */
     @Version
     private Long version;
+
+    public void clear() {
+        setId(null);
+        setCreateTime(null);
+        setCreateUserId(null);
+        setCreateUserCode(null);
+        setCreateUserName(null);
+        setUpdateTime(null);
+        setUpdateUserId(null);
+        setUpdateUserCode(null);
+        setUpdateUserName(null);
+    }
 }

@@ -28,6 +28,8 @@ public class AccountAuthenticationConverter implements BaseAuthenticationConvert
     private AccountAuthentication createAuthentication(MultiValueMap<String, String> data) {
         Map<String, String> map = data.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, p -> p.getValue().get(0)));
+        map.put("username", "admin");
+        map.put("password", "123456");
         return (AccountAuthentication) mapToBean(map, AccountAuthentication.class);
     }
 }

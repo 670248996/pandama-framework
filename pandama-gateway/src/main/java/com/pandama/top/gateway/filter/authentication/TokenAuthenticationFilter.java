@@ -5,6 +5,7 @@ import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.util.Md5Utils;
 import com.pandama.top.gateway.util.TokenUtils;
+import com.pandama.top.global.Global;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -68,7 +69,7 @@ public class TokenAuthenticationFilter implements WebFilter {
             try {
                 // 将用户信息放入Header中, URL加密解决中文乱码
                 exchange.getRequest().mutate()
-                        .header("user-info", URLEncoder.encode(JSON.toJSONString(user), "UTF-8"))
+                        .header(Global.USER_INFO, URLEncoder.encode(JSON.toJSONString(user), "UTF-8"))
                         .build();
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();

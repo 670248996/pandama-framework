@@ -11,8 +11,10 @@ import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBufferFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -38,6 +40,9 @@ public class GlobalErrorWebExceptionHandler implements ErrorWebExceptionHandler 
         }
         // 设置返回JSON
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+        if (ex instanceof CredentialsExpiredException) {
+            response.setStatusCode(HttpStatus.UNAUTHORIZED);
+        }
         if (ex instanceof ResponseStatusException) {
             response.setStatusCode(((ResponseStatusException) ex).getStatus());
         }

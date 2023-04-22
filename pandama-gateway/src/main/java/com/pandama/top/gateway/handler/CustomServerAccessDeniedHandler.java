@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.ByteBufFlux;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 /**
  * @description: 用户身份认证成功，但无访问该资源权限的处理类
@@ -33,7 +34,8 @@ public class CustomServerAccessDeniedHandler implements ServerAccessDeniedHandle
         ServerHttpResponse response = serverWebExchange.getResponse();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
         response.setStatusCode(HttpStatus.FORBIDDEN);
-        Response<Integer> res = Response.fail(ResponseCode.FAIL, AuthErrorConstant.FORBIDDEN);
+        HashMap<Object, Object> res = new HashMap<>(16);
+        res.put(HttpStatus.FORBIDDEN.value(), AuthErrorConstant.FORBIDDEN);
         String json = JSON.toJSONString(res);
         return response.writeAndFlushWith(
                 Flux.just(ByteBufFlux.just(response.bufferFactory().wrap(json.getBytes(StandardCharsets.UTF_8)))));

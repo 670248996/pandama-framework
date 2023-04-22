@@ -49,7 +49,7 @@ public class CustomAuthenticationSuccessHandler implements ServerAuthenticationS
         // 将生成的jwttoken使用MD5加密后作为value 存入redis 并设置过期时间
         redisUtils.setEx(redisTokenKey, Md5Utils.md5(token), AuthConstant.TOKEN_EXPIRED, TimeUnit.SECONDS);
         HashMap<String, String> hashMap = new HashMap<>(1);
-        hashMap.put(HttpHeaders.AUTHORIZATION, AuthConstant.BEARER + token);
+        hashMap.put(HttpHeaders.AUTHORIZATION, token);
         ServerWebExchange exchange = webFilterExchange.getExchange();
         ServerHttpResponse response = exchange.getResponse();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);

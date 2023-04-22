@@ -3,6 +3,8 @@ package com.pandama.top.gateway.service.impl;
 import com.pandama.top.gateway.bean.User;
 import com.pandama.top.gateway.feign.LoginFeignClient;
 import com.pandama.top.gateway.service.UserService;
+import com.pandama.top.pojo.dto.PhoneNumberLoginDTO;
+import com.pandama.top.pojo.dto.UsernameLoginDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,38 +25,18 @@ public class UserServiceImpl implements UserService {
     private final LoginFeignClient loginFeignClient;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO feign获取用户信息, 暂时模拟假数据
-//        User user = loginFeignClient.findUserByUsername(username);
-        User user = new User();
-        user.setId(1L);
-        user.setUsername("admin");
-        user.setPassword("123456");
-        user.setCode("admin");
-        user.setRealName("王强");
-        user.setPhone("18205055957");
-        user.setIsAdmin(true);
-        user.setRoleCodeList(Arrays.asList("admin", "user"));
-        user.setPermCodeList(Arrays.asList("insert", "delete"));
-        user.setUriCodeList(Arrays.asList("/auth/login", "/auth/userInfo"));
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = loginFeignClient.loginByUsername(username);
+        user.setRoleCodeList(Arrays.asList("admin"));
+        user.setUriCodeList(Arrays.asList("admin"));
         return user;
     }
 
     @Override
-    public UserDetails loadUserByPhone(String phone) throws UsernameNotFoundException {
-        // TODO feign获取用户信息, 暂时模拟假数据
-//        User user = loginFeignClient.findUserByPhone(phone);
-        User user = new User();
-        user.setId(2L);
-        user.setUsername("admin");
-        user.setPassword("123456");
-        user.setCode("admin");
-        user.setRealName("王强");
-        user.setPhone("18205055957");
-        user.setIsAdmin(true);
-        user.setRoleCodeList(Arrays.asList("admin", "user"));
-        user.setPermCodeList(Arrays.asList("insert", "delete"));
-        user.setUriCodeList(Arrays.asList("/auth/login", "/auth/userInfo"));
+    public User loadUserByPhoneNumber(String phoneNumber) throws UsernameNotFoundException {
+        User user = loginFeignClient.loginByPhoneNumber(phoneNumber);
+        user.setRoleCodeList(Arrays.asList("admin"));
+        user.setUriCodeList(Arrays.asList("admin"));
         return user;
     }
 }

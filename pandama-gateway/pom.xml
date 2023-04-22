@@ -65,12 +65,6 @@
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.pandama.top</groupId>
-                    <artifactId>pandama-swaggerdoc</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--引入自定义工具包中的redis-->
         <dependency>

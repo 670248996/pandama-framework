@@ -47,11 +47,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--引入swagger模块-->
+        <!--swagger注解依赖-->
         <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-swaggerdoc</artifactId>
-            <version>1.0.0</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.20</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

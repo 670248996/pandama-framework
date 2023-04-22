@@ -40,7 +40,7 @@ public class CommonExtHandler {
     public Response<?> handleException(Exception e) {
         e.printStackTrace();
         log.info("Exception异常: {}", e.getMessage());
-        return Response.fail(ResponseCode.SERVER_EXCEPTION);
+        return Response.fail(ResponseCode.FAIL);
     }
 
     /**
