@@ -1,9 +1,10 @@
 package com.pandama.top.app.service;
 
 import com.pandama.top.app.pojo.dto.PasswordEditDTO;
-import com.pandama.top.app.pojo.dto.UserEditDTO;
+import com.pandama.top.app.pojo.dto.UserProfileDTO;
 import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
+import com.pandama.top.app.pojo.vo.UserProfileVO;
 
 /**
  * @description: 用户服务
@@ -18,7 +19,9 @@ public interface UserService {
 
     UserInfoVO getInfo();
 
-    void editInfo(UserEditDTO dto);
+    UserProfileVO getProfile();
+
+    void editProfile(UserProfileDTO dto);
 
     void editPwd(PasswordEditDTO dto);
 }

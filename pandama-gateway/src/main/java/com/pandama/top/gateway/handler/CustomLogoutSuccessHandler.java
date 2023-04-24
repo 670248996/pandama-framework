@@ -41,7 +41,7 @@ public class CustomLogoutSuccessHandler implements ServerLogoutSuccessHandler {
         String redisTokenKey = String.format(AuthConstant.KEY_FORMAT, user.getUsername());
         redisUtils.delete(redisTokenKey);
         ServerHttpResponse response = webFilterExchange.getExchange().getResponse();
-        response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
+        response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.OK);
         Response<Object> res = Response.success();
         String json = JSON.toJSONString(res);

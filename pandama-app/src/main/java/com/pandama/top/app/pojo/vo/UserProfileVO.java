@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @dateTime: 2023-04-19 12:10:00
  */
 @Data
-public class UserInfoVO {
+public class UserProfileVO {
     private Long id;
     private String username;
     private String nickName;

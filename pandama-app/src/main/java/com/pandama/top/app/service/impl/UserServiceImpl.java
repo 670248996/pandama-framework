@@ -3,10 +3,11 @@ package com.pandama.top.app.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pandama.top.app.mapper.UserMapper;
 import com.pandama.top.app.pojo.dto.PasswordEditDTO;
-import com.pandama.top.app.pojo.dto.UserEditDTO;
+import com.pandama.top.app.pojo.dto.UserProfileDTO;
 import com.pandama.top.app.pojo.entity.User;
 import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
+import com.pandama.top.app.pojo.vo.UserProfileVO;
 import com.pandama.top.app.service.UserService;
 import com.pandama.top.global.exception.CommonException;
 import com.pandama.top.utils.BeanConvertUtils;
@@ -45,8 +46,15 @@ public class UserServiceImpl implements UserService {
         return BeanConvertUtils.convert(user, UserInfoVO::new).orElse(new UserInfoVO());
     }
 
+
     @Override
-    public void editInfo(UserEditDTO dto) {
+    public UserProfileVO getProfile() {
+        User user = userMapper.selectById(UserInfoUtils.getUserId());
+        return BeanConvertUtils.convert(user, UserProfileVO::new).orElse(new UserProfileVO());
+    }
+
+    @Override
+    public void editProfile(UserProfileDTO dto) {
         User user = BeanConvertUtils.convert(dto, User::new).orElse(new User());
         userMapper.updateById(user);
     }

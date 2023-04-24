@@ -31,7 +31,7 @@ public class CustomAuthenticationFailureHandler implements ServerAuthenticationF
     public Mono<Void> onAuthenticationFailure(WebFilterExchange webFilterExchange, AuthenticationException e) {
         log.info("=====================认证失败=====================");
         ServerHttpResponse response = webFilterExchange.getExchange().getResponse();
-        response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
+        response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         HashMap<Object, Object> res = new HashMap<>(16);
         res.put(HttpStatus.UNAUTHORIZED.value(), e.getMessage());

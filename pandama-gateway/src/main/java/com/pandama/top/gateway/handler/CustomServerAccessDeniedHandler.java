@@ -32,7 +32,7 @@ public class CustomServerAccessDeniedHandler implements ServerAccessDeniedHandle
     public Mono<Void> handle(ServerWebExchange serverWebExchange, AccessDeniedException e) {
         log.info("=====================鉴权失败=====================");
         ServerHttpResponse response = serverWebExchange.getResponse();
-        response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
+        response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.FORBIDDEN);
         HashMap<Object, Object> res = new HashMap<>(16);
         res.put(HttpStatus.FORBIDDEN.value(), AuthErrorConstant.FORBIDDEN);

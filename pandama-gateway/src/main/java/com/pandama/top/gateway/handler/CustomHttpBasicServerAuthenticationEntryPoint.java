@@ -32,7 +32,7 @@ public class CustomHttpBasicServerAuthenticationEntryPoint extends HttpBasicServ
     public Mono<Void> commence(ServerWebExchange exchange, AuthenticationException e) {
         log.info("=====================未登录=====================");
         ServerHttpResponse response = exchange.getResponse();
-        response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
+        response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         HashMap<Integer, String> res = new HashMap<>(16);
         res.put(HttpStatus.FORBIDDEN.value(), AuthErrorConstant.UN_LOGIN);

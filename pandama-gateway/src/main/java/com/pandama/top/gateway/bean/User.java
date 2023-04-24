@@ -29,26 +29,8 @@ public class User implements Serializable, UserDetails {
     @ApiModelProperty("密码")
     private String password;
 
-    @ApiModelProperty("昵称")
-    private String nickName;
-
-    @ApiModelProperty("姓名")
-    private String realName;
-
     @ApiModelProperty("手机号")
     private String phoneNumber;
-
-    @ApiModelProperty("性别")
-    private Integer gender;
-
-    @ApiModelProperty("是否是管理员")
-    private Boolean isAdmin;
-
-    @ApiModelProperty("短信验证码")
-    private String smsCode;
-
-    @ApiModelProperty("密码到期时间")
-    private LocalDateTime passwordExpireTime;
 
     @ApiModelProperty("角色编号列表")
     private List<String> roleCodeList;
@@ -56,10 +38,11 @@ public class User implements Serializable, UserDetails {
     @ApiModelProperty("权限编号列表")
     private List<String> permCodeList;
 
+    @ApiModelProperty("资源路径列表")
+    private List<String> uriCodeList;
+
     @ApiModelProperty("ip地址")
     private String ipAddress;
-
-    private List<String> uriCodeList;
 
     @JsonIgnore
     private List<UserGrantedAuthority> uris;
@@ -115,10 +98,6 @@ public class User implements Serializable, UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public List<UserGrantedAuthority> getUris() {
-        return uris;
     }
 
 }

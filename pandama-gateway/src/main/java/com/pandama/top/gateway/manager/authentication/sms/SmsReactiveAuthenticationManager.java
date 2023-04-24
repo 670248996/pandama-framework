@@ -6,6 +6,7 @@ import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManager;
 import com.pandama.top.gateway.service.UserService;
 import com.pandama.top.global.exception.CommonException;
+import com.pandama.top.redis.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -30,9 +31,15 @@ import java.util.Objects;
 public class SmsReactiveAuthenticationManager implements BaseAuthenticationManager<SmsAuthentication> {
     private final UserService userService;
 
+    private final RedisUtils redisUtils;
+
     @Override
     public Mono<Authentication> authenticate(SmsAuthentication authentication) {
         log.info("=====================手机号登录认证=====================");
+        // TODO 校验验证码
+        if (!redisUtils.get(authentication.getPhoneNumber()).orElse("").equals(authentication.getSmsCode())) {
+            return Mono.error(new CommonException(AuthErrorConstant.SMS_CODE_ERROR));
+        }
         User user;
         try {
             // 获取用户信息
@@ -40,12 +47,8 @@ public class SmsReactiveAuthenticationManager implements BaseAuthenticationManag
         } catch (UsernameNotFoundException ufe) {
             return Mono.error(ufe);
         }
-        // 判断用户短信验证码
-        if (Objects.isNull(user) || !StringUtils.equals(authentication.getSmsCode(), user.getSmsCode())) {
-            return Mono.error(new CommonException(AuthErrorConstant.SMS_CODE_ERROR));
-        }
         // 判断用户是否禁用
-        else if (!user.isEnabled()) {
+        if (!user.isEnabled()) {
             return Mono.error(new DisabledException(AuthErrorConstant.ACCOUNT_DISABLED));
         }
         // 判断用户是否锁定

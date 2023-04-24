@@ -1,9 +1,10 @@
 package com.pandama.top.app.controller;
 
 import com.pandama.top.app.pojo.dto.PasswordEditDTO;
-import com.pandama.top.app.pojo.dto.UserEditDTO;
+import com.pandama.top.app.pojo.dto.UserProfileDTO;
 import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
+import com.pandama.top.app.pojo.vo.UserProfileVO;
 import com.pandama.top.app.service.UserService;
 import com.pandama.top.global.response.Response;
 import lombok.RequiredArgsConstructor;
@@ -42,13 +43,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public Response<UserInfoVO> profile() {
-        return Response.success(userService.getInfo());
+    public Response<UserProfileVO> profile() {
+        return Response.success(userService.getProfile());
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.POST)
-    public Response<UserInfoVO> profile(@Validated @RequestBody UserEditDTO dto) {
-        userService.editInfo(dto);
+    public Response<UserProfileVO> profile(@Validated @RequestBody UserProfileDTO dto) {
+        userService.editProfile(dto);
         return Response.success();
     }
 
