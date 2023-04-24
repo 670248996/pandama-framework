@@ -1,5 +1,6 @@
 package com.pandama.top.app.controller;
 
+import com.pandama.top.app.pojo.dto.PasswordEditDTO;
 import com.pandama.top.app.pojo.dto.UserEditDTO;
 import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
@@ -37,7 +38,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
     public Response<UserInfoVO> getUserInfo() {
-        return Response.success(new UserInfoVO());
+        return Response.success(userService.getInfo());
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -48,6 +49,12 @@ public class UserController {
     @RequestMapping(value = "/profile", method = RequestMethod.POST)
     public Response<UserInfoVO> profile(@Validated @RequestBody UserEditDTO dto) {
         userService.editInfo(dto);
+        return Response.success();
+    }
+
+    @RequestMapping(value = "/updatePwd", method = RequestMethod.POST)
+    public Response<UserInfoVO> updatePwd(@Validated @RequestBody PasswordEditDTO dto) {
+        userService.editPwd(dto);
         return Response.success();
     }
 

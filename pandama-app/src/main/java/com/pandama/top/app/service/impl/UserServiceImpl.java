@@ -2,14 +2,17 @@ package com.pandama.top.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pandama.top.app.mapper.UserMapper;
+import com.pandama.top.app.pojo.dto.PasswordEditDTO;
 import com.pandama.top.app.pojo.dto.UserEditDTO;
 import com.pandama.top.app.pojo.entity.User;
 import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
 import com.pandama.top.app.service.UserService;
+import com.pandama.top.global.exception.CommonException;
 import com.pandama.top.utils.BeanConvertUtils;
 import com.pandama.top.utils.UserInfoUtils;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +48,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editInfo(UserEditDTO dto) {
         User user = BeanConvertUtils.convert(dto, User::new).orElse(new User());
+        userMapper.updateById(user);
+    }
+
+    @Override
+    public void editPwd(PasswordEditDTO dto) {
+        User user = userMapper.selectById(UserInfoUtils.getUserId());
+        if (!StringUtils.equals(user.getPassword(), dto.getOldPassword())) {
+            throw new CommonException("原密码错误");
+        }
+        user.setPassword(dto.getNewPassword());
         userMapper.updateById(user);
     }
 }

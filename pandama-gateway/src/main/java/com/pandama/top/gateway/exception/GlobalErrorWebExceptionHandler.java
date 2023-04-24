@@ -2,6 +2,7 @@ package com.pandama.top.gateway.exception;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pandama.top.global.exception.CommonException;
 import com.pandama.top.global.response.Response;
 import com.pandama.top.global.response.ResponseCode;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +46,19 @@ public class GlobalErrorWebExceptionHandler implements ErrorWebExceptionHandler 
         }
         if (ex instanceof ResponseStatusException) {
             response.setStatusCode(((ResponseStatusException) ex).getStatus());
+        }
+        // 自定义异常处理
+        if (ex instanceof CommonException) {
+            CommonException exception = (CommonException) ex;
+            return response.writeWith(Mono.fromSupplier(() -> {
+                DataBufferFactory bufferFactory = response.bufferFactory();
+                try {
+                    return bufferFactory.wrap(objectMapper.writeValueAsBytes(Response.fail(exception)));
+                } catch (JsonProcessingException e) {
+                    log.error("网关全局异常拦截响应异常", ex);
+                    return bufferFactory.wrap(new byte[0]);
+                }
+            }));
         }
         return response.writeWith(Mono.fromSupplier(() -> {
             DataBufferFactory bufferFactory = response.bufferFactory();

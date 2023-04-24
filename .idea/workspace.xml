@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="添加app模块">
-      <change afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/UserEditDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/PasswordEditDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceRecordListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceRecordListDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserInfoVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserInfoVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/DeviceServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/exception/GlobalErrorWebExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/exception/GlobalErrorWebExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/account/AccountAuthenticationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/account/AccountAuthenticationConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/account/AccountReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/account/AccountReactiveAuthenticationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,28 +63,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-app/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.28653628",
-    "settings.editor.selected.configurable": "easydoc.common.settings",
-    "spring.configuration.checksum": "2521d4363fe5d79307d86f6bd8217e93",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-app/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.28653628&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;easydoc.common.settings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;2521d4363fe5d79307d86f6bd8217e93&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -96,8 +97,8 @@
       <recent name="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.pandama.top.app.pojo.vo" />
       <recent name="com.pandama.top.app.pojo.dto" />
+      <recent name="com.pandama.top.app.pojo.vo" />
       <recent name="com.pandama.top.app.mapper" />
       <recent name="com.pandama.top.app.pojo.entity" />
       <recent name="com.pandama.top.app.service.impl" />
@@ -171,7 +172,9 @@
       <workItem from="1682236493226" duration="44000" />
       <workItem from="1682255315171" duration="4111000" />
       <workItem from="1682306525113" duration="812000" />
-      <workItem from="1682307346251" duration="3699000" />
+      <workItem from="1682307346251" duration="4064000" />
+      <workItem from="1682313748170" duration="514000" />
+      <workItem from="1682339350829" duration="3362000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -201,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682306707245</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="添加app模块">
+      <created>1682312991499</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682312991499</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -3,8 +3,7 @@ package com.pandama.top.gateway.manager.authentication.account;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManager;
 import com.pandama.top.gateway.service.UserService;
-import com.pandama.top.pojo.dto.UsernameLoginDTO;
-import com.pandama.top.utils.BeanConvertUtils;
+import com.pandama.top.global.exception.CommonException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +44,7 @@ public class AccountReactiveAuthenticationManager implements BaseAuthenticationM
         }
         // 校验密码
         if (Objects.isNull(user) || !passwordEncoder.matches(authentication.getPassword(), passwordEncoder.encode(user.getPassword()))) {
-            return Mono.error(new BadCredentialsException(AuthErrorConstant.PASSWORD_ERROR));
+            return Mono.error(new CommonException(AuthErrorConstant.PASSWORD_ERROR));
         }
         // 判断用户是否禁用
         else if (!user.isEnabled()) {

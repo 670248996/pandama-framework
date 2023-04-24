@@ -2,13 +2,10 @@ package com.pandama.top.gateway.manager.authentication.sms;
 
 
 import com.pandama.top.gateway.bean.User;
-import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManager;
 import com.pandama.top.gateway.service.UserService;
-import com.pandama.top.pojo.dto.PhoneNumberLoginDTO;
-import com.pandama.top.redis.utils.RedisUtils;
-import com.pandama.top.utils.BeanConvertUtils;
+import com.pandama.top.global.exception.CommonException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -46,7 +42,7 @@ public class SmsReactiveAuthenticationManager implements BaseAuthenticationManag
         }
         // 判断用户短信验证码
         if (Objects.isNull(user) || !StringUtils.equals(authentication.getSmsCode(), user.getSmsCode())) {
-            return Mono.error(new BadCredentialsException(AuthErrorConstant.SMS_CODE_ERROR));
+            return Mono.error(new CommonException(AuthErrorConstant.SMS_CODE_ERROR));
         }
         // 判断用户是否禁用
         else if (!user.isEnabled()) {

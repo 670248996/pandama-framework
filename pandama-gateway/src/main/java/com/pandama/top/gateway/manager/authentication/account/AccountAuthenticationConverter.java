@@ -22,14 +22,13 @@ public class AccountAuthenticationConverter implements BaseAuthenticationConvert
 
     @Override
     public Mono<BaseAuthentication> convert(ServerWebExchange exchange) {
-        return exchange.getFormData().map(this::createAuthentication);
+        MultiValueMap<String, String> queryParams = exchange.getRequest().getQueryParams();
+        return Mono.just(createAuthentication(queryParams));
     }
 
     private AccountAuthentication createAuthentication(MultiValueMap<String, String> data) {
         Map<String, String> map = data.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, p -> p.getValue().get(0)));
-        map.put("username", "admin");
-        map.put("password", "123456");
         return (AccountAuthentication) mapToBean(map, AccountAuthentication.class);
     }
 }
