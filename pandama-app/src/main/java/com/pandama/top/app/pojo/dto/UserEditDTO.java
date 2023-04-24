@@ -1,10 +1,9 @@
-package com.pandama.top.app.pojo.vo;
+package com.pandama.top.app.pojo.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * @description: 用户信息出参
@@ -12,7 +11,8 @@ import java.time.LocalDateTime;
  * @dateTime: 2023-04-19 12:10:00
  */
 @Data
-public class UserInfoVO {
+public class UserEditDTO {
+    @NotNull(message = "用户ID不能为null")
     private Long id;
     private String username;
     private String nickName;
@@ -21,6 +21,4 @@ public class UserInfoVO {
     private String jobName;
     private String roleName;
     private Integer gender;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",shape = JsonFormat.Shape.STRING,timezone = "GMT+8")
-    private LocalDateTime createTime;
 }

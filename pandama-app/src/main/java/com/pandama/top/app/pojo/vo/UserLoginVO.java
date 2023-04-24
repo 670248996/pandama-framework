@@ -1,5 +1,6 @@
 package com.pandama.top.app.pojo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -22,5 +23,6 @@ public class UserLoginVO {
     private String jobName;
     private String roleName;
     private Integer gender;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",shape = JsonFormat.Shape.STRING,timezone = "GMT+8")
     private LocalDateTime passwordExpireTime;
 }

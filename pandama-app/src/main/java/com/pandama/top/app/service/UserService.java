@@ -1,5 +1,7 @@
 package com.pandama.top.app.service;
 
+import com.pandama.top.app.pojo.dto.UserEditDTO;
+import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
 
 /**
@@ -12,4 +14,8 @@ public interface UserService {
     UserLoginVO loginByUsername(String dto);
 
     UserLoginVO loginByPhoneNumber(String dto);
+
+    UserInfoVO getInfo();
+
+    void editInfo(UserEditDTO dto);
 }

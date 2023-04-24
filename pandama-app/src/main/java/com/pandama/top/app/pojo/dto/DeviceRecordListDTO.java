@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @description: 设备列表入参
@@ -19,6 +20,7 @@ public class DeviceRecordListDTO {
     private Integer operationNum;
     private Integer operationType;
     private String operationTypeName;
-    @JsonFormat(pattern = "yyyy-MM-dd",shape = JsonFormat.Shape.STRING,timezone = "GMT+8")
-    private LocalDate operationTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",shape = JsonFormat.Shape.STRING,timezone = "GMT+8")
+    private LocalDateTime operationTime;
+    private String createUserName;
 }

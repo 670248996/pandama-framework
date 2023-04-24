@@ -75,7 +75,8 @@ public class DeviceServiceImpl implements DeviceService {
         List<Device> devices = deviceMapper.selectList(new LambdaQueryWrapper<Device>()
                 .like(StringUtils.isNotBlank(dto.getDeviceCode()), Device::getDeviceCode, "%" + dto.getDeviceCode() + "%")
                 .like(StringUtils.isNotBlank(dto.getDeviceName()), Device::getDeviceName, "%" + dto.getDeviceName() + "%")
-                .like(StringUtils.isNotBlank(dto.getPower()), Device::getPower, "%" + dto.getPower() + "%"));
+                .like(StringUtils.isNotBlank(dto.getPower()), Device::getPower, "%" + dto.getPower() + "%")
+                .orderByDesc(Device::getCreateTime));
         return (List<DeviceListVO>) BeanConvertUtils.convertCollection(devices, DeviceListVO::new).orElse(new ArrayList<>());
     }
 
@@ -110,7 +111,7 @@ public class DeviceServiceImpl implements DeviceService {
                 .orderByDesc(DeviceRecord::getCreateTime));
         return (List<DeviceRecordListDTO>) BeanConvertUtils.convertCollection(recordList, DeviceRecordListDTO::new, (s, t) -> {
             t.setOperationTypeName(StoreOperationTypeEnum.getName(s.getOperationType()));
-            t.setOperationTime(s.getCreateTime().toLocalDate());
+            t.setOperationTime(s.getCreateTime());
         }).orElse(new ArrayList<>());
     }
 }
