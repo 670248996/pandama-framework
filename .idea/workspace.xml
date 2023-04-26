@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="添加app模块">
-      <change afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserProfileVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/UserEditDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/UserProfileDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserInfoVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserInfoVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationFailureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationFailureHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomHttpBasicServerAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomHttpBasicServerAuthenticationEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomServerAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomServerAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/enums/BaseIntegerEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/enums/BaseIntegerEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/LoginAuthenticationWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/LoginAuthenticationWebFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +169,9 @@
       <workItem from="1682306525113" duration="812000" />
       <workItem from="1682307346251" duration="4064000" />
       <workItem from="1682313748170" duration="514000" />
-      <workItem from="1682339350829" duration="4702000" />
+      <workItem from="1682339350829" duration="5467000" />
+      <workItem from="1682397438919" duration="2026000" />
+      <workItem from="1682432225430" duration="988000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -225,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682343673626</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="添加app模块">
+      <created>1682345015758</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682345015758</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

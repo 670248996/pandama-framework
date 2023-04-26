@@ -1,6 +1,5 @@
 package com.pandama.top.gateway.filter.authentication;
 
-import cn.hutool.core.lang.tree.TreeUtil;
 import com.pandama.top.gateway.manager.authentication.BaseAuthentication;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationConverter;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManager;
