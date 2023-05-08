@@ -1,14 +1,11 @@
 package com.pandama.top.gateway.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.pandama.top.pojo.vo.UserLoginVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**

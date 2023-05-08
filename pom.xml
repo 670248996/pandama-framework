@@ -16,6 +16,8 @@
         <module>pandama-gateway</module>
         <module>pandama-commons</module>
         <module>pandama-app</module>
+        <module>pandama-app/pandama-app-api</module>
+        <module>pandama-app/pandama-app-biz</module>
     </modules>
 
     <properties>

@@ -29,16 +29,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        <!--整合feign-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <!--loadbalancer-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
         <!--nacos服务配置中心-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -70,6 +60,12 @@
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--引入app-api模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-app-api</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--引入jwt相关依赖-->

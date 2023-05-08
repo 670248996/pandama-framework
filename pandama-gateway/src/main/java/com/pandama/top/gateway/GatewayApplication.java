@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @dateTime: 2022-10-17 16:09:37
  */
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.pandama.top.app")
 @SpringBootApplication
 public class GatewayApplication {
 
