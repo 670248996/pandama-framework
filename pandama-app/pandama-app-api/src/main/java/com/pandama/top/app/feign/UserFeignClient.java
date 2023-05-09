@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Component
 @FeignClient(name = "pandama-app", url = "http://127.0.0.1:9999/pandama/app")
-public interface LoginFeignClient {
+public interface UserFeignClient {
 
     /**
      * @param username 用户名
@@ -23,7 +23,7 @@ public interface LoginFeignClient {
      * @return: User
      * @version: 1.0
      */
-    @GetMapping(value = "/user/loginByUsername")
+    @GetMapping(value = "/feign/loginByUsername")
     UserLoginVO loginByUsername(@RequestParam("username") String username);
 
     /**
@@ -34,7 +34,7 @@ public interface LoginFeignClient {
      * @return: User
      * @version: 1.0
      */
-    @GetMapping(value = "/user/loginByPhoneNumber")
+    @GetMapping(value = "/feign/loginByPhoneNumber")
     UserLoginVO loginByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber);
 
 }

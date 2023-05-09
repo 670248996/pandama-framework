@@ -1,7 +1,7 @@
 package com.pandama.top.gateway.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.pandama.top.gateway.bean.User;
+import com.pandama.top.gateway.bean.UserInfo;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.util.Md5Utils;
 import com.pandama.top.gateway.util.TokenUtils;
@@ -41,11 +41,11 @@ public class CustomAuthenticationSuccessHandler implements ServerAuthenticationS
     @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
         log.info("=====================认证成功=====================");
-        User user = (User) authentication.getPrincipal();
+        UserInfo userInfo = (UserInfo) authentication.getPrincipal();
         // 通过工具生成token
-        String token = TokenUtils.createToken(user);
+        String token = TokenUtils.createToken(userInfo);
         // 生成存入redis的key
-        String redisTokenKey = String.format(AuthConstant.KEY_FORMAT, user.getUsername());
+        String redisTokenKey = String.format(AuthConstant.KEY_FORMAT, userInfo.getUsername());
         // 将生成的jwttoken使用MD5加密后作为value 存入redis 并设置过期时间
         redisUtils.setEx(redisTokenKey, Md5Utils.md5(token), AuthConstant.TOKEN_EXPIRED, TimeUnit.SECONDS);
         HashMap<String, String> hashMap = new HashMap<>(16);

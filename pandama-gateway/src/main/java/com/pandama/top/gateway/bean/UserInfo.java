@@ -14,7 +14,7 @@ import java.util.List;
  * @dateTime: 2022-10-17 16:02:32
  */
 @Data
-public class User implements Serializable, UserDetails {
+public class UserInfo implements Serializable, UserDetails {
     private static final long serialVersionUID = 4586107564176031016L;
 
     @ApiModelProperty("用户id")
@@ -29,24 +29,16 @@ public class User implements Serializable, UserDetails {
     @ApiModelProperty("手机号")
     private String phoneNumber;
 
-    @ApiModelProperty("角色编号列表")
-    private List<String> roleCodeList;
-
-    @ApiModelProperty("权限编号列表")
-    private List<String> permCodeList;
-
-    @ApiModelProperty("资源路径列表")
-    private List<String> uriCodeList;
-
     @ApiModelProperty("ip地址")
     private String ipAddress;
 
     @JsonIgnore
-    private List<UserGrantedAuthority> uris;
+    @ApiModelProperty("授权信息列表")
+    private List<UserGrantedAuthority> authorities;
 
     @Override
     public List<UserGrantedAuthority> getAuthorities() {
-        return this.uris;
+        return this.authorities;
     }
 
     /**

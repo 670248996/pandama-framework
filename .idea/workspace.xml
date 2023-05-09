@@ -4,57 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="优化">
-      <change afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/pom.xml" afterDir="false" />
+    <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="结构调整">
+      <change afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/FeignController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/AppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/AppApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/configuration/FillMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/configuration/FillMetaObjectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/constants/AuthConstant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/DeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/DictionaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/converter/IntegerCodeToEnumConverterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/converter/IntegerCodeToEnumConverterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/enums/BaseIntegerEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/enums/BaseIntegerEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/enums/StoreOperationTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/enums/StoreOperationTypeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/mapper/DeviceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/mapper/DeviceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/mapper/DeviceRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/mapper/DeviceRecordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/mapper/DictionaryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/mapper/DictionaryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceAddDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DeviceAddDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceEditDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DeviceEditDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DeviceListDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceRecordListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DeviceRecordListDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceStoreOperationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DeviceStoreOperationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DeviceStoreRecordDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DeviceStoreRecordDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/DictionaryListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/DictionaryListDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/PasswordEditDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/PasswordEditDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/dto/UserProfileDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/dto/UserProfileDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/entity/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/entity/DeviceRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/DeviceRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/entity/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/Dictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/DeviceDetailVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/DeviceDetailVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/DeviceListVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/DeviceListVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/DictionaryListVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/DictionaryListVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/DictionaryTreeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/DictionaryTreeVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserInfoVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserInfoVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/pojo/vo/UserProfileVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserProfileVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/DeviceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/DictionaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/DeviceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/DictionaryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/GatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/feign/LoginFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/LoginFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/LoginFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/util/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/util/TokenUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,28 +64,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.28653628",
-    "settings.editor.selected.configurable": "easydoc.common.settings",
-    "spring.configuration.checksum": "76f32073c300448bf39f4f8e65a67734",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.28653628&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;easydoc.common.settings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b3698c4044904802e55d93a6bc555fd5&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -141,11 +102,11 @@
       <recent name="$PROJECT_DIR$/pandama-app/pandama-app-biz" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.pandama.top.app.controller" />
       <recent name="com.pandama.top.app.feign" />
       <recent name="com.pandama.top.app.pojo.vo" />
       <recent name="com.pandama.top.app.pojo.dto" />
       <recent name="com.pandama.top.app.mapper" />
-      <recent name="com.pandama.top.app.pojo.entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -156,19 +117,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.AppApplication">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="pandama-gateway" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="pandama-gateway" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="pandama-app-biz" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.pandama.top.app.AppApplication" />
@@ -221,7 +169,8 @@
       <workItem from="1682339350829" duration="5467000" />
       <workItem from="1682397438919" duration="2026000" />
       <workItem from="1682432225430" duration="988000" />
-      <workItem from="1683553101116" duration="1607000" />
+      <workItem from="1683553101116" duration="1668000" />
+      <workItem from="1683593927395" duration="760000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -272,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682345015758</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="结构调整">
+      <created>1683554758148</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683554758148</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +248,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加文件上传进度监听器" />
     <MESSAGE value="添加app模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加app模块" />
+    <MESSAGE value="结构调整" />
+    <option name="LAST_COMMIT_MESSAGE" value="结构调整" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

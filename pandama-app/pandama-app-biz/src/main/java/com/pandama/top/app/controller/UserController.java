@@ -27,16 +27,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @RequestMapping(value = "/loginByUsername", method = RequestMethod.GET)
-    public UserLoginVO loginByUsername(@RequestParam("username") String username) {
-        return userService.loginByUsername(username);
-    }
-
-    @RequestMapping(value = "/loginByPhoneNumber", method = RequestMethod.GET)
-    public UserLoginVO loginByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber) {
-        return userService.loginByPhoneNumber(phoneNumber);
-    }
-
     @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
     public Response<UserInfoVO> getUserInfo() {
         return Response.success(userService.getInfo());

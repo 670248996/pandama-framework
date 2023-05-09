@@ -1,7 +1,7 @@
 package com.pandama.top.gateway.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.pandama.top.gateway.bean.User;
+import com.pandama.top.gateway.bean.UserInfo;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.global.response.Response;
 import com.pandama.top.redis.utils.RedisUtils;
@@ -37,8 +37,8 @@ public class CustomLogoutSuccessHandler implements ServerLogoutSuccessHandler {
     public Mono<Void> onLogoutSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
         log.info("=====================登出成功=====================");
         // 删除redis中用户的token信息
-        User user = (User) authentication.getPrincipal();
-        String redisTokenKey = String.format(AuthConstant.KEY_FORMAT, user.getUsername());
+        UserInfo userInfo = (UserInfo) authentication.getPrincipal();
+        String redisTokenKey = String.format(AuthConstant.KEY_FORMAT, userInfo.getUsername());
         redisUtils.delete(redisTokenKey);
         ServerHttpResponse response = webFilterExchange.getExchange().getResponse();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);

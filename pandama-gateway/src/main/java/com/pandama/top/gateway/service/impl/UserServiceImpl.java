@@ -1,16 +1,14 @@
 package com.pandama.top.gateway.service.impl;
 
-import com.pandama.top.app.feign.LoginFeignClient;
+import com.pandama.top.app.feign.UserFeignClient;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
-import com.pandama.top.gateway.bean.User;
+import com.pandama.top.gateway.bean.UserInfo;
 import com.pandama.top.gateway.service.UserService;
 import com.pandama.top.utils.BeanConvertUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 /**
  * @description: 用户信息服务impl
@@ -21,23 +19,17 @@ import java.util.Collections;
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class UserServiceImpl implements UserService {
 
-    private final LoginFeignClient loginFeignClient;
+    private final UserFeignClient userFeignClient;
 
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserLoginVO userLoginVO = loginFeignClient.loginByUsername(username);
-        User user = BeanConvertUtils.convert(userLoginVO, User::new).orElse(new User());
-        user.setRoleCodeList(Collections.singletonList("admin"));
-        user.setUriCodeList(Collections.singletonList("admin"));
-        return user;
+    public UserInfo loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserLoginVO userLoginVO = userFeignClient.loginByUsername(username);
+        return BeanConvertUtils.convert(userLoginVO, UserInfo::new).orElse(new UserInfo());
     }
 
     @Override
-    public User loadUserByPhoneNumber(String phoneNumber) throws UsernameNotFoundException {
-        UserLoginVO userLoginVO = loginFeignClient.loginByPhoneNumber(phoneNumber);
-        User user = BeanConvertUtils.convert(userLoginVO, User::new).orElse(new User());
-        user.setRoleCodeList(Collections.singletonList("admin"));
-        user.setUriCodeList(Collections.singletonList("admin"));
-        return user;
+    public UserInfo loadUserByPhoneNumber(String phoneNumber) throws UsernameNotFoundException {
+        UserLoginVO userLoginVO = userFeignClient.loginByPhoneNumber(phoneNumber);
+        return BeanConvertUtils.convert(userLoginVO, UserInfo::new).orElse(new UserInfo());
     }
 }
