@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.pandama.top.gateway.bean.UserInfo;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.global.response.Response;
-import com.pandama.top.redis.utils.RedisUtils;
+import com.pandama.top.cache.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

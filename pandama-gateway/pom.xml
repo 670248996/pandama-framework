@@ -56,10 +56,10 @@
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--引入自定义工具包中的redis-->
+        <!--引入自定义工具包中的cache-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-redis</artifactId>
+            <artifactId>pandama-cache</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--引入app-api模块-->

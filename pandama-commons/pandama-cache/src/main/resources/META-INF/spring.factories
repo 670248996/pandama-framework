@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.pandama.top.redis.RedisAutoConfiguration
+  com.pandama.top.cache.CacheAutoConfiguration

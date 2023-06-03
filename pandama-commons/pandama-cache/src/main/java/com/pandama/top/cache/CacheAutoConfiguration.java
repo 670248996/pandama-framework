@@ -1,11 +1,11 @@
-package com.pandama.top.redis;
+package com.pandama.top.cache;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
-import com.pandama.top.redis.utils.RedisUtils;
+import com.pandama.top.cache.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 @Import({RedisUtils.class})
-public class RedisAutoConfiguration {
+public class CacheAutoConfiguration {
     /**
      * @param factory 使用lettuce客户端连接
      * @description: 配置模板客户端

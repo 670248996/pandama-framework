@@ -6,7 +6,7 @@ import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.util.Md5Utils;
 import com.pandama.top.gateway.util.TokenUtils;
 import com.pandama.top.global.Global;
-import com.pandama.top.redis.utils.RedisUtils;
+import com.pandama.top.cache.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,7 +16,7 @@
     <!--模块依赖-->
     <modules>
         <module>pandama-core</module>
-        <module>pandama-redis</module>
+        <module>pandama-cache</module>
         <module>pandama-database</module>
         <module>pandama-logrecord</module>
         <module>pandama-swaggerdoc</module>

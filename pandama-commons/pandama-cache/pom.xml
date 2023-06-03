@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--缓存数据库模块-->
-    <artifactId>pandama-redis</artifactId>
+    <artifactId>pandama-cache</artifactId>
 
     <dependencies>
         <!--redis依赖-->

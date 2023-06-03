@@ -8,11 +8,11 @@ spring:
     nacos:
       config:
         file-extension: yml
-        server-addr: 124.223.178.24:8848
+        server-addr: 121.36.56.159:18848
         namespace: f15e71cc-5606-4806-acca-28421744c45f
         group: PANDAMA
       discovery:
-        server-addr: 124.223.178.24:8848
+        server-addr: 121.36.56.159:18848
         namespace: f15e71cc-5606-4806-acca-28421744c45f
         group: PANDAMA
   main:
