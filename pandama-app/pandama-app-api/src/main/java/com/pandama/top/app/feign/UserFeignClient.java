@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @dateTime: 2022-08-02 16:11:15
  */
 @Component
-@FeignClient(name = "pandama-app", url = "http://127.0.0.1:9999/pandama/app")
+@FeignClient(name = "pandama-app", url = "http://127.0.0.1:8882/pandama/app")
 public interface UserFeignClient {
 
     /**

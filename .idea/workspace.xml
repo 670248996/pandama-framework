@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="结构调整">
-      <change afterPath="$PROJECT_DIR$/pandama-app/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-gateway/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-redis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-cache/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-redis/src/main/java/com/pandama/top/redis/RedisAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-cache/src/main/java/com/pandama/top/cache/CacheAutoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-redis/src/main/java/com/pandama/top/redis/utils/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-cache/src/main/java/com/pandama/top/cache/utils/RedisUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-redis/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-cache/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/TokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/TokenAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +75,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.28653628",
     "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "abd1ea218e4504166fca38cd6b67342b",
+    "spring.configuration.checksum": "5d84f7529bf79439ed1ee22052f28c09",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -182,7 +167,8 @@
       <workItem from="1683615236801" duration="1753000" />
       <workItem from="1685161432354" duration="171000" />
       <workItem from="1685277678734" duration="18000" />
-      <workItem from="1685777755048" duration="1134000" />
+      <workItem from="1685777755048" duration="2091000" />
+      <workItem from="1685781525886" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -247,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683615257497</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="结构调整">
+      <created>1685778907819</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685778907819</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
