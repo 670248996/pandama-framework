@@ -1,12 +1,13 @@
 package com.pandama.top.gateway.filter.authentication;
 
 import com.alibaba.fastjson.JSON;
+import com.pandama.top.cache.utils.RedisUtils;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.util.Md5Utils;
 import com.pandama.top.gateway.util.TokenUtils;
 import com.pandama.top.global.Global;
-import com.pandama.top.cache.utils.RedisUtils;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import reactor.core.publisher.Mono;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -43,7 +45,8 @@ public class TokenAuthenticationFilter implements WebFilter {
     private final RedisUtils redisUtils;
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    @SuppressWarnings("all")
+    public @NonNull Mono<Void> filter(ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         // 获取请求头Authorization信息
         String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
@@ -68,8 +71,8 @@ public class TokenAuthenticationFilter implements WebFilter {
             Authentication auth = new UsernamePasswordAuthenticationToken(user, authToken, user.getAuthorities());
             try {
                 // 将用户信息放入Header中, URL加密解决中文乱码
-                exchange.getRequest().mutate()
-                        .header(Global.USER_INFO, URLEncoder.encode(JSON.toJSONString(user), "UTF-8"))
+                request.mutate()
+                        .header(Global.USER_INFO, URLEncoder.encode(JSON.toJSONString(user), StandardCharsets.UTF_8.name()))
                         .build();
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();

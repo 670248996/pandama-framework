@@ -4,6 +4,7 @@ import com.pandama.top.gateway.manager.authentication.BaseAuthentication;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationConverter;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManager;
 import com.pandama.top.gateway.manager.authentication.BaseAuthenticationManagerResolver;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -58,8 +59,8 @@ public class LoginAuthenticationWebFilter implements WebFilter {
     }
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        return this.requiresAuthenticationMatcher.matches(exchange).filter((matchResult) -> matchResult.isMatch())
+    public @NonNull Mono<Void> filter(@NonNull ServerWebExchange exchange, WebFilterChain chain) {
+        return this.requiresAuthenticationMatcher.matches(exchange).filter(ServerWebExchangeMatcher.MatchResult::isMatch)
                 .flatMap((matchResult) -> this.authenticationConverter.convert(exchange))
                 .switchIfEmpty(chain.filter(exchange).then(Mono.empty()))
                 .flatMap((token) -> authenticate(exchange, chain, token))
@@ -67,6 +68,7 @@ public class LoginAuthenticationWebFilter implements WebFilter {
                         .onAuthenticationFailure(new WebFilterExchange(exchange, chain), ex));
     }
 
+    @SuppressWarnings("all")
     private Mono<Void> authenticate(ServerWebExchange exchange, WebFilterChain chain, BaseAuthentication token) {
         return this.authenticationManagerResolver.resolve(exchange)
                 .flatMap((authenticationManager) -> authenticationManager.authenticate(token))
@@ -84,7 +86,7 @@ public class LoginAuthenticationWebFilter implements WebFilter {
         securityContext.setAuthentication(authentication);
         return this.securityContextRepository.save(exchange, securityContext)
                 .then(this.authenticationSuccessHandler.onAuthenticationSuccess(webFilterExchange, authentication))
-                .subscriberContext(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
+                .contextWrite(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
     }
 
     public void setSecurityContextRepository(ServerSecurityContextRepository securityContextRepository) {

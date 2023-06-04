@@ -16,7 +16,7 @@ public class Global {
     /**
      * Header userinfo
      */
-    public static final String USER_INFO = "user-info";
+    public static final String USER_INFO = "USER_INFO";
 
     /**
      * websocket格式

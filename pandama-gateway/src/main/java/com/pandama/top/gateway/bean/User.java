@@ -1,44 +1,27 @@
 package com.pandama.top.gateway.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
+import com.pandama.top.app.pojo.vo.UserLoginVO;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @description: 用户信息
  * @author: 王强
  * @dateTime: 2022-10-17 16:02:32
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class UserInfo implements Serializable, UserDetails {
+public class User extends UserLoginVO implements Serializable, UserDetails {
     private static final long serialVersionUID = 4586107564176031016L;
-
-    @ApiModelProperty("用户id")
-    private Long id;
-
-    @ApiModelProperty("账号")
-    private String username;
-
-    @ApiModelProperty("密码")
-    private String password;
-
-    @ApiModelProperty("手机号")
-    private String phoneNumber;
-
-    @ApiModelProperty("ip地址")
-    private String ipAddress;
-
-    @JsonIgnore
-    @ApiModelProperty("授权信息列表")
-    private List<UserGrantedAuthority> authorities;
 
     @Override
     public List<UserGrantedAuthority> getAuthorities() {
-        return this.authorities;
+        return super.getRoleCodeList().stream().map(UserGrantedAuthority::new).collect(Collectors.toList());
     }
 
     /**

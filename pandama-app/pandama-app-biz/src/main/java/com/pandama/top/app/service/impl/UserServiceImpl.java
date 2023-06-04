@@ -1,10 +1,10 @@
 package com.pandama.top.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.pandama.top.app.entity.User;
 import com.pandama.top.app.mapper.UserMapper;
 import com.pandama.top.app.pojo.dto.PasswordEditDTO;
 import com.pandama.top.app.pojo.dto.UserProfileDTO;
-import com.pandama.top.app.entity.User;
 import com.pandama.top.app.pojo.vo.UserInfoVO;
 import com.pandama.top.app.pojo.vo.UserLoginVO;
 import com.pandama.top.app.pojo.vo.UserProfileVO;
@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 
 /**
  * @description: 设备服务impl
@@ -31,13 +33,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserLoginVO loginByUsername(String username) {
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, username));
-        return BeanConvertUtils.convert(user, UserLoginVO::new).orElse(null);
+        return BeanConvertUtils.convert(user, UserLoginVO::new, (s, t) -> {
+            t.setRoleCodeList(Collections.singletonList("admin"));
+        }).orElse(null);
     }
 
     @Override
     public UserLoginVO loginByPhoneNumber(String phoneNumber) {
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getPhoneNumber, phoneNumber));
-        return BeanConvertUtils.convert(user, UserLoginVO::new).orElse(null);
+        return BeanConvertUtils.convert(user, UserLoginVO::new, (s, t) -> {
+            t.setRoleCodeList(Collections.singletonList("admin"));
+        }).orElse(null);
     }
 
     @Override
@@ -45,7 +51,6 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectById(UserInfoUtils.getUserId());
         return BeanConvertUtils.convert(user, UserInfoVO::new).orElse(new UserInfoVO());
     }
-
 
     @Override
     public UserProfileVO getProfile() {

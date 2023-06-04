@@ -1,5 +1,6 @@
 package com.pandama.top.gateway.conf;
 
+import com.pandama.top.global.Global;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -20,7 +21,7 @@ public class FeignRequestInterceptor implements RequestInterceptor {
         if (requestAttributes != null) {
             // 重新设置请求头信息
             HttpServletRequest request = requestAttributes.getRequest();
-            template.header("user-info", request.getHeader("user-info"));
+            template.header(Global.USER_INFO, request.getHeader(Global.USER_INFO));
         }
     }
 }

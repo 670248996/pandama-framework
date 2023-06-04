@@ -12,18 +12,15 @@ public class UserGrantedAuthority implements GrantedAuthority {
 
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
-    private String uri;
-
-    public UserGrantedAuthority() {
-    }
+    private final String role;
 
     public UserGrantedAuthority(String uri) {
-        this.uri = uri;
+        this.role = uri;
     }
 
     @Override
     public String getAuthority() {
-        return uri;
+        return role;
     }
 
     @Override
@@ -32,22 +29,19 @@ public class UserGrantedAuthority implements GrantedAuthority {
             return true;
         }
         if (obj instanceof UserGrantedAuthority) {
-            return uri.equals(((UserGrantedAuthority) obj).uri);
+            return role.equals(((UserGrantedAuthority) obj).role);
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return this.uri.hashCode();
+        return this.role.hashCode();
     }
 
     @Override
     public String toString() {
-        return this.uri;
+        return this.role;
     }
 
-    public void setAuthority(String role) {
-        this.uri = role;
-    }
 }

@@ -7,6 +7,23 @@
     <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="结构调整">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/global/Global.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/global/Global.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/interceptor/CustomHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/interceptor/CustomHandlerInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserGrantedAuthority.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserGrantedAuthority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/FeignRequestInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/FeignRequestInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/SecurityWebFluxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/SecurityWebFluxConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/exception/GlobalErrorWebExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/exception/GlobalErrorWebExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/LoginAuthenticationWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/LoginAuthenticationWebFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/TokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/TokenAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/util/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/util/TokenUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +92,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.28653628",
     "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "5d84f7529bf79439ed1ee22052f28c09",
+    "spring.configuration.checksum": "2ae68f61a69c37071270ff70ca45571d",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -168,7 +185,8 @@
       <workItem from="1685161432354" duration="171000" />
       <workItem from="1685277678734" duration="18000" />
       <workItem from="1685777755048" duration="2091000" />
-      <workItem from="1685781525886" duration="25000" />
+      <workItem from="1685781525886" duration="971000" />
+      <workItem from="1685782506543" duration="6073000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -240,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685778907819</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="结构调整">
+      <created>1685781578213</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685781578213</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

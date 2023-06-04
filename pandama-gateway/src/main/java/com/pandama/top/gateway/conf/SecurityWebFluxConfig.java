@@ -85,7 +85,7 @@ public class SecurityWebFluxConfig {
      * security的鉴权白名单
      */
     private static final String[] EXCLUDED_AUTH_PAGES = {
-            "/pandama/system/v2/api-docs",
+            "/pandama/app/v2/api-docs",
             "/v2/api-docs",
             "/swagger-ui/**",
             "/swagger-resources/**",

@@ -1,6 +1,6 @@
 package com.pandama.top.gateway.service;
 
-import com.pandama.top.gateway.bean.UserInfo;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -19,5 +19,5 @@ public interface UserService extends UserDetailsService {
      * @return: User
      * @version: 1.0
      */
-    UserInfo loadUserByPhoneNumber(String phoneNumber) throws UsernameNotFoundException;
+    UserDetails loadUserByPhoneNumber(String phoneNumber) throws UsernameNotFoundException;
 }
