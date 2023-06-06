@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: pandama-user
+  profiles:
+    active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 121.36.56.159:18848
+        namespace: f15e71cc-5606-4806-acca-28421744c45f
+        group: PANDAMA
+      discovery:
+        server-addr: 121.36.56.159:18848
+        namespace: f15e71cc-5606-4806-acca-28421744c45f
+        group: PANDAMA

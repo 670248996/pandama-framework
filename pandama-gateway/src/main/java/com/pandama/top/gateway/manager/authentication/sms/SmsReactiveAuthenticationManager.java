@@ -38,32 +38,27 @@ public class SmsReactiveAuthenticationManager implements BaseAuthenticationManag
         if (!redisUtils.get(smsCodeKey).orElse("").equals(authentication.getSmsCode())) {
             return Mono.error(new CommonException(AuthErrorConstant.SMS_CODE_ERROR));
         }
-        UserDetails user;
-        try {
-            // 获取用户信息
-            user = userService.loadUserByPhoneNumber(authentication.getPhoneNumber());
-        } catch (UsernameNotFoundException ufe) {
-            return Mono.error(ufe);
-        }
-        // 判断用户是否禁用
-        if (!user.isEnabled()) {
-            return Mono.error(new DisabledException(AuthErrorConstant.ACCOUNT_DISABLED));
-        }
-        // 判断用户是否锁定
-        else if (!user.isAccountNonLocked()) {
-            return Mono.error(new LockedException(AuthErrorConstant.ACCOUNT_LOCKED));
-        }
-        // 判断账号是否过期
-        else if (!user.isAccountNonExpired()) {
-            return Mono.error(new AccountExpiredException(AuthErrorConstant.ACCOUNT_EXPIRED));
-        }
-        // 判断登陆是否过期
-        else if (!user.isCredentialsNonExpired()) {
-            return Mono.error(new CredentialsExpiredException(AuthErrorConstant.LOGIN_EXPIRED));
-        }
-        Authentication auth = new UsernamePasswordAuthenticationToken(user, authentication.getSmsCode(), user.getAuthorities());
-        // WebFlux方式默认没有放到context中，需要手动放入
-        SecurityContextHolder.getContext().setAuthentication(auth);
-        return Mono.just(auth);
+        return userService.findByPhoneNumber(authentication.getPhoneNumber()).flatMap(user -> {
+            // 判断用户是否禁用
+            if (!user.isEnabled()) {
+                return Mono.error(new DisabledException(AuthErrorConstant.ACCOUNT_DISABLED));
+            }
+            // 判断用户是否锁定
+            else if (!user.isAccountNonLocked()) {
+                return Mono.error(new LockedException(AuthErrorConstant.ACCOUNT_LOCKED));
+            }
+            // 判断账号是否过期
+            else if (!user.isAccountNonExpired()) {
+                return Mono.error(new AccountExpiredException(AuthErrorConstant.ACCOUNT_EXPIRED));
+            }
+            // 判断登陆是否过期
+            else if (!user.isCredentialsNonExpired()) {
+                return Mono.error(new CredentialsExpiredException(AuthErrorConstant.LOGIN_EXPIRED));
+            }
+            Authentication auth = new UsernamePasswordAuthenticationToken(user, authentication.getSmsCode(), user.getAuthorities());
+            // WebFlux方式默认没有放到context中，需要手动放入
+            SecurityContextHolder.getContext().setAuthentication(auth);
+            return Mono.just(auth);
+        });
     }
 }

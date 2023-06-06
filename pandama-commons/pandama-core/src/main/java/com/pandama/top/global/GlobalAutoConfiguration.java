@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilde
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -44,6 +46,18 @@ public class GlobalAutoConfiguration implements WebMvcConfigurer {
         registry.addInterceptor(new CustomHandlerInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/","/css/**","fonts/**","/images/**","/js/**");
+    }
+
+    /**
+     * @description: spring security密码加密策略
+     * @author: 白剑民
+     * @date: 2023-05-23 09:41:33
+     * @return: org.springframework.security.crypto.password.PasswordEncoder
+     * @version: 1.0
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

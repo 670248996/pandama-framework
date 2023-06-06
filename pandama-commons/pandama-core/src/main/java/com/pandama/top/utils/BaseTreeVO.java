@@ -12,7 +12,7 @@ import java.util.List;
  * @dateTime: 2022-07-29 09:51:33
  */
 @Data
-public class BaseTreeVO<T extends BaseTreeVO> implements Serializable {
+public class BaseTreeVO implements Serializable {
 
     private static final long serialVersionUID = 8481964221820200858L;
 
@@ -23,6 +23,6 @@ public class BaseTreeVO<T extends BaseTreeVO> implements Serializable {
     private Long parentId;
 
     @ApiModelProperty("子集列表（树形结构展示用）")
-    private List<T> children;
+    private List<? extends BaseTreeVO> children;
 
 }

@@ -8,7 +8,7 @@ import com.pandama.top.app.pojo.vo.DictionaryListVO;
 import com.pandama.top.app.pojo.vo.DictionaryTreeVO;
 import com.pandama.top.app.service.DictionaryService;
 import com.pandama.top.utils.BeanConvertUtils;
-import com.pandama.top.utils.Tree;
+import com.pandama.top.utils.TreeUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,7 @@ public class DictionaryServiceImpl implements DictionaryService {
     public List<DictionaryTreeVO> tree() {
         List<Dictionary> dictionaryList = dictionaryMapper.selectList(null);
         List<DictionaryTreeVO> directoryTreeList = (List<DictionaryTreeVO>) BeanConvertUtils.convertCollection(dictionaryList, DictionaryTreeVO::new).orElse(new ArrayList<>());
-        Tree<DictionaryTreeVO, DictionaryTreeVO> treeUtil = new Tree<>();
-        return treeUtil.listToTree(directoryTreeList);
+        return TreeUtils.listToTree(directoryTreeList);
     }
 
     @Override

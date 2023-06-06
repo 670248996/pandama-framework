@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import reactivefeign.spring.config.EnableReactiveFeignClients;
 
 /**
  * @description: Gateway网关启动类
@@ -11,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @dateTime: 2022-10-17 16:09:37
  */
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.pandama.top.app")
+@EnableReactiveFeignClients(basePackages = "com.pandama.top.app")
 @SpringBootApplication
 public class GatewayApplication {
 

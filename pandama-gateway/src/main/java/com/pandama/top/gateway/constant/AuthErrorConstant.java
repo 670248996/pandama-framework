@@ -19,7 +19,9 @@ public class AuthErrorConstant {
 
     public static final String LOGIN_EXPIRED = "登录已过期，请重新登录";
 
-    public static final String PASSWORD_ERROR = "用户不存在或者密码错误";
+    public static final String USER_NOT_EXIT = "用户不存";
+
+    public static final String PASSWORD_ERROR = "者密码错误";
 
     public static final String SMS_CODE_ERROR = "短信验证码错误或已失效，请重新获取";
 

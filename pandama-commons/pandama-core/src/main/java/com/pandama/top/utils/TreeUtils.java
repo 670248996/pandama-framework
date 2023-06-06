@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @author: 王强
  * @dateTime: 2022-07-28 20:50:57
  */
-public class Tree<E, V extends BaseTreeVO> {
+public class TreeUtils {
 
     /**
      * @param source 源数据列表
@@ -21,7 +21,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    public List<V> listToTree(List<V> source) {
+    public static <V extends BaseTreeVO> List<V> listToTree(List<V> source) {
         return listToTree(new ArrayList<>(), source);
     }
 
@@ -34,9 +34,25 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    public List<V> listToTree(List<Long> rootIdList, List<V> source) {
+    public static <V extends BaseTreeVO> List<V> listToTree(List<Long> rootIdList, List<V> source) {
         // 如果根节点id不为空，则调用展示根节点方法
         return listToTreeByRootId(rootIdList, source);
+    }
+
+    /**
+     * @param source         源数据列表
+     * @param targetSupplier 目标转换方法
+     * @description: 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换
+     * @author: 王强
+     * @date: 2022-07-28 21:24:41
+     * @return: java.util.List<V>
+     * @version: 1.0
+     */
+    public static <E, V extends BaseTreeVO> List<V> listToTree(List<E> source, Supplier<V> targetSupplier) {
+        // 实体对象转换VO
+        List<V> vs = (List<V>) BeanConvertUtils.convertCollection(source, targetSupplier, (s, t) -> {
+        }).orElse(new ArrayList<>());
+        return listToTree(vs);
     }
 
     /**
@@ -49,7 +65,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    public List<V> listToTree(List<E> source, Supplier<V> targetSupplier, BiConsumer<E, V> callBack) {
+    public static <E, V extends BaseTreeVO> List<V> listToTree(List<E> source, Supplier<V> targetSupplier, BiConsumer<E, V> callBack) {
         // 实体对象转换VO
         List<V> vs = (List<V>) BeanConvertUtils.convertCollection(source, targetSupplier, callBack).orElse(new ArrayList<>());
         return listToTree(vs);
@@ -67,7 +83,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    public List<V> listToTree(List<Long> rootIdList, List<E> source, Supplier<V> targetSupplier, BiConsumer<E, V> callBack) {
+    public static <E, V extends BaseTreeVO> List<V> listToTree(List<Long> rootIdList, List<E> source, Supplier<V> targetSupplier, BiConsumer<E, V> callBack) {
         // 实体对象转换VO
         List<V> vs = (List<V>) BeanConvertUtils.convertCollection(source, targetSupplier, callBack).orElse(new ArrayList<>());
         return listToTree(rootIdList, vs);
@@ -82,7 +98,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    public List<V> listToTreeWithoutRoot(List<Long> rootIdList, List<V> source) {
+    public static <V extends BaseTreeVO> List<V> listToTreeWithoutRoot(List<Long> rootIdList, List<V> source) {
         // 不展示根节点
         return listToTreeByRootId(rootIdList, source, false);
     }
@@ -98,8 +114,8 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    public List<V> listToTreeWithoutRoot(List<Long> rootIdList, List<E> source, Supplier<V> targetSupplier,
-                                         BiConsumer<E, V> callBack) {
+    public static <E, V extends BaseTreeVO> List<V> listToTreeWithoutRoot(List<Long> rootIdList, List<E> source, Supplier<V> targetSupplier,
+                                                                          BiConsumer<E, V> callBack) {
         // 实体对象转换VO
         List<V> vs = (List<V>) BeanConvertUtils.convertCollection(source, targetSupplier, callBack).orElse(new ArrayList<>());
         return listToTreeWithoutRoot(rootIdList, vs);
@@ -114,7 +130,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    private List<V> listToTreeByRootId(List<Long> rootIdList, List<V> source) {
+    private static <V extends BaseTreeVO> List<V> listToTreeByRootId(List<Long> rootIdList, List<V> source) {
         // 默认展示根节点
         return listToTreeByRootId(rootIdList, source, true);
     }
@@ -129,8 +145,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    @SuppressWarnings("unchecked")
-    private List<V> listToTreeByRootId(List<Long> rootIdList, List<V> source, Boolean showParent) {
+    private static <V extends BaseTreeVO> List<V> listToTreeByRootId(List<Long> rootIdList, List<V> source, Boolean showParent) {
         return source.stream()
                 // 过滤出根节点
                 .filter(item -> {
@@ -175,8 +190,7 @@ public class Tree<E, V extends BaseTreeVO> {
      * @return: java.util.List<V>
      * @version: 1.0
      */
-    @SuppressWarnings("unchecked")
-    private List<V> getTree(Long parentId, List<V> allDataList) {
+    private static <V extends BaseTreeVO> List<V> getTree(Long parentId, List<V> allDataList) {
         return allDataList.stream()
                 // 找出根节点下的子节点
                 .filter(item -> parentId.equals(item.getParentId()))

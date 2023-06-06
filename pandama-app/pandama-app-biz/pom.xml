@@ -32,16 +32,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--nacos服务配置中心-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <!--nacos服务发现中心-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
         <!--api模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>

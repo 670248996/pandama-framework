@@ -58,7 +58,7 @@ public class User extends BaseEntity {
     /**
      * 是否可用(0: 不可用, 1: 可用)
      */
-    private Boolean isEnable;
+    private Boolean status;
     /**
      * 密码到期时间
      */

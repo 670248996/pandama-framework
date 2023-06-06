@@ -29,7 +29,7 @@ public class Dictionary extends BaseEntity {
     /**
      * 是否启用（默认1，启用）
      */
-    private Boolean isEnable;
+    private Boolean status;
     /**
      * 字典等级
      */

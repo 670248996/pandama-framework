@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.pandama.top.thread.CustomThreadPoolAutoConfiguration,\
-com.pandama.top.global.GlobalAutoConfiguration
+com.pandama.top.global.GlobalAutoConfiguration,\
+com.pandama.top.authcode.KaptchaAutoConfiguration

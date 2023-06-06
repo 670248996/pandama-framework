@@ -9,7 +9,7 @@ import lombok.Data;
  * @dateTime: 2023-04-22 12:33:37
  */
 @Data
-public class DictionaryTreeVO extends BaseTreeVO<DictionaryTreeVO> {
+public class DictionaryTreeVO extends BaseTreeVO {
     private String dictType;
     private String dictCode;
     private String dictName;

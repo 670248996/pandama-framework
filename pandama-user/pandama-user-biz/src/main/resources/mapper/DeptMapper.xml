@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.user.biz.mapper.DeptMapper">
+
+    <select id="list" resultType="com.pandama.top.user.biz.entity.SysDept"
+            parameterType="com.pandama.top.user.api.pojo.dto.DeptSearchDTO">
+        select d.*
+        from sys_department d
+        where d.is_delete = 0
+        <if test="dto.deptName != null and dto.deptName != ''">
+            and d.department_name like concat('%', #{dto.deptName}, '%')
+        </if>
+        <if test="dto.status != null">
+            and d.is_enable = #{dto.status}
+        </if>
+        <if test="dto.excludeParentId != null">
+            and not find_in_set(#{dto.excludeParentId}, d.ids)
+        </if>
+    </select>
+
+    <select id="getDeptListByEnterpriseId" resultType="com.pandama.top.user.biz.entity.SysDept">
+        select *
+        from sys_department
+        where is_delete = 0
+        and enterprise_id = #{enterpriseId}
+    </select>
+
+    <select id="getDeptListByParentIds" resultType="com.pandama.top.user.biz.entity.SysDept">
+        select *
+        from sys_department
+        where is_delete = 0
+        <foreach collection="parentIds" item="item"  index="index" open=" AND (" close=")" separator=" OR ">
+            find_in_set(#{item},  ids)
+        </foreach>
+        <if test="showParent != null and showParent == false">
+            and id not in
+            <foreach collection="parentIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+</mapper>

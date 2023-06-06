@@ -5,14 +5,15 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import reactivefeign.spring.config.ReactiveFeignClient;
+import reactor.core.publisher.Mono;
 
 /**
  * @description: 调用feign接口
  * @author: 王强
  * @dateTime: 2022-08-02 16:11:15
  */
-@Component
-@FeignClient(name = "pandama-app", path = "/pandama/app")
+@ReactiveFeignClient(name = "pandama-app", path = "/pandama/app")
 public interface UserFeignClient {
 
     /**
@@ -24,7 +25,7 @@ public interface UserFeignClient {
      * @version: 1.0
      */
     @GetMapping(value = "/feign/loginByUsername")
-    UserLoginVO loginByUsername(@RequestParam("username") String username);
+    Mono<UserLoginVO> loginByUsername(@RequestParam("username") String username);
 
     /**
      * @param phoneNumber 电话号码
@@ -35,6 +36,6 @@ public interface UserFeignClient {
      * @version: 1.0
      */
     @GetMapping(value = "/feign/loginByPhoneNumber")
-    UserLoginVO loginByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber);
+    Mono<UserLoginVO> loginByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber);
 
 }

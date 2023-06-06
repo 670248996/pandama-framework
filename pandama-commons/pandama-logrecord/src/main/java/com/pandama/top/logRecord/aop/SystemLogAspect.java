@@ -7,7 +7,6 @@ import com.pandama.top.logRecord.bean.LogDTO;
 import com.pandama.top.logRecord.context.LogRecordContext;
 import com.pandama.top.logRecord.function.CustomFunctionRegistrar;
 import com.pandama.top.logRecord.service.ILogRecordService;
-import com.pandama.top.logRecord.service.IOperatorInfoService;
 import com.pandama.top.logRecord.thread.LogRecordThreadPool;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -49,11 +48,6 @@ public class SystemLogAspect {
     private final ILogRecordService iOperationLogService;
 
     /**
-     * 操作人信息服务
-     */
-    private final IOperatorInfoService iOperatorService;
-
-    /**
      * Spel解析器
      */
     private final SpelExpressionParser parser = new SpelExpressionParser();
@@ -64,11 +58,9 @@ public class SystemLogAspect {
     private final DefaultParameterNameDiscoverer discoverer = new DefaultParameterNameDiscoverer();
 
     public SystemLogAspect(LogRecordThreadPool logRecordThreadPool,
-                           ILogRecordService iOperationLogService,
-                           IOperatorInfoService iOperatorService) {
+                           ILogRecordService iOperationLogService) {
         this.logRecordThreadPool = logRecordThreadPool;
         this.iOperationLogService = iOperationLogService;
-        this.iOperatorService = iOperatorService;
     }
 
     /**
@@ -369,11 +361,7 @@ public class SystemLogAspect {
                         ? (String) extraObj : JSON.toJSONString(extraObj, SerializerFeature.WriteMapNullValue);
             }
 
-            // operatorId 处理：优先级 注解传入 > 自定义接口实现
             // 必须符合表达式
-            if (iOperatorService != null) {
-                operatorId = iOperatorService.getOperatorId();
-            }
             if (StringUtils.isNotBlank(operatorIdSpel)) {
                 Expression operatorIdExpression = parser.parseExpression(operatorIdSpel);
                 operatorId = operatorIdExpression.getValue(context, String.class);

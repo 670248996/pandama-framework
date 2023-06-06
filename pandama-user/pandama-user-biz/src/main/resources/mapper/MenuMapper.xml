@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.user.biz.mapper.MenuMapper">
+
+    <select id="list" resultType="com.pandama.top.user.biz.entity.SysMenu"
+            parameterType="com.pandama.top.user.api.pojo.dto.PermissionSearchDTO">
+        select p.*
+        from sys_permission p
+        where p.is_delete = 0 and p.system_id = #{dto.systemId}
+        <if test="dto.menuName != null and dto.menuName != ''">
+            and p.permission_name like concat('%', #{dto.menuName}, '%')
+        </if>
+        <if test="dto.status != null">
+            and p.is_enable = #{dto.status}
+        </if>
+        <if test="dto.excludeParentId != null">
+            and not find_in_set(#{dto.excludeParentId}, p.ids)
+        </if>
+    </select>
+
+    <select id="getPermListByParentIds" resultType="com.pandama.top.user.biz.entity.SysMenu" parameterType="java.util.List">
+        select * from sys_permission
+        where is_delete = 0
+        <foreach collection="parentIds" item="item"  index="index" open=" AND (" close=")" separator=" OR ">
+            find_in_set(#{item},  ids)
+        </foreach>
+        <if test="showParent != null and showParent == false">
+            and id not in
+            <foreach collection="parentIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="getMenuListByRoleIds" resultType="com.pandama.top.user.biz.entity.SysMenu">
+        SELECT
+        p.*
+        FROM sys_permission p
+        LEFT JOIN sys_role_permission rp ON rp.permission_id = p.id
+        WHERE rp.role_id IN
+        <foreach collection="roleIds" item="roleId" index="index" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+        AND p.is_delete = 0 AND p.is_enable = 1
+    </select>
+
+</mapper>

@@ -5,25 +5,175 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="结构调整">
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/authcode/KaptchaAutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/authcode/KaptchaProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/authcode/KaptchaTextCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/enums/AuthCodeTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/enums/ExcelTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/pojo/dto/PageDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/pojo/vo/BaseUserInfoVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/pojo/vo/PageResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/enums/LoginTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/enums/MenuTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/enums/TerminalTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/interfaces/IUserInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/UserConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/CheckLoginDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/DeptCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/DeptSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/DeptUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/DictCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/DictSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/DictUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/EnterpriseRegisterDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/EnterpriseSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/EnterpriseUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/LogExportDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/LogSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/OnlineSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PasswordPolicyDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PasswordResetDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PasswordUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PermissionCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PermissionMetaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PermissionSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/PermissionUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/RoleAuthUserCancelDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/RoleAuthUserConfirmDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/RoleAuthUserSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/RoleCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/RoleSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/RoleUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/UserAuthRoleCancelDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/UserAuthRoleConfirmDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/UserAuthRoleSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/UserRegisterDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/UserSearchDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/dto/UserUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/AuthCodeResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DeptCreateResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DeptDetailResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DeptSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DeptTreeVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DictCreateResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DictSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/DictTreeVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/LogSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/LoginLogExportResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/MenuCreateResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/MenuDetailResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/MenuMetaResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/MenuSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/MenuTreeVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/OnlineSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/OperateLogExportResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/RoleAuthUserVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/RoleCreateResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/RoleDetailResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/RoleSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/RouterTreeResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/SystemUserInfoVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/TreeSelectVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/UserAuthRoleVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/UserDetailResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/UserLoginVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/UserRegisterResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo/UserSearchResultVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/UserApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/constant/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/CaptchaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/DeptController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/DictController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/LogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/MenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/OnlineController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysDept.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysDeptUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysDict.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysRoleMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/entity/SysUserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/enums/CustomErrorCodeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/enums/OperateTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/enums/WorkingStateEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/DeptMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/DeptUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/DictMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/LogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/MenuMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/RoleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/RoleMenuMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/mapper/UserRoleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/DeptService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/DeptUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/DictService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/LogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/MenuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/OnlineService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/RoleMenuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/UserRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/DeptServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/DeptUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/DictServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/LogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/OnlineServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/RoleMenuServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/biz/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/DeptMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/DeptUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/DictMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/DictService.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/LogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/MenuMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/RoleMenuMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-user/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/feign/UserFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/UserLoginVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/global/Global.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/global/Global.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/interceptor/CustomHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/interceptor/CustomHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserGrantedAuthority.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserGrantedAuthority.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/FeignRequestInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/FeignRequestInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/SecurityWebFluxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/SecurityWebFluxConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/exception/GlobalErrorWebExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/exception/GlobalErrorWebExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/LoginAuthenticationWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/LoginAuthenticationWebFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/TokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/authentication/TokenAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/DictionaryTreeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo/vo/DictionaryTreeVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/Dictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/service/impl/DictionaryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/global/GlobalAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/global/GlobalAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/pojo/vo/AccessTokenInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/utils/BaseTreeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/utils/BaseTreeVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/utils/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/utils/TreeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-logrecord/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-logrecord/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-logrecord/src/main/java/com/pandama/top/logRecord/aop/SystemLogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-logrecord/src/main/java/com/pandama/top/logRecord/aop/SystemLogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-logrecord/src/main/java/com/pandama/top/logRecord/service/IOperatorInfoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/FeignConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/conf/FeignRequestInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/constant/AuthErrorConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/constant/AuthErrorConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/account/AccountReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/account/AccountReactiveAuthenticationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/manager/authentication/sms/SmsReactiveAuthenticationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/util/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/util/TokenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,49 +224,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.28653628&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;2ae68f61a69c37071270ff70ca45571d&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-user",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.28653628",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "6fa5b10ae65fae45941b7f2d1013fb06",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pandama-user" />
+      <recent name="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/utils" />
+      <recent name="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top" />
+      <recent name="$PROJECT_DIR$/pandama-netty/src/main/resources" />
       <recent name="$PROJECT_DIR$/pandama-app" />
-      <recent name="$PROJECT_DIR$/pandama-gateway" />
-      <recent name="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/pojo" />
-      <recent name="$PROJECT_DIR$/pandama-app/src/main/resources" />
-      <recent name="$PROJECT_DIR$/pandama-app/src/main/java/com/pandama/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app" />
       <recent name="$PROJECT_DIR$/pandama-app/pandama-app-biz" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.pandama.top.app.controller" />
-      <recent name="com.pandama.top.app.feign" />
-      <recent name="com.pandama.top.app.pojo.vo" />
-      <recent name="com.pandama.top.app.pojo.dto" />
-      <recent name="com.pandama.top.app.mapper" />
+      <recent name="com.pandama.top.enums" />
+      <recent name="com.pandama.top.authcode" />
+      <recent name="com.pandama.top.pojo.vo" />
+      <recent name="com.pandama.top.pojo.dto" />
+      <recent name="com.pandama.top.utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -126,7 +276,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.UserApplication">
     <configuration name="AppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="pandama-app-biz" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.pandama.top.app.AppApplication" />
@@ -141,7 +291,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="pandama-user-biz" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.pandama.top.user.biz.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Spring Boot.UserApplication" />
       <item itemvalue="Spring Boot.AppApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
     </list>
@@ -187,7 +345,13 @@
       <workItem from="1685777755048" duration="2091000" />
       <workItem from="1685781525886" duration="971000" />
       <workItem from="1685782506543" duration="6734000" />
-      <workItem from="1685891033153" duration="12000" />
+      <workItem from="1685891033153" duration="959000" />
+      <workItem from="1685953433928" duration="2718000" />
+      <workItem from="1685969811919" duration="5732000" />
+      <workItem from="1686018572435" duration="85000" />
+      <workItem from="1686018790541" duration="188000" />
+      <workItem from="1686022055729" duration="6707000" />
+      <workItem from="1686059212861" duration="1166000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -280,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685867387205</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="结构调整">
+      <created>1685891068261</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685891068261</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,11 +481,6 @@
           <url>file://$PROJECT_DIR$/pandama-gateway/src/main/java/com/pandama/top/gateway/filter/log/RequestLogFilter.java</url>
           <line>43</line>
           <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/pandama-app/pandama-app-api/src/main/java/com/pandama/top/app/converter/IntegerCodeToEnumConverterFactory.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
