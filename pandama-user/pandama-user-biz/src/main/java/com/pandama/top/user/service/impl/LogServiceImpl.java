@@ -58,7 +58,7 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements Lo
 
     @Override
     public PageVO<LogSearchResultVO> page(LogSearchDTO dto) {
-        IPage<LogSearchResultVO> search = logMapper.search(new Page<>(dto.getCurrent(), dto.getSize()), dto);
+        IPage<LogSearchResultVO> search = logMapper.page(new Page<>(dto.getCurrent(), dto.getSize()), dto);
         return BeanConvertUtils.convert(search, PageVO<LogSearchResultVO>::new).orElse(new PageVO<>());
     }
 

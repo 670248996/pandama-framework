@@ -8,7 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -21,24 +23,24 @@ import java.util.UUID;
 @Validated
 @Slf4j
 @RestController
-@RequestMapping("/producer")
+@RequestMapping("/rocket")
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class ProducerController {
+public class RocketController {
 
     /**
      * 注入增强后的模板，可以自动实现环境隔离，日志记录
      */
     @Setter(onMethod_ = @Autowired)
-    private RocketMQEnhanceTemplate enhanceTemplate;
+    private RocketMQEnhanceTemplate rocketTemplate;
 
-    private static final String TOPIC = "rocket_enhance";
-    private static final String TAG = "member";
+    private static final String TOPIC = "test_topic";
+    private static final String TAG = "test_tag";
 
     /**
      * 发送实体消息
      */
-    @GetMapping("/member")
-    public SendResult member() {
+    @GetMapping("/send")
+    public SendResult send() {
         String key = UUID.randomUUID().toString();
         MemberMessage message = new MemberMessage();
         // 设置业务key
@@ -48,7 +50,7 @@ public class ProducerController {
         // 业务消息内容
         message.setUsername("Java日知录");
         message.setBirthday(LocalDate.now());
-        return enhanceTemplate.send(TOPIC, TAG, message);
+        return rocketTemplate.send(TOPIC, TAG, message);
     }
 
 }

@@ -2,16 +2,13 @@ package com.pandama.top.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.pandama.top.user.entity.SysLog;
 import com.pandama.top.user.pojo.dto.LogSearchDTO;
 import com.pandama.top.user.pojo.dto.OnlineSearchDTO;
 import com.pandama.top.user.pojo.vo.LogSearchResultVO;
 import com.pandama.top.user.pojo.vo.OnlineSearchResultVO;
-import com.pandama.top.user.entity.SysLog;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
-import java.time.LocalDate;
-import java.util.List;
 
 
 /**
@@ -31,24 +28,7 @@ public interface LogMapper extends BaseMapper<SysLog> {
      * @return: com.baomidou.mybatisplus.core.metadata.IPage<com.gientech.iot.user.api.entity.vo.LogSearchResultVO>
      * @version: 1.0
      */
-    IPage<LogSearchResultVO> search(IPage<LogSearchResultVO> page, @Param("dto") LogSearchDTO dto);
-
-    /**
-     * @param eventCodes 操作事件码
-     * @param logType    日志类型
-     * @param startDate  开始日期
-     * @param endDate    截止日期
-     * @description: 获取指定事件、时间范围、指定类型的日志
-     * @author: 白剑民
-     * @date: 2023-05-29 19:41:11
-     * @return: java.util.List<com.gientech.iot.user.biz.entity.SysLog>
-     * @version: 1.0
-     */
-    List<SysLog> getLogByParams(@Param("eventCodes") List<String> eventCodes,
-                                @Param("logType") String logType,
-                                @Param("startDate") LocalDate startDate,
-                                @Param("endDate") LocalDate endDate);
-
+    IPage<LogSearchResultVO> page(IPage<LogSearchResultVO> page, @Param("dto") LogSearchDTO dto);
 
     /**
      * @param page 分页参数

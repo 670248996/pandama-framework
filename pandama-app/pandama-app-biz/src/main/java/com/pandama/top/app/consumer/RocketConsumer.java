@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RocketMQMessageListener(topic = "test_topic", consumerGroup = "test_consumer_group1")
-public class RocketMqConsumer1 implements RocketMQListener<String> {
+public class RocketConsumer implements RocketMQListener<String> {
     @Override
     public void onMessage(String message) {
         // 处理消息的逻辑
-        log.info("消费者1 接收到消息: " + message);
+        log.info("普通消费者 接收到消息: " + message);
     }
 }

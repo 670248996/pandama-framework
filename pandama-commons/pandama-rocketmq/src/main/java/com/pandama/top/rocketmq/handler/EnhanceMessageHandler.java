@@ -44,6 +44,7 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
 
     /**
      * 是否需要根据业务规则过滤消息，去重逻辑可以在此处处理
+     *
      * @param message 待处理消息
      * @return true: 本次消息被过滤，false：不过滤
      */
@@ -76,6 +77,7 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
 
     /**
      * isRetry开启时，重新入队延迟时间
+     *
      * @return -1：立即入队重试
      */
     protected int getDelayLevel() {
@@ -90,7 +92,7 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
         log.info("消费者收到消息[{}]", JSONObject.toJSON(message));
 
         if (filter(message)) {
-            log.info("消息id{}不满足消费条件，已过滤。",message.getKey());
+            log.info("消息id{}不满足消费条件，已过滤。", message.getKey());
             return;
         }
         // 超过最大重试次数时调用子类方法处理
@@ -102,9 +104,9 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
             long now = System.currentTimeMillis();
             handleMessage(message);
             long costTime = System.currentTimeMillis() - now;
-            log.info("消息{}消费成功，耗时[{}ms]", message.getKey(),costTime);
+            log.info("消息{}消费成功，耗时[{}ms]", message.getKey(), costTime);
         } catch (Exception e) {
-            log.error("消息{}消费异常", message.getKey(),e);
+            log.error("消息{}消费异常", message.getKey(), e);
             // 是捕获异常还是抛出，由子类决定
             if (throwException()) {
                 //抛出异常，由DefaultMessageListenerConcurrently类处理
@@ -125,7 +127,7 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
         }
         //重新构建消息体
         String messageSource = message.getSource();
-        if(!messageSource.startsWith(EnhanceMessageConstant.RETRY_PREFIX)){
+        if (!messageSource.startsWith(EnhanceMessageConstant.RETRY_PREFIX)) {
             message.setSource(EnhanceMessageConstant.RETRY_PREFIX + messageSource);
         }
         message.setRetryTimes(message.getRetryTimes() + 1);

@@ -17,6 +17,7 @@
         <module>pandama-commons</module>
         <module>pandama-app</module>
         <module>pandama-user</module>
+        <module>pandama-file</module>
     </modules>
 
     <properties>

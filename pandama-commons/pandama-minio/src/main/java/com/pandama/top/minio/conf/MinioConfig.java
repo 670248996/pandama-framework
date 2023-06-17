@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "minio")
-public class MinioConfiguration {
+public class MinioConfig {
     /**
      * 访问地址
      */
@@ -37,10 +37,9 @@ public class MinioConfiguration {
 
     @Bean
     public MinioClient minioClient() {
-        MinioClient minioClient = MinioClient.builder()
+        return MinioClient.builder()
                 .endpoint(endpoint)
                 .credentials(accessKey, secretKey)
                 .build();
-        return minioClient;
     }
 }

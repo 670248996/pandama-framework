@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pandama.top.user.mapper.LogMapper">
 
-    <select id="search" resultType="com.pandama.top.user.pojo.vo.LogSearchResultVO">
+    <select id="page" resultType="com.pandama.top.user.pojo.vo.LogSearchResultVO">
         select
         sl.*,
         sl.id as log_id
@@ -29,20 +29,6 @@
             </if>
             order by sl.create_time desc
         </where>
-    </select>
-
-    <select id="getLogByParams" resultType="com.pandama.top.user.entity.SysLog">
-        SELECT
-        *
-        FROM
-        sys_log
-        WHERE
-        `event` IN
-        <foreach collection="eventCodes" item="code" separator="," open="(" close=")">
-            #{code}
-        </foreach>
-        AND type = #{logType}
-        AND create_time BETWEEN #{startDate} and #{endDate}
     </select>
 
     <select id="onlineUserPage" resultType="com.pandama.top.user.pojo.vo.OnlineSearchResultVO">

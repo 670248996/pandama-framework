@@ -7,20 +7,24 @@ import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * @description: 加强成员消息侦听器
+ * @author: 王强
+ * @dateTime: 2023-06-17 21:12:10
+ */
 @Slf4j
 @Component
 @RocketMQMessageListener(
         consumerGroup = "enhance_consumer_group",
-        topic = "rocket_enhance",
+        topic = "test_topic",
         selectorExpression = "*",
-        consumeThreadMax = 5 //默认是64个线程并发消息，配置 consumeThreadMax 参数指定并发消费线程数，避免太大导致资源不够
-)
+        consumeThreadNumber = 5)
 public class EnhanceMemberMessageListener extends EnhanceMessageHandler<MemberMessage> implements RocketMQListener<MemberMessage> {
 
     @Override
     protected void handleMessage(MemberMessage message) throws Exception {
         // 此时这里才是最终的业务处理，代码只需要处理资源类关闭异常，其他的可以交给父类重试
-        System.out.println("业务消息处理:"+message.getUsername());
+        System.out.println("业务消息处理:" + message.getUsername());
     }
 
     @Override
@@ -29,7 +33,6 @@ public class EnhanceMemberMessageListener extends EnhanceMessageHandler<MemberMe
         // 生产中可以进行回退或其他业务操作
         log.error("消息消费失败，请执行后续处理");
     }
-
 
     /**
      * 是否执行重试机制

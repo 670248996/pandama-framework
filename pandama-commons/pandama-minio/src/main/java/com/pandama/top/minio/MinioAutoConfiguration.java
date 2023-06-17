@@ -1,5 +1,6 @@
 package com.pandama.top.minio;
 
+import com.pandama.top.minio.conf.MinioConfig;
 import com.pandama.top.minio.utils.MinioUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -10,6 +11,6 @@ import org.springframework.context.annotation.Import;
  * @dateTime: 2023-06-17 14:19:05
  */
 @Configuration
-@Import({MinioAutoConfiguration.class, MinioUtils.class})
+@Import({MinioConfig.class, MinioUtils.class})
 public class MinioAutoConfiguration {
 }
