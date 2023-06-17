@@ -24,6 +24,7 @@
         <module>pandama-feign</module>
         <module>pandama-starter</module>
         <module>pandama-thread</module>
+        <module>pandama-minio</module>
     </modules>
 
     <properties>
