@@ -53,24 +53,17 @@
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
-            <exclusions>
-                <!--排除tomcat使用网关默认的netty容器-->
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--引入自定义工具包中的cache-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-cache</artifactId>
+            <artifactId>pandama-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--引入app-api模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-app-api</artifactId>
+            <artifactId>pandama-user-api</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--引入jwt相关依赖-->

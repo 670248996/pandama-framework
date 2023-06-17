@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pandama.top.user.biz.mapper.MenuMapper">
+<mapper namespace="com.pandama.top.user.mapper.MenuMapper">
 
-    <select id="list" resultType="com.pandama.top.user.biz.entity.SysMenu"
-            parameterType="com.pandama.top.user.api.pojo.dto.PermissionSearchDTO">
+    <select id="list" resultType="com.pandama.top.user.entity.SysMenu"
+            parameterType="com.pandama.top.user.pojo.dto.MenuSearchDTO">
         select p.*
-        from sys_permission p
-        where p.is_delete = 0 and p.system_id = #{dto.systemId}
+        from sys_menu p
+        where p.is_delete = 0
         <if test="dto.menuName != null and dto.menuName != ''">
-            and p.permission_name like concat('%', #{dto.menuName}, '%')
+            and p.menu_name like concat('%', #{dto.menuName}, '%')
         </if>
         <if test="dto.status != null">
-            and p.is_enable = #{dto.status}
+            and p.status = #{dto.status}
         </if>
         <if test="dto.excludeParentId != null">
             and not find_in_set(#{dto.excludeParentId}, p.ids)
         </if>
     </select>
 
-    <select id="getPermListByParentIds" resultType="com.pandama.top.user.biz.entity.SysMenu" parameterType="java.util.List">
-        select * from sys_permission
+    <select id="getMenuListByParentIds" resultType="com.pandama.top.user.entity.SysMenu" parameterType="java.util.List">
+        select * from sys_menu
         where is_delete = 0
         <foreach collection="parentIds" item="item"  index="index" open=" AND (" close=")" separator=" OR ">
             find_in_set(#{item},  ids)
@@ -32,16 +32,15 @@
         </if>
     </select>
 
-    <select id="getMenuListByRoleIds" resultType="com.pandama.top.user.biz.entity.SysMenu">
-        SELECT
-        p.*
-        FROM sys_permission p
-        LEFT JOIN sys_role_permission rp ON rp.permission_id = p.id
-        WHERE rp.role_id IN
+    <select id="getMenuListByRoleIds" resultType="com.pandama.top.user.entity.SysMenu">
+        select p.*
+        from sys_menu p
+        left join sys_role_menu rp ON rp.menu_id = p.id
+        where rp.role_id in
         <foreach collection="roleIds" item="roleId" index="index" open="(" separator="," close=")">
             #{roleId}
         </foreach>
-        AND p.is_delete = 0 AND p.is_enable = 1
+        and p.is_delete = 0 and p.status = 1
     </select>
 
 </mapper>

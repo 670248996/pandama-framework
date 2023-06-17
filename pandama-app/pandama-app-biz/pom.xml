@@ -20,17 +20,17 @@
     </properties>
 
     <dependencies>
-
         <!--web依赖包，去除自带的logging依赖-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-starter-web</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--核心模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-core</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <!--api模块-->
         <dependency>
@@ -38,23 +38,17 @@
             <artifactId>pandama-app-api</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--引入自定义工具包中的redis-->
-        <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-cache</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <!--引入自定义工具包中的database-->
-        <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-database</artifactId>
-            <version>1.0.0</version>
-        </dependency>
         <!--java反射框架-->
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
             <version>0.9.11</version>
+        </dependency>
+        <!--集成rocketmq-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-rocketmq</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

@@ -2,8 +2,6 @@ package com.pandama.top.gateway.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
-import com.pandama.top.global.response.Response;
-import com.pandama.top.global.response.ResponseCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

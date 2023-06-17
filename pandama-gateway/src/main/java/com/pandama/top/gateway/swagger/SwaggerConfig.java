@@ -48,7 +48,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("gateway服务API")
                 .description("gateway接口文档")
-                .termsOfServiceUrl("http://127.0.0.1:9991/")
+                .termsOfServiceUrl("http://127.0.0.1:8881/")
                 .version("1.0.0")
                 .build();
     }

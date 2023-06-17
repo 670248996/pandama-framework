@@ -31,7 +31,7 @@ public enum SystemLogEnum {
 	/**
 	 * 字典管理
 	 */
-	PARAM("105", "数据字典"),
+	PARAM("105", "字典"),
 	;
 
 	/**

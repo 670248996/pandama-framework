@@ -1,6 +1,6 @@
 package com.pandama.top.gateway.bean;
 
-import com.pandama.top.app.pojo.vo.UserLoginVO;
+import com.pandama.top.core.pojo.vo.UserLoginVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.userdetails.UserDetails;

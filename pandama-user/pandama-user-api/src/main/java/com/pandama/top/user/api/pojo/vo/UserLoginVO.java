@@ -16,7 +16,7 @@ import java.util.List;
 public class UserLoginVO {
 
     @ApiModelProperty("用户id")
-    private Long userId;
+    private Long id;
 
     @ApiModelProperty("账号")
     private String username;
@@ -30,10 +30,10 @@ public class UserLoginVO {
     @ApiModelProperty("账号是否启用")
     private Boolean status;
 
-    @ApiModelProperty("重试次数(默认3次)")
+    @ApiModelProperty("重试次数")
     private Integer retryNum;
 
-    @ApiModelProperty("冻结时长(单位: 小时, 默认24小时)")
+    @ApiModelProperty("冻结时长(单位: 小时, 默认5分钟)")
     private Integer freezeTime;
 
     @ApiModelProperty("角色代码列表")

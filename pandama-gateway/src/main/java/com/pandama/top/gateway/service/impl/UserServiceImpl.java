@@ -1,17 +1,15 @@
 package com.pandama.top.gateway.service.impl;
 
-import com.pandama.top.app.feign.UserFeignClient;
-import com.pandama.top.app.pojo.vo.UserLoginVO;
 import com.pandama.top.gateway.bean.User;
-import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.service.UserService;
-import com.pandama.top.utils.BeanConvertUtils;
+import com.pandama.top.core.utils.BeanConvertUtils;
+import com.pandama.top.user.api.pojo.vo.UserLoginVO;
+import com.pandama.top.user.api.service.UserFeignService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 /**
  * @description: 用户信息服务impl
@@ -22,19 +20,21 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class UserServiceImpl implements UserService {
 
-    private final UserFeignClient userFeignClient;
+    private final UserFeignService userFeignService;
 
     @Override
-    public Mono<UserDetails> findByUsername(String username) {
-        return userFeignClient.loginByUsername(username)
-                .switchIfEmpty(Mono.error(new UsernameNotFoundException(AuthErrorConstant.USER_NOT_EXIT)))
-                .flatMap((user) -> Mono.just(BeanConvertUtils.convert(user, User::new).orElse(new User())));
+    public UserDetails findByUsername(String username) {
+        UserLoginVO userByUsername = userFeignService.findUserByUsername(username);
+        return BeanConvertUtils.convert(userByUsername, User::new).orElse(null);
     }
 
     @Override
-    public Mono<UserDetails> findByPhoneNumber(String phoneNumber) {
-        return userFeignClient.loginByPhoneNumber(phoneNumber)
-                .switchIfEmpty(Mono.error(new UsernameNotFoundException(AuthErrorConstant.USER_NOT_EXIT)))
-                .flatMap((user) -> Mono.just(BeanConvertUtils.convert(user, User::new).orElse(new User())));
+    public UserDetails findByPhone(String phone) {
+        return BeanConvertUtils.convert(userFeignService.findUserByPhone(phone), User::new).orElse(null);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        throw new UnsupportedOperationException();
     }
 }

@@ -1,6 +1,6 @@
 package com.pandama.top.gateway.manager.authentication;
 
-import com.pandama.top.gateway.util.ValidateUtil;
+import com.pandama.top.core.utils.ValidateUtils;
 import lombok.SneakyThrows;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.web.server.ServerWebExchange;
@@ -41,7 +41,7 @@ public interface BaseAuthenticationConverter {
         }
         Object obj = beanClass.newInstance();
         BeanUtils.populate(obj, map);
-        ValidateUtil.valid(obj);
+        ValidateUtils.valid(obj);
         return obj;
     }
 }

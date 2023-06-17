@@ -2,9 +2,9 @@ package com.pandama.top.gateway.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.pandama.top.app.pojo.vo.UserLoginVO;
+import com.pandama.top.core.pojo.vo.UserLoginVO;
 import com.pandama.top.gateway.bean.User;
-import com.pandama.top.utils.BeanConvertUtils;
+import com.pandama.top.core.utils.BeanConvertUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

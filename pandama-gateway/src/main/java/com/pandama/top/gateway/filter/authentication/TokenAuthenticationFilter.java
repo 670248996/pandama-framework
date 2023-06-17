@@ -1,12 +1,12 @@
 package com.pandama.top.gateway.filter.authentication;
 
 import com.alibaba.fastjson.JSON;
-import com.pandama.top.cache.utils.RedisUtils;
+import com.pandama.top.redis.utils.RedisUtils;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
 import com.pandama.top.gateway.util.Md5Utils;
 import com.pandama.top.gateway.util.TokenUtils;
-import com.pandama.top.global.Global;
+import com.pandama.top.core.global.Global;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

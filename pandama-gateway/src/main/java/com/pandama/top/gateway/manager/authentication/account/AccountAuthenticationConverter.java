@@ -22,8 +22,7 @@ public class AccountAuthenticationConverter implements BaseAuthenticationConvert
 
     @Override
     public Mono<BaseAuthentication> convert(ServerWebExchange exchange) {
-        MultiValueMap<String, String> queryParams = exchange.getRequest().getQueryParams();
-        return Mono.just(createAuthentication(queryParams));
+        return exchange.getFormData().map(this::createAuthentication);
     }
 
     private AccountAuthentication createAuthentication(MultiValueMap<String, String> data) {

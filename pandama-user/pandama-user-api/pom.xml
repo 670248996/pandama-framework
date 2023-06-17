@@ -12,25 +12,11 @@
     <artifactId>pandama-user-api</artifactId>
 
     <dependencies>
-
-        <!--日志模块-->
+        <!--Feign模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-logrecord</artifactId>
+            <artifactId>pandama-feign</artifactId>
             <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-core</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <!--响应式feign-->
-        <dependency>
-            <groupId>com.playtika.reactivefeign</groupId>
-            <artifactId>feign-reactor-spring-cloud-starter</artifactId>
-            <version>3.2.6</version>
-            <type>pom</type>
         </dependency>
     </dependencies>
 

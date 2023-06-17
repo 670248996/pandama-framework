@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pandama.top.user.biz.mapper.UserMapper">
+<mapper namespace="com.pandama.top.user.mapper.UserMapper">
 
-    <select id="page" resultType="com.pandama.top.user.api.pojo.vo.UserSearchResultVO">
+    <select id="page" resultType="com.pandama.top.user.pojo.vo.UserSearchResultVO">
         select
         u.*,
         u.id as user_id,
-        d.department_name,
-        d.department_code
+        d.dept_name,
+        d.dept_code
         from sys_user u
-        left join sys_department_user du on u.id = du.user_id
-        left join sys_department d on d.id = du.department_id
+        left join sys_dept_user du on u.id = du.user_id
+        left join sys_dept d on d.id = du.dept_id
         where u.is_delete = 0
         <if test="dto.username != null and dto.username != ''">
             and u.username like concat('%', #{dto.username}, '%')
@@ -22,7 +22,7 @@
             and u.phone like concat('%', #{dto.phone}, '%')
         </if>
         <if test="dto.status != null">
-            and u.is_enable = #{dto.status}
+            and u.status = #{dto.status}
         </if>
         <if test="dto.deptId != null and dto.deptId != ''">
             and find_in_set(#{dto.deptId}, d.ids)
@@ -33,162 +33,49 @@
         order by u.create_time desc
     </select>
 
-    <select id="getUserListByEnterpriseId" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
+    <select id="getUserListByDeptId" resultType="com.pandama.top.user.pojo.vo.UserDetailResultVO">
         SELECT
         u.*,
         u.id as user_id,
-        d.department_name,
-        d.department_code,
-        e.full_name as enterpriseFullName,
-        e.id as enterpriseId
+        d.dept_name,
+        d.dept_code
         FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
-        WHERE e.id = #{enterpriseId} AND u.is_delete = 0 AND u.is_enable = 1
+        LEFT JOIN sys_dept_user du ON du.user_id = u.id
+        LEFT JOIN sys_dept d ON d.id = du.dept_id
+        WHERE d.id = #{deptId} AND u.is_delete = 0 AND u.status = 1
     </select>
 
-    <select id="getUserListByDepartmentId" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
+    <select id="getSystemUserInfoById" resultType="com.pandama.top.user.pojo.vo.SystemUserInfoVO">
         SELECT
         u.*,
         u.id as user_id,
-        d.department_name,
-        d.department_code
+        d.id AS dept_id,
+        d.dept_name,
+        d.dept_code
         FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        WHERE d.id = #{deptId} AND u.is_delete = 0 AND u.is_enable = 1
+        LEFT JOIN sys_dept_user du ON du.user_id = u.id
+        LEFT JOIN sys_dept d ON d.id = du.dept_id
+        WHERE u.id = #{userId} AND u.is_delete = 0 AND u.status = 1
     </select>
 
-    <select id="getSystemUserInfoById" resultType="com.pandama.top.user.api.pojo.vo.SystemUserInfoVO">
+    <select id="getUserInfoById" resultType="com.pandama.top.user.pojo.vo.UserDetailResultVO">
         SELECT
         u.*,
         u.id as user_id,
-        d.id AS deptId,
-        d.department_name,
-        d.department_code,
-        e.full_name AS enterpriseFullName,
-        e.id as enterpriseId
+        d.id AS dept_id,
+        d.dept_name,
+        d.dept_code
         FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
-        WHERE u.id = #{userId} AND u.is_delete = 0 AND u.is_enable = 1
-    </select>
-
-    <select id="getUserInfoById" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
-        SELECT
-        u.*,
-        u.id as user_id,
-        d.id AS deptId,
-        d.department_name,
-        d.department_code,
-        e.full_name AS enterpriseFullName,
-        e.id as enterpriseId
-        FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
+        LEFT JOIN sys_dept_user du ON du.user_id = u.id
+        LEFT JOIN sys_dept d ON d.id = du.dept_id
         WHERE u.id = #{userId} AND u.is_delete = 0
-    </select>
-
-    <select id="getUserInfoByIdCardNo" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
-        SELECT
-        u.*,
-        u.id as user_id,
-        d.department_name,
-        d.department_code,
-        e.full_name as enterpriseFullName,
-        e.id as enterpriseId
-        FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
-        WHERE u.id_card_no = #{idCardNo} AND u.is_delete = 0
-    </select>
-
-    <select id="getUserInfoByCode" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
-        SELECT
-        u.*,
-        u.id as user_id,
-        d.department_name,
-        d.department_code,
-        e.full_name as enterpriseFullName,
-        e.id as enterpriseId
-        FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
-        WHERE u.code = #{code} AND u.is_delete = 0
-    </select>
-
-    <select id="getUserInfoByIds" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
-        SELECT
-        u.*,
-        u.id as user_id,
-        d.department_name,
-        d.department_code,
-        e.full_name as enterpriseFullName,
-        e.id as enterpriseId
-        FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
-        WHERE u.is_delete = 0 and u.id IN
-        <foreach collection="userIds" item="userId" separator="," open="(" close=")">
-            #{userId}
-        </foreach>
-    </select>
-
-    <select id="getUserInfoByIdCardNos" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
-        SELECT
-        u.*,
-        u.id as user_id,
-        d.department_name,
-        d.department_code,
-        e.full_name as enterpriseFullName,
-        e.id as enterpriseId
-        FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sys_enterprise e ON e.id = d.enterprise_id
-        WHERE u.is_delete = 0 and u.id_card_no IN
-        <foreach collection="idCardNos" item="idCardNo" separator="," open="(" close=")">
-            #{idCardNo}
-        </foreach>
-    </select>
-
-    <select id="getUserInfoByCodes" resultType="com.pandama.top.user.api.pojo.vo.UserDetailResultVO">
-        SELECT
-        u.*,
-        u.id as user_id,
-        d.department_name,
-        d.department_code,
-        e.full_name as enterpriseFullName,
-        e.id as enterpriseId
-        FROM sys_user u
-        LEFT JOIN sys_department_user du ON du.user_id = u.id
-        LEFT JOIN sys_department d ON d.id = du.department_id
-        LEFT JOIN sy_senterprise e ON e.id = d.enterprise_id
-        WHERE u.is_delete = 0 and u.code IN
-        <foreach collection="codes" item="code" separator="," open="(" close=")">
-            #{code}
-        </foreach>
     </select>
 
     <select id="getLoginInfoByUsernameOrPhone" resultType="com.pandama.top.user.api.pojo.vo.UserLoginVO">
         SELECT
-        u.*,
-        u.id as user_id,
-        pp.remind_threshold,
-        pp.retry_num,
-        pp.freeze_time
+        u.*
         FROM
         sys_user u
-        left join sys_department_user du on du.user_id = u.id
-        left join sys_department d on d.id = du.department_id
-        left join sys_enterprise e on e.id = d.enterprise_id
-        left join sys_password_policy pp on pp.id = e.password_policy_id
         WHERE
         u.is_delete = 0
         <if test="username != null and username.length > 0">

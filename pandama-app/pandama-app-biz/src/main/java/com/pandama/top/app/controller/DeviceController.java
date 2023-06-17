@@ -4,7 +4,8 @@ import com.pandama.top.app.pojo.dto.*;
 import com.pandama.top.app.pojo.vo.DeviceDetailVO;
 import com.pandama.top.app.pojo.vo.DeviceListVO;
 import com.pandama.top.app.service.DeviceService;
-import com.pandama.top.global.response.Response;
+import com.pandama.top.core.global.response.Response;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class DeviceController {
 
     private final DeviceService deviceService;
 
+    @ApiOperation("设置新增")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Response<?> add(@Validated @RequestBody DeviceAddDTO dto) {
         deviceService.add(dto);

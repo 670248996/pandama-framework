@@ -18,23 +18,11 @@
     </properties>
 
     <dependencies>
-        <!--引入自定义工具包中的core-->
+        <!--Feign模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-core</artifactId>
+            <artifactId>pandama-feign</artifactId>
             <version>1.0.0</version>
-        </dependency>
-        <!--loadbalancer-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-        <!--响应式feign-->
-        <dependency>
-            <groupId>com.playtika.reactivefeign</groupId>
-            <artifactId>feign-reactor-spring-cloud-starter</artifactId>
-            <version>3.2.6</version>
-            <type>pom</type>
         </dependency>
     </dependencies>
 </project>

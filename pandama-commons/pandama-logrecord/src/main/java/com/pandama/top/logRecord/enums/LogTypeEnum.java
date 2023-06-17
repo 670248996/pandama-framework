@@ -12,17 +12,13 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum LogTypeEnum {
 	/**
-	 * 系统日志
+	 * 登陆日志
 	 */
-	SYSTEM("1", "系统日志"),
+	LOGIN_LOG("1", "登陆日志"),
 	/**
 	 * 操作日志
 	 */
-	BUSINESS("2", "操作日志"),
-	/**
-	 * 导入记录
-	 */
-	IMPORT("3", "导入记录"),
+	OPERATE_LOG("2", "操作日志"),
     ;
 
 	/**

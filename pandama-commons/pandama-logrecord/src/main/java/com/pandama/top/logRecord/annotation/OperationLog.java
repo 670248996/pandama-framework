@@ -32,7 +32,7 @@ public @interface OperationLog {
      * 必填
      * SpEL表达式
      */
-    String bizType();
+    String bizType() default "";
 
     /**
      * 业务事件

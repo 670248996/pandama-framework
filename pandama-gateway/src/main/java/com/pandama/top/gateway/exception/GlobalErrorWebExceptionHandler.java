@@ -2,9 +2,9 @@ package com.pandama.top.gateway.exception;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pandama.top.global.exception.CommonException;
-import com.pandama.top.global.response.Response;
-import com.pandama.top.global.response.ResponseCode;
+import com.pandama.top.core.global.exception.CommonException;
+import com.pandama.top.core.global.response.Response;
+import com.pandama.top.core.global.response.ResponseCode;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
