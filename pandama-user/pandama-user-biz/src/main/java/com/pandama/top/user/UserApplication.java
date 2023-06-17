@@ -17,6 +17,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 public class UserApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication application = new SpringApplication(UserApplication.class);
+        // 通过 SpringApplication 注册 ApplicationContextInitializer
+        application.addInitializers(new MyApplicationContextInitializer());
+        application.run(args);
     }
+
 }

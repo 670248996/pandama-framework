@@ -1,6 +1,5 @@
 package com.pandama.top.rocketmq.configuration;
 
-import com.sun.istack.internal.NotNull;
 import org.apache.rocketmq.spring.support.DefaultRocketMQListenerContainer;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -24,7 +23,8 @@ public class EnvironmentIsolationConfig implements BeanPostProcessor {
      * 在装载Bean之前实现参数修改
      */
     @Override
-    public Object postProcessBeforeInitialization(@NotNull Object bean, @NotNull String beanName) throws BeansException {
+    @SuppressWarnings("all")
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof DefaultRocketMQListenerContainer) {
             DefaultRocketMQListenerContainer container = (DefaultRocketMQListenerContainer) bean;
             // 拼接Topic

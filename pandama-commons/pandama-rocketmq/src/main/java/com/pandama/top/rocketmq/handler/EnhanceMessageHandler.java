@@ -129,9 +129,7 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
             message.setSource(EnhanceMessageConstant.RETRY_PREFIX + messageSource);
         }
         message.setRetryTimes(message.getRetryTimes() + 1);
-
         SendResult sendResult;
-
         try {
             // 如果消息发送不成功，则再次重新发送，如果发送异常则抛出由MQ再次处理(异常时不走延迟消息)
             sendResult = rocketMQEnhanceTemplate.send(annotation.topic(), annotation.selectorExpression(), message, getDelayLevel());

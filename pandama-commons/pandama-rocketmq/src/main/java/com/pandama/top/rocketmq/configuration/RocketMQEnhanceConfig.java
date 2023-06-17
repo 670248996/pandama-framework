@@ -12,6 +12,11 @@ import org.springframework.messaging.converter.MessageConverter;
 
 import java.util.List;
 
+/**
+ * @description: 火箭mqenhance配置
+ * @author: 王强
+ * @dateTime: 2023-06-17 13:58:18
+ */
 @Configuration
 public class RocketMQEnhanceConfig {
 

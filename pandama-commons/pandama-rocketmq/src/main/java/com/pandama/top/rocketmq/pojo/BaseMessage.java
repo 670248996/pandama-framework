@@ -5,7 +5,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 消息实体，所有消息都需要继承此类
+ * @description: 消息实体，所有消息都需要继承此类
+ * @author: 王强
+ * @dateTime: 2023-06-17 13:55:38
  */
 @Data
 public abstract class BaseMessage {

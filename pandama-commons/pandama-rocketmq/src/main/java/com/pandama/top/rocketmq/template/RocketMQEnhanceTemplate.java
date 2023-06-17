@@ -13,13 +13,18 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.util.StringUtils;
 
+/**
+ * @description: 火箭mqenhance模板
+ * @author: 王强
+ * @dateTime: 2023-06-17 13:56:25
+ */
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RocketMQEnhanceTemplate {
 
     private final RocketMQTemplate template;
 
-    private final RocketEnhanceProperties rocketEnhanceProperties;
+    private final RocketEnhanceProperties properties;
 
     public RocketMQTemplate getTemplate() {
         return template;
@@ -40,8 +45,8 @@ public class RocketMQEnhanceTemplate {
      * @param topic 原始topic
      */
     private String reBuildTopic(String topic) {
-        if (rocketEnhanceProperties.isEnabledIsolation() && StringUtils.hasText(rocketEnhanceProperties.getEnvironment())) {
-            return topic + "_" + rocketEnhanceProperties.getEnvironment();
+        if (properties.isEnabledIsolation() && StringUtils.hasText(properties.getEnvironment())) {
+            return topic + "_" + properties.getEnvironment();
         }
         return topic;
     }
@@ -53,7 +58,6 @@ public class RocketMQEnhanceTemplate {
         // 注意分隔符
         return send(buildDestination(topic, tag), message);
     }
-
 
     public <T extends BaseMessage> SendResult send(String destination, T message) {
         // 设置业务键，此处根据公共的参数进行处理
