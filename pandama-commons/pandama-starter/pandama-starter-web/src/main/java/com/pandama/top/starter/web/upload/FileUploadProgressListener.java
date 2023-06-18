@@ -15,8 +15,10 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @Component
 public class FileUploadProgressListener implements ProgressListener {
+
     @Autowired
     private ProgressBar progressBar;
+
     private HttpSession session;
 
     public void setSession(HttpSession session) {

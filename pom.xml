@@ -45,6 +45,8 @@
         <redis.version>2.6.3</redis.version>
         <!--数据库连接池-->
         <druid.version>1.2.6</druid.version>
+        <!--minio-->
+        <minio.version>8.2.2</minio.version>
 
         <!--插件工具-->
         <!--mybatis-plus版本-->
