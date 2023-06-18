@@ -21,14 +21,14 @@ public class SpringContextUtils implements ApplicationContextAware {
      * 设置应用程序上下文
      *
      * @param applicationContext 应用程序上下文
-     * @throws BeansException 豆子例外
+     * @throws BeansException bean异常
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         if (SpringContextUtils.applicationContext == null) {
           SpringContextUtils.applicationContext = applicationContext;
         }
-        log.info("========ApplicationContext配置成功,在普通类可以通过调用SpringUtils.getAppContext()获取applicationContext对象,applicationContext=" + SpringContextUtils.applicationContext + "========");
+        log.info("========ApplicationContext配置成功,在普通类可以通过调用SpringContextUtils.getApplicationContext()获取applicationContext对象========");
     }
 
     /**

@@ -1,9 +1,11 @@
 package com.pandama.top.starter.web.upload;
 
+import lombok.NonNull;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartException;
@@ -35,7 +37,8 @@ public class CustomMultipartResolver extends CommonsMultipartResolver {
      * @version: 1.0
      */
     @Override
-    protected MultipartParsingResult parseRequest(HttpServletRequest request) throws MultipartException {
+    @NotNull
+    protected MultipartParsingResult parseRequest(@NonNull HttpServletRequest request) throws MultipartException {
         //初始化进度条
         progressBar.init();
         String encoding = determineEncoding(request);

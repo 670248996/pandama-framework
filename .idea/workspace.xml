@@ -5,25 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3249ec04-6379-46cd-85b8-862b37613749" name="Changes" comment="优化">
-      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-api/src/main/java/com/pandama/top/file/api/service/FileFeignService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/FileApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/controller/OSSController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pandama-file/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/core/utils/FileMD5Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/core/utils/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/constants/FileCheckMd5StatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/constants/FileConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/file/config/FileUploadProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/file/strategy/RandomAccessUploadStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/file/strategy/SliceUploadStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/file/strategy/SliceUploadTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/file/utils/FilePathUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/file/utils/FileUploadUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/pojo/dto/FileUploadDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/pojo/vo/FileUploadVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/consumer/EnhanceMemberMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/consumer/EnhanceMemberMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/consumer/RocketMqConsumer1.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/consumer/RocketConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/consumer/RocketMqConsumer2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/ProducerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/java/com/pandama/top/app/controller/RocketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-app/pandama-app-biz/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-minio/src/main/java/com/pandama/top/minio/MinioAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-minio/src/main/java/com/pandama/top/minio/MinioAutoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-minio/src/main/java/com/pandama/top/minio/conf/MinioConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-minio/src/main/java/com/pandama/top/minio/conf/MinioConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-rocketmq/src/main/java/com/pandama/top/rocketmq/handler/EnhanceMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-rocketmq/src/main/java/com/pandama/top/rocketmq/handler/EnhanceMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/mapper/LogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/mapper/LogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/service/impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/java/com/pandama/top/user/service/impl/LogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/Prefix.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-user/pandama-user-biz/src/main/resources/mapper/LogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/core/utils/SpringContextUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/core/utils/SpringContextUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-database/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-minio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-minio/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-rocketmq/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-rocketmq/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-starter/pandama-starter-web/src/main/java/com/pandama/top/starter/web/upload/CustomMultipartResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-starter/pandama-starter-web/src/main/java/com/pandama/top/starter/web/upload/CustomMultipartResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-starter/pandama-starter-web/src/main/java/com/pandama/top/starter/web/upload/FileUploadProgressListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-starter/pandama-starter-web/src/main/java/com/pandama/top/starter/web/upload/FileUploadProgressListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-commons/pandama-starter/pandama-starter-web/src/main/java/com/pandama/top/starter/web/utils/WebContextUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-commons/pandama-starter/pandama-starter-web/src/main/java/com/pandama/top/starter/web/utils/WebContextUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/FileApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz/FileApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +38,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -83,7 +87,7 @@
     "RequestMappingsPanelWidth1": "75",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-file/pandama-file-biz/src/main/resources",
+    "last_opened_file_path": "/Users/wangqiang/Documents/GithubProject/pandama-framework/pandama-commons/pandama-core/src/main/java/com/pandama/top/core/utils",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,7 +97,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.28653628",
     "settings.editor.selected.configurable": "com.star.easydoc.view.settings.javadoc.template.MethodSettingsConfigurable",
-    "spring.configuration.checksum": "4b2fdf34e312ce5db29d3221a3dc53d1",
+    "spring.configuration.checksum": "fc83677ca1517366928b040d5f315b90",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,11 +106,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/java/com/pandama/top/core/utils" />
+      <recent name="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/java/com/pandama/top/file/biz" />
       <recent name="$PROJECT_DIR$/pandama-file/pandama-file-biz/src/main/resources" />
       <recent name="$PROJECT_DIR$/pandama-file/pandama-file-api/src/main/java/com/pandama/top/file/api" />
       <recent name="$PROJECT_DIR$/pandama-user/pandama-user-api/src/main/java/com/pandama/top/user/api/pojo/vo" />
-      <recent name="$PROJECT_DIR$/pandama-commons/pandama-core/src/main/resources" />
-      <recent name="$PROJECT_DIR$/pandama-commons/pandama-thread/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/pandama-commons/pandama-kafka/src/main/java/com/pandama/top/kafka/config" />
@@ -114,11 +118,11 @@
       <recent name="$PROJECT_DIR$/pandama-app/pandama-app-biz" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.pandama.top.file.biz.constants" />
+      <recent name="com.pandama.top.file.biz.pojo.vo" />
+      <recent name="com.pandama.top.file.biz.pojo.dto" />
       <recent name="com.pandama.top.app.consumer" />
       <recent name="com.pandama.top.app.controller" />
-      <recent name="com.pandama.top.file.biz" />
-      <recent name="com.pandama.top.app.api.service" />
-      <recent name="com.pandama.top.core.utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -128,18 +132,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AppApplication">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.FileApplication">
     <configuration name="AppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="pandama-app-biz" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.pandama.top.app.AppApplication" />
@@ -244,6 +237,7 @@
       <workItem from="1686892522132" duration="14698000" />
       <workItem from="1686927243702" duration="1592000" />
       <workItem from="1686964584622" duration="6830000" />
+      <workItem from="1687057314444" duration="5901000" />
     </task>
     <task id="LOCAL-00001" summary="添加文件上传进度监听器">
       <created>1671599748788</created>
@@ -364,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686983328735</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="优化">
+      <created>1687012304113</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1687012304113</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,11 +401,6 @@
           <url>file://$PROJECT_DIR$/pandama-commons/pandama-feign/src/main/java/com/pandama/top/feign/intercepter/FeignInvocationHandler.java</url>
           <line>19</line>
           <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/pandama-commons/pandama-minio/src/main/java/com/pandama/top/minio/MinioAutoConfiguration.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

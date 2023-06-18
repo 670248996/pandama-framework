@@ -18,6 +18,19 @@
     </properties>
 
     <dependencies>
+        <!--web依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <!--子模块不继承-->
+            <optional>true</optional>
+        </dependency>
         <!--log4j2依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
