@@ -9,18 +9,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  */
 public class Response<T> {
 
-    /**
-     * 消息体
-     */
-    private T data;
+    @JsonDeserialize(using = StatusEnumDeserializer.class)
+    private ErrorResponse<T> code;
 
     /**
      * 消息描述
      */
     private String msg;
 
-    @JsonDeserialize(using = StatusEnumDeserializer.class)
-    private ErrorResponse<T> code;
+    /**
+     * 消息体
+     */
+    private T data;
 
     public static <T> Response<T> success(T data) {
         return new Response(data, ResponseCode.SUCCESS);
@@ -39,7 +39,7 @@ public class Response<T> {
     }
 
     public static <T> Response<T> fail(String msg) {
-        return new Response(msg);
+        return new Response(ResponseCode.FAIL, msg);
     }
 
     public static <T> Response<T> fail(ErrorResponse<T> code) {
@@ -72,9 +72,9 @@ public class Response<T> {
     }
 
     public Response(T data, ErrorResponse<T> code) {
-        this.data = data;
         this.code = code;
         this.msg = code.getDescribe();
+        this.data = data;
     }
 
     public Response(ErrorResponse<T> code) {

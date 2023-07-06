@@ -1,13 +1,8 @@
 package com.pandama.top.user.controller;
 
 import com.pandama.top.core.global.response.Response;
-import com.pandama.top.core.utils.UserInfoUtils;
-import com.pandama.top.logRecord.annotation.OperationLog;
-import com.pandama.top.logRecord.context.LogRecordContext;
-import com.pandama.top.logRecord.enums.LogTypeEnum;
-import com.pandama.top.user.enums.LoginTypeEnum;
-import com.pandama.top.user.pojo.vo.SystemUserInfoVO;
 import com.pandama.top.user.api.pojo.vo.UserLoginVO;
+import com.pandama.top.user.pojo.vo.SystemUserInfoVO;
 import com.pandama.top.user.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,7 +11,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotBlank;
 
@@ -76,37 +74,4 @@ public class LoginController {
         return Response.success(loginService.getUserInfo());
     }
 
-    /**
-     * @description: 登录成功
-     * @author: 王强
-     * @date: 2023-05-29 12:05:50
-     * @return: void
-     * @version: 1.0
-     */
-    @OperationLog(bizEvent = "#event", msg = "'【' + #user.realName + '】登录成功", operatorId = "#user.userId", tag = "#tag")
-    @ApiOperation(value = "登录成功", hidden = true)
-    @GetMapping("/loginSuccess")
-    public void loginSuccess() {
-        com.pandama.top.core.pojo.vo.UserLoginVO userInfo = UserInfoUtils.getUserInfo();
-        LogRecordContext.putVariables("event", LoginTypeEnum.LOGIN.getCode());
-        LogRecordContext.putVariables("tag", LogTypeEnum.LOGIN_LOG.getCode());
-        LogRecordContext.putVariables("user", userInfo);
-    }
-
-    /**
-     * @description: 注销成功
-     * @author: 王强
-     * @date: 2023-05-29 12:05:52
-     * @return: void
-     * @version: 1.0
-     */
-    @OperationLog(bizEvent = "#event", msg = "'【' + #user.realName + '】退出成功", operatorId = "#user.userId", tag = "#tag")
-    @ApiOperation(value = "注销成功", hidden = true)
-    @GetMapping("/logoutSuccess")
-    public void logoutSuccess() {
-        com.pandama.top.core.pojo.vo.UserLoginVO userInfo = UserInfoUtils.getUserInfo();
-        LogRecordContext.putVariables("event", LoginTypeEnum.LOGOUT.getCode());
-        LogRecordContext.putVariables("tag", LogTypeEnum.LOGIN_LOG.getCode());
-        LogRecordContext.putVariables("user", userInfo);
-    }
 }

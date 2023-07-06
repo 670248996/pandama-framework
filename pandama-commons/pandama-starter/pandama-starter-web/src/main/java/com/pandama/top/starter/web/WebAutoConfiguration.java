@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pandama.top.starter.web.authCode.AuthCodeConfiguration;
 import com.pandama.top.starter.web.intercepter.CommonExtHandler;
 import com.pandama.top.starter.web.intercepter.CustomHandlerInterceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -57,6 +58,7 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
      * @version: 1.0
      */
     @Bean
+    @ConditionalOnMissingBean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

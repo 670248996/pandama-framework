@@ -7,24 +7,10 @@ package com.pandama.top.gateway.constant;
  */
 public class AuthConstant {
 
-    /**
-     * redis中token格式
-     */
-    public static final String KEY_FORMAT = "token:%s";
+    public static final String AUTHORITY_PREFIX = "ROLE_";
 
-    /**
-     * redis中手机验证码格式
-     */
-    public static final String PHONE_FORMAT = "phone:%s";
+    public static final String AUTHORITY_CLAIM_NAME = "authorities";
 
-    /**
-     * token类型
-     */
     public static final String BEARER = "Bearer ";
-
-    /**
-     * redis中token过期时间
-     */
-    public static final long TOKEN_EXPIRED = 8 * 60 * 60;
 
 }

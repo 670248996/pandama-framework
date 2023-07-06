@@ -32,6 +32,12 @@
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--database模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-database</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--api模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>

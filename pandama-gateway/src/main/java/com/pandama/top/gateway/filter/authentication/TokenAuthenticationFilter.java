@@ -1,12 +1,13 @@
 package com.pandama.top.gateway.filter.authentication;
 
 import com.alibaba.fastjson.JSON;
-import com.pandama.top.redis.utils.RedisUtils;
+import com.alibaba.fastjson.JSONObject;
+import com.nimbusds.jose.JWSObject;
+import com.pandama.top.auth.api.constant.RedisConstant;
+import com.pandama.top.core.global.Global;
 import com.pandama.top.gateway.constant.AuthConstant;
 import com.pandama.top.gateway.constant.AuthErrorConstant;
-import com.pandama.top.gateway.util.Md5Utils;
-import com.pandama.top.gateway.util.TokenUtils;
-import com.pandama.top.core.global.Global;
+import com.pandama.top.redis.utils.RedisUtils;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,6 @@ import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -29,7 +29,7 @@ import reactor.core.publisher.Mono;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.TimeUnit;
+import java.text.ParseException;
 
 /**
  * @description: 令牌身份验证过滤器
@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE + 1)
+@Order(Ordered.HIGHEST_PRECEDENCE + 2)
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class TokenAuthenticationFilter implements WebFilter {
 
@@ -54,21 +54,21 @@ public class TokenAuthenticationFilter implements WebFilter {
         if (authHeader != null && authHeader.startsWith(AuthConstant.BEARER)) {
             // 执行Token请求认证
             log.info("=====================Token认证=====================");
-            // 截取Token信息
+            //从token中解析用户信息并设置到Header中去
             String authToken = authHeader.substring(AuthConstant.BEARER.length());
-            // 校验token, 并获取用户信息
-            UserDetails user = TokenUtils.validationToken(authToken);
-            if (user == null) {
-                return Mono.error(new CredentialsExpiredException(AuthErrorConstant.TOKEN_EXPIRED));
+            JSONObject user = null;
+            try {
+                JWSObject jwsObject = JWSObject.parse(authToken);
+                user = JSON.parseObject(jwsObject.getPayload().toString());
+            } catch (ParseException e) {
+                return Mono.error(new CredentialsExpiredException(AuthErrorConstant.TOKEN_ERROR));
             }
             // 校验redis中的token
-            String redisTokenKey = String.format(AuthConstant.KEY_FORMAT, user.getUsername());
-            if (!Md5Utils.md5(authToken).equals(redisUtils.get(redisTokenKey).orElse(""))) {
+            String redisTokenKey = String.format(RedisConstant.ACCESS_TOKEN, user.get("id"));
+            if (!authToken.equals(redisUtils.get(redisTokenKey).orElse(""))) {
                 return Mono.error(new CredentialsExpiredException(AuthErrorConstant.TOKEN_EXPIRED));
             }
-            // 验证通过, 刷新token有效时间
-            redisUtils.expire(redisTokenKey, AuthConstant.TOKEN_EXPIRED, TimeUnit.SECONDS);
-            Authentication auth = new UsernamePasswordAuthenticationToken(user, authToken, user.getAuthorities());
+            Authentication auth = new UsernamePasswordAuthenticationToken(user, null);
             try {
                 // 将用户信息放入Header中, URL加密解决中文乱码
                 request.mutate()

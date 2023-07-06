@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -46,9 +45,6 @@ public class UserLoginVO implements Serializable {
     @ApiModelProperty("短信验证码")
     private String smsCode;
 
-    @ApiModelProperty("密码到期时间")
-    private LocalDateTime passwordExpireTime;
-
     @ApiModelProperty("角色编号列表")
     private List<String> roleCodeList;
 
@@ -57,5 +53,6 @@ public class UserLoginVO implements Serializable {
 
     @ApiModelProperty("ip地址")
     private String ipAddress;
+
 
 }

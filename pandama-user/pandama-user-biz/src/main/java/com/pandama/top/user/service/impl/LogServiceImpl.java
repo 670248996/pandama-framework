@@ -17,7 +17,7 @@ import com.pandama.top.user.pojo.vo.LoginLogExportResultVO;
 import com.pandama.top.user.pojo.vo.OnlineSearchResultVO;
 import com.pandama.top.user.pojo.vo.OperateLogExportResultVO;
 import com.pandama.top.user.entity.SysLog;
-import com.pandama.top.user.enums.LoginTypeEnum;
+import com.pandama.top.core.enums.LoginTypeEnum;
 import com.pandama.top.user.mapper.LogMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

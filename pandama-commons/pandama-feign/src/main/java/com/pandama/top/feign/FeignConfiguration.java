@@ -5,21 +5,20 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.pandama.top.feign.intercepter.FeignRequestInterceptor;
-import feign.Feign;
-import feign.Request;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
-import feign.hystrix.HystrixFeign;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
-import org.springframework.cloud.openfeign.support.*;
+import org.springframework.cloud.openfeign.support.HttpMessageConverterCustomizer;
+import org.springframework.cloud.openfeign.support.ResponseEntityDecoder;
+import org.springframework.cloud.openfeign.support.SpringDecoder;
+import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @description: feign客户端配置
@@ -81,25 +80,5 @@ public class FeignConfiguration {
     @Bean
     public FeignRequestInterceptor getFeignRequestInterceptor() {
         return new FeignRequestInterceptor();
-    }
-
-    /**
-     * @param encoder            编码器
-     * @param decoder            译码器
-     * @param requestInterceptor 请求拦截器
-     * @description: 构建feign
-     * @author: 王强
-     * @date: 2023-06-16 13:51:10
-     * @return: Builder
-     * @version: 1.0
-     */
-    @Bean
-    public Feign.Builder feignBuilder(Encoder encoder, Decoder decoder, FeignRequestInterceptor requestInterceptor) {
-        return HystrixFeign.builder()
-                .encoder(encoder)
-                .decoder(decoder)
-                .requestInterceptor(requestInterceptor)
-                .options(new Request.Options(3, TimeUnit.SECONDS, 3, TimeUnit.SECONDS, false))
-                .contract(new SpringMvcContract());
     }
 }

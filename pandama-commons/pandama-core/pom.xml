@@ -22,7 +22,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
-            <version>${log4j2.version}</version>
         </dependency>
         <!--参数校验注解-->
         <dependency>

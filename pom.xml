@@ -18,6 +18,7 @@
         <module>pandama-app</module>
         <module>pandama-user</module>
         <module>pandama-file</module>
+        <module>pandama-auth</module>
     </modules>
 
     <properties>
@@ -57,8 +58,10 @@
         <log4j2.version>2.7.4</log4j2.version>
         <!--swagger版本-->
         <swagger.version>3.0.0</swagger.version>
+        <!--oauth2版本-->
+        <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <!--jwt版本-->
-        <jwt.version>0.11.1</jwt.version>
+        <nimbus-jose-jwt.version>9.23</nimbus-jose-jwt.version>
     </properties>
 
     <!--依赖包管理器，提供子模块继承-->

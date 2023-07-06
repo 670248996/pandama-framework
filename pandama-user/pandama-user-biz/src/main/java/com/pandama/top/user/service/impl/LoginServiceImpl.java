@@ -80,10 +80,9 @@ public class LoginServiceImpl implements LoginService {
         // 缓存用户信息，一般在用户登出后清空，避免数据产生，缓存有效期24小时
         String userKey = "user_info" + UserInfoUtils.getUserId();
         redisUtils.setEx(userKey, JSON.toJSONString(userInfo), 1, TimeUnit.DAYS);
-        // 设置密码到期天数
-//        userInfo.setPwdExpireDays(DateUtil.betweenDay(DateUtil.date(),
-//                DateTime.from(userInfo.getPasswordExpireTime().atZone(ZoneId.systemDefault()).toInstant()), false));
-        this.setRoleAndPerm(userInfo);
+        if (userInfo != null) {
+            this.setRoleAndPerm(userInfo);
+        }
         return userInfo;
     }
 
@@ -96,10 +95,6 @@ public class LoginServiceImpl implements LoginService {
      * @version: 1.0
      */
     private void setRoleAndPerm(SystemUserInfoVO userInfo) {
-        // 用户不存在就抛出异常
-        if (null == userInfo) {
-            throw new CommonException(CustomErrorCodeEnum.USER_IS_NOT_EXIST);
-        }
         // 获取用户所有角色
         List<SysRole> roles = roleService.listByUserId(userInfo.getUserId());
         // 角色id列表

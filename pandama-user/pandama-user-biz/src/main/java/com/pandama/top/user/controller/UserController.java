@@ -3,7 +3,7 @@ package com.pandama.top.user.controller;
 import com.pandama.top.logRecord.annotation.OperationLog;
 import com.pandama.top.logRecord.context.LogRecordContext;
 import com.pandama.top.logRecord.enums.LogTypeEnum;
-import com.pandama.top.user.enums.LoginTypeEnum;
+import com.pandama.top.core.enums.LoginTypeEnum;
 import com.pandama.top.user.pojo.dto.*;
 import com.pandama.top.user.pojo.vo.UserAuthRoleVO;
 import com.pandama.top.user.pojo.vo.UserDetailResultVO;

@@ -8,7 +8,7 @@ import com.pandama.top.user.service.LogService;
 import com.pandama.top.user.service.OnlineService;
 import com.pandama.top.core.utils.DateUtils;
 import com.pandama.top.core.utils.UserInfoUtils;
-import com.pandama.top.user.enums.LoginTypeEnum;
+import com.pandama.top.core.enums.LoginTypeEnum;
 import com.pandama.top.user.pojo.dto.OnlineSearchDTO;
 import com.pandama.top.user.pojo.vo.OnlineSearchResultVO;
 import com.pandama.top.user.entity.SysLog;
