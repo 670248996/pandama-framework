@@ -11,7 +11,6 @@ import com.pandama.top.user.pojo.dto.*;
 import com.pandama.top.user.pojo.vo.RoleAuthUserVO;
 import com.pandama.top.user.pojo.vo.RoleDetailResultVO;
 import com.pandama.top.user.pojo.vo.RoleSearchResultVO;
-import com.pandama.top.user.enums.CustomErrorCodeEnum;
 import com.pandama.top.user.mapper.RoleMapper;
 import com.pandama.top.user.entity.SysRole;
 import com.pandama.top.user.entity.SysRoleMenu;
@@ -55,7 +54,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, SysRole> implements
     public void create(RoleCreateDTO dto) {
         // 将传参字段转换赋值成角色实体属性
         SysRole sysRole = BeanConvertUtils.convert(dto, SysRole::new)
-                .orElseThrow(() -> new CommonException(CustomErrorCodeEnum.ROLE_CREATE_ERROR));
+                .orElseThrow(() -> new CommonException("角色创建出错"));
         roleMapper.insert(sysRole);
         // 添加角色关联菜单列表
         List<SysRoleMenu> rolePermList = dto.getMenuIds().stream()
@@ -93,7 +92,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, SysRole> implements
         List<Long> users = userRoleService.getUserIdsByRoleIds(roleIds);
         // 判断角色有无关联用户
         if (users.size() > 0) {
-            throw new CommonException(CustomErrorCodeEnum.ROLE_HAS_USER);
+            throw new CommonException("角色存在关联用户，不允许删除");
         }
         // 删除角色关联菜单列表
         roleMenuService.deleteByRoleIds(roleIds);

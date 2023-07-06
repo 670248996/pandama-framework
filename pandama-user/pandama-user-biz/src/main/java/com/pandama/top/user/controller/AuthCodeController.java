@@ -3,7 +3,6 @@ package com.pandama.top.user.controller;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.lang.UUID;
 import com.pandama.top.user.pojo.vo.AuthCodeResultVO;
-import com.pandama.top.user.enums.CustomErrorCodeEnum;
 import com.google.code.kaptcha.Producer;
 import com.pandama.top.starter.web.authCode.AuthCodeTypeEnum;
 import com.pandama.top.starter.web.authCode.AuthCodeProperties;
@@ -97,7 +96,7 @@ public class AuthCodeController {
                 assert image != null;
                 ImageIO.write(image, "jpg", os);
             } catch (IOException e) {
-                throw new CommonException(CustomErrorCodeEnum.AUTH_CODE_ERROR);
+                throw new CommonException("图片验证码生成异常");
             }
             result.setUuid(uuid);
             result.setImg(Base64.encode(os.toByteArray()));

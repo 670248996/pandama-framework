@@ -10,7 +10,6 @@ import com.pandama.top.user.entity.SysDeptUser;
 import com.pandama.top.user.entity.SysRole;
 import com.pandama.top.user.entity.SysUser;
 import com.pandama.top.user.entity.SysUserRole;
-import com.pandama.top.user.enums.CustomErrorCodeEnum;
 import com.pandama.top.user.mapper.UserMapper;
 import com.pandama.top.core.utils.BeanConvertUtils;
 import com.pandama.top.core.utils.IdCardUtils;
@@ -73,7 +72,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
             }
             // TODO 密码策略
             t.setPasswordExpireTime(LocalDateTime.now().plusDays(30));
-        }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.USER_CREATE_ERROR));
+        }).orElseThrow(() -> new CommonException("用户创建出错"));
         userMapper.insert(user);
         if (dto.getDeptId() != null) {
             // 保存用户新关联的部门信息
@@ -145,7 +144,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
         if (dto.getIsNeedCheck()) {
             // 校验原密码
             if (!passwordEncoder.matches(dto.getOldPassword(), oldPassword)) {
-                throw new CommonException(CustomErrorCodeEnum.OLD_PASSWORD_NOT_MATCH_ERROR);
+                throw new CommonException("原密码错误");
             }
         }
         // 赋值新密码

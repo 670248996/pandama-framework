@@ -12,7 +12,6 @@ import com.pandama.top.user.pojo.vo.DeptTreeVO;
 import com.pandama.top.user.constant.Constants;
 import com.pandama.top.user.entity.SysDept;
 import com.pandama.top.user.entity.SysDeptUser;
-import com.pandama.top.user.enums.CustomErrorCodeEnum;
 import com.pandama.top.user.mapper.DeptMapper;
 import com.pandama.top.user.service.DeptService;
 import com.pandama.top.user.service.DeptUserService;
@@ -96,7 +95,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
                 }
             } catch (Exception e) {
                 log.error("部门编码缓存生成出错,错误信息: {}", e.getMessage());
-                throw new CommonException(CustomErrorCodeEnum.CODE_CACHE_ERROR);
+                throw new CommonException("编码缓存异常，请稍后再试。");
             } finally {
                 // 如果加锁成功则进行解锁
                 if (lock) {
@@ -111,7 +110,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
     public void create(DeptCreateDTO dto) {
         SysDept parent = dto.getParentId() == 0 ? new SysDept() : departmentMapper.selectById(dto.getParentId());
         if (parent == null) {
-            throw new CommonException(CustomErrorCodeEnum.PARENT_NOT_EXIT);
+            throw new CommonException("父节点不存在");
         }
         // 部门编码生成前缀
         String prefix = Constants.Prefix.DEPT;
@@ -130,7 +129,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
                     t.setParentId(s.getParentId());
                     t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                     t.setLevel(t.getIds().split(",").length);
-                }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.DEPARTMENT_CREATE_ERROR));
+                }).orElseThrow(() -> new CommonException("部门创建出错"));
                 departmentMapper.insert(sysDept);
                 // 入库成功后，将缓存值递增并刷新缓存
                 redisUtils.set(codeKey, prefix + String.format("%03d", index.get()));
@@ -139,7 +138,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
             }
         } catch (Exception e) {
             log.error("部门创建失败，错误信息: {}", e.getMessage());
-            throw new CommonException(CustomErrorCodeEnum.DEPARTMENT_CREATE_ERROR);
+            throw new CommonException("部门创建出错");
         } finally {
             // 如果加锁成功则进行解锁
             if (lock) {
@@ -163,7 +162,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
         if (StringUtils.isEmpty(dept.getIds()) || !Objects.equals(dept.getParentId(), dto.getParentId())) {
             SysDept parent = dto.getParentId() == 0 ? new SysDept() : departmentMapper.selectById(dto.getParentId());
             if (parent == null) {
-                throw new CommonException(CustomErrorCodeEnum.PARENT_NOT_EXIT);
+                throw new CommonException("父节点不存在");
             }
             // 更新部门信息
             dept = BeanConvertUtils.convert(dto, SysDept::new, (s, t) -> {
@@ -171,7 +170,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
                 t.setParentId(dto.getParentId());
                 t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                 t.setLevel(t.getIds().split(",").length);
-            }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.DEPARTMENT_UPDATE_ERROR));
+            }).orElseThrow(() -> new CommonException("部门更新出错"));
             // 获取部门下的子部门列表
             List<SysDept> childDeptList =
                     departmentMapper.getDeptListByParentIds(Collections.singletonList(dto.getDeptId()), false);
@@ -190,7 +189,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
             // 将传参字段转换赋值成部门实体属性
             dept = BeanConvertUtils.convert(dto, SysDept::new, (s, t) -> {
                 t.setId(s.getDeptId());
-            }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.DEPARTMENT_UPDATE_ERROR));
+            }).orElseThrow(() -> new CommonException("部门更新出错"));
             // 更新单个部门信息
             departmentMapper.updateById(dept);
         }
@@ -204,7 +203,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
         List<Long> deptIdList = deptList.stream().map(SysDept::getId).collect(Collectors.toList());
         // 判断部门是否存在关联用户
         if (CollectionUtils.isNotEmpty(departmentUserService.getUserIdsByDeptIds(deptIdList))) {
-            throw new CommonException(CustomErrorCodeEnum.DEPARTMENT_HAS_USER);
+            throw new CommonException("部门下存在关联用户信息，不允许删除");
         }
         departmentMapper.deleteBatchIds(deptIdList);
     }

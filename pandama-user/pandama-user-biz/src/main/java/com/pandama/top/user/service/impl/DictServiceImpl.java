@@ -7,7 +7,6 @@ import com.pandama.top.user.pojo.dto.DictCreateDTO;
 import com.pandama.top.user.pojo.dto.DictSearchDTO;
 import com.pandama.top.user.pojo.dto.DictUpdateDTO;
 import com.pandama.top.user.entity.SysDict;
-import com.pandama.top.user.enums.CustomErrorCodeEnum;
 import com.pandama.top.user.mapper.DictMapper;
 import com.pandama.top.user.pojo.vo.DictDetailResultVO;
 import com.pandama.top.user.pojo.vo.DictSearchResultVO;
@@ -45,7 +44,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
     public void create(DictCreateDTO dto) {
         SysDict parent = dto.getParentId() == 0 ? new SysDict() : dictionaryMapper.selectById(dto.getParentId());
         if (parent == null) {
-            throw new CommonException(CustomErrorCodeEnum.PARENT_NOT_EXIT);
+            throw new CommonException("父节点不存在");
         }
         if (parent.getLevel() > 1) {
             throw new CommonException("无法创建多级字典");
@@ -62,14 +61,14 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
                     t.setParentId(s.getParentId());
                     t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                     t.setLevel(t.getIds().split(",").length);
-                }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.DEPARTMENT_CREATE_ERROR));
+                }).orElseThrow(() -> new CommonException("部门创建出错"));
                 dictionaryMapper.insert(sysDict);
             } else {
                 throw new RedisException("字典锁获取失败");
             }
         } catch (Exception e) {
             log.error("字典创建失败，错误信息: {}", e.getMessage());
-            throw new CommonException(CustomErrorCodeEnum.DEPARTMENT_CREATE_ERROR);
+            throw new CommonException("部门创建出错");
         } finally {
             // 如果加锁成功则进行解锁
             if (lock) {

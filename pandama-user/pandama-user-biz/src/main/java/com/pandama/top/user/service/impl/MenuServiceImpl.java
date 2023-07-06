@@ -17,7 +17,6 @@ import com.pandama.top.user.pojo.dto.MenuMetaDTO;
 import com.pandama.top.user.pojo.dto.MenuSearchDTO;
 import com.pandama.top.user.pojo.dto.MenuUpdateDTO;
 import com.pandama.top.user.entity.SysMenu;
-import com.pandama.top.user.enums.CustomErrorCodeEnum;
 import com.pandama.top.user.mapper.MenuMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +48,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
     public void create(MenuCreateDTO dto) {
         SysMenu parent = dto.getParentId() == 0 ? new SysMenu() : menuMapper.selectById(dto.getParentId());
         if (parent == null) {
-            throw new CommonException(CustomErrorCodeEnum.PARENT_NOT_EXIT);
+            throw new CommonException("父节点不存在");
         }
         // 将传参字段转换赋值成菜单实体属性
         SysMenu sysMenu = BeanConvertUtils.convert(dto, SysMenu::new, (s, t) -> {
@@ -57,7 +56,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
                     t.setParentId(s.getParentId());
                     t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                     t.setLevel(t.getIds().split(",").length);
-                }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.MENU_CREATE_ERROR));
+                }).orElseThrow(() -> new CommonException("菜单创建出错"));
         menuMapper.insert(sysMenu);
     }
 
@@ -77,7 +76,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
         if (StringUtils.isEmpty(menu.getIds()) || !Objects.equals(menu.getParentId(), dto.getParentId())) {
             SysMenu parent = dto.getParentId() == 0 ? new SysMenu() : menuMapper.selectById(dto.getParentId());
             if (parent == null) {
-                throw new CommonException(CustomErrorCodeEnum.PARENT_NOT_EXIT);
+                throw new CommonException("父节点不存在");
             }
             // 更新菜单信息
             SysMenu dept = BeanConvertUtils.convert(dto, SysMenu::new, (s, t) -> {
@@ -86,7 +85,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
                 t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                 t.setLevel(t.getIds().split(",").length);
                 t.setMeta(JSON.toJSONString(s.getMeta()));
-            }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.MENU_UPDATE_ERROR));
+            }).orElseThrow(() -> new CommonException("菜单更新出错"));
             // 获取菜单下的子菜单列表
             List<SysMenu> childPermList =
                     menuMapper.getMenuListByParentIds(Collections.singletonList(dto.getMenuId()), false);
@@ -105,7 +104,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
             SysMenu dept = BeanConvertUtils.convert(dto, SysMenu::new, (s, t) -> {
                 t.setId(s.getMenuId());
                 t.setMeta(JSON.toJSONString(s.getMeta()));
-            }).orElseThrow(() -> new CommonException(CustomErrorCodeEnum.MENU_UPDATE_ERROR));
+            }).orElseThrow(() -> new CommonException("菜单更新出错"));
             // 更新单个菜单信息
             menuMapper.updateById(dept);
         }
@@ -119,7 +118,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
         List<Long> roleIdList = roleMenuService.getRoleIdsByMenuIds(menuIdList);
         // 判断菜单有无关联角色
         if (roleIdList.size() > 0) {
-            throw new CommonException(CustomErrorCodeEnum.MENU_HAS_ROLE);
+            throw new CommonException("菜单存在关联角色，不允许删除");
         }
         // 菜单逻辑删除
         menuMapper.deleteBatchIds(menuList);
@@ -152,7 +151,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
     @Override
     public TreeSelectVO getTreeSelectByRoleId(Long roleId) {
         Optional.ofNullable(roleService.getById(roleId))
-                .orElseThrow(() -> new CommonException(CustomErrorCodeEnum.ROLE_NOT_EXIT));
+                .orElseThrow(() -> new CommonException("角色信息不存在"));
         List<SysMenu> permList = menuMapper.getMenuListByRoleIds(Collections.singletonList(roleId));
         List<Long> menuIds = permList.stream().map(SysMenu::getId).collect(Collectors.toList());
         return new TreeSelectVO(menuIds, TreeUtils.listToTree(permList, MenuTreeVO::new));
