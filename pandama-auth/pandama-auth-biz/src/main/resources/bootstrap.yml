@@ -15,10 +15,3 @@ spring:
         server-addr: 121.36.56.159:8848
         namespace: f15e71cc-5606-4806-acca-28421744c45f
         group: PANDAMA
-        ip: 127.0.0.1
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"

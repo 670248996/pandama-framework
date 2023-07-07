@@ -1,7 +1,7 @@
 package com.pandama.top.gateway.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.pandama.top.gateway.constant.AuthErrorConstant;
+import com.pandama.top.auth.api.constant.MessageConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,7 +33,7 @@ public class CustomServerAccessDeniedHandler implements ServerAccessDeniedHandle
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.FORBIDDEN);
         HashMap<Object, Object> res = new HashMap<>(16);
-        res.put(HttpStatus.FORBIDDEN.value(), AuthErrorConstant.FORBIDDEN);
+        res.put(HttpStatus.FORBIDDEN.value(), MessageConstant.PERMISSION_DENIED);
         String json = JSON.toJSONString(res);
         return response.writeAndFlushWith(
                 Flux.just(ByteBufFlux.just(response.bufferFactory().wrap(json.getBytes(StandardCharsets.UTF_8)))));

@@ -25,8 +25,6 @@ import java.util.function.Function;
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CustomReactiveAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
 
-    private final AntPathMatcher antPathMatcher;
-
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> authentication, AuthorizationContext object) {
         log.info("=====================资源鉴权=====================");
@@ -41,13 +39,7 @@ public class CustomReactiveAuthorizationManager implements ReactiveAuthorization
                 // 如果该用户有10个权限代码,那么apply(GrantedAuthority t)会被调用10次
                 .map(GrantedAuthority::getAuthority)
                 // 进行匹配,如果该用户有10个权限代码,那么apply(GrantedAuthority t)会被调用10次,直到匹配上为止
-                .any(pattern -> {
-                    // TODO 暂不校验uri权限
-//                        if (antPathMatcher.match(pattern, uri)) {
-//                            return true;
-//                        }
-//                        return false;
-                    return true;
-                }).map(AuthorizationDecision::new).defaultIfEmpty(new AuthorizationDecision(false));
+                .any(pattern -> true)
+                .map(AuthorizationDecision::new).defaultIfEmpty(new AuthorizationDecision(false));
     }
 }

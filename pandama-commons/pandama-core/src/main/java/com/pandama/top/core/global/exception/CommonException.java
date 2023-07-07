@@ -1,14 +1,13 @@
 package com.pandama.top.core.global.exception;
 
-import com.pandama.top.core.global.response.ErrorResponse;
-import com.pandama.top.core.global.response.ResponseCode;
+import org.apache.http.HttpStatus;
 
 /**
  * @description: 全局自定义异常类
  * @author: 白剑民
  * @dateTime: 2022/10/12 15:59
  */
-public class CommonException extends RuntimeException implements ErrorResponse<Integer> {
+public class CommonException extends RuntimeException {
     /**
      * 错误码
      */
@@ -16,30 +15,23 @@ public class CommonException extends RuntimeException implements ErrorResponse<I
     /**
      * 错误描述
      */
-    private final String describe;
+    private final String msg;
 
-    public CommonException(Integer code, String describe) {
+    public CommonException(Integer code, String msg) {
         this.code = code;
-        this.describe = describe;
+        this.msg = msg;
     }
 
-    public CommonException(String describe) {
-        this.code = ResponseCode.FAIL.getCode();
-        this.describe = describe;
+    public CommonException(String msg) {
+        this.code = HttpStatus.SC_INTERNAL_SERVER_ERROR;
+        this.msg = msg;
     }
 
-    public CommonException(ErrorResponse<Integer> errorResponse) {
-        this.code = errorResponse.getCode();
-        this.describe = errorResponse.getDescribe();
-    }
-
-    @Override
     public Integer getCode() {
         return code;
     }
 
-    @Override
-    public String getDescribe() {
-        return describe;
+    public String getMsg() {
+        return msg;
     }
 }

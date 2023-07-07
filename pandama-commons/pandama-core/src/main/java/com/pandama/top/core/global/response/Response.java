@@ -1,102 +1,69 @@
 package com.pandama.top.core.global.response;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.apache.http.HttpStatus;
 
 /**
  * @description: 全局响应类
- * @author: 白剑民
+ * @author: 王强
  * @date : 2022/7/29 10:27
  */
 public class Response<T> {
 
-    @JsonDeserialize(using = StatusEnumDeserializer.class)
-    private ErrorResponse<T> code;
+    private Integer code;
 
-    /**
-     * 消息描述
-     */
     private String msg;
 
-    /**
-     * 消息体
-     */
     private T data;
 
-    public static <T> Response<T> success(T data) {
-        return new Response(data, ResponseCode.SUCCESS);
-    }
-
-    public static <T> Response<T> success(T data, ErrorResponse<T> code) {
-        return new Response(data, code);
-    }
-
     public static <T> Response<T> success() {
-        return new Response(ResponseCode.SUCCESS);
+        return success(null);
+    }
+
+    public static <T> Response<T> success(String msg) {
+        return success(msg, null);
+    }
+
+    public static <T> Response<T> success(T data) {
+        return success("请求成功", data);
+    }
+
+    public static <T> Response<T> success(String msg, T data) {
+        return new Response<>(HttpStatus.SC_OK, msg, data);
     }
 
     public static <T> Response<T> fail() {
-        return new Response(ResponseCode.FAIL);
+        return fail(null);
     }
 
     public static <T> Response<T> fail(String msg) {
-        return new Response(ResponseCode.FAIL, msg);
+        return fail(msg, null);
     }
 
-    public static <T> Response<T> fail(ErrorResponse<T> code) {
-        return new Response(code);
+    public static <T> Response<T> fail(T data) {
+        return fail("请求失败", data);
     }
 
-    public static <T> Response<T> fail(T data, ErrorResponse<T> code) {
-        return new Response(data, code);
+    public static <T> Response<T> fail(String msg, T data) {
+        return new Response<>(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg, data);
     }
 
-    public static <T> Response<T> fail(ErrorResponse<T> code, String msg) {
-        return new Response(code, msg);
-    }
-
-    public static <T> Response<T> fail(T data, String describe) {
-        return new Response(data, describe);
-    }
-
-    public Response() {
-    }
-
-    public Response(T data, String describe) {
-        this.data = data;
-        this.msg = describe;
-    }
-
-    public Response(ErrorResponse<T> code, String describe) {
+    public Response(Integer code, String msg) {
         this.code = code;
-        this.msg = describe;
-    }
-
-    public Response(T data, ErrorResponse<T> code) {
-        this.code = code;
-        this.msg = code.getDescribe();
-        this.data = data;
-    }
-
-    public Response(ErrorResponse<T> code) {
-        this.code = code;
-        this.msg = code.getDescribe();
-    }
-
-    public Response(String msg) {
         this.msg = msg;
     }
 
-
-    public Response(T data) {
+    public Response(Integer code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
         this.data = data;
     }
 
-    public T getData() {
-        return data;
+    public Object getCode() {
+        return code;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getMsg() {
@@ -107,11 +74,11 @@ public class Response<T> {
         this.msg = msg;
     }
 
-    public Object getCode() {
-        return code.getCode();
+    public T getData() {
+        return data;
     }
 
-    public void setCode(ErrorResponse<T> code) {
-        this.code = code;
+    public void setData(T data) {
+        this.data = data;
     }
 }

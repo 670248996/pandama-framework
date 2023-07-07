@@ -2,7 +2,6 @@ package com.pandama.top.starter.web.intercepter;
 
 import com.pandama.top.core.global.exception.CommonException;
 import com.pandama.top.core.global.response.Response;
-import com.pandama.top.core.global.response.ResponseCode;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.NodeImpl;
 import org.hibernate.validator.internal.engine.path.PathImpl;
@@ -41,7 +40,7 @@ public class CommonExtHandler {
     public Response<?> handleException(Exception e) {
         e.printStackTrace();
         log.info("Exception异常: {}", e.getMessage());
-        return Response.fail(ResponseCode.FAIL);
+        return Response.fail("服务端异常");
     }
 
     /**
@@ -56,7 +55,7 @@ public class CommonExtHandler {
     public Response<?> validJson(HttpMessageNotReadableException e) {
         e.printStackTrace();
         log.info("Json异常: {}", e.getMessage());
-        return Response.fail(ResponseCode.ILLEGAL_JSON);
+        return Response.fail("非法的JSON格式");
     }
 
     /**
@@ -72,7 +71,7 @@ public class CommonExtHandler {
         Map<String, String> collect = e.getBindingResult().getFieldErrors().stream()
                 .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
         String msg = String.join(",", collect.values());
-        return Response.fail(ResponseCode.PARAM_ERROR, msg);
+        return Response.fail(msg);
     }
 
     /**
@@ -94,7 +93,7 @@ public class CommonExtHandler {
             collect.put(name, value);
         });
         String msg = String.join(",", String.valueOf(collect.values()));
-        return Response.fail(ResponseCode.PARAM_ERROR, msg);
+        return Response.fail(msg);
     }
 
     /**
@@ -114,7 +113,7 @@ public class CommonExtHandler {
             collect.put(fieldError.getField(), fieldError.getDefaultMessage());
         });
         String msg = String.join(",", collect.values());
-        return Response.fail(ResponseCode.PARAM_ERROR, msg);
+        return Response.fail(msg);
     }
 
     /**
@@ -128,8 +127,8 @@ public class CommonExtHandler {
     @ExceptionHandler(value = CommonException.class)
     public Response<?> handleMyException(CommonException e) {
         e.printStackTrace();
-        log.info("CommonException异常: {}", e.getDescribe());
-        return Response.fail(e);
+        log.info("CommonException异常: {}", e.getMsg());
+        return Response.fail(e.getMessage());
     }
 
 }

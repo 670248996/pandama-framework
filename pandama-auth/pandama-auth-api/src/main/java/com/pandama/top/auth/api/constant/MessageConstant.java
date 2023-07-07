@@ -5,7 +5,11 @@ package com.pandama.top.auth.api.constant;
  */
 public class MessageConstant {
 
+    public static final String UN_LOGIN = "请先登录系统";
+
     public static final String LOGIN_SUCCESS = "登录成功!";
+
+    public static final String LOGOUT_SUCCESS = "登出成功!";
 
     public static final String USERNAME_PASSWORD_ERROR = "用户名或密码错误!";
 

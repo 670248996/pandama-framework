@@ -1,61 +1,46 @@
 package com.pandama.top.auth.biz.controller;
 
-import com.pandama.top.auth.api.pojo.Oauth2TokenDTO;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.constant.RedisConstant;
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.redis.utils.RedisUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
+import java.security.KeyPair;
+import java.security.interfaces.RSAPublicKey;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
- * 自定义Oauth2获取令牌接口
+ * 授权接口
  */
 @RestController
-@RequestMapping("/oauth")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class AuthController {
 
-    @Autowired
-    private TokenEndpoint tokenEndpoint;
+    private final KeyPair keyPair;
 
-    @Autowired
-    private RedisUtils redisUtils;
+    private final RedisUtils redisUtils;
 
-    /**
-     * Oauth2登录认证
-     */
-    @RequestMapping(value = "/token", method = RequestMethod.POST)
-    public Response<Oauth2TokenDTO> login(Principal principal, @RequestParam Map<String, String> parameters)
-            throws HttpRequestMethodNotSupportedException {
-        OAuth2AccessToken oAuth2AccessToken = tokenEndpoint.postAccessToken(principal, parameters).getBody();
-        assert oAuth2AccessToken != null;
-        Oauth2TokenDTO oauth2TokenDto = Oauth2TokenDTO.builder()
-                .token(oAuth2AccessToken.getValue())
-                .refreshToken(oAuth2AccessToken.getRefreshToken().getValue())
-                .expiresIn(oAuth2AccessToken.getExpiresIn())
-                .tokenHead("Bearer ").build();
-        String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, oAuth2AccessToken.getAdditionalInformation().get("id"));
-        redisUtils.setEx(tokenRedisKey, oAuth2AccessToken.getValue(), oAuth2AccessToken.getExpiresIn(), TimeUnit.SECONDS);
-        return Response.success(oauth2TokenDto);
+    @GetMapping("/rsa/publicKey")
+    public Map<String, Object> getKey() {
+        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        RSAKey key = new RSAKey.Builder(publicKey).build();
+        return new JWKSet(key).toJSONObject();
     }
 
-    /**
-     * 退出
-     */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public Response<?> logout() {
         String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, UserInfoUtils.getUserId());
         redisUtils.delete(tokenRedisKey);
-        return Response.success();
+        return Response.success(MessageConstant.LOGOUT_SUCCESS);
     }
+
 }

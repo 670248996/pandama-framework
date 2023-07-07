@@ -1,7 +1,7 @@
-package com.pandama.top.gateway.constant;
+package com.pandama.top.auth.api.constant;
 
 /**
- * @description: Token相关信息常量
+ * @description: 授权信息常量
  * @author: 王强
  * @dateTime: 2022-10-17 22:39:18
  */

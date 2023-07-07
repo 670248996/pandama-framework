@@ -1,7 +1,7 @@
 package com.pandama.top.gateway.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.pandama.top.gateway.constant.AuthErrorConstant;
+import com.pandama.top.auth.api.constant.MessageConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,7 +33,7 @@ public class CustomHttpBasicServerAuthenticationEntryPoint extends HttpBasicServ
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         HashMap<Integer, String> res = new HashMap<>(16);
-        res.put(HttpStatus.FORBIDDEN.value(), AuthErrorConstant.UN_LOGIN);
+        res.put(HttpStatus.FORBIDDEN.value(), MessageConstant.UN_LOGIN);
         String json = JSON.toJSONString(res);
         return response.writeAndFlushWith(
                 Flux.just(ByteBufFlux.just(response.bufferFactory().wrap(json.getBytes(StandardCharsets.UTF_8)))));

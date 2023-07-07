@@ -5,6 +5,7 @@ import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.core.utils.BeanConvertUtils;
 import com.pandama.top.user.api.pojo.vo.UserLoginVO;
 import com.pandama.top.user.api.service.UserFeignService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.CredentialsExpiredException;
@@ -19,10 +20,10 @@ import org.springframework.stereotype.Service;
  * 用户管理业务类
  */
 @Service
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class UserServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserFeignService userFeignService;
+    private final UserFeignService userFeignService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

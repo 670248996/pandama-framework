@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pandama.top.core.global.exception.CommonException;
 import com.pandama.top.core.global.response.Response;
-import com.pandama.top.core.global.response.ResponseCode;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +53,7 @@ public class GlobalErrorWebExceptionHandler implements ErrorWebExceptionHandler 
             return response.writeWith(Mono.fromSupplier(() -> {
                 DataBufferFactory bufferFactory = response.bufferFactory();
                 try {
-                    return bufferFactory.wrap(objectMapper.writeValueAsBytes(Response.fail(exception)));
+                    return bufferFactory.wrap(objectMapper.writeValueAsBytes(Response.fail(exception.getMsg())));
                 } catch (JsonProcessingException e) {
                     log.error("网关全局异常拦截响应异常", ex);
                     return bufferFactory.wrap(new byte[0]);
@@ -66,7 +65,7 @@ public class GlobalErrorWebExceptionHandler implements ErrorWebExceptionHandler 
             try {
                 // 返回响应结果
                 return bufferFactory.wrap(
-                        objectMapper.writeValueAsBytes(Response.fail(ResponseCode.FAIL, ex.getMessage())));
+                        objectMapper.writeValueAsBytes(Response.fail(ex.getMessage())));
             }
             catch (JsonProcessingException e) {
                 log.error("Error writing response", ex);

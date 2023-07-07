@@ -1,16 +1,17 @@
 package com.pandama.top.gateway.filter.authentication;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.nimbusds.jose.JWSObject;
+import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.constant.RedisConstant;
+import com.pandama.top.auth.api.pojo.TokenInfo;
 import com.pandama.top.core.global.Global;
-import com.pandama.top.gateway.constant.AuthConstant;
-import com.pandama.top.gateway.constant.AuthErrorConstant;
+import com.pandama.top.auth.api.constant.AuthConstant;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -56,19 +57,23 @@ public class TokenAuthenticationFilter implements WebFilter {
             log.info("=====================Token认证=====================");
             //从token中解析用户信息并设置到Header中去
             String authToken = authHeader.substring(AuthConstant.BEARER.length());
-            JSONObject user = null;
+            TokenInfo user = null;
             try {
                 JWSObject jwsObject = JWSObject.parse(authToken);
-                user = JSON.parseObject(jwsObject.getPayload().toString());
+                user = JSON.parseObject(jwsObject.getPayload().toString(), TokenInfo.class);
             } catch (ParseException e) {
-                return Mono.error(new CredentialsExpiredException(AuthErrorConstant.TOKEN_ERROR));
+                return Mono.error(new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED));
             }
             // 校验redis中的token
-            String redisTokenKey = String.format(RedisConstant.ACCESS_TOKEN, user.get("id"));
+            String redisTokenKey = String.format(RedisConstant.ACCESS_TOKEN, user.getId());
             if (!authToken.equals(redisUtils.get(redisTokenKey).orElse(""))) {
-                return Mono.error(new CredentialsExpiredException(AuthErrorConstant.TOKEN_EXPIRED));
+                return Mono.error(new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED));
             }
-            Authentication auth = new UsernamePasswordAuthenticationToken(user, null);
+            // 校验用户权限
+            if (CollectionUtils.isEmpty(user.getGrantedAuthorities())) {
+                return Mono.error(new CredentialsExpiredException(MessageConstant.PERMISSION_DENIED));
+            }
+            Authentication auth = new UsernamePasswordAuthenticationToken(user, user.getGrantedAuthorities());
             try {
                 // 将用户信息放入Header中, URL加密解决中文乱码
                 request.mutate()

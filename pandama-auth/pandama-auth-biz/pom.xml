@@ -33,6 +33,12 @@
 
         <dependency>
             <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-database</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pandama.top</groupId>
             <artifactId>pandama-auth-api</artifactId>
             <version>1.0.0</version>
         </dependency>
