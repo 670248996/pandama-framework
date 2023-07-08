@@ -53,14 +53,15 @@ public class LogController {
      * 删除
      *
      * @param logType 日志类型
-     * @param logIds  日志id
+     * @param ids  日志id
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("日志删除")
     @DeleteMapping
-    public Response<Void> delete(@PathVariable("logType") LogTypeEnum logType, @ApiParam("日志id列表，必填项") @NotEmpty(message = "日志id列表，logIds不能为null") @RequestParam("logIds") List<Long> logIds) {
-        logService.delete(logIds);
+    public Response<Void> delete(@PathVariable("logType") LogTypeEnum logType,
+                                 @ApiParam("日志id列表，必填项") @NotEmpty(message = "日志id列表，ids不能为null") @RequestParam("ids") List<Long> ids) {
+        logService.delete(ids);
         return Response.success();
     }
 

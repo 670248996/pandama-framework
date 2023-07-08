@@ -123,7 +123,7 @@ public class CommonExtHandler {
     public Response<?> handleMyException(CommonException e) {
         e.printStackTrace();
         log.info("CommonException异常: {}", e.getMsg());
-        return Response.fail(e.getMessage());
+        return Response.fail(e.getMsg());
     }
 
 }

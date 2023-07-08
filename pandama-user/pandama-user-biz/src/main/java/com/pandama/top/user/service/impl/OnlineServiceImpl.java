@@ -41,10 +41,10 @@ public class OnlineServiceImpl implements OnlineService {
     }
 
     @Override
-    public void delete(List<Long> onlineIds) {
+    public void delete(List<Long> ids) {
         CurrentUserInfo user = UserInfoUtils.getUserInfo();
         String str = "【%s】被【%s】强制退出，退出时间【%s】";
-        List<SysLog> sysLogs = logService.listByIds(onlineIds);
+        List<SysLog> sysLogs = logService.listByIds(ids);
         for (SysLog log : sysLogs) {
             log.setId(IdWorker.getId());
             log.setEvent(LoginTypeEnum.LOGOUT.getCode());

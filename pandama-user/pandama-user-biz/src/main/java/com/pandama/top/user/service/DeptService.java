@@ -41,11 +41,11 @@ public interface DeptService extends IService<SysDept> {
     /**
      * 详情
      *
-     * @param deptId 部门id
+     * @param id 部门id
      * @return com.pandama.top.user.pojo.vo.DeptDetailResultVO
      * @author 王强
      */
-    DeptDetailResultVO detail(Long deptId);
+    DeptDetailResultVO detail(Long id);
 
     /**
      * 更新
@@ -59,11 +59,11 @@ public interface DeptService extends IService<SysDept> {
     /**
      * 删除
      *
-     * @param deptIds 部门id列表
+     * @param ids 部门id列表
      * @return void
      * @author 王强
      */
-    void delete(List<Long> deptIds);
+    void delete(List<Long> ids);
 
     /**
      * 列表
@@ -104,9 +104,9 @@ public interface DeptService extends IService<SysDept> {
     /**
      * 获取树通过部门id
      *
-     * @param deptId 父级部门id
+     * @param id 父级部门id
      * @return java.util.List<com.pandama.top.user.pojo.vo.DeptTreeVO>
      * @author 王强
      */
-    List<DeptTreeVO> getTreeByDeptId(Long deptId);
+    List<DeptTreeVO> getTreeById(Long id);
 }

@@ -149,8 +149,8 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
     }
 
     @Override
-    public DeptDetailResultVO detail(Long deptId) {
-        SysDept dept = departmentMapper.selectById(deptId);
+    public DeptDetailResultVO detail(Long id) {
+        SysDept dept = departmentMapper.selectById(id);
         return BeanConvertUtils.convert(dept, DeptDetailResultVO::new).orElse(new DeptDetailResultVO());
     }
 
@@ -158,7 +158,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
     @Transactional(rollbackFor = Exception.class)
     public void update(DeptUpdateDTO dto) {
         // 根据部门id获取部门实体信息
-        SysDept dept = departmentMapper.selectById(dto.getDeptId());
+        SysDept dept = departmentMapper.selectById(dto.getId());
         // 判断是否为迁移部门操作（变更父级部门id）
         if (StringUtils.isEmpty(dept.getIds()) || !Objects.equals(dept.getParentId(), dto.getParentId())) {
             SysDept parent = dto.getParentId() == 0 ? new SysDept() : departmentMapper.selectById(dto.getParentId());
@@ -167,14 +167,14 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
             }
             // 更新部门信息
             dept = BeanConvertUtils.convert(dto, SysDept::new, (s, t) -> {
-                t.setId(s.getDeptId());
+                t.setId(s.getId());
                 t.setParentId(dto.getParentId());
                 t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                 t.setLevel(t.getIds().split(",").length);
             }).orElseThrow(() -> new CommonException("部门更新出错"));
             // 获取部门下的子部门列表
             List<SysDept> childDeptList =
-                    departmentMapper.getDeptListByParentIds(Collections.singletonList(dto.getDeptId()), false);
+                    departmentMapper.getDeptListByParentIds(Collections.singletonList(dto.getId()), false);
             // 更新子部门ids
             for (SysDept child : childDeptList) {
                 List<String> split = Arrays.asList(child.getIds() == null ? new String[]{""} : child.getIds().split(","));
@@ -189,7 +189,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
         } else {
             // 将传参字段转换赋值成部门实体属性
             dept = BeanConvertUtils.convert(dto, SysDept::new, (s, t) -> {
-                t.setId(s.getDeptId());
+                t.setId(s.getId());
             }).orElseThrow(() -> new CommonException("部门更新出错"));
             // 更新单个部门信息
             departmentMapper.updateById(dept);
@@ -198,9 +198,9 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void delete(List<Long> deptIds) {
+    public void delete(List<Long> ids) {
         // 获取目标逻辑删除的部门
-        List<SysDept> deptList = departmentMapper.getDeptListByParentIds(deptIds, true);
+        List<SysDept> deptList = departmentMapper.getDeptListByParentIds(ids, true);
         List<Long> deptIdList = deptList.stream().map(SysDept::getId).collect(Collectors.toList());
         // 判断部门是否存在关联用户
         if (CollectionUtils.isNotEmpty(departmentUserService.getUserIdsByDeptIds(deptIdList))) {
@@ -242,10 +242,10 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
     }
 
     @Override
-    public List<DeptTreeVO> getTreeByDeptId(Long deptId) {
+    public List<DeptTreeVO> getTreeById(Long id) {
         // 获取指定父级部门的节点下的数据(含父级部门)
         List<SysDept> deptList =
-                departmentMapper.getDeptListByParentIds(Collections.singletonList(deptId), true);
+                departmentMapper.getDeptListByParentIds(Collections.singletonList(id), true);
         // 返回树状列表
         return TreeUtils.listToTree(deptList, DeptTreeVO::new);
     }

@@ -14,20 +14,20 @@ public interface LoginService {
     /**
      * 登录用户名
      *
-     * @param dto 入参
+     * @param username 入参
      * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
      * @author 王强
      */
-    UserLoginVO loginByUsername(String dto);
+    UserLoginVO loginByUsername(String username);
 
     /**
      * 登录通过电话
      *
-     * @param dto 入参
+     * @param phone 入参
      * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
      * @author 王强
      */
-    UserLoginVO loginByPhone(String dto);
+    UserLoginVO loginByPhone(String phone);
 
     /**
      * 获取用户信息

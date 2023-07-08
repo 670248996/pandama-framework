@@ -76,29 +76,29 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, SysRole> implements
     @Override
     public void update(RoleUpdateDTO dto) {
         // 将传参字段转换赋值成角色实体属性
-        SysRole role = BeanConvertUtils.convert(dto, SysRole::new, (s, t) -> t.setId(s.getRoleId())).orElse(new SysRole());
+        SysRole role = BeanConvertUtils.convert(dto, SysRole::new, (s, t) -> t.setId(s.getId())).orElse(new SysRole());
         // 删除角色关联菜单列表
-        roleMenuService.deleteByRoleIds(Collections.singletonList(dto.getRoleId()));
+        roleMenuService.deleteByRoleIds(Collections.singletonList(dto.getId()));
         // 添加角色关联菜单列表
         List<SysRoleMenu> rolePermList = dto.getMenuIds().stream()
-                .map(p -> new SysRoleMenu(dto.getRoleId(), p)).collect(Collectors.toList());
+                .map(p -> new SysRoleMenu(dto.getId(), p)).collect(Collectors.toList());
         roleMenuService.saveBatch(rolePermList);
         // 更新角色信息
         roleMapper.updateById(role);
     }
 
     @Override
-    public void delete(List<Long> roleIds) {
+    public void delete(List<Long> ids) {
         // 获取指定角色列表下的关联用户列表
-        List<Long> users = userRoleService.getUserIdsByRoleIds(roleIds);
+        List<Long> users = userRoleService.getUserIdsByRoleIds(ids);
         // 判断角色有无关联用户
         if (users.size() > 0) {
             throw new CommonException("角色存在关联用户，不允许删除");
         }
         // 删除角色关联菜单列表
-        roleMenuService.deleteByRoleIds(roleIds);
+        roleMenuService.deleteByRoleIds(ids);
         // 角色逻辑删除
-        roleMapper.deleteBatchIds(roleIds);
+        roleMapper.deleteBatchIds(ids);
     }
 
     @Override
@@ -177,9 +177,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, SysRole> implements
     }
 
     @Override
-    public void changeStatus(Long roleId, Boolean status) {
+    public void changeStatus(Long id, Boolean status) {
         SysRole sysRole = new SysRole();
-        sysRole.setId(roleId);
+        sysRole.setId(id);
         sysRole.setStatus(status);
         roleMapper.updateById(sysRole);
     }

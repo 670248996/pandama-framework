@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -18,8 +17,8 @@ import javax.validation.constraints.NotNull;
 public class UserUpdateDTO {
 
     @ApiModelProperty("用户ID")
-    @NotNull(message = "用户id，userIdId不能为null")
-    private Long userId;
+    @NotNull(message = "用户id，idId不能为null")
+    private Long id;
 
     @ApiModelProperty("用户编号")
     private String code;

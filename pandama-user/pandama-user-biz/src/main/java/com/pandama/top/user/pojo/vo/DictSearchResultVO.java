@@ -14,7 +14,7 @@ import lombok.Data;
 @ApiModel("字典信息")
 public class DictSearchResultVO {
 
-    @ApiModelProperty("字典主键id")
+    @ApiModelProperty("字典id")
     private Long id;
 
     @ApiModelProperty("上级字典id")

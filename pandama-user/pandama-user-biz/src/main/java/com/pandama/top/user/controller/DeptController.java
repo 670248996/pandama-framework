@@ -67,14 +67,14 @@ public class DeptController {
     /**
      * 详情
      *
-     * @param deptId 部门id
+     * @param id 部门id
      * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.DeptDetailResultVO>
      * @author 王强
      */
     @ApiOperation("部门详情")
     @GetMapping
-    public Response<DeptDetailResultVO> detail(@ApiParam("部门id，必填项") @NotNull(message = "部门id，deptId不能为null") @RequestParam("deptId") Long deptId) {
-        return Response.success(deptService.detail(deptId));
+    public Response<DeptDetailResultVO> detail(@ApiParam("部门id，必填项") @NotNull(message = "部门id，id不能为null") @RequestParam("id") Long id) {
+        return Response.success(deptService.detail(id));
     }
 
     /**
@@ -94,14 +94,14 @@ public class DeptController {
     /**
      * 删除
      *
-     * @param deptIds 部门id列表
+     * @param ids 部门id列表
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("删除部门信息")
     @DeleteMapping
-    public Response<Void> delete(@ApiParam("部门id列表，必填项") @NotEmpty(message = "部门id列表，deptIds不能为null") @RequestParam List<Long> deptIds) {
-        deptService.delete(deptIds);
+    public Response<Void> delete(@ApiParam("部门id列表，必填项") @NotEmpty(message = "部门id列表，ids不能为null") @RequestParam List<Long> ids) {
+        deptService.delete(ids);
         return Response.success();
     }
 
@@ -134,13 +134,13 @@ public class DeptController {
     /**
      * 获取树通过部门id
      *
-     * @param deptId 部门id
+     * @param id 部门id
      * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.DeptTreeVO>>
      * @author 王强
      */
     @ApiOperation("根据父级部门id获取部门树")
     @GetMapping("/getTreeByDeptId")
-    public Response<List<DeptTreeVO>> getTreeByDeptId(@ApiParam("部门id，必填项") @NotNull(message = "部门id，deptId不能为null") @RequestParam("deptId") Long deptId) {
-        return Response.success(deptService.getTreeByDeptId(deptId));
+    public Response<List<DeptTreeVO>> getTreeByDeptId(@ApiParam("部门id，必填项") @NotNull(message = "部门id，id不能为null") @RequestParam("id") Long id) {
+        return Response.success(deptService.getTreeById(id));
     }
 }

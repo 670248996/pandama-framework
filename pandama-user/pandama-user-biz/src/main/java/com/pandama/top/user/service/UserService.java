@@ -40,11 +40,11 @@ public interface UserService extends IService<SysUser> {
     /**
      * 删除
      *
-     * @param userIds 用户id列表
+     * @param ids 用户id列表
      * @return void
      * @author 王强
      */
-    void delete(List<Long> userIds);
+    void delete(List<Long> ids);
 
     /**
      * 更新
@@ -65,15 +65,6 @@ public interface UserService extends IService<SysUser> {
     PageVO<UserSearchResultVO> page(UserSearchDTO dto);
 
     /**
-     * 获取企业/机构其下所有用户列表
-     *
-     * @param enterpriseId 企业/机构id
-     * @return java.util.List<com.pandama.top.user.pojo.vo.UserDetailResultVO>
-     * @author 王强
-     */
-    List<UserDetailResultVO> listByEnterpriseId(Long enterpriseId);
-
-    /**
      * 获取指定部门下所有用户列表
      *
      * @param deptId 部门id
@@ -85,21 +76,21 @@ public interface UserService extends IService<SysUser> {
     /**
      * 获取用户信息通过id
      *
-     * @param userId 用户id
+     * @param id 用户id
      * @return com.pandama.top.user.pojo.vo.UserDetailResultVO
      * @author 王强
      */
-    UserDetailResultVO getUserInfoById(Long userId);
+    UserDetailResultVO getUserInfoById(Long id);
 
     /**
      * 改变状态
      *
-     * @param userId 用户id
+     * @param id 用户id
      * @param status 启用或禁用
      * @return void
      * @author 王强
      */
-    void changeStatus(Long userId, Boolean status);
+    void changeStatus(Long id, Boolean status);
 
     /**
      * 更新密码

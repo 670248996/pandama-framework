@@ -72,7 +72,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
 
     @Override
     public void update(MenuUpdateDTO dto) {
-        SysMenu menu = menuMapper.selectById(dto.getMenuId());
+        SysMenu menu = menuMapper.selectById(dto.getId());
         // 判断是否为迁移菜单操作（变更父级菜单id）
         if (StringUtils.isEmpty(menu.getIds()) || !Objects.equals(menu.getParentId(), dto.getParentId())) {
             SysMenu parent = dto.getParentId() == 0 ? new SysMenu() : menuMapper.selectById(dto.getParentId());
@@ -81,7 +81,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
             }
             // 更新菜单信息
             SysMenu dept = BeanConvertUtils.convert(dto, SysMenu::new, (s, t) -> {
-                t.setId(s.getMenuId());
+                t.setId(s.getId());
                 t.setParentId(dto.getParentId());
                 t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
                 t.setLevel(t.getIds().split(",").length);
@@ -89,7 +89,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
             }).orElseThrow(() -> new CommonException("菜单更新出错"));
             // 获取菜单下的子菜单列表
             List<SysMenu> childPermList =
-                    menuMapper.getMenuListByParentIds(Collections.singletonList(dto.getMenuId()), false);
+                    menuMapper.getMenuListByParentIds(Collections.singletonList(dto.getId()), false);
             // 更新子菜单ids
             for (SysMenu child : childPermList) {
                 List<String> split = Arrays.asList(child.getIds() == null ? new String[]{""} : child.getIds().split(","));
@@ -103,7 +103,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
         } else {
             // 将传参字段转换赋值成菜单实体属性
             SysMenu dept = BeanConvertUtils.convert(dto, SysMenu::new, (s, t) -> {
-                t.setId(s.getMenuId());
+                t.setId(s.getId());
                 t.setMeta(JSON.toJSONString(s.getMeta()));
             }).orElseThrow(() -> new CommonException("菜单更新出错"));
             // 更新单个菜单信息
@@ -112,8 +112,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
     }
 
     @Override
-    public void delete(List<Long> menuIds) {
-        List<SysMenu> menuList = menuMapper.getMenuListByParentIds(menuIds, true);
+    public void delete(List<Long> ids) {
+        List<SysMenu> menuList = menuMapper.getMenuListByParentIds(ids, true);
         List<Long> menuIdList = menuList.stream().map(SysMenu::getId).collect(Collectors.toList());
         // 获取指定菜单列表下的关联角色列表
         List<Long> roleIdList = roleMenuService.getRoleIdsByMenuIds(menuIdList);
@@ -168,9 +168,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
     }
 
     @Override
-    public void changeStatus(Long menuId, Boolean status) {
+    public void changeStatus(Long id, Boolean status) {
         SysMenu menu = new SysMenu();
-        menu.setId(menuId);
+        menu.setId(id);
         menu.setStatus(status);
         menuMapper.updateById(menu);
     }

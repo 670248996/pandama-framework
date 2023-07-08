@@ -18,8 +18,8 @@ import javax.validation.constraints.NotNull;
 public class DeptUpdateDTO {
 
     @ApiModelProperty("部门id")
-    @NotNull(message = "部门id，deptId不能为null")
-    private Long deptId;
+    @NotNull(message = "部门id，id不能为null")
+    private Long id;
 
     @ApiModelProperty("父级部门id")
     @NotNull(message = "父级部门id，parentId不能为null")

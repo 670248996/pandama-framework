@@ -54,14 +54,14 @@ public class DictController {
     /**
      * 删除
      *
-     * @param dictIds 字典主键id
+     * @param ids 字典主键id
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("根据主键id删除字典信息")
     @DeleteMapping
-    public Response<Void> delete(@ApiParam("字典id列表，必填项") @NotEmpty(message = "字典id列表，dictIds不能为null") @RequestParam List<Long> dictIds) {
-        dictService.delete(dictIds);
+    public Response<Void> delete(@ApiParam("字典id列表，必填项") @NotEmpty(message = "字典id列表，ids不能为null") @RequestParam List<Long> ids) {
+        dictService.delete(ids);
         return Response.success();
     }
 
@@ -82,14 +82,14 @@ public class DictController {
     /**
      * 详情
      *
-     * @param dictId 字典主键id
+     * @param id 字典主键id
      * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.DictDetailResultVO>
      * @author 王强
      */
     @ApiOperation("根据主键id获取字典信息")
     @GetMapping
-    public Response<DictDetailResultVO> detail(@ApiParam("字典id，必填项") @NotNull(message = "字典id，dictId不能为null") @RequestParam Long dictId) {
-        DictDetailResultVO detail = dictService.detail(dictId);
+    public Response<DictDetailResultVO> detail(@ApiParam("字典id，必填项") @NotNull(message = "字典id，id不能为null") @RequestParam Long id) {
+        DictDetailResultVO detail = dictService.detail(id);
         return Response.success(detail);
     }
 
@@ -109,15 +109,16 @@ public class DictController {
     /**
      * 改变状态
      *
-     * @param dictId 字典主键id
+     * @param id 字典主键id
      * @param status 状态
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("启用禁用字典项")
     @PutMapping("/changeStatus")
-    public Response<Void> changeStatus(@ApiParam("字典id，必填项") @NotNull(message = "字典id，dictId不能为null") @RequestParam Long dictId, @ApiParam("启用(true)或禁用(false)，必填项") @NotNull(message = "启用或禁用，status不能为null") @RequestParam("status") Boolean status) {
-        dictService.changeStatus(dictId, status);
+    public Response<Void> changeStatus(@ApiParam("字典id，必填项") @NotNull(message = "字典id，id不能为null") @RequestParam Long id,
+                                       @ApiParam("启用(true)或禁用(false)，必填项") @NotNull(message = "启用或禁用，status不能为null") @RequestParam("status") Boolean status) {
+        dictService.changeStatus(id, status);
         return Response.success();
     }
 }

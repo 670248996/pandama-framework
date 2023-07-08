@@ -55,14 +55,14 @@ public class MenuController {
     /**
      * 详情
      *
-     * @param menuId 菜单信息详情传参
+     * @param id 菜单信息详情传参
      * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.MenuDetailResultVO>
      * @author 王强
      */
     @ApiOperation("菜单信息详情")
     @GetMapping
-    public Response<MenuDetailResultVO> detail(@ApiParam("菜单id，必填项") @NotNull(message = "菜单id，menuId不能为null") @RequestParam("menuId") Long menuId) {
-        return Response.success(menuService.detail(menuId));
+    public Response<MenuDetailResultVO> detail(@ApiParam("菜单id，必填项") @NotNull(message = "菜单id，id不能为null") @RequestParam("id") Long id) {
+        return Response.success(menuService.detail(id));
     }
 
     /**
@@ -82,14 +82,14 @@ public class MenuController {
     /**
      * 删除
      *
-     * @param menuIds 菜单id列表
+     * @param ids 菜单id列表
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("删除菜单信息")
     @DeleteMapping
-    public Response<Void> delete(@ApiParam("菜单id列表，必填项") @NotEmpty(message = "菜单id列表，menuIds不能为null") @RequestParam("menuIds") List<Long> menuIds) {
-        menuService.delete(menuIds);
+    public Response<Void> delete(@ApiParam("菜单id列表，必填项") @NotEmpty(message = "菜单id列表，ids不能为null") @RequestParam("ids") List<Long> ids) {
+        menuService.delete(ids);
         return Response.success();
     }
 
@@ -142,7 +142,8 @@ public class MenuController {
      */
     @ApiOperation("分配角色菜单")
     @PutMapping("/assignMenu")
-    public Response<Void> assignRole(@ApiParam("角色id，必填项") @NotNull(message = "角色id，roleId不能为null") @RequestParam("roleId") Long roleId, @ApiParam("菜单id列表，必填项") @NotEmpty(message = "菜单id列表，menuIds不能为null") @RequestBody List<Long> menuIds) {
+    public Response<Void> assignRole(@ApiParam("角色id，必填项") @NotNull(message = "角色id，roleId不能为null") @RequestParam("roleId") Long roleId,
+                                     @ApiParam("菜单id列表，必填项") @NotEmpty(message = "菜单id列表，menuIds不能为null") @RequestBody List<Long> menuIds) {
         menuService.assignMenu(roleId, menuIds);
         return Response.success();
     }
@@ -150,15 +151,16 @@ public class MenuController {
     /**
      * 改变状态
      *
-     * @param menuId 菜单id
+     * @param id 菜单id
      * @param status 状态
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("启用或禁用菜单")
     @PutMapping("/changeStatus")
-    public Response<Void> changeStatus(@ApiParam("菜单id，必填项") @NotNull(message = "菜单id，menuId不能为null") @RequestParam("menuId") Long menuId, @ApiParam("菜单状态，必填项") @NotNull(message = "菜单状态，status不能为null") @RequestParam("status") Boolean status) {
-        menuService.changeStatus(menuId, status);
+    public Response<Void> changeStatus(@ApiParam("菜单id，必填项") @NotNull(message = "菜单id，id不能为null") @RequestParam("id") Long id,
+                                       @ApiParam("菜单状态，必填项") @NotNull(message = "菜单状态，status不能为null") @RequestParam("status") Boolean status) {
+        menuService.changeStatus(id, status);
         return Response.success();
     }
 

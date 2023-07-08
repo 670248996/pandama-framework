@@ -49,7 +49,7 @@ public class OnlineController {
     /**
      * 删除
      *
-     * @param onlineIds 在线信息id列表
+     * @param ids 在线信息id列表
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
@@ -57,9 +57,9 @@ public class OnlineController {
     @DeleteMapping
     public Response<Void> delete(
             @ApiParam("在线信息id列表，必填项")
-            @NotEmpty(message = "在线信息id列表，onlineIds不能为null")
-            @RequestParam List<Long> onlineIds) {
-        onlineService.delete(onlineIds);
+            @NotEmpty(message = "在线信息id列表，ids不能为null")
+            @RequestParam List<Long> ids) {
+        onlineService.delete(ids);
         return Response.success();
     }
 }

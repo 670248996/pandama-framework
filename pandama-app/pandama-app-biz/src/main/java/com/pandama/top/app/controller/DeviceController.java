@@ -29,7 +29,6 @@ public class DeviceController {
 
     private final DeviceService deviceService;
 
-    @ApiOperation("设置新增")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Response<?> add(@Validated @RequestBody DeviceAddDTO dto) {
         deviceService.add(dto);

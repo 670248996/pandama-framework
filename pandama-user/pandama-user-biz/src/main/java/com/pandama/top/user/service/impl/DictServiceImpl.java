@@ -80,9 +80,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void delete(List<Long> dictIds) {
+    public void delete(List<Long> ids) {
         // 获取目标逻辑删除的字典
-        List<SysDict> dictList = dictionaryMapper.getDictListByParentIds(dictIds, true);
+        List<SysDict> dictList = dictionaryMapper.getDictListByParentIds(ids, true);
         List<Long> deptIdList = dictList.stream().map(SysDict::getId).collect(Collectors.toList());
         dictionaryMapper.deleteBatchIds(deptIdList);
     }
@@ -90,14 +90,14 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(DictUpdateDTO dto) {
-        SysDict dictionary = dictionaryMapper.selectById(dto.getDictId());
+        SysDict dictionary = dictionaryMapper.selectById(dto.getId());
         BeanConvertUtils.convert(dto, () -> dictionary);
         dictionaryMapper.updateById(dictionary);
     }
 
     @Override
-    public DictDetailResultVO detail(Long dictId) {
-        SysDict dict = dictionaryMapper.selectById(dictId);
+    public DictDetailResultVO detail(Long id) {
+        SysDict dict = dictionaryMapper.selectById(id);
         return BeanConvertUtils.convert(dict, DictDetailResultVO::new).orElse(new DictDetailResultVO());
     }
 
@@ -108,9 +108,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
     }
 
     @Override
-    public void changeStatus(Long dictId, Boolean status) {
+    public void changeStatus(Long id, Boolean status) {
         SysDict sysRole = new SysDict();
-        sysRole.setId(dictId);
+        sysRole.setId(id);
         sysRole.setStatus(status);
         dictionaryMapper.updateById(sysRole);
     }

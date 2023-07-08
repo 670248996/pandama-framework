@@ -32,15 +32,6 @@ public interface UserMapper extends BaseMapper<SysUser> {
     Page<UserSearchResultVO> page(Page<SysUser> page, @Param("dto") UserSearchDTO dto);
 
     /**
-     * 获取用户列表通过企业id
-     *
-     * @param enterpriseId 企业/机构id
-     * @return java.util.List<com.pandama.top.user.pojo.vo.UserDetailResultVO>
-     * @author 王强
-     */
-    List<UserDetailResultVO> getUserListByEnterpriseId(@Param("enterpriseId") Long enterpriseId);
-
-    /**
      * 获取用户列表通过部门id
      *
      * @param deptId 部门id

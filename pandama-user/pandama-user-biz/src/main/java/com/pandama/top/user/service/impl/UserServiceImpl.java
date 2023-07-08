@@ -89,21 +89,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void delete(List<Long> userIds) {
-        userMapper.deleteBatchIds(userIds);
+    public void delete(List<Long> ids) {
+        userMapper.deleteBatchIds(ids);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(UserUpdateDTO dto) {
         // 将传参字段转换赋值成用户实体属性
-        SysUser user = BeanConvertUtils.convert(dto, SysUser::new, (s, t) -> t.setId(dto.getUserId())).orElse(new SysUser());
+        SysUser user = BeanConvertUtils.convert(dto, SysUser::new, (s, t) -> t.setId(dto.getId())).orElse(new SysUser());
         userMapper.updateById(user);
         // 删除用户之前关联的部门信息
-        departmentUserService.deleteByUserIds(Collections.singletonList(dto.getUserId()));
+        departmentUserService.deleteByUserIds(Collections.singletonList(dto.getId()));
         if (dto.getDeptId() != null) {
             // 保存用户新关联的部门信息
-            departmentUserService.save(new SysDeptUser(dto.getDeptId(), dto.getUserId()));
+            departmentUserService.save(new SysDeptUser(dto.getDeptId(), dto.getId()));
         }
     }
 
@@ -114,24 +114,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     }
 
     @Override
-    public List<UserDetailResultVO> listByEnterpriseId(Long enterpriseId) {
-        return userMapper.getUserListByEnterpriseId(enterpriseId);
-    }
-
-    @Override
     public List<UserDetailResultVO> listByDeptId(Long deptId) {
         return userMapper.getUserListByDeptId(deptId);
     }
 
     @Override
-    public UserDetailResultVO getUserInfoById(Long userId) {
-        return userMapper.getUserInfoById(userId);
+    public UserDetailResultVO getUserInfoById(Long id) {
+        return userMapper.getUserInfoById(id);
     }
 
     @Override
-    public void changeStatus(Long userId, Boolean status) {
+    public void changeStatus(Long id, Boolean status) {
         SysUser sysUser = new SysUser();
-        sysUser.setId(userId);
+        sysUser.setId(id);
         sysUser.setStatus(status);
         userMapper.updateById(sysUser);
     }

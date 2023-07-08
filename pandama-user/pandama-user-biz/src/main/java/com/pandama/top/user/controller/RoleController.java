@@ -55,14 +55,14 @@ public class RoleController {
     /**
      * 详情
      *
-     * @param roleId 角色id
+     * @param id 角色id
      * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.RoleDetailResultVO>
      * @author 王强
      */
     @ApiOperation("角色信息详情")
     @GetMapping
-    public Response<RoleDetailResultVO> detail(@ApiParam("角色id，必填项") @NotNull(message = "角色id，roleId不能为null") @RequestParam("roleId") Long roleId) {
-        return Response.success(roleService.detail(roleId));
+    public Response<RoleDetailResultVO> detail(@ApiParam("角色id，必填项") @NotNull(message = "角色id，id不能为null") @RequestParam("id") Long id) {
+        return Response.success(roleService.detail(id));
     }
 
     /**
@@ -82,14 +82,14 @@ public class RoleController {
     /**
      * 删除
      *
-     * @param roleIds 角色id
+     * @param ids 角色id
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("角色信息删除")
     @DeleteMapping
-    public Response<Void> delete(@ApiParam("角色id列表，必填项") @NotEmpty(message = "角色id列表，roleIds不能为null") @RequestParam("roleIds") List<Long> roleIds) {
-        roleService.delete(roleIds);
+    public Response<Void> delete(@ApiParam("角色id列表，必填项") @NotEmpty(message = "角色id列表，ids不能为null") @RequestParam("ids") List<Long> ids) {
+        roleService.delete(ids);
         return Response.success();
     }
 
@@ -189,16 +189,16 @@ public class RoleController {
     /**
      * 改变状态
      *
-     * @param roleId 角色id
+     * @param id 角色id
      * @param status 启用或禁用
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("启用或禁用角色")
     @PutMapping("/changeStatus")
-    public Response<Void> changeStatus(@ApiParam("角色id，必填项") @NotNull(message = "角色id，roleId不能为null") @RequestParam("roleId") Long roleId,
+    public Response<Void> changeStatus(@ApiParam("角色id，必填项") @NotNull(message = "角色id，id不能为null") @RequestParam("id") Long id,
                                        @ApiParam("角色状态，必填项") @NotNull(message = "角色状态，status不能为null") @RequestParam("status") Boolean status) {
-        roleService.changeStatus(roleId, status);
+        roleService.changeStatus(id, status);
         return Response.success();
     }
 

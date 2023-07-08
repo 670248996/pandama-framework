@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,7 +18,7 @@ public class EnterpriseUpdateDTO {
 
     @ApiModelProperty("企业/机构id")
     @NotNull(message = "企业/机构id，enterpriseId不能为null")
-    private Long enterpriseId;
+    private Long id;
 
     @ApiModelProperty("企业/机构简称")
     private String shortName;

@@ -49,11 +49,11 @@ public interface MenuService extends IService<SysMenu> {
     /**
      * 删除
      *
-     * @param menuIds 菜单id列表
+     * @param ids 菜单id列表
      * @return void
      * @author 王强
      */
-    void delete(List<Long> menuIds);
+    void delete(List<Long> ids);
 
     /**
      * 列表

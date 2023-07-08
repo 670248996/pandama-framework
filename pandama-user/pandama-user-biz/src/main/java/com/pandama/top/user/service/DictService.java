@@ -28,11 +28,11 @@ public interface DictService {
     /**
      * 删除
      *
-     * @param dictIds 字典主键id
+     * @param ids 字典主键id
      * @return void
      * @author 王强
      */
-    void delete(List<Long> dictIds);
+    void delete(List<Long> ids);
 
     /**
      * 更新
@@ -46,11 +46,11 @@ public interface DictService {
     /**
      * 详情
      *
-     * @param dictId 字典主键id
+     * @param id 字典主键id
      * @return com.pandama.top.user.pojo.vo.DictDetailResultVO
      * @author 王强
      */
-    DictDetailResultVO detail(Long dictId);
+    DictDetailResultVO detail(Long id);
 
     /**
      * 列表
@@ -64,11 +64,11 @@ public interface DictService {
     /**
      * 改变状态
      *
-     * @param dictId 字典主键id
+     * @param id 字典主键id
      * @param status 状态
      * @return void
      * @author 王强
      */
-    void changeStatus(Long dictId, Boolean status);
+    void changeStatus(Long id, Boolean status);
 
 }

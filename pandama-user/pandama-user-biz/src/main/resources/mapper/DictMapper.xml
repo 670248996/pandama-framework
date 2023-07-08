@@ -32,7 +32,7 @@
         from sys_dict
         where is_delete = 0
         <foreach collection="parentIds" item="item"  index="index" open=" AND (" close=")" separator=" OR ">
-            find_in_set(#{item},  ids)
+            find_in_set(#{item}, ids)
         </foreach>
         <if test="showParent != null and showParent == false">
             and id not in

@@ -48,11 +48,11 @@ public interface RoleService extends IService<SysRole> {
     /**
      * 删除
      *
-     * @param roleIds 角色id列表
+     * @param ids 角色id列表
      * @return void
      * @author 王强
      */
-    void delete(List<Long> roleIds);
+    void delete(List<Long> ids);
 
     /**
      * 列表
@@ -120,10 +120,10 @@ public interface RoleService extends IService<SysRole> {
     /**
      * 改变状态
      *
-     * @param roleId 角色id
+     * @param id 角色id
      * @param status 启用或禁用
      * @return void
      * @author 王强
      */
-    void changeStatus(Long roleId, Boolean status);
+    void changeStatus(Long id, Boolean status);
 }

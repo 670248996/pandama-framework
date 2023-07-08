@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -18,8 +17,8 @@ import javax.validation.constraints.NotNull;
 public class PasswordPolicyDTO {
 
     @ApiModelProperty("密码策略id")
-    @NotNull(message = "密码策略id，passwordPolicyId不能为null")
-    private Long passwordPolicyId;
+    @NotNull(message = "密码策略id，id不能为null")
+    private Long id;
 
     @ApiModelProperty("密码复杂类型（字典表枚举，默认：0，简单类型）")
     private Integer complexType;

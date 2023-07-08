@@ -29,7 +29,7 @@ public class LogExportDTO {
     private Long size;
 
     @ApiModelProperty("勾选的操作记录id列表")
-    private List<Long> logIds;
+    private List<Long> ids;
 
     @ApiModelProperty("操作人")
     private Long createUserId;

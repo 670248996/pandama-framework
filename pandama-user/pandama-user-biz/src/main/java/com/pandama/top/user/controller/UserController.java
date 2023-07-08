@@ -1,10 +1,5 @@
 package com.pandama.top.user.controller;
 
-import com.pandama.top.core.pojo.vo.CurrentUserInfo;
-import com.pandama.top.logRecord.annotation.OperationLog;
-import com.pandama.top.logRecord.context.LogRecordContext;
-import com.pandama.top.logRecord.enums.LogTypeEnum;
-import com.pandama.top.core.enums.LoginTypeEnum;
 import com.pandama.top.user.pojo.dto.*;
 import com.pandama.top.user.pojo.vo.UserAuthRoleVO;
 import com.pandama.top.user.pojo.vo.UserDetailResultVO;
@@ -75,14 +70,14 @@ public class UserController {
     /**
      * 详情
      *
-     * @param userId 用户id
+     * @param id 用户id
      * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.UserDetailResultVO>
      * @author 王强
      */
     @ApiOperation("根据id获取用户信息")
     @GetMapping
-    public Response<UserDetailResultVO> detail(@ApiParam("用户id，必填项") @NotNull(message = "用户id，userId不能为null") @RequestParam("userId") Long userId) {
-        return Response.success(userService.getUserInfoById(userId));
+    public Response<UserDetailResultVO> detail(@ApiParam("用户id，必填项") @NotNull(message = "用户id，id不能为null") @RequestParam("id") Long id) {
+        return Response.success(userService.getUserInfoById(id));
     }
 
     /**
@@ -102,14 +97,14 @@ public class UserController {
     /**
      * 删除
      *
-     * @param userIds 用户id列表
+     * @param ids 用户id列表
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("删除用户信息")
     @DeleteMapping
-    public Response<Void> delete(@ApiParam("用户id列表，必填项") @NotEmpty(message = "用户id列表，userIds不能为null") @RequestParam List<Long> userIds) {
-        userService.delete(userIds);
+    public Response<Void> delete(@ApiParam("用户id列表，必填项") @NotEmpty(message = "用户id列表，ids不能为null") @RequestParam List<Long> ids) {
+        userService.delete(ids);
         return Response.success();
     }
 
@@ -124,19 +119,6 @@ public class UserController {
     @PostMapping("/page")
     public Response<PageVO<UserSearchResultVO>> page(@Validated @RequestBody UserSearchDTO dto) {
         return Response.success(userService.page(dto));
-    }
-
-    /**
-     * 获取用户列表通过企业id
-     *
-     * @param enterpriseId 企业/机构id
-     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.UserDetailResultVO>>
-     * @author 王强
-     */
-    @ApiOperation("获取企业/机构其下所有用户列表")
-    @GetMapping("/listByEnterpriseId")
-    public Response<List<UserDetailResultVO>> getUserListByEnterpriseId(@ApiParam("企业/机构id，必填项") @NotNull(message = "企业/机构id，enterpriseId不能为null") @RequestParam("enterpriseId") Long enterpriseId) {
-        return Response.success(userService.listByEnterpriseId(enterpriseId));
     }
 
     /**
@@ -155,15 +137,16 @@ public class UserController {
     /**
      * 改变状态
      *
-     * @param userId 用户id
+     * @param id 用户id
      * @param status 启用或禁用
      * @return com.pandama.top.core.global.response.Response<java.lang.Void>
      * @author 王强
      */
     @ApiOperation("启用或禁用用户账号")
     @PutMapping("/changeStatus")
-    public Response<Void> changeStatus(@ApiParam("用户id，必填项") @NotNull(message = "用户id，userId不能为null") @RequestParam("userId") Long userId, @ApiParam("用户状态，必填项") @NotNull(message = "用户状态，status不能为null") @RequestParam("status") Boolean status) {
-        userService.changeStatus(userId, status);
+    public Response<Void> changeStatus(@ApiParam("用户id，必填项") @NotNull(message = "用户id，id不能为null") @RequestParam("id") Long id,
+                                       @ApiParam("用户状态，必填项") @NotNull(message = "用户状态，status不能为null") @RequestParam("status") Boolean status) {
+        userService.changeStatus(id, status);
         return Response.success();
     }
 

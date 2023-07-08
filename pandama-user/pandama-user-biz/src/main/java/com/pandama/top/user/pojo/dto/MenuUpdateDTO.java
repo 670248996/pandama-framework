@@ -19,8 +19,8 @@ import javax.validation.constraints.NotNull;
 public class MenuUpdateDTO {
 
     @ApiModelProperty("菜单id")
-    @NotNull(message = "菜单id，menuId不能为null")
-    private Long menuId;
+    @NotNull(message = "菜单id，id不能为null")
+    private Long id;
 
     @ApiModelProperty("父级部门id")
     @NotNull(message = "父级部门id，parentId不能为null")
