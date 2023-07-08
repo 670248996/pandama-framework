@@ -25,9 +25,10 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @description: 请求日志记录全局过滤器
- * @author: 王强
- * @dateTime: 2023-06-05 10:36:34
+ * 请求日志记录全局过滤器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:05
  */
 @Slf4j
 @Component

@@ -15,9 +15,10 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import java.util.Optional;
 
 /**
- * @description: swagger聚合接口，三个接口都是swagger-ui.html需要访问的接口
- * @author: 王强
- * @dateTime: 2022-10-18 12:50:35
+ * swagger聚合接口，三个接口都是swagger-ui.html需要访问的接口
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:27
  */
 
 @RestController

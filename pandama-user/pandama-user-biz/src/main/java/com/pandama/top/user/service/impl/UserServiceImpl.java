@@ -34,9 +34,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: 用户信息实现类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 用户服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:54:09
  */
 @Slf4j
 @Service

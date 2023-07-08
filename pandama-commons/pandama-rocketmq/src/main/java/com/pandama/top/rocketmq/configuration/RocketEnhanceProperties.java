@@ -4,9 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @description: 火箭提升属性
- * @author: 王强
- * @dateTime: 2023-06-17 13:54:13
+ * 火箭提升属性
+ *
+ * @author 王强
+ * @date 2023-07-08 15:29:25
  */
 @Data
 @ConfigurationProperties(prefix = "rocketmq.enhance")

@@ -7,9 +7,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @description: 自定义手动调用线程池
- * @author: 白剑民
- * @dateTime: 2022/7/10 12:55
+ * 自定义手动调用线程池
+ *
+ * @author 王强
+ * @date 2023-07-08 15:36:04
  */
 @Slf4j
 public class ThreadPoolConfig {
@@ -20,11 +21,10 @@ public class ThreadPoolConfig {
     private static final String THREAD_NAME = "pandama-thread-";
 
     /**
-     * @description: 初始化线程池
-     * @author: 白剑民
-     * @date: 2022-07-09 17:02:21
-     * @return: java.util.concurrent.Executor
-     * @version: 1.0
+     * 初始化线程池
+     *
+     * @return java.util.concurrent.Executor
+     * @author 王强
      */
     public static Executor initThreadPool() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();

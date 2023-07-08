@@ -5,9 +5,10 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 设备编辑入参
- * @author: 王强
- * @dateTime: 2023-04-20 13:44:03
+ * 设备编辑入参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:11:06
  */
 @Data
 public class DeviceEditDTO {

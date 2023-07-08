@@ -26,9 +26,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: 字典实现类
- * @author: 白剑民
- * @dateTime: 2023/5/2 20:38
+ * 字典服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:46
  */
 @Slf4j
 @Service

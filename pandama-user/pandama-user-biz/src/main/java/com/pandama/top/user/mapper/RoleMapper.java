@@ -16,12 +16,11 @@ import java.util.List;
 public interface RoleMapper extends BaseMapper<SysRole> {
 
     /**
+     * 获取角色列表通过用户id
+     *
      * @param userId 用户id
-     * @description: 根据应用户id获取其所有角色列表
-     * @author: 白剑民
-     * @date: 2022-10-31 13:27:32
-     * @return: java.util.List<com.gientech.iot.user.entity.Role>
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.entity.SysRole>
+     * @author 王强
      */
     List<SysRole> getRoleListByUserId(@Param("userId") Long userId);
 

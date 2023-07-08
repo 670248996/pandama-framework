@@ -9,68 +9,65 @@ import com.pandama.top.user.pojo.vo.DictSearchResultVO;
 import java.util.List;
 
 /**
- * @description: 字典接口类
- * @author: 白剑民
- * @dateTime: 2023/5/2 20:38
+ * 字典服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:55:14
  */
 public interface DictService {
 
     /**
+     * 创建
+     *
      * @param dto 创建字典传参
-     * @description: 创建字典
-     * @author: 白剑民
-     * @date: 2023-05-20 21:08:53
-     * @return: com.gientech.iot.user.api.pojo.vo.DictCreateResultVO
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void create(DictCreateDTO dto);
 
     /**
+     * 删除
+     *
      * @param dictIds 字典主键id
-     * @description: 根据主键id删除字典
-     * @author: 白剑民
-     * @date: 2023-05-22 09:31:46
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void delete(List<Long> dictIds);
 
     /**
+     * 更新
+     *
      * @param dto 字典更新传参
-     * @description: 更新字典
-     * @author: 白剑民
-     * @date: 2023-05-22 11:04:12
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void update(DictUpdateDTO dto);
 
     /**
+     * 详情
+     *
      * @param dictId 字典主键id
-     * @description: 根据主键id获取字典信息
-     * @author: 白剑民
-     * @date: 2023-05-20 21:19:00
-     * @return: com.gientech.iot.user.biz.entity.SysDictionary
-     * @version: 1.0
+     * @return com.pandama.top.user.pojo.vo.DictDetailResultVO
+     * @author 王强
      */
     DictDetailResultVO detail(Long dictId);
 
     /**
+     * 列表
+     *
      * @param dto 入参
-     * @description: 列表
-     * @author: 王强
-     * @date: 2023-06-06 13:15:25
-     * @return: List<DictInfoVO>
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.pojo.vo.DictSearchResultVO>
+     * @author 王强
      */
     List<DictSearchResultVO> list(DictSearchDTO dto);
 
     /**
+     * 改变状态
+     *
      * @param dictId 字典主键id
      * @param status 状态
-     * @description: 启用禁用字典项
-     * @author: 王强
-     * @date: 2023-06-16 14:40:29
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void changeStatus(Long dictId, Boolean status);
 

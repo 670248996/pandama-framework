@@ -9,9 +9,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 菜单信息更新传参
- * @author: 白剑民
- * @dateTime: 2022/10/31 17:45
+ * 菜单信息更新传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:50:27
  */
 @Data
 @ApiModel("菜单信息更新DTO")

@@ -5,9 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @description: 部门信息表
- * @author: 白剑民
- * @dateTime: 2022/10/17 16:23
+ * 部门信息表
+ *
+ * @author 王强
+ * @date 2023-07-08 15:46:56
  */
 @EqualsAndHashCode(callSuper = false)
 @Data

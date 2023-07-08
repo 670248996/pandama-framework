@@ -4,9 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @description: 自定义线程池配置
- * @author: 白剑民
- * @dateTime: 2022/9/20 21:05
+ * 自定义线程池配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:35:58
  */
 @Data
 @ConfigurationProperties(prefix = "pandama.thread")

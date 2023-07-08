@@ -6,9 +6,10 @@ import org.apache.commons.lang3.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @description: IP地址工具
- * @author: 王强
- * @dateTime: 2022-10-28 16:38:37
+ * ip地址工具
+ *
+ * @author 王强
+ * @date 2023-07-08 15:34:40
  */
 @Slf4j
 public class IpAddressUtils {
@@ -17,7 +18,8 @@ public class IpAddressUtils {
      * 获取IP地址
      *
      * @param request 请求
-     * @return {@code String}
+     * @return java.lang.String
+     * @author 王强
      */
     public static String getIpAddress(HttpServletRequest request) {
         String ip = null;

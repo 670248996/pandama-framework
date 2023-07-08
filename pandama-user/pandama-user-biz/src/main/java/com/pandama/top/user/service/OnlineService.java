@@ -7,29 +7,28 @@ import com.pandama.top.user.pojo.vo.OnlineSearchResultVO;
 import java.util.List;
 
 /**
- * @description: 用户信息接口类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 在线服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:56:08
  */
 public interface OnlineService {
 
     /**
+     * 页面
+     *
      * @param dto 在线信息入参
-     * @description: 在线信息分页
-     * @author: 王强
-     * @date: 2023-05-31 13:15:45
-     * @return: PageResultVO<OnlineSearchResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.pojo.vo.PageVO<com.pandama.top.user.pojo.vo.OnlineSearchResultVO>
+     * @author 王强
      */
     PageVO<OnlineSearchResultVO> page(OnlineSearchDTO dto);
 
     /**
+     * 删除
+     *
      * @param onlineIds 在线信息id
-     * @description: 强制退出
-     * @author: 王强
-     * @date: 2023-05-31 13:15:46
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void delete(List<Long> onlineIds);
 }

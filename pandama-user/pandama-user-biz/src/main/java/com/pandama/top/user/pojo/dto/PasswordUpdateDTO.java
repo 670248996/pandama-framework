@@ -8,9 +8,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 用户密码修改传参
- * @author: 白剑民
- * @dateTime: 2022/10/27 10:22
+ * 密码更新入参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:51:00
  */
 @Data
 @ApiModel("用户密码修改DTO")

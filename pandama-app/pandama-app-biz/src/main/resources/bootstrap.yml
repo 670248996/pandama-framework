@@ -26,7 +26,7 @@ rocketmq:
     group: springboot_consumer_group
     # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
     pull-batch-size: 10
-  name-server: 121.36.56.159:19876
+  name-server: 121.36.56.159:9876
   producer:
     # 发送同一类消息的设置为同一个group，保证唯一
     group: springboot_producer_group

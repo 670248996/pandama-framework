@@ -21,19 +21,19 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
- * @description: feign客户端配置
- * @author: 王强
- * @dateTime: 2022-10-24 11:59:28
+ * feign客户端配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:20:04
  */
 @Configuration
 public class FeignConfiguration {
 
     /**
-     * @description: 使用fastjson处理feign的编码
-     * @author: 白剑民
-     * @date: 2023-06-09 20:40:22
-     * @return: feign.codec.Encoder
-     * @version: 1.0
+     * 使用fastjson处理feign的编码
+     *
+     * @return feign.codec.Encoder
+     * @author 王强
      */
     @Bean
     public Encoder feignEncoder() {
@@ -50,11 +50,11 @@ public class FeignConfiguration {
     }
 
     /**
-     * @description: 使用fastjson处理feign的解码
-     * @author: 白剑民
-     * @date: 2023-06-09 20:40:22
-     * @return: feign.codec.Encoder
-     * @version: 1.0
+     * 使用fastjson处理feign的解码
+     *
+     * @param customizers 定制
+     * @return feign.codec.Decoder
+     * @author 王强
      */
     @Bean
     public Decoder feignDecoder(ObjectProvider<HttpMessageConverterCustomizer> customizers) {
@@ -71,11 +71,10 @@ public class FeignConfiguration {
     }
 
     /**
-     * @description: 注册feign请求拦截器
-     * @author: 王强
-     * @date: 2023-06-16 13:27:28
-     * @return: RequestInterceptor
-     * @version: 1.0
+     * 注册feign请求拦截器
+     *
+     * @return com.pandama.top.feign.intercepter.FeignRequestInterceptor
+     * @author 王强
      */
     @Bean
     public FeignRequestInterceptor getFeignRequestInterceptor() {

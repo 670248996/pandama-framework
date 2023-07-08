@@ -3,7 +3,7 @@ package com.pandama.top.user.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.pandama.top.redis.utils.RedisUtils;
 import com.pandama.top.core.pojo.vo.PageVO;
-import com.pandama.top.core.pojo.vo.UserLoginVO;
+import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.user.service.LogService;
 import com.pandama.top.user.service.OnlineService;
 import com.pandama.top.core.utils.DateUtils;
@@ -21,9 +21,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: 在线用户信息实现类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 在线服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:54:01
  */
 @Slf4j
 @Service
@@ -41,7 +42,7 @@ public class OnlineServiceImpl implements OnlineService {
 
     @Override
     public void delete(List<Long> onlineIds) {
-        UserLoginVO user = UserInfoUtils.getUserInfo();
+        CurrentUserInfo user = UserInfoUtils.getUserInfo();
         String str = "【%s】被【%s】强制退出，退出时间【%s】";
         List<SysLog> sysLogs = logService.listByIds(onlineIds);
         for (SysLog log : sysLogs) {

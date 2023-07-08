@@ -10,9 +10,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * @description: 系统操作日志导出传参
- * @author: 白剑民
- * @dateTime: 2022/11/24 15:26
+ * 系统操作日志导出传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:49:58
  */
 @Data
 @ApiModel("系统操作日志导出传参DTO")

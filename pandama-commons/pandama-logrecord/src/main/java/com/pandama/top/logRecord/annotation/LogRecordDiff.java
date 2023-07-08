@@ -7,9 +7,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @description: 日志记录
- * @author: 王强
- * @dateTime: 2022-09-01 17:58:15
+ * 日志记录差异
+ *
+ * @author 王强
+ * @date 2023-07-08 15:20:31
  */
 @Target({ElementType.FIELD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

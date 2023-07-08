@@ -6,9 +6,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @description: 菜单信息表
- * @author: 白剑民
- * @dateTime: 2022/10/17 16:50
+ * 菜单信息表
+ *
+ * @author 王强
+ * @date 2023-07-08 15:47:14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

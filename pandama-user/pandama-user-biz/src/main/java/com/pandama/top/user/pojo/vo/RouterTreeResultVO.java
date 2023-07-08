@@ -9,9 +9,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @description: 动态路由信息出参
- * @author: 王强
- * @dateTime: 2023-04-24 17:03:45
+ * 路由器树结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:07
  */
 @EqualsAndHashCode(callSuper = false)
 @Data

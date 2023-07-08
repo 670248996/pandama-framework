@@ -3,9 +3,10 @@ package com.pandama.top.core.global.exception;
 import org.apache.http.HttpStatus;
 
 /**
- * @description: 全局自定义异常类
- * @author: 白剑民
- * @dateTime: 2022/10/12 15:59
+ * 常见异常
+ *
+ * @author 王强
+ * @date 2023-07-08 15:12:41
  */
 public class CommonException extends RuntimeException {
     /**

@@ -8,9 +8,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 用户信息更新传参
- * @author: 白剑民
- * @dateTime: 2022/10/27 09:35
+ * 用户信息更新传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:03
  */
 @Data
 @ApiModel("用户信息更新DTO")

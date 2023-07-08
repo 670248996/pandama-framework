@@ -6,9 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 菜单查询VO
- * @author: 王强
- * @dateTime: 2022/10/31 14:47
+ * 菜单搜索结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:45
  */
 @Data
 @ApiModel("菜单查询VO")

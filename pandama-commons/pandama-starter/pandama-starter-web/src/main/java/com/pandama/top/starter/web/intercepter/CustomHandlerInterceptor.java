@@ -2,7 +2,7 @@ package com.pandama.top.starter.web.intercepter;
 
 import com.alibaba.fastjson.JSON;
 import com.pandama.top.core.global.Global;
-import com.pandama.top.core.pojo.vo.UserLoginVO;
+import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.starter.web.utils.IpAddressUtils;
 import com.pandama.top.core.utils.UserInfoUtils;
 import lombok.NonNull;
@@ -17,9 +17,10 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @description: 自定义请求处理拦截器
- * @author: 王强
- * @dateTime: 2022-11-30 22:38:18
+ * 自定义请求处理拦截器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:32:44
  */
 @Slf4j
 @Component
@@ -33,8 +34,8 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
             // 获取request请求IP地址
             String ipAddress = IpAddressUtils.getIpAddress(request);
             // 获取请求头中的用户信息（网关中添加）
-            UserLoginVO userCurrentVo = JSON.parseObject(URLDecoder.decode(request.getHeader(Global.USER_INFO),
-                    StandardCharsets.UTF_8.name()), UserLoginVO.class);
+            CurrentUserInfo userCurrentVo = JSON.parseObject(URLDecoder.decode(request.getHeader(Global.USER_INFO),
+                    StandardCharsets.UTF_8.name()), CurrentUserInfo.class);
             // 用户信息中设置IP
             userCurrentVo.setIpAddress(ipAddress);
             // UserInfoUtils中设置当前用户登录信息

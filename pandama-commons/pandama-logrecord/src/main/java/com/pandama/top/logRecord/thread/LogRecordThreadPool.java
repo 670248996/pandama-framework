@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.*;
 
 /**
- * @description: 日志记录线程池
- * @author: 王强
- * @dateTime: 2022-09-03 22:11:06
+ * 日志记录线程池
+ *
+ * @author 王强
+ * @date 2023-07-08 15:24:55
  */
 @Slf4j
 @Component

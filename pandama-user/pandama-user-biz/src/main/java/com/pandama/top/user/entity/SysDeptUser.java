@@ -5,9 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @description: 部门与用户关联表
- * @author: 白剑民
- * @dateTime: 2022/10/17 16:26
+ * 部门与用户关联表
+ *
+ * @author 王强
+ * @date 2023-07-08 15:46:51
  */
 @Data
 @AllArgsConstructor

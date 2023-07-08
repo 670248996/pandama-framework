@@ -23,9 +23,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @description: 菜单信息控制层
- * @author: 白剑民
- * @dateTime: 2022/10/31 13:37
+ * 菜单控制器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:44:03
  */
 @RestController
 @RequestMapping("/menu")
@@ -38,12 +39,11 @@ public class MenuController {
     private final MenuService menuService;
 
     /**
+     * 创建
+     *
      * @param dto 创建菜单信息传参
-     * @description: 创建
-     * @author: 王强
-     * @date: 2023-06-16 14:44:00
-     * @return: Response<MenuCreateResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("创建菜单信息")
     @PostMapping
@@ -53,12 +53,11 @@ public class MenuController {
     }
 
     /**
+     * 详情
+     *
      * @param menuId 菜单信息详情传参
-     * @description: 详情
-     * @author: 王强
-     * @date: 2023-06-16 14:44:05
-     * @return: Response<MenuDetailResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.MenuDetailResultVO>
+     * @author 王强
      */
     @ApiOperation("菜单信息详情")
     @GetMapping
@@ -67,12 +66,11 @@ public class MenuController {
     }
 
     /**
+     * 更新
+     *
      * @param dto 菜单信息更新传参
-     * @description: 菜单信息更新
-     * @author: 白剑民
-     * @date: 2022-10-31 17:50:53
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("菜单信息更新")
     @PutMapping
@@ -82,12 +80,11 @@ public class MenuController {
     }
 
     /**
+     * 删除
+     *
      * @param menuIds 菜单id列表
-     * @description: 删除菜单信息
-     * @author: 白剑民
-     * @date: 2022-10-31 17:52:28
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("删除菜单信息")
     @DeleteMapping
@@ -97,12 +94,11 @@ public class MenuController {
     }
 
     /**
+     * 列表
+     *
      * @param dto 入参
-     * @description: 获取菜单信息列表
-     * @author: 王强
-     * @date: 2023-06-16 15:05:00
-     * @return: Response<List < MenuSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.MenuSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("获取菜单信息列表")
     @PostMapping("/list")
@@ -111,12 +107,11 @@ public class MenuController {
     }
 
     /**
-     * @param roleId 角色id
-     * @description: 根据角色id获取角色其下菜单树下拉
-     * @author: 王强
-     * @date: 2023-06-16 15:05:10
-     * @return: Response<TreeSelectVO>
-     * @version: 1.0
+     * 树
+     *
+     * @param dto 入参
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.TreeSelectVO>
+     * @author 王强
      */
     @ApiOperation("获取菜单树下拉")
     @PostMapping("/tree")
@@ -125,12 +120,11 @@ public class MenuController {
     }
 
     /**
+     * 树查询通过角色id
+     *
      * @param roleId 角色id
-     * @description: 根据角色id获取角色其下菜单树下拉
-     * @author: 王强
-     * @date: 2023-06-16 15:05:10
-     * @return: Response<TreeSelectVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.TreeSelectVO>
+     * @author 王强
      */
     @ApiOperation("获取角色其下菜单树下拉")
     @GetMapping("/treeSelectByRoleId")
@@ -139,13 +133,12 @@ public class MenuController {
     }
 
     /**
-     * @param roleId        角色id
+     * 分配角色
+     *
+     * @param roleId  角色id
      * @param menuIds 菜单id列表
-     * @description: 分配角色菜单
-     * @author: 白剑民
-     * @date: 2022-10-31 17:01:22
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("分配角色菜单")
     @PutMapping("/assignMenu")
@@ -155,11 +148,12 @@ public class MenuController {
     }
 
     /**
-     * @description: 启用或禁用菜单
-     * @author: 白剑民
-     * @date: 2022-10-31 17:09:38
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * 改变状态
+     *
+     * @param menuId 菜单id
+     * @param status 状态
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("启用或禁用菜单")
     @PutMapping("/changeStatus")

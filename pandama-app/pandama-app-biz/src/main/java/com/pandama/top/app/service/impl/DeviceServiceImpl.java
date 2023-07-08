@@ -22,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 设备服务impl
- * @author: 王强
- * @dateTime: 2023-04-19 16:44:34
+ * 设备服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:11:21
  */
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})

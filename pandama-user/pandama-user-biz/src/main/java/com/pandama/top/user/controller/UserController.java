@@ -1,5 +1,6 @@
 package com.pandama.top.user.controller;
 
+import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.logRecord.annotation.OperationLog;
 import com.pandama.top.logRecord.context.LogRecordContext;
 import com.pandama.top.logRecord.enums.LogTypeEnum;
@@ -28,9 +29,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @description: 用户信息控制层
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:32
+ * 用户控制器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:45:30
  */
 @RestController
 @RequestMapping("/user")
@@ -43,12 +45,11 @@ public class UserController {
     private final UserService userService;
 
     /**
+     * 注册
+     *
      * @param dto 用户注册传参
-     * @description: 注册
-     * @author: 王强
-     * @date: 2023-06-16 15:16:54
-     * @return: Response<UserRegisterResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("用户注册")
     @PostMapping
@@ -58,12 +59,11 @@ public class UserController {
     }
 
     /**
+     * 批量注册
+     *
      * @param dtoList 批量用户注册传参
-     * @description: 批量注册
-     * @author: 王强
-     * @date: 2023-06-16 15:16:57
-     * @return: Response<List < UserRegisterResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("批量用户注册")
     @PostMapping("/batchRegister")
@@ -73,12 +73,11 @@ public class UserController {
     }
 
     /**
+     * 详情
+     *
      * @param userId 用户id
-     * @description: 详情
-     * @author: 王强
-     * @date: 2023-06-16 15:17:04
-     * @return: Response<UserDetailResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.UserDetailResultVO>
+     * @author 王强
      */
     @ApiOperation("根据id获取用户信息")
     @GetMapping
@@ -87,12 +86,11 @@ public class UserController {
     }
 
     /**
+     * 更新
+     *
      * @param dto 用户信息更新传参
-     * @description: 更新
-     * @author: 王强
-     * @date: 2023-06-16 15:17:06
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("用户信息更新")
     @PutMapping
@@ -102,12 +100,11 @@ public class UserController {
     }
 
     /**
+     * 删除
+     *
      * @param userIds 用户id列表
-     * @description: 删除
-     * @author: 王强
-     * @date: 2023-06-16 15:17:09
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("删除用户信息")
     @DeleteMapping
@@ -117,12 +114,11 @@ public class UserController {
     }
 
     /**
+     * 页面
+     *
      * @param dto 获取用户分页入参
-     * @description: 获取用户分页
-     * @author: 王强
-     * @date: 2023-05-24 10:01:22
-     * @return: Response<PageResultVO < UserInfoVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.UserSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("获取用户分页")
     @PostMapping("/page")
@@ -131,12 +127,11 @@ public class UserController {
     }
 
     /**
+     * 获取用户列表通过企业id
+     *
      * @param enterpriseId 企业/机构id
-     * @description: 获取企业/机构其下所有用户列表
-     * @author: 王强
-     * @date: 2023-06-16 15:17:23
-     * @return: Response<List < UserDetailResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.UserDetailResultVO>>
+     * @author 王强
      */
     @ApiOperation("获取企业/机构其下所有用户列表")
     @GetMapping("/listByEnterpriseId")
@@ -145,12 +140,11 @@ public class UserController {
     }
 
     /**
+     * 获取指定部门下所有用户列表
+     *
      * @param deptId 部门id
-     * @description: 获取指定部门下所有用户列表
-     * @author: 王强
-     * @date: 2023-06-16 15:17:32
-     * @return: Response<List < UserDetailResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.UserDetailResultVO>>
+     * @author 王强
      */
     @ApiOperation("获取指定部门下所有用户列表")
     @GetMapping("/listByDeptId")
@@ -159,12 +153,12 @@ public class UserController {
     }
 
     /**
+     * 改变状态
+     *
      * @param userId 用户id
      * @param status 启用或禁用
-     * @description: 启用或禁用用户账号
-     * @author: 白剑民
-     * @date: 2022-10-27 10:12:28
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("启用或禁用用户账号")
     @PutMapping("/changeStatus")
@@ -174,12 +168,11 @@ public class UserController {
     }
 
     /**
+     * 重置密码
+     *
      * @param dto 用户密码重置传参
-     * @description: 用户密码重置
-     * @author: 白剑民
-     * @date: 2022-10-27 10:34:36
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("用户密码重置")
     @PutMapping("/resetPassword")
@@ -193,12 +186,11 @@ public class UserController {
     }
 
     /**
+     * 更新密码
+     *
      * @param dto 用户密码修改传参
-     * @description: 用户密码修改
-     * @author: 白剑民
-     * @date: 2022-10-27 10:34:36
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("用户密码修改")
     @PutMapping("/updatePassword")
@@ -209,12 +201,11 @@ public class UserController {
     }
 
     /**
+     * 获取用户授权角色信息分页
+     *
      * @param dto 查询入参
-     * @description: 获取用户授权角色信息分页
-     * @author: 王强
-     * @date: 2023-05-23 12:23:26
-     * @return: Response<PageResultVO < RoleAuthUserVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.UserAuthRoleVO>>
+     * @author 王强
      */
     @ApiOperation("获取用户授权角色分页")
     @PostMapping("/authRole/authPage")
@@ -223,12 +214,11 @@ public class UserController {
     }
 
     /**
+     * 获取角色未授权用户信息分页
+     *
      * @param dto 查询入参
-     * @description: 获取角色未授权用户信息分页
-     * @author: 王强
-     * @date: 2023-05-23 12:23:26
-     * @return: Response<PageResultVO < RoleAuthUserVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.UserAuthRoleVO>>
+     * @author 王强
      */
     @ApiOperation("获取角色授权用户分页")
     @PostMapping("/authRole/unAuthPage")
@@ -237,12 +227,11 @@ public class UserController {
     }
 
     /**
+     * 角色取消授权用户
+     *
      * @param dto 取消入参
-     * @description: 角色取消授权用户
-     * @author: 王强
-     * @date: 2023-05-23 12:23:26
-     * @return: Response<PageResultVO < RoleAuthUserVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("角色取消授权用户")
     @PutMapping("/authRole/cancel")
@@ -252,51 +241,16 @@ public class UserController {
     }
 
     /**
+     * 分配用户角色
+     *
      * @param dto 入参
-     * @description: 分配用户角色
-     * @author: 王强
-     * @date: 2023-05-23 12:47:53
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("角色授权用户")
     @PutMapping("/authRole/confirm")
     public Response<Void> authUserConfirm(@Valid @RequestBody UserAuthRoleConfirmDTO dto) {
         userService.authRoleConfirm(dto);
         return Response.success();
-    }
-
-    /**
-     * @description: 登录成功
-     * @author: 王强
-     * @date: 2023-05-29 12:05:50
-     * @return: void
-     * @version: 1.0
-     */
-    @OperationLog(bizEvent = "#event", msg = "'【' + #user.realName + '】登录成功", operatorId = "#user.userId", tag = "#tag")
-    @ApiOperation(value = "登录成功", hidden = true)
-    @GetMapping("/loginSuccess")
-    public void loginSuccess() {
-        com.pandama.top.core.pojo.vo.UserLoginVO userInfo = UserInfoUtils.getUserInfo();
-        LogRecordContext.putVariables("event", LoginTypeEnum.LOGIN.getCode());
-        LogRecordContext.putVariables("tag", LogTypeEnum.LOGIN_LOG.getCode());
-        LogRecordContext.putVariables("user", userInfo);
-    }
-
-    /**
-     * @description: 注销成功
-     * @author: 王强
-     * @date: 2023-05-29 12:05:52
-     * @return: void
-     * @version: 1.0
-     */
-    @OperationLog(bizEvent = "#event", msg = "'【' + #user.realName + '】退出成功", operatorId = "#user.userId", tag = "#tag")
-    @ApiOperation(value = "注销成功", hidden = true)
-    @GetMapping("/logoutSuccess")
-    public void logoutSuccess() {
-        com.pandama.top.core.pojo.vo.UserLoginVO userInfo = UserInfoUtils.getUserInfo();
-        LogRecordContext.putVariables("event", LoginTypeEnum.LOGOUT.getCode());
-        LogRecordContext.putVariables("tag", LogTypeEnum.LOGIN_LOG.getCode());
-        LogRecordContext.putVariables("user", userInfo);
     }
 }

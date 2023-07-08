@@ -8,9 +8,10 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
 import org.springframework.beans.factory.support.RootBeanDefinition;
 
 /**
- * @description: 我Bean定义注册表帖子处理器
- * @author: 王强
- * @dateTime: 2023-06-17 14:02:38
+ * 我Bean定义注册表帖子处理器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:58:08
  */
 public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor {
     @Override

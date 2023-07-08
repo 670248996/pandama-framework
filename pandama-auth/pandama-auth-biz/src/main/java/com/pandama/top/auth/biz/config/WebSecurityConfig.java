@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * SpringSecurity配置
+ *
+ * @author 王强
+ * @date 2023-07-08 11:52:59
  */
 @Configuration
 @EnableWebSecurity
@@ -22,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/rsa/publicKey", "/**").permitAll()
                 .anyRequest().authenticated();
     }
-
+    
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

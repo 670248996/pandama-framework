@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @description: 设备控制器
- * @author: 王强
- * @dateTime: 2023-04-19 11:09:53
+ * 设备控制器
+ *
+ * @author 王强
+ * @date 2023-07-08 11:55:46
  */
 @Validated
 @Slf4j

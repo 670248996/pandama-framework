@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 统一封装分页返回数据
- * @author: 白剑民
- * @dateTime: 2022/7/29 21:12
+ * 页面出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:13:18
  */
 @Data
 @AllArgsConstructor

@@ -10,9 +10,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @description: 身份证工具类
- * @author: 白剑民
- * @dateTime: 2022/10/28 17:25
+ * 身份证工具类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:14:56
  */
 @Slf4j
 public class IdCardUtils {
@@ -38,7 +39,8 @@ public class IdCardUtils {
      * 验证小于当前日期 是否有效
      *
      * @param date 待验证日期
-     * @return 是否有效
+     * @return boolean
+     * @author 王强
      */
     public static boolean validDate(LocalDate date) {
         int iYear = date.getYear();
@@ -71,7 +73,8 @@ public class IdCardUtils {
      * 根据身份编号获取年龄
      *
      * @param idCard 身份编号
-     * @return 年龄
+     * @return int
+     * @author 王强
      */
     public static int getAgeByIdCard(String idCard) {
         int iAge;
@@ -90,7 +93,8 @@ public class IdCardUtils {
      * 根据身份编号获取生日
      *
      * @param idCard 身份编号
-     * @return 生日(yyyy - MM - dd)
+     * @return java.time.LocalDate
+     * @author 王强
      */
     public static LocalDate getBirthByIdCard(String idCard) {
         int len = idCard.length();
@@ -107,7 +111,8 @@ public class IdCardUtils {
      * 根据身份编号获取性别
      *
      * @param idCard 身份编号
-     * @return 性别(M - 男 ， F - 女)
+     * @return int
+     * @author 王强
      */
     public static int getGenderByIdCard(String idCard) {
         int gender;
@@ -128,7 +133,8 @@ public class IdCardUtils {
      * 将15位身份证号码转换为18位
      *
      * @param idCard 15位身份编码
-     * @return 18位身份编码
+     * @return java.lang.String
+     * @author 王强
      */
     private static String convert15CardTo18(String idCard) {
         String idCard18;
@@ -172,7 +178,8 @@ public class IdCardUtils {
      * 将字符数组转换成数字数组
      *
      * @param ca 字符数组
-     * @return 数字数组
+     * @return int[]
+     * @author 王强
      */
     private static int[] convertCharToInt(char[] ca) {
         int len = ca.length;
@@ -191,7 +198,8 @@ public class IdCardUtils {
      * 将身份证的每位和对应位的加权因子相乘之后，再得到和值
      *
      * @param iArr 身份证位码数组
-     * @return 身份证编码。
+     * @return int
+     * @author 王强
      */
     private static int getPowerSum(int[] iArr) {
         int iSum = 0;
@@ -211,7 +219,8 @@ public class IdCardUtils {
      * 将POWER和值与11取模获得余数进行校验码判断
      *
      * @param iSum power值
-     * @return 校验位
+     * @return java.lang.String
+     * @author 王强
      */
     private static String getCheckCode18(int iSum) {
         String sCode = "";
@@ -259,7 +268,8 @@ public class IdCardUtils {
      * 数字验证
      *
      * @param val 目标值
-     * @return 提取的数字。
+     * @return boolean
+     * @author 王强
      */
     private static boolean isNum(String val) {
         return val != null && !"".equals(val) && val.matches("^[0-9]*$");

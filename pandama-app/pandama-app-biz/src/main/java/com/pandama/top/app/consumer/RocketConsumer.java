@@ -5,6 +5,12 @@ import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Rocket消费者
+ *
+ * @author 王强
+ * @date 2023-07-08 11:55:31
+ */
 @Slf4j
 @Component
 @RocketMQMessageListener(topic = "test_topic", consumerGroup = "test_consumer_group1")

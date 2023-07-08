@@ -9,9 +9,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- * @description: 用户信息VO
- * @author: 白剑民
- * @dateTime: 2022/10/21 17:19
+ * 用户详情结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:22
  */
 @Data
 @ApiModel("用户信息VO")

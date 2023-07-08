@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 全局处理Oauth2抛出的异常
+ *
+ * @author 王强
+ * @date 2023-07-08 11:53:42
  */
 @ControllerAdvice
 public class Oauth2ExceptionHandler {

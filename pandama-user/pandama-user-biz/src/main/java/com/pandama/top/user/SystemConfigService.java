@@ -11,9 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description: 系统配置服务
- * @author: 王强
- * @dateTime: 2023-06-17 13:35:12
+ * 系统配置服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:58:12
  */
 @Slf4j
 public class SystemConfigService {

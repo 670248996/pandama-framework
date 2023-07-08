@@ -4,9 +4,10 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * @description: 我应用程序上下文初始化器
- * @author: 王强
- * @dateTime: 2023-06-17 14:02:11
+ * 我应用程序上下文初始化器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:58:02
  */
 public class MyApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 

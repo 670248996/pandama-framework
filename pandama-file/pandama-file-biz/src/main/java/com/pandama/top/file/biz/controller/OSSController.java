@@ -14,9 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 
 /**
- * @description: OSS文件服务接口
- * @author: 王强
- * @dateTime: 2023-06-17 14:37:18
+ * OSS文件服务接口
+ *
+ * @author 王强
+ * @date 2023-07-08 15:37:33
  */
 @Slf4j
 @RestController

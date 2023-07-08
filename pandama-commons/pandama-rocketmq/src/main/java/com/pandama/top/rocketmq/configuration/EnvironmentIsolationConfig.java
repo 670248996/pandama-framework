@@ -9,9 +9,10 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 
 /**
- * @description: 环境隔离配置
- * @author: 王强
- * @dateTime: 2023-06-12 21:30:18
+ * 环境隔离配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:29:11
  */
 @Configuration
 public class EnvironmentIsolationConfig implements BeanPostProcessor {
@@ -21,6 +22,11 @@ public class EnvironmentIsolationConfig implements BeanPostProcessor {
 
     /**
      * 在装载Bean之前实现参数修改
+     *
+     * @param bean     Bean
+     * @param beanName Bean名称
+     * @return java.lang.Object
+     * @author 王强
      */
     @Override
     @SuppressWarnings("all")

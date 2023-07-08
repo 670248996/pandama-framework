@@ -14,9 +14,10 @@ import reactor.core.publisher.Mono;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @description: decorator记录httpq响应
- * @author: 王强
- * @dateTime: 2023-06-05 10:25:06
+ * 记录服务器http响应装饰
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:56
  */
 @Slf4j
 public class RecorderServerHttpResponseDecorator extends ServerHttpResponseDecorator {

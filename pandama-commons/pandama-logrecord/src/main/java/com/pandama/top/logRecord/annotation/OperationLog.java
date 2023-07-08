@@ -3,9 +3,10 @@ package com.pandama.top.logRecord.annotation;
 import java.lang.annotation.*;
 
 /**
- * @description: 操作日志
- * @author: 王强
- * @dateTime: 2022-09-02 14:35:45
+ * 操作日志
+ *
+ * @author 王强
+ * @date 2023-07-08 15:20:37
  */
 @Documented
 @Target({ElementType.METHOD})

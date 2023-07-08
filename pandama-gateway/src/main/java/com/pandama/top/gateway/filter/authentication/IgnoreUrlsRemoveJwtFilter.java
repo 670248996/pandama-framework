@@ -18,9 +18,10 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * @description: 白名单路径访问时需要移除JWT请求头
- * @author: 王强
- * @dateTime: 2023-06-21 22:31:19
+ * 白名单路径访问时需要移除JWT请求头
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:28
  */
 @Component
 @RequiredArgsConstructor(onConstructor_ = {@Lazy})

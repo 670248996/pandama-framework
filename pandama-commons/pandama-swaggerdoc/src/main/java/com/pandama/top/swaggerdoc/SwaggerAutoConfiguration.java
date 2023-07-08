@@ -24,9 +24,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: Swagger配置类
- * @author: 王强
- * @dateTime: 2022-10-18 13:11:10
+ * Swagger配置类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:35:32
  */
 @Configuration
 @EnableOpenApi

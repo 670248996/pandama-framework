@@ -8,9 +8,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 密码策略生成DTO
- * @author: 白剑民
- * @dateTime: 2022/10/18 17:48
+ * 密码策略生成DTO
+ *
+ * @author 王强
+ * @date 2023-07-08 15:50:51
  */
 @Data
 @ApiModel("密码策略DTO")

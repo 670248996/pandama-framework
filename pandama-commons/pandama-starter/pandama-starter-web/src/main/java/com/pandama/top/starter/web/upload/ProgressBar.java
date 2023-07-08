@@ -6,9 +6,10 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Stream;
 
 /**
- * @description: 进度条
- * @author: 王强
- * @dateTime: 2023-06-14 15:36:33
+ * 进度条
+ *
+ * @author 王强
+ * @date 2023-07-08 15:34:24
  */
 @Slf4j
 @Component
@@ -27,13 +28,12 @@ public class ProgressBar {
     }
 
     /**
+     * 打印过程百分比
+     *
      * @param bytesRead     字节读
      * @param contentLength 内容长度
-     * @description: 打印百分比进度条
-     * @author: 王强
-     * @date: 2023-06-14 15:36:26
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     public void printPercentProcess(long bytesRead, long contentLength) {
         int percent = (int) (bytesRead * 100.0 / contentLength);
@@ -52,14 +52,13 @@ public class ProgressBar {
     }
 
     /**
+     * 打印字节过程
+     *
      * @param bytesRead     字节读
      * @param contentLength 内容长度
      * @param unitEnum      单位枚举
-     * @description: 打印字节接收进度条
-     * @author: 王强
-     * @date: 2023-06-14 15:36:29
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     public void printByteProcess(long bytesRead, long contentLength, UnitEnum unitEnum) {
         int percent = (int) (bytesRead * 100.0 / contentLength);
@@ -78,9 +77,10 @@ public class ProgressBar {
     }
 
     /**
-     * @description: 颜色枚举
-     * @author: 王强
-     * @dateTime: 2023-06-14 15:36:31
+     * 颜色枚举
+     *
+     * @author 王强
+     * @date 2023-07-08 15:34:31
      */
     enum ColorEnum {
         /**
@@ -126,9 +126,10 @@ public class ProgressBar {
     }
 
     /**
-     * @description: 数据单位
-     * @author: 王强
-     * @dateTime: 2023-06-14 15:36:38
+     * 单位枚举
+     *
+     * @author 王强
+     * @date 2023-07-08 15:34:34
      */
     enum UnitEnum {
         /**

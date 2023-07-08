@@ -1,9 +1,10 @@
 package com.pandama.top.core.global;
 
 /**
- * @description: 全局配置类
- * @author: 王强
- * @dateTime: 2022-11-02 14:36:58
+ * 全局
+ *
+ * @author 王强
+ * @date 2023-07-08 15:12:56
  */
 public class Global {
 

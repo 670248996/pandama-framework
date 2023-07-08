@@ -6,9 +6,10 @@ import lombok.Getter;
 import java.util.Objects;
 
 /**
- * @description: 存储操作类型枚举
- * @author: 王强
- * @dateTime: 2023-04-20 13:23:00
+ * 存储操作类型枚举
+ *
+ * @author 王强
+ * @date 2023-07-08 15:10:26
  */
 @Getter
 public enum StoreOperationTypeEnum implements BaseIntegerEnum {

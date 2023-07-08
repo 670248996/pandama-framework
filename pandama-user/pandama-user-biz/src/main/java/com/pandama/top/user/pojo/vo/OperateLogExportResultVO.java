@@ -8,9 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description: 系统操作日志搜索回参
- * @author: 白剑民
- * @dateTime: 2022/11/21 09:35
+ * 操作日志导出结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:51
  */
 @Data
 @ApiModel("系统操作日志搜索回参VO")

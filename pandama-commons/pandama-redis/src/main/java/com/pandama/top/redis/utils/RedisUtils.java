@@ -15,9 +15,10 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description: Redis工具类
- * @author: 白剑民
- * @dateTime: 2022/7/8 08:46
+ * Redis工具类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:26:47
  */
 @Slf4j
 @Component
@@ -38,8 +39,6 @@ public class RedisUtils {
     public RedisUtils(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-
-// -------------------key 相关操作---------------------
 
     /**
      * 删除 key
@@ -102,13 +101,12 @@ public class RedisUtils {
     }
 
     /**
+     * 带通配符的key值查找
+     *
      * @param key      查找匹配的key
      * @param isSingle 是否单通配符查找
-     * @description: 带通配符的key值查找
-     * @author: 白剑民
-     * @date: 2022-08-02 19:56:07
-     * @return: java.util.Optional<java.util.Set < java.lang.String>>
-     * @version: 1.0
+     * @return java.util.Optional<java.util.Set < java.lang.String>>
+     * @author 王强
      */
     public Optional<Set<String>> keys(String key, Boolean isSingle) {
         return isSingle ?
@@ -1363,15 +1361,14 @@ public class RedisUtils {
     }
 
     /**
+     * 可重入分布式加锁
+     *
      * @param lockKey        分布式锁的Key
      * @param requestId      锁的值
      * @param acquireTimeout 尝试获取锁的超时时间(毫秒)
      * @param expireTime     锁的过期时间(毫秒)，防止死锁
-     * @description: 可重入分布式加锁
-     * @author: 白剑民
-     * @date: 2022-07-23 09:53:09
-     * @return: boolean
-     * @version: 1.0
+     * @return boolean
+     * @author 王强
      */
     public boolean tryReentrantLock(String lockKey, String requestId, long acquireTimeout, long expireTime) {
         // 从本地线程中取出重入锁信息
@@ -1409,13 +1406,12 @@ public class RedisUtils {
     }
 
     /**
+     *  尝试释放分布式可重入锁
+     *
      * @param lockKey   分布式锁的Key
      * @param requestId 锁的值
-     * @description: 尝试释放分布式可重入锁
-     * @author: 白剑民
-     * @date: 2022-07-23 09:55:06
-     * @return: boolean
-     * @version: 1.0
+     * @return boolean
+     * @author 王强
      */
     public boolean tryReentrantUnlock(String lockKey, String requestId) {
         // 从本地线程中取出重入锁信息
@@ -1456,15 +1452,14 @@ public class RedisUtils {
     }
 
     /**
+     * 尝试获取分布式不可重入锁
+     *
      * @param lockKey        分布式锁的Key
      * @param requestId      锁的值
      * @param acquireTimeout 尝试获取锁的超时时间(毫秒)，每次重新取锁失败都会按2倍初始值(50ms)递增延时重取
      * @param expireTime     锁的过期时间(毫秒)，防止死锁
-     * @description: 尝试获取分布式不可重入锁
-     * @author: 白剑民
-     * @date: 2022-07-23 16:02:43
-     * @return: boolean
-     * @version: 1.0
+     * @return boolean
+     * @author 王强
      */
     public boolean tryLock(String lockKey, String requestId, long acquireTimeout, long expireTime) {
         // 从本地线程中取出重入锁信息
@@ -1520,13 +1515,12 @@ public class RedisUtils {
     }
 
     /**
+     * 试着打开
+     *
      * @param lockKey   分布式锁的Key
      * @param requestId 锁的值
-     * @description:
-     * @author: 白剑民
-     * @date: 2022-07-23 16:23:21
-     * @return: boolean
-     * @version: 1.0
+     * @return boolean
+     * @author 王强
      */
     public boolean tryUnlock(String lockKey, String requestId) {
         Long result = 0L;
@@ -1545,27 +1539,25 @@ public class RedisUtils {
     }
 
     /**
+     * 加锁
+     *
      * @param lockKey    分布式锁的Key
      * @param requestId  锁的值
      * @param expireTime 锁的过期时间(毫秒)，防止死锁
-     * @description: 加锁
-     * @author: 白剑民
-     * @date: 2022-07-23 15:58:45
-     * @return: java.lang.Boolean
-     * @version: 1.0
+     * @return java.lang.Boolean
+     * @author 王强
      */
     public Boolean lock(String lockKey, String requestId, long expireTime) {
         return redisTemplate.boundValueOps(lockKey).setIfAbsent(requestId, expireTime, TimeUnit.MILLISECONDS);
     }
 
     /**
+     * lua脚本释放锁
+     *
      * @param lockKey   分布式锁的Key
      * @param requestId 锁的值
-     * @description: lua脚本释放锁
-     * @author: 白剑民
-     * @date: 2022-07-23 15:56:45
-     * @return: java.lang.Long
-     * @version: 1.0
+     * @return java.lang.Long
+     * @author 王强
      */
     private Long release(String lockKey, String requestId) {
         // 使用lua脚本解锁
@@ -1580,13 +1572,12 @@ public class RedisUtils {
     }
 
     /**
+     * 向指定频道发布消息
+     *
      * @param channel 频道
      * @param message 消息
-     * @description: 向指定频道发布消息
-     * @author: 白剑民
-     * @date: 2022-08-18 16:18:06
-     * @return: java.util.Optional<java.lang.Boolean>
-     * @version: 1.0
+     * @return java.util.Optional<java.lang.Boolean>
+     * @author 王强
      */
     public Optional<Boolean> convertAndSend(String channel, String message) {
         try {
@@ -1601,9 +1592,10 @@ public class RedisUtils {
     }
 
     /**
-     * @description: 看门狗线程
-     * @author: 王强
-     * @dateTime: 2022-08-24 23:43:24
+     * 看狗线程
+     *
+     * @author 王强
+     * @date 2023-07-08 15:27:58
      */
     class WatchDogThread implements Runnable {
         private final ScheduledThreadPoolExecutor poolExecutor;
@@ -1633,14 +1625,13 @@ public class RedisUtils {
     }
 
     /**
+     * 看门狗
+     *
      * @param key   分布式锁的Key
      * @param value 锁的值
      * @param ttl   锁过期时间
-     * @description: 看门狗
-     * @author: 王强
-     * @date: 2022-08-25 09:26:11
-     * @return:
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     private void watchDog(String key, String value, long ttl) {
         // 获取续期速率
@@ -1653,12 +1644,11 @@ public class RedisUtils {
     }
 
     /**
+     * 获取续期速率
+     *
      * @param ttl key过期时间
-     * @description: 获取续期速率
-     * @author: 王强
-     * @date: 2022-08-25 09:24:42
-     * @return: @return long
-     * @version: 1.0
+     * @return long
+     * @author 王强
      */
     private long getRate(long ttl) {
         if (ttl - 5000 > 0) {
@@ -1670,14 +1660,13 @@ public class RedisUtils {
     }
 
     /**
+     * 锁续期Lua脚本
+     *
      * @param lockKey   分布式锁的Key
      * @param requestId 请求id
      * @param ttl       锁过期时间
-     * @description: 锁续期Lua脚本
-     * @author: 王强
-     * @date: 2022-08-25 09:25:14
-     * @return: @return {@code Long }
-     * @version: 1.0
+     * @return java.lang.Long
+     * @author 王强
      */
     public Long renew(String lockKey, String requestId, long ttl) {
         // 使用lua脚本锁续期

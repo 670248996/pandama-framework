@@ -5,9 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @description: 文件中心启动类
- * @author: 王强
- * @dateTime: 2023-06-17 14:49:00
+ * 文件应用程序
+ *
+ * @author 王强
+ * @date 2023-07-08 15:37:53
  */
 @EnableDiscoveryClient
 @SpringBootApplication

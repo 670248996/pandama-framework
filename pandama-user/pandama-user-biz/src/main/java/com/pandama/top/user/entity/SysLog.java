@@ -10,9 +10,10 @@ import lombok.experimental.Accessors;
 
 
 /**
- * @description: 系统日志表
- * @author: 白剑民
- * @dateTime: 2022/11/17 16:29
+ * 系统日志表
+ *
+ * @author 王强
+ * @date 2023-07-08 15:47:10
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

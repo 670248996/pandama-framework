@@ -18,9 +18,10 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * @description: Redis配置类（使用Lettuce客户端连接）
- * @author: 白剑民
- * @dateTime: 2022/7/8 08:46
+ * Redis配置类（使用Lettuce客户端连接）
+ *
+ * @author 王强
+ * @date 2023-07-08 15:28:51
  */
 @Slf4j
 @Configuration
@@ -28,13 +29,13 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Import({RedisUtils.class})
 @AutoConfigureBefore(org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class)
 public class RedisAutoConfiguration {
+
     /**
+     * 配置模板客户端
+     *
      * @param factory 使用lettuce客户端连接
-     * @description: 配置模板客户端
-     * @author: 白剑民
-     * @date: 2022-08-18 15:36:31
-     * @return: org.springframework.data.redis.core.RedisTemplate<java.lang.String, java.lang.Object>
-     * @version: 1.0
+     * @return org.springframework.data.redis.core.RedisTemplate<java.lang.String, java.lang.Object>
+     * @author 王强
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory factory) {

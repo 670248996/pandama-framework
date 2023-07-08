@@ -24,6 +24,12 @@
             <artifactId>pandama-user-api</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--auth模块api-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-auth-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--database模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
@@ -34,6 +40,18 @@
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-logrecord</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--java反射框架-->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
+        <!--集成rocketmq-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-rocketmq</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

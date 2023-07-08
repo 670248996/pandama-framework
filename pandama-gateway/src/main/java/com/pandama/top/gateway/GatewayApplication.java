@@ -5,9 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @description: Gateway网关启动类
- * @author: 王强
- * @dateTime: 2022-10-17 16:09:37
+ * 网关应用程序
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:49
  */
 @EnableDiscoveryClient
 @SpringBootApplication

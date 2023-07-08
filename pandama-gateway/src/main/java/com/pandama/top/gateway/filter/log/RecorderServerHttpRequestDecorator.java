@@ -12,9 +12,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @description: decorator记录http请求
- * @author: 王强
- * @dateTime: 2023-06-05 10:25:13
+ * decorator记录http请求
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:48
  */
 @Slf4j
 public class RecorderServerHttpRequestDecorator extends ServerHttpRequestDecorator {

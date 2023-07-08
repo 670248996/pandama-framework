@@ -16,9 +16,10 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 /**
- * @description: 用户通过身份验证后，会通过该处理类校验是否有该资源的访问权限
- * @author: 王强
- * @dateTime: 2022-10-17 21:47:52
+ * 用户通过身份验证后，会通过该处理类校验是否有该资源的访问权限
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:40
  */
 @Slf4j
 @Component

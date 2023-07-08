@@ -9,9 +9,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @description: 时间工具类
- * @author: 王强
- * @dateTime: 2022-12-21 21:31:46
+ * 日期工具
+ *
+ * @author 王强
+ * @date 2023-07-08 15:13:57
  */
 public class DateUtils {
 
@@ -29,7 +30,8 @@ public class DateUtils {
      * String 转化为 LocalDateTime
      *
      * @param timeStr 被转化的字符串
-     * @return LocalDateTime
+     * @return java.time.LocalDateTime
+     * @author 王强
      */
     public static LocalDateTime parseTime(String timeStr) {
         return LocalDateTime.parse(timeStr, DEFAULT_DATETIME_FORMATTER);
@@ -41,7 +43,8 @@ public class DateUtils {
      *
      * @param timeStr    被转化的字符串
      * @param timeFormat 转化的时间格式
-     * @return LocalDateTime
+     * @return java.time.LocalDateTime
+     * @author 王强
      */
     public static LocalDateTime parseTime(String timeStr, TimeFormat timeFormat) {
         return LocalDateTime.parse(timeStr, timeFormat.formatter);
@@ -52,7 +55,8 @@ public class DateUtils {
      * LocalDateTime 转化为String
      *
      * @param time LocalDateTime
-     * @return String
+     * @return java.lang.String
+     * @author 王强
      */
     public static String parseTime(LocalDateTime time) {
         return DEFAULT_DATETIME_FORMATTER.format(time);
@@ -64,7 +68,8 @@ public class DateUtils {
      *
      * @param time   LocalDateTime
      * @param format 时间格式
-     * @return String
+     * @return java.lang.String
+     * @author 王强
      */
     public static String parseTime(LocalDateTime time, TimeFormat format) {
         return format.formatter.format(time);
@@ -74,7 +79,8 @@ public class DateUtils {
     /**
      * 获取当前时间
      *
-     * @return {@code String}
+     * @return java.lang.String
+     * @author 王强
      */
     public static String getCurrentDateTime() {
         return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
@@ -83,7 +89,8 @@ public class DateUtils {
     /**
      * 获取当前时间
      *
-     * @return {@code String}
+     * @return java.lang.String
+     * @author 王强
      */
     public static String now() {
         return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
@@ -93,12 +100,20 @@ public class DateUtils {
      * 获取当前时间
      *
      * @param timeFormat 时间格式
-     * @return {@code String}
+     * @return java.lang.String
+     * @author 王强
      */
     public static String getCurrentDateTime(TimeFormat timeFormat) {
         return timeFormat.formatter.format(LocalDateTime.now());
     }
 
+    /**
+     * 获取一天开始时间
+     *
+     * @param d d
+     * @return java.util.Date
+     * @author 王强
+     */
     public static Date getDayStartTime(Date d) {
         Calendar calendar = Calendar.getInstance();
         if (null != d) {
@@ -111,6 +126,13 @@ public class DateUtils {
     }
 
 
+    /**
+     * 获取一天结束时间
+     *
+     * @param d d
+     * @return java.util.Date
+     * @author 王强
+     */
     public static Date getDayEndTime(Date d) {
         Calendar calendar = Calendar.getInstance();
         if (null != d) {
@@ -123,25 +145,10 @@ public class DateUtils {
     }
 
     /**
-     * 比较当前ym
-     *
-     * @param date 日期
-     * @return {@code Integer}
-     */
-    public static Integer compareCurrentYM(Date date) {
-        if (date != null) {
-            BigDecimal queryYM = new BigDecimal(DateFormatUtils.format(date, "yyyyMM"));
-            BigDecimal nowYM = new BigDecimal(DateFormatUtils.format(new Date(), "yyyyMM"));
-            return queryYM.compareTo(nowYM);
-        }
-        return null;
-    }
-
-    /**
      * 内部枚举类
      *
-     * @author YiMing
-     * @date 2018/3/7
+     * @author 王强
+     * @date 2023-07-08 15:14:10
      */
     public enum TimeFormat {
         // 短时间格式 年月日
@@ -194,7 +201,7 @@ public class DateUtils {
 
         LONG_DATE_PATTERN_WITH_MILSEC_NONE("yyyyMMdd HH:mm:ss.SSS");
 
-        private transient DateTimeFormatter formatter;
+        private final transient DateTimeFormatter formatter;
 
         TimeFormat(String pattern) {
             formatter = DateTimeFormatter.ofPattern(pattern);

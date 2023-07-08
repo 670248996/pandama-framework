@@ -8,9 +8,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 字典更新
- * @author: 白剑民
- * @dateTime: 2023/5/22 11:02
+ * 字典更新传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:49:35
  */
 @Data
 @ApiModel("字典更新传参")

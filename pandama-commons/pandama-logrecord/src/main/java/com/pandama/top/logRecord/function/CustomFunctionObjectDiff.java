@@ -19,9 +19,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @description: 自定义函数对象差异
- * @author: 王强
- * @dateTime: 2022-09-02 16:26:45
+ * 自定义函数对象差异
+ *
+ * @author 王强
+ * @date 2023-07-08 15:23:33
  */
 @Slf4j
 @LogRecordFunc
@@ -57,13 +58,12 @@ public class CustomFunctionObjectDiff {
     }
 
     /**
+     * 默认的DIFF方法实现
+     *
      * @param oldObject 旧对象
      * @param newObject 新对象
-     * @description: 默认的DIFF方法实现
-     * @author: 王强
-     * @date: 2022-09-02 16:26:50
-     * @return: @return {@code String }
-     * @version: 1.0
+     * @return java.lang.String
+     * @author 王强
      */
     @LogRecordFunc("_DIFF")
     public static String objectDiff(Object oldObject, Object newObject) {
@@ -95,12 +95,11 @@ public class CustomFunctionObjectDiff {
     }
 
     /**
+     * 默认的ADD方法实现
+     *
      * @param newObject 新对象
-     * @description: 默认的ADD方法实现
-     * @author: 王强
-     * @date: 2022-09-02 16:26:53
-     * @return: @return {@code String }
-     * @version: 1.0
+     * @return java.lang.String
+     * @author 王强
      */
     @LogRecordFunc("_ADD")
     public static String objectAdd(Object newObject) throws InstantiationException, IllegalAccessException {
@@ -128,13 +127,12 @@ public class CustomFunctionObjectDiff {
     }
 
     /**
+     * 获得ValueDTO对象
+     *
      * @param oldObject 旧对象
      * @param newObject 新对象
-     * @description: 获得ValueDTO对象
-     * @author: 王强
-     * @date: 2022-09-02 18:20:24
-     * @return: @return {@code ValueDTO }
-     * @version: 1.0
+     * @return com.pandama.top.logRecord.function.CustomFunctionObjectDiff.ValueDTO
+     * @author 王强
      */
     public static ValueDTO getValueDTO(Object oldObject, Object newObject) {
         // 获取对象类名
@@ -274,9 +272,10 @@ public class CustomFunctionObjectDiff {
     }
 
     /**
-     * @description: valueDTO对象
-     * @author: 王强
-     * @dateTime: 2022-09-03 22:50:59
+     * valueDTO对象
+     *
+     * @author 王强
+     * @date 2023-07-08 15:23:54
      */
     @Data
     static class ValueDTO {

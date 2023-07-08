@@ -3,9 +3,10 @@ package com.pandama.top.user.enums;
 import lombok.Getter;
 
 /**
- * @description: 终端类型枚举类
- * @author: 白剑民
- * @date : 2023/04/24 13:30
+ * 终端类型枚举
+ *
+ * @author 王强
+ * @date 2023-07-08 15:47:51
  */
 @Getter
 public enum TerminalTypeEnum {

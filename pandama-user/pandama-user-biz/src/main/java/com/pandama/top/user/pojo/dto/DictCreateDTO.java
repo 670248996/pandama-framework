@@ -7,9 +7,10 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @description: 字典创建传参
- * @author: 白剑民
- * @dateTime: 2023/5/4 09:21
+ * 创建字典传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:49:26
  */
 @Data
 @ApiModel("创建字典传参")

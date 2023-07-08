@@ -19,9 +19,10 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
- * @description: 日志信息控制层
- * @author: 白剑民
- * @dateTime: 2022/11/18 15:06
+ * 日志控制器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:43:08
  */
 @RestController
 @RequestMapping("log/{logType}")
@@ -34,13 +35,12 @@ public class LogController {
     private final LogService logService;
 
     /**
+     * 页面
+     *
      * @param logType 日志类型
      * @param dto     日志搜索传参
-     * @description: 日志搜索
-     * @author: 王强
-     * @date: 2023-05-29 17:11:23
-     * @return: Response<PageResultVO < LogSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < ?>>
+     * @author 王强
      */
     @ApiOperation("日志搜索")
     @PostMapping("/page")
@@ -50,12 +50,12 @@ public class LogController {
     }
 
     /**
-     * @param logIds 日志id
-     * @description: 删除
-     * @author: 王强
-     * @date: 2023-06-16 15:15:39
-     * @return: Response<Void>
-     * @version: 1.0
+     * 删除
+     *
+     * @param logType 日志类型
+     * @param logIds  日志id
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("日志删除")
     @DeleteMapping
@@ -65,13 +65,12 @@ public class LogController {
     }
 
     /**
+     * 导出
+     *
      * @param logType 日志类型
      * @param dto     日志导出传参
-     * @description: 日志导出
-     * @author: 王强
-     * @date: 2023-05-29 17:12:32
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     @ApiOperation("日志导出")
     @PostMapping("/export")
@@ -81,12 +80,11 @@ public class LogController {
     }
 
     /**
+     * 清除
+     *
      * @param logType 日志类型
-     * @description: 清空日志
-     * @author: 王强
-     * @date: 2023-05-29 17:12:51
-     * @return: Response<?>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("清空日志")
     @DeleteMapping("/clean")

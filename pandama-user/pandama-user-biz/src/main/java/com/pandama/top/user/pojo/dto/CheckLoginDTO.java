@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 登录校验传参
- * @author: 白剑民
- * @dateTime: 2022/10/26 09:45
+ * 登录校验传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:49:06
  */
 @Data
 @ApiModel("登录信息校验DTO")

@@ -5,9 +5,10 @@ import com.pandama.top.app.entity.DeviceRecord;
 import org.springframework.stereotype.Repository;
 
 /**
- * @description: 设备mapper
- * @author: 王强
- * @dateTime: 2023-04-19 15:59:47
+ * 设备记录mapper
+ *
+ * @author 王强
+ * @date 2023-07-08 15:10:30
  */
 @Repository
 public interface DeviceRecordMapper extends BaseMapper<DeviceRecord> {

@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @description: 菜单类型枚举类
- * @author: 白剑民
- * @date : 2023/04/24 13:10
+ * 菜单枚举类型
+ *
+ * @author 王强
+ * @date 2023-07-08 15:47:44
  */
 public enum MenuTypeEnum {
     /**
@@ -23,11 +24,10 @@ public enum MenuTypeEnum {
     BUTTON;
 
     /**
-     * @description: 是否是路由类型
-     * @author: 王强
-     * @date: 2023-04-25 12:29:53
-     * @return: Boolean
-     * @version: 1.0
+     * 是否路由器
+     *
+     * @return java.lang.Boolean
+     * @author 王强
      */
     public Boolean isRouter() {
         List<MenuTypeEnum> routerTypeEnums = Arrays.asList(DIR, MENU);

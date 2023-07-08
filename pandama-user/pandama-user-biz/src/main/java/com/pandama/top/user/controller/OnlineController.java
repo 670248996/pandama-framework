@@ -18,9 +18,10 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
- * @description: 在线用户信息控制层
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:32
+ * 在线用户信息控制层
+ *
+ * @author 王强
+ * @date 2023-07-08 15:44:32
  */
 @RestController
 @RequestMapping("/online")
@@ -33,12 +34,11 @@ public class OnlineController {
     private final OnlineService onlineService;
 
     /**
+     * 页面
+     *
      * @param dto 获取在线用户分页入参
-     * @description: 获在线取用户分页
-     * @author: 王强
-     * @date: 2023-05-24 10:01:22
-     * @return: Response<PageResultVO < UserInfoVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.OnlineSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("获取在线用户分页")
     @PostMapping("/page")
@@ -47,12 +47,11 @@ public class OnlineController {
     }
 
     /**
+     * 删除
+     *
      * @param onlineIds 在线信息id列表
-     * @description: 删除在线用户信息
-     * @author: 白剑民
-     * @date: 2022-10-28 15:21:33
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("删除在线用户信息")
     @DeleteMapping

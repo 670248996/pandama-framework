@@ -6,49 +6,46 @@ import com.pandama.top.user.entity.SysRoleMenu;
 import java.util.List;
 
 /**
- * @description: 角色与菜单关联接口类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 角色菜单服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:56:17
  */
 public interface RoleMenuService extends IService<SysRoleMenu> {
 
     /**
+     * 获取菜单id通过角色id
+     *
      * @param roleIds 角色id列表
-     * @description: 获取指定角色列表下的关联菜单列表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getMenuIdsByRoleIds(List<Long> roleIds);
 
     /**
+     * 获取角色id通过菜单id
+     *
      * @param menuIds 菜单id列表
-     * @description: 获取指定菜单列表下的关联角色列表
-     * @author: 白剑民
-     * @date: 2022-10-31 17:53:34
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getRoleIdsByMenuIds(List<Long> menuIds);
 
     /**
+     * 按角色删除id
+     *
      * @param roleIds 角色id列表
-     * @description: 删除指定角色列表下的关联菜单列表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void deleteByRoleIds(List<Long> roleIds);
 
     /**
+     * 按菜单删除id
+     *
      * @param menuIds 权限id列表
-     * @description: 删除指定权限列表下的关联角色列表
-     * @author: 白剑民
-     * @date: 2022-10-31 17:53:34
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void deleteByMenuIds(List<Long> menuIds);
 }

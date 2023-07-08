@@ -1,6 +1,7 @@
 package com.pandama.top.user.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.pandama.top.auth.api.constant.RedisConstant;
 import com.pandama.top.core.utils.TreeUtils;
 import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.redis.utils.RedisUtils;
@@ -24,9 +25,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * @description: 部门信息实现类
- * @author: 白剑民
- * @dateTime: 2022/10/21 16:16
+ * 登录服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:48
  */
 @Slf4j
 @Service
@@ -73,7 +75,7 @@ public class LoginServiceImpl implements LoginService {
     public SystemUserInfoVO getUserInfo() {
         SystemUserInfoVO userInfo = userMapper.getSystemUserInfoById(UserInfoUtils.getUserId());
         // 缓存用户信息，一般在用户登出后清空，避免数据产生，缓存有效期24小时
-        String userKey = "user_info" + UserInfoUtils.getUserId();
+        String userKey = String.format(RedisConstant.USER_INFO, UserInfoUtils.getUserId());
         redisUtils.setEx(userKey, JSON.toJSONString(userInfo), 1, TimeUnit.DAYS);
         if (userInfo != null) {
             this.setRoleAndPerm(userInfo);

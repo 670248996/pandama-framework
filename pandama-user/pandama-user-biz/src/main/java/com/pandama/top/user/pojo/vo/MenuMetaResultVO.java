@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 菜单Meta信息出参
- * @author: 王强
- * @dateTime: 2023-04-24 17:03:45
+ * 菜单元结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:42
  */
 @Data
 @ApiModel("菜单Meta信息")

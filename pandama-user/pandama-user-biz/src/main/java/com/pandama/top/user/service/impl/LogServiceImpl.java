@@ -4,21 +4,19 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.pandama.top.core.enums.LoginTypeEnum;
 import com.pandama.top.core.pojo.vo.PageVO;
-import com.pandama.top.user.service.LogService;
 import com.pandama.top.core.utils.BeanConvertUtils;
-import com.pandama.top.logRecord.bean.LogDTO;
 import com.pandama.top.logRecord.enums.LogTypeEnum;
-import com.pandama.top.logRecord.service.ILogRecordService;
+import com.pandama.top.user.entity.SysLog;
+import com.pandama.top.user.mapper.LogMapper;
 import com.pandama.top.user.pojo.dto.LogSearchDTO;
 import com.pandama.top.user.pojo.dto.OnlineSearchDTO;
 import com.pandama.top.user.pojo.vo.LogSearchResultVO;
 import com.pandama.top.user.pojo.vo.LoginLogExportResultVO;
 import com.pandama.top.user.pojo.vo.OnlineSearchResultVO;
 import com.pandama.top.user.pojo.vo.OperateLogExportResultVO;
-import com.pandama.top.user.entity.SysLog;
-import com.pandama.top.core.enums.LoginTypeEnum;
-import com.pandama.top.user.mapper.LogMapper;
+import com.pandama.top.user.service.LogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,30 +29,17 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @description: 日志信息实现类
- * @author: 白剑民
- * @dateTime: 2022/11/18 15:05
+ * 日志服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:55
  */
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements LogService, ILogRecordService {
+public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements LogService {
 
     private final LogMapper logMapper;
-
-    @Override
-    public void createLog(LogDTO dto) {
-        SysLog sysLog = BeanConvertUtils.convert(dto, SysLog::new, (s, t) -> {
-            t.setModule(s.getBizType());
-            t.setEvent(s.getBizEvent());
-            t.setMsg(dto.getMsg());
-            t.setExtra(s.getExtra());
-            t.setType(Integer.valueOf(s.getTag()));
-            t.setCreateTime(LocalDateTime.now());
-            t.setCreateUserId(Long.parseLong(s.getOperatorId() == null ? "0" : s.getOperatorId()));
-        }).orElse(new SysLog());
-        logMapper.insert(sysLog);
-    }
 
     @Override
     public PageVO<LogSearchResultVO> page(LogSearchDTO dto) {

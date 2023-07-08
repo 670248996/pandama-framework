@@ -8,9 +8,10 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 /**
- * @description: Feign请求拦截器（解决header丢失问题）
- * @author: 王强
- * @dateTime: 2023-02-22 22:20:46
+ * Feign请求拦截器（解决header丢失问题）
+ *
+ * @author 王强
+ * @date 2023-07-08 15:19:49
  */
 @Slf4j
 public class FeignRequestInterceptor implements RequestInterceptor {

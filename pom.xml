@@ -58,6 +58,8 @@
         <log4j2.version>2.7.4</log4j2.version>
         <!--swagger版本-->
         <swagger.version>3.0.0</swagger.version>
+        <!--bitwalker版本-->
+        <bitwalker.version>1.21</bitwalker.version>
         <!--oauth2版本-->
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <!--jwt版本-->
@@ -129,6 +131,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.8.11</version>
+        </dependency>
+        <!-- 解析客户端操作系统、浏览器等 -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>${bitwalker.version}</version>
         </dependency>
         <!--apache的工具包依赖，例如StringUtils-->
         <dependency>

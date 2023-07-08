@@ -5,9 +5,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @description: 发生变化的数据信息dto
- * @author: 王强
- * @dateTime: 2022-09-01 17:57:43
+ * 发生变化的数据信息dto
+ *
+ * @author 王强
+ * @date 2023-07-08 15:21:11
  */
 @Data
 public class DiffDTO {

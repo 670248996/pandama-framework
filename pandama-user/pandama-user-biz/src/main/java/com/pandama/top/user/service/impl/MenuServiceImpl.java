@@ -29,9 +29,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @description: 菜单信息实现类
- * @author: 白剑民
- * @dateTime: 2022/10/31 13:36
+ * 菜单服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:58
  */
 @Slf4j
 @Service

@@ -12,9 +12,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 /**
- * @description: 登录用户信息
- * @author: 王强
- * @dateTime: 2023-06-21 22:14:20
+ * 登录用户信息
  */
 @Data
 public class SecurityUser implements UserDetails {

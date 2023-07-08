@@ -13,19 +13,20 @@ import java.util.Properties;
 import static com.google.code.kaptcha.Constants.*;
 
 /**
- * @description: 图形验证码配置
- * @author: 白剑民
- * @dateTime: 2023/04/21 13:50
+ * 图形验证码配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:31:30
  */
 @Configuration
 @EnableConfigurationProperties(AuthCodeProperties.class)
 public class AuthCodeConfiguration {
+
     /**
-     * @description: 字符验证码
-     * @author: 白剑民
-     * @date: 2023-04-21 14:07:32
-     * @return: com.google.code.kaptcha.impl.DefaultKaptcha
-     * @version: 1.0
+     * 字符验证码
+     *
+     * @return com.google.code.kaptcha.impl.DefaultKaptcha
+     * @author 王强
      */
     @Bean
     public DefaultKaptcha charAuthCode() {
@@ -58,11 +59,10 @@ public class AuthCodeConfiguration {
     }
 
     /**
-     * @description: 数字验证码
-     * @author: 白剑民
-     * @date: 2023-04-21 14:07:48
-     * @return: com.google.code.kaptcha.impl.DefaultKaptcha
-     * @version: 1.0
+     * 数字验证码
+     *
+     * @return com.google.code.kaptcha.impl.DefaultKaptcha
+     * @author 王强
      */
     @Bean
     public DefaultKaptcha mathAuthCode() {

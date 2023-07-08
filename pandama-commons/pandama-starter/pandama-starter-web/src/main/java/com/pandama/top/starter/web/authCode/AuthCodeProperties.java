@@ -4,9 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @description: 图形验证码配置
- * @author: 白剑民
- * @dateTime: 2023/4/21 14:14
+ * 图形验证码配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:31:47
  */
 @Data
 @ConfigurationProperties(prefix = "pandama.auth-code")

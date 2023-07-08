@@ -6,9 +6,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 /**
- * @description: 日志记录属性
- * @author: 王强
- * @dateTime: 2022-09-02 17:24:09
+ * 日志记录属性
+ *
+ * @author 王强
+ * @date 2023-07-08 15:21:39
  */
 @Data
 @ConfigurationProperties(prefix = "log-record")
@@ -25,9 +26,10 @@ public class LogRecordProperties {
     private String msgSeparator = " ";
 
     /**
-     * @description: 线程池属性
-     * @author: 王强
-     * @dateTime: 2022-09-02 18:19:33
+     * 线程池属性
+     *
+     * @author 王强
+     * @date 2023-07-08 15:21:46
      */
     @Data
     public static class ThreadPoolProperties {

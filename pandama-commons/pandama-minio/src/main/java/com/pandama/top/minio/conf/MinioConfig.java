@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @description: minio配置
- * @author: 王强
- * @dateTime: 2023-06-17 14:19:39
+ * minio配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:25:17
  */
 @Data
 @Configuration

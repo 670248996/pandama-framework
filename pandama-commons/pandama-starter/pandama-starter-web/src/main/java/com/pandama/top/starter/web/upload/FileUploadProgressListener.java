@@ -8,9 +8,10 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpSession;
 
 /**
- * @description: 文件上载过程侦听器
- * @author: 王强
- * @dateTime: 2022-12-21 10:58:26
+ * 文件上载过程侦听器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:34:18
  */
 @Slf4j
 @Component

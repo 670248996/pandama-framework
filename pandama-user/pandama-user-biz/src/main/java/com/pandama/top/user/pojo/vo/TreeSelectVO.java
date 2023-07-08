@@ -10,9 +10,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @description: 树数据下拉的返回
- * @author: 王强
- * @dateTime: 2022-07-29 09:51:33
+ * 树查询出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:13
  */
 @Data
 @AllArgsConstructor

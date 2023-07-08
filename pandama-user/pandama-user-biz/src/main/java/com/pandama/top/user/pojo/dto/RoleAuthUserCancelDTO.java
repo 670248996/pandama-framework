@@ -7,9 +7,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @description: 角色取消授权用户传参
- * @author: 白剑民
- * @dateTime: 2022/10/31 16:24
+ * 角色取消授权用户传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:51:06
  */
 @Data
 @ApiModel("角色取消授权用户传参DTO")

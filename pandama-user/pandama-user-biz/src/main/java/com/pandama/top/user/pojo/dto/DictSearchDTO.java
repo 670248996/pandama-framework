@@ -10,9 +10,10 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * @description: 字典搜索传参
- * @author: 白剑民
- * @dateTime: 2023/5/2 20:42
+ * 字典搜索传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:49:31
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

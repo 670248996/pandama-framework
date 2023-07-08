@@ -1,9 +1,10 @@
 package com.pandama.top.core.enums;
 
 /**
- * @description: 登录类型枚举类
- * @author: 王强
- * @dateTime: 2023-05-30 12:32:13
+ * 登录枚举类型
+ *
+ * @author 王强
+ * @date 2023-07-08 15:12:37
  */
 public enum LoginTypeEnum {
     /**

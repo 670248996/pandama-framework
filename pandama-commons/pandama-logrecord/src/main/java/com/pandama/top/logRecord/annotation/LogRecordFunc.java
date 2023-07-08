@@ -8,9 +8,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @description: 日志记录函数
- * @author: 王强
- * @dateTime: 2022-09-02 16:28:58
+ * 日志记录函数
+ *
+ * @author 王强
+ * @date 2023-07-08 15:20:35
  */
 @Target({ElementType.TYPE,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

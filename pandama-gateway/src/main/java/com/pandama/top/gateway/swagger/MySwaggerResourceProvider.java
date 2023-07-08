@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: Swagger资源提供者
- * @author: 王强
- * @dateTime: 2022-10-25 12:54:08
+ * Swagger资源提供者
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:32
  */
 @Slf4j
 @Component

@@ -4,9 +4,10 @@ import com.pandama.top.mybatisplus.entity.BaseEntity;
 import lombok.Data;
 
 /**
- * @description: 设备
- * @author: 王强
- * @dateTime: 2023-04-20 14:44:25
+ * 设备记录
+ *
+ * @author 王强
+ * @date 2023-07-08 15:10:17
  */
 @Data
 public class DeviceRecord extends BaseEntity {

@@ -20,9 +20,10 @@ import java.net.URLDecoder;
 import java.util.*;
 
 /**
- * @description: minio工具
- * @author: 王强
- * @dateTime: 2023-06-17 14:23:41
+ * minio工具
+ *
+ * @author 王强
+ * @date 2023-07-08 15:25:23
  */
 @Slf4j
 @Component
@@ -53,7 +54,8 @@ public class MinioUtils {
      * 判断Bucket是否存在，true：存在，false：不存在
      *
      * @param bucketName
-     * @return
+     * @return boolean
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public boolean bucketExists(String bucketName) {
@@ -64,7 +66,8 @@ public class MinioUtils {
      * 获得Bucket的策略
      *
      * @param bucketName
-     * @return
+     * @return java.lang.String
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public String getBucketPolicy(String bucketName) {
@@ -77,7 +80,8 @@ public class MinioUtils {
     /**
      * 获得所有Bucket列表
      *
-     * @return
+     * @return java.util.List<io.minio.messages.Bucket>
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public List<Bucket> getAllBuckets() {
@@ -88,7 +92,8 @@ public class MinioUtils {
      * 根据bucketName获取其相关信息
      *
      * @param bucketName
-     * @return
+     * @return java.util.Optional<io.minio.messages.Bucket>
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public Optional<Bucket> getBucket(String bucketName) {
@@ -99,7 +104,8 @@ public class MinioUtils {
      * 根据bucketName删除Bucket，true：删除成功； false：删除失败，文件或已不存在
      *
      * @param bucketName
-     * @throws Exception
+     * @return void
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public void removeBucket(String bucketName) {
@@ -116,7 +122,8 @@ public class MinioUtils {
      *
      * @param bucketName
      * @param objectName
-     * @return
+     * @return boolean
+     * @author 王强
      */
     public boolean isObjectExist(String bucketName, String objectName) {
         boolean exist = true;
@@ -134,7 +141,8 @@ public class MinioUtils {
      *
      * @param bucketName
      * @param objectName
-     * @return
+     * @return boolean
+     * @author 王强
      */
     public boolean isFolderExist(String bucketName, String objectName) {
         boolean exist = false;
@@ -160,7 +168,8 @@ public class MinioUtils {
      * @param bucketName 存储桶
      * @param prefix     前缀
      * @param recursive  是否使用递归查询
-     * @return MinioItem 列表
+     * @return java.util.List<io.minio.messages.Item>
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public List<Item> getAllObjectsByPrefix(String bucketName,
@@ -183,7 +192,8 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param objectName 文件名
-     * @return 二进制流
+     * @return java.io.InputStream
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public InputStream getObject(String bucketName, String objectName) {
@@ -201,7 +211,8 @@ public class MinioUtils {
      * @param objectName 文件名称
      * @param offset     起始字节的位置
      * @param length     要读取的长度
-     * @return 二进制流
+     * @return java.io.InputStream
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public InputStream getObject(String bucketName, String objectName, long offset, long length) {
@@ -220,7 +231,8 @@ public class MinioUtils {
      * @param bucketName 存储桶
      * @param prefix     文件名称
      * @param recursive  是否递归查找，false：模拟文件夹结构查找
-     * @return 二进制流
+     * @return java.lang.Iterable<io.minio.Result < io.minio.messages.Item>>
+     * @author 王强
      */
     public Iterable<Result<Item>> listObjects(String bucketName, String prefix, boolean recursive) {
         return minioClient.listObjects(
@@ -238,7 +250,8 @@ public class MinioUtils {
      * @param file        文件名
      * @param objectName  对象名
      * @param contentType 类型
-     * @return
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public ObjectWriteResponse uploadFile(String bucketName, MultipartFile file, String objectName, String contentType) {
@@ -254,10 +267,12 @@ public class MinioUtils {
 
     /**
      * 图片上传
+     *
      * @param bucketName
      * @param imageBase64
      * @param imageName
-     * @return
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
      */
     public ObjectWriteResponse uploadImage(String bucketName, String imageBase64, String imageName) {
         if (!StringUtils.isEmpty(imageBase64)) {
@@ -271,6 +286,13 @@ public class MinioUtils {
         return null;
     }
 
+    /**
+     * base64输入流
+     *
+     * @param base64 base64
+     * @return java.io.InputStream
+     * @author 王强
+     */
     public static InputStream base64ToInputStream(String base64) {
         ByteArrayInputStream stream = null;
         try {
@@ -289,7 +311,8 @@ public class MinioUtils {
      * @param bucketName 存储桶
      * @param objectName 对象名称
      * @param fileName   本地文件路径
-     * @return
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public ObjectWriteResponse uploadFile(String bucketName, String objectName, String fileName) {
@@ -307,7 +330,8 @@ public class MinioUtils {
      * @param bucketName  存储桶
      * @param objectName  文件对象
      * @param inputStream 文件流
-     * @return
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public ObjectWriteResponse uploadFile(String bucketName, String objectName, InputStream inputStream) {
@@ -324,7 +348,8 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param objectName 目录路径
-     * @return
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public ObjectWriteResponse createDir(String bucketName, String objectName) {
@@ -341,7 +366,8 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param objectName 文件名称
-     * @return
+     * @return java.lang.String
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public String getFileStatusInfo(String bucketName, String objectName) {
@@ -359,6 +385,8 @@ public class MinioUtils {
      * @param objectName    文件名
      * @param srcBucketName 目标存储桶
      * @param srcObjectName 目标文件名
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public ObjectWriteResponse copyFile(String bucketName, String objectName, String srcBucketName, String srcObjectName) {
@@ -375,6 +403,8 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param objectName 文件名称
+     * @return void
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public void removeFile(String bucketName, String objectName) {
@@ -390,7 +420,8 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param keys       需要删除的文件列表
-     * @return
+     * @return void
+     * @author 王强
      */
     public void removeFiles(String bucketName, List<String> keys) {
         List<DeleteObject> objects = new LinkedList<>();
@@ -410,7 +441,8 @@ public class MinioUtils {
      * @param bucketName 存储桶
      * @param objectName 文件名
      * @param expires    过期时间 <=7 秒 （外链有效时间（单位：秒））
-     * @return url
+     * @return java.lang.String
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public String getPresignedObjectUrl(String bucketName, String objectName, Integer expires) {
@@ -423,7 +455,8 @@ public class MinioUtils {
      *
      * @param bucketName
      * @param objectName
-     * @return url
+     * @return java.lang.String
+     * @author 王强
      */
     @SneakyThrows(Exception.class)
     public String getPresignedObjectUrl(String bucketName, String objectName) {
@@ -438,8 +471,8 @@ public class MinioUtils {
      * 将URLDecoder编码转成UTF8
      *
      * @param str
-     * @return
-     * @throws UnsupportedEncodingException
+     * @return java.lang.String
+     * @author 王强
      */
     public String getUtf8ByURLDecoder(String str) throws UnsupportedEncodingException {
         String url = str.replaceAll("%(?![0-9a-fA-F]{2})", "%25");

@@ -2,12 +2,16 @@ package com.pandama.top.logRecord.aop;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.logRecord.annotation.OperationLog;
 import com.pandama.top.logRecord.bean.LogDTO;
 import com.pandama.top.logRecord.context.LogRecordContext;
 import com.pandama.top.logRecord.function.CustomFunctionRegistrar;
-import com.pandama.top.logRecord.service.ILogRecordService;
+import com.pandama.top.logRecord.service.LogRecordService;
 import com.pandama.top.logRecord.thread.LogRecordThreadPool;
+import com.pandama.top.starter.web.utils.IpAddressUtils;
+import com.pandama.top.starter.web.utils.WebContextUtils;
+import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
@@ -28,9 +32,10 @@ import java.util.*;
 import java.util.function.Consumer;
 
 /**
- * @description: 系统日志切面
- * @author: 王强
- * @dateTime: 2022-09-01 17:49:18
+ * 系统日志方面
+ *
+ * @author 王强
+ * @date 2023-07-08 15:20:42
  */
 @Aspect
 @Component
@@ -45,7 +50,7 @@ public class SystemLogAspect {
     /**
      * 操作日志服务
      */
-    private final ILogRecordService iOperationLogService;
+    private final LogRecordService iOperationLogService;
 
     /**
      * Spel解析器
@@ -58,21 +63,16 @@ public class SystemLogAspect {
     private final DefaultParameterNameDiscoverer discoverer = new DefaultParameterNameDiscoverer();
 
     public SystemLogAspect(LogRecordThreadPool logRecordThreadPool,
-                           ILogRecordService iOperationLogService) {
+                           LogRecordService iOperationLogService) {
         this.logRecordThreadPool = logRecordThreadPool;
         this.iOperationLogService = iOperationLogService;
     }
 
-    /**
-     * @param pjp 切点信息
-     * @description: 环绕通知
-     * @author: 王强
-     * @date: 2022-09-02 16:29:36
-     * @return: @return {@code Object }
-     * @version: 1.0
-     */
     @Around("@annotation(com.pandama.top.logRecord.annotation.OperationLog) || @annotation(com.pandama.top.logRecord.annotation.OperationLogs)")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
+        // 客户端信息
+        UserAgent userAgent = UserAgent.parseUserAgentString(WebContextUtils.getRequest().getHeader("User-Agent"));
+        String ipAddress = IpAddressUtils.getIpAddress(WebContextUtils.getRequest());
         // 定义返回结果
         Object result;
         // 定义@OperationLog注解数组
@@ -205,6 +205,9 @@ public class SystemLogAspect {
                         logDTO.setExecutionTime(finalExecutionTime);
                         // 发送日志本地监听
                         if (iOperationLogService != null) {
+                            logDTO.setIpAddress(ipAddress);
+                            logDTO.setOs(userAgent.getOperatingSystem().getName());
+                            logDTO.setBrowser(userAgent.getBrowser().getName());
                             iOperationLogService.createLog(logDTO);
                         }
                     } catch (Throwable throwable) {
@@ -231,13 +234,12 @@ public class SystemLogAspect {
     }
 
     /**
+     * 解析注解中定义的spel表达式
+     *
      * @param annotation 注释
      * @param joinPoint  连接点
-     * @description: 解析注解中定义的spel表达式
-     * @author: 王强
-     * @date: 2022-09-02 16:30:21
-     * @return: @return {@code LogDTO }
-     * @version: 1.0
+     * @return com.pandama.top.logRecord.bean.LogDTO
+     * @author 王强
      */
     private LogDTO resolveExpress(OperationLog annotation, JoinPoint joinPoint) {
         // 定义LogDTO对象，Spel解析后的对象
@@ -361,12 +363,6 @@ public class SystemLogAspect {
                         ? (String) extraObj : JSON.toJSONString(extraObj, SerializerFeature.WriteMapNullValue);
             }
 
-            // 必须符合表达式
-            if (StringUtils.isNotBlank(operatorIdSpel)) {
-                Expression operatorIdExpression = parser.parseExpression(operatorIdSpel);
-                operatorId = operatorIdExpression.getValue(context, String.class);
-            }
-
             // 封装日志对象 logDTO
             logDTO = new LogDTO();
             logDTO.setBizId(bizId);
@@ -377,7 +373,9 @@ public class SystemLogAspect {
             logDTO.setOperateDate(new Date());
             logDTO.setMsg(msg);
             logDTO.setExtra(extra);
-            logDTO.setOperatorId(operatorId);
+            logDTO.setOperatorId(UserInfoUtils.getUserId());
+            logDTO.setOperatorCode(UserInfoUtils.getUserInfo().getUsername());
+            logDTO.setOperatorName(UserInfoUtils.getUserInfo().getRealName());
             logDTO.setSuccess(functionExecuteSuccess);
             logDTO.setDiffDTOList(LogRecordContext.getDiffDTOList());
         } catch (Exception e) {
@@ -390,12 +388,11 @@ public class SystemLogAspect {
     }
 
     /**
+     * 获取切点方法
+     *
      * @param joinPoint 切点
-     * @description: 获取切点方法
-     * @author: 王强
-     * @date: 2022-09-03 22:35:36
-     * @return: @return {@code Method }
-     * @version: 1.0
+     * @return java.lang.reflect.Method
+     * @author 王强
      */
     private Method getMethod(JoinPoint joinPoint) {
         Method method = null;

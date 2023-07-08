@@ -6,9 +6,10 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 设备库存操作入参
- * @author: 王强
- * @dateTime: 2023-04-19 12:00:27
+ * 设备商店操作入参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:11:11
  */
 @Data
 public class DeviceStoreOperationDTO {

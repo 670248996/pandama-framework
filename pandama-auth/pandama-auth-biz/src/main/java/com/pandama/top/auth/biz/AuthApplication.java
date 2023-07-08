@@ -6,9 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @description: 身份验证应用程序
- * @author: 王强
- * @dateTime: 2023-06-21 21:34:21
+ * 身份验证应用程序
+ *
+ * @author 王强
+ * @date 2023-07-08 11:54:04
  */
 @EnableFeignClients(basePackages = "com.pandama.top.user.api")
 @EnableDiscoveryClient

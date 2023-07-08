@@ -15,9 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 角色与菜单关联实现类
- * @author: 白剑民
- * @dateTime: 2022/10/31 16:56
+ * 角色菜单服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:54:04
  */
 @Slf4j
 @Service

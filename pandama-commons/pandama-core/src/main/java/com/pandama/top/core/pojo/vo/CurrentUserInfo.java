@@ -8,13 +8,14 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @description: 用户登录信息
- * @author: 王强
- * @dateTime: 2022-08-16 09:54:28
+ * 当前页用户信息
+ *
+ * @author 王强
+ * @date 2023-07-08 15:13:15
  */
 @Data
-@ApiModel("用户登录信息")
-public class UserLoginVO implements Serializable {
+@ApiModel("当前用户信息")
+public class CurrentUserInfo implements Serializable {
 
     private static final long serialVersionUID = 4586107564176031016L;
 
@@ -23,9 +24,6 @@ public class UserLoginVO implements Serializable {
 
     @ApiModelProperty("账号")
     private String username;
-
-    @ApiModelProperty("密码")
-    private String password;
 
     @ApiModelProperty("昵称")
     private String nickName;
@@ -36,14 +34,8 @@ public class UserLoginVO implements Serializable {
     @ApiModelProperty("手机号")
     private String phoneNumber;
 
-    @ApiModelProperty("性别")
-    private Integer gender;
-
     @ApiModelProperty("是否是管理员")
     private Boolean isAdmin;
-
-    @ApiModelProperty("短信验证码")
-    private String smsCode;
 
     @ApiModelProperty("角色编号列表")
     private List<String> roleCodeList;

@@ -2,9 +2,10 @@ package com.pandama.top.core.enums;
 
 
 /**
- * @description: excel文件类型
- * @author: 白剑民
- * @dateTime: 2022/7/10 20:52
+ * excel枚举类型
+ *
+ * @author 王强
+ * @date 2023-07-08 15:12:32
  */
 public enum ExcelTypeEnum {
     /**

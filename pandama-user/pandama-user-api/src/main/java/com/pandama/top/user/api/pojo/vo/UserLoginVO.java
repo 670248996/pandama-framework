@@ -7,9 +7,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @description: 用户登录信息
- * @author: 王强
- * @dateTime: 2022-08-16 09:54:28
+ * 用户登录出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:59
  */
 @Data
 @ApiModel("用户登录信息")

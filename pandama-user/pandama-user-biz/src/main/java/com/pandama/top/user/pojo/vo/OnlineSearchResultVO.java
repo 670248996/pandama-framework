@@ -8,9 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description: 在线用户信息检索返回结果
- * @author: 白剑民
- * @dateTime: 2022/10/26 15:08
+ * 在线搜索结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:48
  */
 @Data
 @ApiModel("在线用户信息检索返回VO")

@@ -1,5 +1,6 @@
 package com.pandama.top.starter.web.upload;
 
+import lombok.NonNull;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
@@ -13,9 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * @description: 自定义多媒体解析器
- * @author: 王强
- * @dateTime: 2022-12-21 10:57:58
+ * 自定义多媒体解析器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:32:52
  */
 @Component
 public class CustomMultipartResolver extends CommonsMultipartResolver {
@@ -26,16 +28,8 @@ public class CustomMultipartResolver extends CommonsMultipartResolver {
     @Autowired
     private ProgressBar progressBar;
 
-    /**
-     * @param request 请求
-     * @description: 解析请求
-     * @author: 王强
-     * @date: 2023-06-14 15:36:42
-     * @return: MultipartParsingResult
-     * @version: 1.0
-     */
     @Override
-    protected MultipartParsingResult parseRequest(HttpServletRequest request) throws MultipartException {
+    protected MultipartParsingResult parseRequest(@NonNull HttpServletRequest request) throws MultipartException {
         //初始化进度条
         progressBar.init();
         String encoding = determineEncoding(request);

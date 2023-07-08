@@ -8,9 +8,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @description: 生产者-消费者线程模型（使用非阻塞队列，CAS+自旋实现）
- * @author: 白剑民
- * @dateTime: 2022/6/29 09:34
+ * 生产者-消费者线程模型（使用非阻塞队列，CAS+自旋实现）
+ *
+ * @author 王强
+ * @date 2023-07-08 15:36:16
  */
 @Slf4j
 public class ThreadNoBlockingModel {
@@ -21,20 +22,20 @@ public class ThreadNoBlockingModel {
     private final Queue<TaskVO> queue = new ConcurrentLinkedQueue<>();
 
     /**
-     * @description: 获取当前队列大小
-     * @author: 白剑民
-     * @date: 2022-07-02 15:09:54
-     * @return: int
-     * @version: 1.0
+     * 获取当前队列大小
+     *
+     * @return int
+     * @author 王强
      */
     public int getQueueSize() {
         return queue.size();
     }
 
     /**
-     * @description: 生产者
-     * @author: 白剑民
-     * @dateTime: 2022/6/29 09:34
+     * 生产者
+     *
+     * @author 王强
+     * @date 2023-07-08 15:36:28
      */
     public class Producer implements Runnable {
         // 任务对象
@@ -52,9 +53,10 @@ public class ThreadNoBlockingModel {
     }
 
     /**
-     * @description: 消费者
-     * @author: 白剑民
-     * @dateTime: 2022/6/29 09:34
+     * 消费者
+     *
+     * @author 王强
+     * @date 2023-07-08 15:36:32
      */
     public class Consumer implements Runnable {
 
@@ -62,6 +64,7 @@ public class ThreadNoBlockingModel {
          * 任务执行逻辑
          */
         private final java.util.function.Consumer<TaskVO> consumer;
+
         /**
          * 由外部统一传入一个线程计数器，用于统计消费者线程退出情况
          * 如果没有阻塞主线程的需要，则无需传入

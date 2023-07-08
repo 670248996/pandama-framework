@@ -33,9 +33,10 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 
 /**
- * @description: 令牌身份验证过滤器
- * @author: 王强
- * @dateTime: 2022-10-26 14:58:06
+ * 令牌身份验证过滤器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:33
  */
 @Slf4j
 @Component

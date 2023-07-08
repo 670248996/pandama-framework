@@ -12,9 +12,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @description: 异步线程执行器自动配置类
- * @author: 白剑民
- * @dateTime: 2022/9/20 21:03
+ * 异步线程执行器自动配置类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:36:41
  */
 @Slf4j
 @Configuration
@@ -31,13 +32,6 @@ public class ThreadPoolAutoConfiguration {
         this.properties = properties;
     }
 
-    /**
-     * @description: 自定义线程池
-     * @author: 白剑民
-     * @date: 2022-09-20 21:23:33
-     * @return: java.util.concurrent.Executor
-     * @version: 1.0
-     */
     @Bean
     public Executor asyncServiceExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();

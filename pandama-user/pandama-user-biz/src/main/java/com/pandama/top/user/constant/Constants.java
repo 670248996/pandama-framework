@@ -1,16 +1,18 @@
 package com.pandama.top.user.constant;
 
 /**
- * @description: 用户常量
- * @author: 王强
- * @dateTime: 2023-05-23 20:45:38
+ * 常量
+ *
+ * @author 王强
+ * @date 2023-07-08 15:40:47
  */
 public interface Constants {
 
     /**
-     * @description: 前缀
-     * @author: 王强
-     * @dateTime: 2023-06-17 09:38:38
+     * 前缀
+     *
+     * @author 王强
+     * @date 2023-07-08 15:40:51
      */
     interface Prefix {
         /**
@@ -20,9 +22,10 @@ public interface Constants {
     }
 
     /**
-     * @description: key值相关常量
-     * @author: hyj
-     * @dateTime: 2022/11/29 17:37
+     * key值相关常量
+     *
+     * @author 王强
+     * @date 2023-07-08 15:41:09
      */
     interface Redis {
         /**

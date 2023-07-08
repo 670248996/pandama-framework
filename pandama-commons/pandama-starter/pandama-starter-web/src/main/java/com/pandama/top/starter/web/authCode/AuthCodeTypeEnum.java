@@ -1,9 +1,10 @@
 package com.pandama.top.starter.web.authCode;
 
 /**
- * @description: 图形验证码类型枚举
- * @author: 白剑民
- * @dateTime: 2023/4/21 14:50
+ * 图形验证码类型枚举
+ *
+ * @author 王强
+ * @date 2023-07-08 15:31:59
  */
 public enum AuthCodeTypeEnum {
     /**

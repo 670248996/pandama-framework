@@ -4,9 +4,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 基地用户信息出参
- * @author: 王强
- * @dateTime: 2023-05-24 12:15:37
+ * 基地用户信息出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:13:11
  */
 @Data
 public class BaseUserInfoVO {

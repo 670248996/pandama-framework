@@ -8,9 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description: 角色授权用户回参
- * @author: 白剑民
- * @dateTime: 2022/10/31 16:23
+ * 角色授权用户回参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:56
  */
 @Data
 @ApiModel("角色授权用户回参VO")

@@ -21,9 +21,10 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * @description: 网关全局异常处理
- * @author: 王强
- * @dateTime: 2022-10-25 21:01:03
+ * 网关全局异常处理
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:20
  */
 @Slf4j
 @Order(-1)

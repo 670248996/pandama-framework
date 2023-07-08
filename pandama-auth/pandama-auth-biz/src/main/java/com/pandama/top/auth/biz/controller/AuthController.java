@@ -6,6 +6,7 @@ import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.constant.RedisConstant;
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.core.utils.UserInfoUtils;
+import com.pandama.top.logRecord.annotation.OperationLog;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ import java.util.Map;
 
 /**
  * 授权接口
+ *
+ * @author 王强
+ * @date 2023-07-08 11:53:35
  */
 @RestController
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
@@ -36,6 +40,7 @@ public class AuthController {
         return new JWKSet(key).toJSONObject();
     }
 
+    @OperationLog(bizEvent = "'1'", msg = "'【' + #user.realName + '】登出成功'", tag = "'2'")
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public Response<?> logout() {
         String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, UserInfoUtils.getUserId());

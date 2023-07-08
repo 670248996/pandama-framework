@@ -14,106 +14,99 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description: 部门信息接口类
- * @author: 白剑民
- * @dateTime: 2022/10/21 16:00
+ * 部门服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:54:12
  */
 public interface DeptService extends IService<SysDept> {
 
     /**
-     * @description: 生成部门编号
-     * @author: hyj
-     * @date: 2022-11-14 13:48:23
-     * @return: java.lang.String
-     * @version: 1.0
+     * 获取编号
+     *
+     * @return java.lang.String
+     * @author 王强
      */
     String getNo();
 
     /**
+     * 创建
+     *
      * @param dto 创建部门传参
-     * @description: 创建部门
-     * @author: 白剑民
-     * @date: 2022-10-24 17:32:08
-     * @return: com.gientech.iot.user.entity.vo.DepartmentCreateResultVO
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void create(DeptCreateDTO dto);
 
     /**
+     * 详情
+     *
      * @param deptId 部门id
-     * @description: 部门详情
-     * @author: 王强
-     * @date: 2023-05-23 14:32:05
-     * @return: DepartmentDetailResultVO
-     * @version: 1.0
+     * @return com.pandama.top.user.pojo.vo.DeptDetailResultVO
+     * @author 王强
      */
     DeptDetailResultVO detail(Long deptId);
 
     /**
+     * 更新
+     *
      * @param dto 部门信息更新传参
-     * @description: 部门信息更新
-     * @author: 白剑民
-     * @date: 2022-10-25 09:47:35
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void update(DeptUpdateDTO dto);
 
     /**
+     * 删除
+     *
      * @param deptIds 部门id列表
-     * @description: 删除部门信息
-     * @author: 白剑民
-     * @date: 2022-10-26 14:23:49
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void delete(List<Long> deptIds);
 
     /**
+     * 列表
+     *
      * @param dto 部门信息传参
-     * @description: 部门信息列表
-     * @author: 白剑民
-     * @date: 2022-10-24 17:32:08
-     * @return: com.gientech.iot.user.entity.vo.DepartmentCreateResultVO
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.pojo.vo.DeptSearchResultVO>
+     * @author 王强
      */
     List<DeptSearchResultVO> list(DeptSearchDTO dto);
 
     /**
+     * 根据指定用户id列表查询部门信息列表
+     *
      * @param userIds 用户id列表
-     * @description: 根据指定用户id列表查询部门信息列表
-     * @author: 白剑民
-     * @date: 2022-10-24 17:32:08
-     * @return: com.gientech.iot.user.entity.vo.DepartmentCreateResultVO
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.pojo.vo.DeptSearchResultVO>
+     * @author 王强
      */
     List<DeptSearchResultVO> listByUserIds(List<Long> userIds);
 
     /**
+     * 根据指定用户id列表查询用户部门信息Map
+     *
      * @param userIds 用户id列表
-     * @description: 根据指定用户id列表查询用户部门信息Map
-     * @author: 白剑民
-     * @date: 2022-10-24 17:32:08
-     * @return: com.gientech.iot.user.entity.vo.DepartmentCreateResultVO
-     * @version: 1.0
+     * @return java.util.Map<java.lang.Long, com.pandama.top.user.pojo.vo.DeptSearchResultVO>
+     * @author 王强
      */
     Map<Long, DeptSearchResultVO> mapByUserIds(List<Long> userIds);
 
     /**
+     * 树
+     *
      * @param dto 部门信息传参
-     * @description: 部门信息树
-     * @author: 白剑民
-     * @date: 2022-10-24 17:32:08
-     * @return: com.gientech.iot.user.entity.vo.DepartmentCreateResultVO
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.pojo.vo.DeptTreeVO>
+     * @author 王强
      */
     List<DeptTreeVO> tree(DeptSearchDTO dto);
 
     /**
+     * 获取树通过部门id
+     *
      * @param deptId 父级部门id
-     * @description: 根据父级部门id获取部门树
-     * @author: 白剑民
-     * @date: 2022-10-24 16:17:16
-     * @return: java.util.List<com.gientech.iot.user.entity.vo.DepartmentTreeVO>
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.pojo.vo.DeptTreeVO>
+     * @author 王强
      */
     List<DeptTreeVO> getTreeByDeptId(Long deptId);
 }

@@ -18,6 +18,12 @@ import org.springframework.messaging.converter.MessageConverter;
 
 import java.util.List;
 
+/**
+ * RocketMq自动配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:30:47
+ */
 @Configuration
 @EnableConfigurationProperties(RocketEnhanceProperties.class)
 public class RocketMQEnhanceAutoConfiguration {

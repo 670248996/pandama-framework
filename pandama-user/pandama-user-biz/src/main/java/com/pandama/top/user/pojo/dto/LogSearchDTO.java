@@ -12,9 +12,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * @description: 系统操作日志搜索传参
- * @author: 白剑民
- * @dateTime: 2022/11/21 09:31
+ * 系统操作日志搜索传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:50:03
  */
 @EqualsAndHashCode(callSuper = false)
 @Data

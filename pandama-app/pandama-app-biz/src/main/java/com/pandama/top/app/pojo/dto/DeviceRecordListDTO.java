@@ -6,9 +6,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description: 设备列表入参
- * @author: 王强
- * @dateTime: 2023-04-20 13:44:01
+ * 设备记录列表入参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:11:10
  */
 @Data
 public class DeviceRecordListDTO {

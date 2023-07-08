@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 日志记录上下文
- * @author: 王强
- * @dateTime: 2022-09-02 17:49:32
+ * 日志记录上下文
+ *
+ * @author 王强
+ * @date 2023-07-08 15:21:50
  */
 public class LogRecordContext {
 
@@ -31,24 +32,22 @@ public class LogRecordContext {
     public static final String CONTEXT_KEY_NAME_ERROR_MSG = "_errorMsg";
 
     /**
-     * @description: 获取上下文
-     * @author: 王强
-     * @date: 2022-09-03 22:42:12
-     * @return: @return {@code StandardEvaluationContext }
-     * @version: 1.0
+     * 获取上下文
+     *
+     * @return org.springframework.expression.spel.support.StandardEvaluationContext
+     * @author 王强
      */
     public static StandardEvaluationContext getContext() {
         return CONTEXT_THREAD_LOCAL.get() == null ? new StandardEvaluationContext(): CONTEXT_THREAD_LOCAL.get();
     }
 
     /**
+     * 设置上下文变量信息
+     *
      * @param key   关键
      * @param value 价值
-     * @description: 设置上下文变量信息
-     * @author: 王强
-     * @date: 2022-09-03 22:42:17
-     * @return:
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     public static void putVariables(String key, Object value) {
         StandardEvaluationContext context = getContext();
@@ -57,11 +56,10 @@ public class LogRecordContext {
     }
 
     /**
-     * @description: 清除上下文信息
-     * @author: 王强
-     * @date: 2022-09-03 22:42:34
-     * @return:
-     * @version: 1.0
+     * 清除上下文信息
+     *
+     * @return void
+     * @author 王强
      */
     public static void clearContext() {
         CONTEXT_THREAD_LOCAL.remove();
@@ -74,23 +72,21 @@ public class LogRecordContext {
             new NamedThreadLocal<>("ThreadLocal DiffDTOList");
 
     /**
-     * @description: 获取发生变化的数据信息集合
-     * @author: 王强
-     * @date: 2022-09-03 22:43:53
-     * @return: @return {@code List<DiffDTO> }
-     * @version: 1.0
+     * 获取发生变化的数据信息集合
+     *
+     * @return java.util.List<com.pandama.top.logRecord.bean.DiffDTO>
+     * @author 王强
      */
     public static List<DiffDTO> getDiffDTOList() {
         return DIFF_DTO_LIST_THREAD_LOCAL.get() == null ? new ArrayList<>() : DIFF_DTO_LIST_THREAD_LOCAL.get();
     }
 
     /**
+     * 添加发生变化的数据
+     *
      * @param diffDTO 发生变化的数据
-     * @description: 添加发生变化的数据
-     * @author: 王强
-     * @date: 2022-09-03 22:44:25
-     * @return:
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     public static void addDiffDTO(DiffDTO diffDTO) {
         if (diffDTO != null) {
@@ -101,11 +97,10 @@ public class LogRecordContext {
     }
 
     /**
-     * @description: 清除发生变化的数据集合
-     * @author: 王强
-     * @date: 2022-09-03 22:44:46
-     * @return:
-     * @version: 1.0
+     * 清除发生变化的数据集合
+     *
+     * @return void
+     * @author 王强
      */
     public static void clearDiffDTOList() {
         DIFF_DTO_LIST_THREAD_LOCAL.remove();

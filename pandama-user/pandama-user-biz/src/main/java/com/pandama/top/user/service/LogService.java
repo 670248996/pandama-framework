@@ -13,56 +13,55 @@ import com.pandama.top.core.pojo.vo.PageVO;
 import java.util.List;
 
 /**
- * @description: 日志信息接口类
- * @author: 白剑民
- * @dateTime: 2022/11/18 15:03
+ * 日志服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:55:35
  */
 public interface LogService extends IService<SysLog> {
 
     /**
+     * 页面
+     *
      * @param dto 系统操作日志搜索传参
-     * @description: 系统操作日志搜索
-     * @author: 白剑民
-     * @date: 2022-11-21 09:42:36
-     * @return: com.gientech.iot.pojo.vo.PageResultVO<com.gientech.iot.user.entity.vo.LogSearchResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.pojo.vo.PageVO<com.pandama.top.user.pojo.vo.LogSearchResultVO>
+     * @author 王强
      */
     PageVO<LogSearchResultVO> page(LogSearchDTO dto);
 
     /**
+     * 删除
+     *
      * @param ids id
-     * @description: 删除
-     * @author: 王强
-     * @date: 2023-05-29 15:09:26
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void delete(List<Long> ids);
 
     /**
-     * @param dto      系统操作日志搜索传参
-     * @description: 导出系统操作日志excel
-     * @author: 白剑民
-     * @date: 2022-11-24 13:51:37
-     * @version: 1.0
+     * 导出excel
+     *
+     * @param dto 系统操作日志搜索传参
+     * @return void
+     * @author 王强
      */
     void exportExcel(LogSearchDTO dto);
 
     /**
-     * @description: 清空日志
-     * @author: 白剑民
-     * @date: 2023-05-06 10:16:08
-     * @version: 1.0
+     * 清除
+     *
+     * @param logType 日志类型
+     * @return void
+     * @author 王强
      */
     void clean(LogTypeEnum logType);
 
     /**
+     * 在线用户页面
+     *
      * @param dto 入参
-     * @description: 在线用户页面
-     * @author: 王强
-     * @date: 2023-05-31 12:52:07
-     * @return: PageResultVO<OnlineSearchResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.pojo.vo.PageVO<com.pandama.top.user.pojo.vo.OnlineSearchResultVO>
+     * @author 王强
      */
     PageVO<OnlineSearchResultVO> onlineUserPage(OnlineSearchDTO dto);
 

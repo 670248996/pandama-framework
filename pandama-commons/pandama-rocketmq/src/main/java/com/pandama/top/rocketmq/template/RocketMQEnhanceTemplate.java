@@ -14,9 +14,10 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.util.StringUtils;
 
 /**
- * @description: 火箭mqenhance模板
- * @author: 王强
- * @dateTime: 2023-06-17 13:56:25
+ * 火箭mqenhance模板
+ *
+ * @author 王强
+ * @date 2023-07-08 15:30:17
  */
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -32,7 +33,11 @@ public class RocketMQEnhanceTemplate {
 
     /**
      * 根据系统上下文自动构建隔离后的topic
-     * 构建目的地
+     *
+     * @param topic 主题
+     * @param tag   标签
+     * @return java.lang.String
+     * @author 王强
      */
     public String buildDestination(String topic, String tag) {
         topic = reBuildTopic(topic);
@@ -43,6 +48,8 @@ public class RocketMQEnhanceTemplate {
      * 根据环境重新隔离topic
      *
      * @param topic 原始topic
+     * @return java.lang.String
+     * @author 王强
      */
     private String reBuildTopic(String topic) {
         if (properties.isEnabledIsolation() && StringUtils.hasText(properties.getEnvironment())) {
@@ -53,12 +60,26 @@ public class RocketMQEnhanceTemplate {
 
     /**
      * 发送同步消息
+     *
+     * @param topic   主题
+     * @param tag     标签
+     * @param message 消息
+     * @return org.apache.rocketmq.client.producer.SendResult
+     * @author 王强
      */
     public <T extends BaseMessage> SendResult send(String topic, String tag, T message) {
         // 注意分隔符
         return send(buildDestination(topic, tag), message);
     }
 
+    /**
+     * 发送
+     *
+     * @param destination 目地
+     * @param message     消息
+     * @return org.apache.rocketmq.client.producer.SendResult
+     * @author 王强
+     */
     public <T extends BaseMessage> SendResult send(String destination, T message) {
         // 设置业务键，此处根据公共的参数进行处理
         // 更多的其它基础业务处理...
@@ -71,11 +92,27 @@ public class RocketMQEnhanceTemplate {
 
     /**
      * 发送延迟消息
+     *
+     * @param topic      主题
+     * @param tag        标签
+     * @param message    消息
+     * @param delayLevel 延迟水平
+     * @return org.apache.rocketmq.client.producer.SendResult
+     * @author 王强
      */
     public <T extends BaseMessage> SendResult send(String topic, String tag, T message, int delayLevel) {
         return send(buildDestination(topic, tag), message, delayLevel);
     }
 
+    /**
+     * 发送
+     *
+     * @param destination 目地
+     * @param message     消息
+     * @param delayLevel  延迟水平
+     * @return org.apache.rocketmq.client.producer.SendResult
+     * @author 王强
+     */
     public <T extends BaseMessage> SendResult send(String destination, T message, int delayLevel) {
         Message<T> sendMessage = MessageBuilder.withPayload(message).setHeader(RocketMQHeaders.KEYS, message.getKey()).build();
         SendResult sendResult = template.syncSend(destination, sendMessage, 3000, delayLevel);

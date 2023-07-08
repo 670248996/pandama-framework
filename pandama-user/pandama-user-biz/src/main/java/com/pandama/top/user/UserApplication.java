@@ -7,9 +7,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @description: 用户中心启动类
- * @author: 白剑民
- * @dateTime: 2022/10/17 15:46
+ * 用户应用程序
+ *
+ * @author 王强
+ * @date 2023-07-08 15:58:15
  */
 @EnableFeignClients
 @EnableDiscoveryClient

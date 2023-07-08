@@ -16,12 +16,11 @@ import java.util.List;
 public interface RoleMenuMapper extends BaseMapper<SysRoleMenu> {
 
     /**
+     * 获取菜单id通过角色id
+     *
      * @param roleIds 角色id列表
-     * @description: 获取指定角色列表下的关联菜单列表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getMenuIdsByRoleIds(@Param("roleIds") List<Long> roleIds);
 

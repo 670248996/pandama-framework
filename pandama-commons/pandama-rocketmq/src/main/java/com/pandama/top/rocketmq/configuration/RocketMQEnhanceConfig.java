@@ -13,9 +13,10 @@ import org.springframework.messaging.converter.MessageConverter;
 import java.util.List;
 
 /**
- * @description: 火箭mqenhance配置
- * @author: 王强
- * @dateTime: 2023-06-17 13:58:18
+ * 火箭mqenhance配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:29:31
  */
 @Configuration
 public class RocketMQEnhanceConfig {
@@ -23,6 +24,9 @@ public class RocketMQEnhanceConfig {
     /**
      * 解决RocketMQ Jackson不支持Java时间类型配置
      * 源码参考：{@link org.apache.rocketmq.spring.autoconfigure.MessageConverterConfiguration}
+     *
+     * @return org.apache.rocketmq.spring.support.RocketMQMessageConverter
+     * @author 王强
      */
     @Bean
     @Primary

@@ -8,9 +8,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description: 创建部门传参
- * @author: 白剑民
- * @dateTime: 2022/10/24 17:27
+ * 创建部门传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:49:11
  */
 @Data
 @ApiModel("创建部门传参DTO")

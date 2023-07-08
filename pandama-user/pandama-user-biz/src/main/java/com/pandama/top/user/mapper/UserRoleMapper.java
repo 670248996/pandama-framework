@@ -8,30 +8,29 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @description: 用户与角色关联Mapper接口
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:32
+ * 用户角色mapper
+ *
+ * @author 王强
+ * @date 2023-07-08 15:48:51
  */
 @Repository
 public interface UserRoleMapper extends BaseMapper<SysUserRole> {
 
     /**
+     * 获取用户id通过角色id
+     *
      * @param roleIds 角色id列表
-     * @description: 获取指定角色列表下的关联用户列表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getUserIdsByRoleIds(@Param("roleIds") List<Long> roleIds);
 
     /**
+     * 获取角色id通过用户id
+     *
      * @param userIds 用户id列表
-     * @description: 获取指定用户列表下的关联角色列表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getRoleIdsByUserIds(@Param("userIds") List<Long> userIds);
 

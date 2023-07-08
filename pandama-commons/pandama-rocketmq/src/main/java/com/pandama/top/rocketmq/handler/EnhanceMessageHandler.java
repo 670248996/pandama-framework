@@ -11,6 +11,12 @@ import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 
 import javax.annotation.Resource;
 
+/**
+ * 提高消息处理程序
+ *
+ * @author 王强
+ * @date 2023-07-08 15:29:42
+ */
 @Slf4j
 public abstract class EnhanceMessageHandler<T extends BaseMessage> {
     /**
@@ -119,6 +125,12 @@ public abstract class EnhanceMessageHandler<T extends BaseMessage> {
         }
     }
 
+    /**
+     * 处理重试
+     *
+     * @param message 消息
+     * @author 王强
+     */
     protected void handleRetry(T message) {
         // 获取子类RocketMQMessageListener注解拿到topic和tag
         RocketMQMessageListener annotation = this.getClass().getAnnotation(RocketMQMessageListener.class);

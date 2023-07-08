@@ -1,18 +1,20 @@
 package com.pandama.top.logRecord.bean;
 
 
+import com.pandama.top.rocketmq.pojo.BaseMessage;
 import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * @description: 日志信息dto
- * @author: 王强
- * @dateTime: 2022-09-01 17:54:02
+ * 日志入参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:21:20
  */
 @Data
-public class LogDTO {
+public class LogDTO extends BaseMessage {
 	/**
 	 * 业务ID
 	 */
@@ -61,10 +63,31 @@ public class LogDTO {
 	 * 额外信息
 	 */
 	private String extra;
+
 	/**
 	 * 操作人ID
 	 */
-	private String operatorId;
+	private Long operatorId;
+	/**
+	 * 操作人编号
+	 */
+	private String operatorCode;
+	/**
+	 * 操作人姓名
+	 */
+	private String operatorName;
+	/**
+	 * ip地址
+	 */
+	private String ipAddress;
+	/**
+	 * 操作系统
+	 */
+	private String os;
+	/**
+	 * 浏览器
+	 */
+	private String browser;
 	/**
 	 * 实体DIFF列表
 	 */

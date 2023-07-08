@@ -27,6 +27,9 @@ import java.util.List;
 
 /**
  * 认证服务器配置
+ *
+ * @author 王强
+ * @date 2023-07-08 11:53:28
  */
 @AllArgsConstructor
 @Configuration

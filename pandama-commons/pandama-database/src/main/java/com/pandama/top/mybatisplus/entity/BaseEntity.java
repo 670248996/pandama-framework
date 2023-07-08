@@ -7,9 +7,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description: 所有实体类的基类
- * @author: 白剑民
- * @dateTime: 2022/10/17 15:54
+ * 基础实体
+ *
+ * @author 王强
+ * @date 2023-07-08 15:18:58
  */
 @Data
 public class BaseEntity {

@@ -22,9 +22,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @description: 字典控制层
- * @author: 白剑民
- * @dateTime: 2023/5/2 20:39
+ * 字典控制器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:42:53
  */
 @RestController
 @RequestMapping("/dict")
@@ -37,12 +38,11 @@ public class DictController {
     private final DictService dictService;
 
     /**
+     * 创建
+     *
      * @param dto 创建字典传参
-     * @description: 创建dict类型
-     * @author: 王强
-     * @date: 2023-06-06 13:06:06
-     * @return: Response<DictCreateResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("创建字典")
     @PostMapping
@@ -52,12 +52,11 @@ public class DictController {
     }
 
     /**
+     * 删除
+     *
      * @param dictIds 字典主键id
-     * @description: 删除dict通过id
-     * @author: 王强
-     * @date: 2023-06-06 13:06:08
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("根据主键id删除字典信息")
     @DeleteMapping
@@ -67,12 +66,11 @@ public class DictController {
     }
 
     /**
+     * 更新
+     *
      * @param dto 字典更新传参
-     * @description: 更新dict类型
-     * @author: 王强
-     * @date: 2023-06-06 13:06:12
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("更新字典")
     @PutMapping
@@ -82,12 +80,11 @@ public class DictController {
     }
 
     /**
+     * 详情
+     *
      * @param dictId 字典主键id
-     * @description: 获取dict通过id
-     * @author: 王强
-     * @date: 2023-06-06 13:06:17
-     * @return: Response<DictInfoVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.DictDetailResultVO>
+     * @author 王强
      */
     @ApiOperation("根据主键id获取字典信息")
     @GetMapping
@@ -97,12 +94,11 @@ public class DictController {
     }
 
     /**
+     * 列表
+     *
      * @param dto 入参
-     * @description: 获取字典列表
-     * @author: 王强
-     * @date: 2023-06-16 15:15:17
-     * @return: Response<List < DictSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.DictSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("获取所有字典")
     @PostMapping("/list")
@@ -111,12 +107,12 @@ public class DictController {
     }
 
     /**
+     * 改变状态
+     *
      * @param dictId 字典主键id
-     * @description: 启用禁用字典项
-     * @author: 王强
-     * @date: 2023-06-06 13:06:48
-     * @return: Response<Void>
-     * @version: 1.0
+     * @param status 状态
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("启用禁用字典项")
     @PutMapping("/changeStatus")

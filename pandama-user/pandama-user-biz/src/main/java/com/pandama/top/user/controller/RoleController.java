@@ -23,9 +23,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @description: 角色信息控制层
- * @author: 白剑民
- * @dateTime: 2022/10/31 11:14
+ * 角色控制器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:44:42
  */
 @RestController
 @RequestMapping("/role")
@@ -38,12 +39,11 @@ public class RoleController {
     private final RoleService roleService;
 
     /**
+     * 创建
+     *
      * @param dto 角色信息创建传参
-     * @description: 角色信息创建
-     * @author: 白剑民
-     * @date: 2022-10-31 16:28:11
-     * @return: com.gientech.iot.global.response.Response<com.gientech.iot.user.entity.vo.RoleCreateResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("角色信息创建")
     @PostMapping
@@ -53,12 +53,11 @@ public class RoleController {
     }
 
     /**
+     * 详情
+     *
      * @param roleId 角色id
-     * @description: 角色信息详情
-     * @author: 王强
-     * @date: 2023-05-22 17:36:37
-     * @return: Response<RoleDetailResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.RoleDetailResultVO>
+     * @author 王强
      */
     @ApiOperation("角色信息详情")
     @GetMapping
@@ -67,12 +66,11 @@ public class RoleController {
     }
 
     /**
+     * 更新
+     *
      * @param dto 角色信息更新传参
-     * @description: 角色信息更新
-     * @author: 白剑民
-     * @date: 2022-10-31 15:17:42
-     * @return: com.gientech.iot.global.response.Response<java.util.List < com.gientech.iot.user.entity.Role>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("角色信息更新")
     @PutMapping
@@ -82,12 +80,11 @@ public class RoleController {
     }
 
     /**
+     * 删除
+     *
      * @param roleIds 角色id
-     * @description: 角色信息删除
-     * @author: 白剑民
-     * @date: 2022-10-31 16:22:08
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("角色信息删除")
     @DeleteMapping
@@ -97,12 +94,11 @@ public class RoleController {
     }
 
     /**
+     * 列表
+     *
      * @param dto 角色信息列表传参
-     * @description: 角色信息列表
-     * @author: 王强
-     * @date: 2023-05-22 17:36:37
-     * @return: Response<List < RoleSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.RoleSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("角色信息列表")
     @PostMapping("/list")
@@ -111,12 +107,11 @@ public class RoleController {
     }
 
     /**
+     * 页面
+     *
      * @param dto 角色信息分页传参
-     * @description: 角色信息分页
-     * @author: 王强
-     * @date: 2023-05-22 17:36:37
-     * @return: Response<PageResultVO < RoleSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.RoleSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("角色信息分页")
     @PostMapping("/page")
@@ -125,12 +120,11 @@ public class RoleController {
     }
 
     /**
+     * 获取角色列表通过用户id
+     *
      * @param userId 用户id
-     * @description: 根据用户id获取其下所有角色列表
-     * @author: 白剑民
-     * @date: 2022-10-31 13:33:33
-     * @return: com.gientech.iot.global.response.Response<java.util.List < com.gientech.iot.user.entity.Role>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.entity.SysRole>>
+     * @author 王强
      */
     @ApiOperation("获取用户的所有角色列表")
     @GetMapping("/listByUserId")
@@ -139,12 +133,11 @@ public class RoleController {
     }
 
     /**
+     * 获取角色授权用户信息分页
+     *
      * @param dto 查询入参
-     * @description: 获取角色授权用户信息分页
-     * @author: 王强
-     * @date: 2023-05-23 12:23:26
-     * @return: Response<PageResultVO < RoleAuthUserVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.RoleAuthUserVO>>
+     * @author 王强
      */
     @ApiOperation("获取角色授权用户分页")
     @PostMapping("/authUser/authPage")
@@ -153,12 +146,11 @@ public class RoleController {
     }
 
     /**
+     * 获取角色未授权用户信息分页
+     *
      * @param dto 查询入参
-     * @description: 获取角色未授权用户信息分页
-     * @author: 王强
-     * @date: 2023-05-23 12:23:26
-     * @return: Response<PageResultVO < RoleAuthUserVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.core.pojo.vo.PageVO < com.pandama.top.user.pojo.vo.RoleAuthUserVO>>
+     * @author 王强
      */
     @ApiOperation("获取角色授权用户分页")
     @PostMapping("/authUser/unAuthPage")
@@ -167,12 +159,11 @@ public class RoleController {
     }
 
     /**
+     * 角色取消授权用户
+     *
      * @param dto 取消入参
-     * @description: 角色取消授权用户
-     * @author: 王强
-     * @date: 2023-05-23 12:23:26
-     * @return: Response<PageResultVO < RoleAuthUserVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("角色取消授权用户")
     @PutMapping("/authUser/cancel")
@@ -182,12 +173,11 @@ public class RoleController {
     }
 
     /**
+     * 分配用户角色
+     *
      * @param dto 入参
-     * @description: 分配用户角色
-     * @author: 王强
-     * @date: 2023-05-23 12:47:53
-     * @return: Response<Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("角色授权用户")
     @PutMapping("/authUser/confirm")
@@ -197,13 +187,12 @@ public class RoleController {
     }
 
     /**
+     * 改变状态
+     *
      * @param roleId 角色id
      * @param status 启用或禁用
-     * @description: 启用或禁用角色
-     * @author: 白剑民
-     * @date: 2022-10-31 17:25:36
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("启用或禁用角色")
     @PutMapping("/changeStatus")

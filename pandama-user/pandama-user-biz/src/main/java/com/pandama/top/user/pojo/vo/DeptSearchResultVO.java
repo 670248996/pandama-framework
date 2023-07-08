@@ -8,9 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description: 部门树VO
- * @author: 白剑民
- * @dateTime: 2022/10/21 15:21
+ * 部门搜索结果出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:23
  */
 @Data
 @ApiModel("部门查询VO")

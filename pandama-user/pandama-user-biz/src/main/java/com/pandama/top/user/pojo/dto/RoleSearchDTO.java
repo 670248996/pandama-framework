@@ -7,9 +7,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @description: 角色查询传参
- * @author: 白剑民
- * @dateTime: 2022/10/31 16:24
+ * 角色查询传参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:51:27
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -4,19 +4,19 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @description: MD5加密工具类
- * @author: 王强
- * @dateTime: 2022-10-24 12:26:44
+ * md5工具
+ *
+ * @author 王强
+ * @date 2023-07-08 15:15:50
  */
 public class MD5Utils {
 
     /**
+     * md5
+     *
      * @param plainText 需要加密的数据
-     * @description: 对文本执行 md5 摘要加密
-     * @author: 王强
-     * @date: 2022-10-24 13:17:47
-     * @return: String
-     * @version: 1.0
+     * @return java.lang.String
+     * @author 王强
      */
     public static String md5(String plainText) {
         if (null == plainText) {

@@ -3,9 +3,10 @@ package com.pandama.top.logRecord.bean;
 import lombok.Data;
 
 /**
- * @description: 发生变化的字段信息dto
- * @author: 王强
- * @dateTime: 2022-09-01 17:57:19
+ * 发生变化的字段信息dto
+ *
+ * @author 王强
+ * @date 2023-07-08 15:21:16
  */
 @Data
 public class DiffFieldDTO {

@@ -2,7 +2,10 @@ package com.pandama.top.auth.biz.service;
 
 import com.pandama.top.auth.api.pojo.SecurityUser;
 import com.pandama.top.auth.api.constant.MessageConstant;
+import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.core.utils.BeanConvertUtils;
+import com.pandama.top.core.utils.UserInfoUtils;
+import com.pandama.top.logRecord.context.LogRecordContext;
 import com.pandama.top.user.api.pojo.vo.UserLoginVO;
 import com.pandama.top.user.api.service.UserFeignService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +21,9 @@ import org.springframework.stereotype.Service;
 
 /**
  * 用户管理业务类
+ *
+ * @author 王强
+ * @date 2023-07-08 11:53:57
  */
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
@@ -28,6 +34,9 @@ public class UserServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserLoginVO user = userFeignService.findUserByUsername(username);
+        LogRecordContext.putVariables("user", user);
+        UserInfoUtils.setUserInfo(BeanConvertUtils.convert(user, CurrentUserInfo::new)
+                .orElse(new CurrentUserInfo()));
         SecurityUser securityUser = new SecurityUser(user);
         if (!securityUser.isEnabled()) {
             throw new DisabledException(MessageConstant.ACCOUNT_DISABLED);

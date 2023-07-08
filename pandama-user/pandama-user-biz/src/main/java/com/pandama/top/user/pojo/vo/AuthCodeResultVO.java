@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 图形验证码返回值
- * @author: 白剑民
- * @dateTime: 2023/4/21 14:37
+ * 图形验证码返回值
+ *
+ * @author 王强
+ * @date 2023-07-08 15:52:11
  */
 @Data
 @ApiModel("图形验证码信息")

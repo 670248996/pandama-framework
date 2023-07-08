@@ -6,9 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * @description: minio自动化配置
- * @author: 王强
- * @dateTime: 2023-06-17 14:19:05
+ * minio自动化配置
+ *
+ * @author 王强
+ * @date 2023-07-08 15:26:35
  */
 @Configuration
 @Import({MinioConfig.class, MinioUtils.class})

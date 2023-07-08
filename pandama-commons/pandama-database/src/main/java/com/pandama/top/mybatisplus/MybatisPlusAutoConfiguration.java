@@ -11,20 +11,21 @@ import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @description: mybatis-plus配置类
- * @author: 白剑民
- * @dateTime: 2022/7/8 16:34
+ * mybatis-plus配置类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:19:35
  */
 @Configuration
 @EnableTransactionManagement
 @Import({FillMetaObjectHandler.class})
 public class MybatisPlusAutoConfiguration {
+
     /**
-     * @description: 乐观锁及分页插件配置
-     * @author: 白剑民
-     * @date: 2022-07-08 16:37:34
-     * @return: com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor
-     * @version: 1.0
+     * 乐观锁及分页插件配置
+     *
+     * @return com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor
+     * @author 王强
      */
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {

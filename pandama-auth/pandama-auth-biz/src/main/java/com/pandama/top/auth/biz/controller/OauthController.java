@@ -4,6 +4,8 @@ import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.pojo.Oauth2TokenDTO;
 import com.pandama.top.auth.api.constant.RedisConstant;
 import com.pandama.top.core.global.response.Response;
+import com.pandama.top.logRecord.annotation.OperationLog;
+import com.pandama.top.logRecord.context.LogRecordContext;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Oauth2获取令牌接口
+ *
+ * @author 王强
+ * @date 2023-07-08 11:53:38
  */
 @RestController
 @RequestMapping("/oauth")
@@ -34,6 +39,7 @@ public class OauthController {
     /**
      * Oauth2登录认证
      */
+    @OperationLog(bizEvent = "'1'", msg = "'【' + #user.realName + '】登录成功'", tag = "'1'")
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public Response<Oauth2TokenDTO> login(Principal principal, @RequestParam Map<String, String> parameters)
             throws HttpRequestMethodNotSupportedException {

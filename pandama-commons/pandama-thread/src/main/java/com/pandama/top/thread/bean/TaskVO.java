@@ -3,9 +3,10 @@ package com.pandama.top.thread.bean;
 import lombok.Data;
 
 /**
- * @description: 线程执行任务对象
- * @author: 白剑民
- * @dateTime: 2022/6/29 09:54
+ * 线程执行任务对象
+ *
+ * @author 王强
+ * @date 2023-07-08 15:35:47
  */
 @Data
 public class TaskVO {
@@ -19,11 +20,10 @@ public class TaskVO {
     private Object data;
 
     /**
-     * @description: 判断对象为空，作为线程终止的信号量
-     * @author: 白剑民
-     * @date: 2022-07-03 15:03:32
-     * @return: boolean
-     * @version: 1.0
+     * 判断对象为空，作为线程终止的信号量
+     *
+     * @return boolean
+     * @author 王强
      */
     public boolean isEmpty() {
         return index == null && data == null;

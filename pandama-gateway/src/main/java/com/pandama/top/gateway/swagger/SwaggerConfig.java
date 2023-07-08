@@ -18,9 +18,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @description: Swagger配置类
- * @author: 王强
- * @dateTime: 2022-10-25 12:46:24
+ * Swagger配置类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:40
  */
 @Configuration
 @EnableOpenApi

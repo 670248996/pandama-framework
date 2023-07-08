@@ -33,9 +33,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: 角色信息实现类
- * @author: 白剑民
- * @dateTime: 2022/10/31 11:04
+ * 角色服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:54:05
  */
 @Slf4j
 @Service

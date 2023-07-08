@@ -5,9 +5,10 @@ import com.google.code.kaptcha.text.impl.DefaultTextCreator;
 import java.util.Random;
 
 /**
- * @description: 图形验证码文本生成器
- * @author: 白剑民
- * @dateTime: 2023/04/21 14:20
+ * 图形验证码文本生成器
+ *
+ * @author 王强
+ * @date 2023-07-08 15:31:53
  */
 public class AuthCodeTextCreator extends DefaultTextCreator {
 

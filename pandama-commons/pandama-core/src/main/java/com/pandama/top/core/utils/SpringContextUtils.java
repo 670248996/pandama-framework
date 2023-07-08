@@ -1,15 +1,18 @@
 package com.pandama.top.core.utils;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.lang.NonNullApi;
 import org.springframework.stereotype.Component;
 
 /**
- * @description: spring上下文
- * @author: 王强
- * @dateTime: 2022-09-20 15:03:53
+ * spring上下文
+ *
+ * @author 王强
+ * @date 2023-07-08 15:15:59
  */
 @Slf4j
 @Component
@@ -21,10 +24,11 @@ public class SpringContextUtils implements ApplicationContextAware {
      * 设置应用程序上下文
      *
      * @param applicationContext 应用程序上下文
-     * @throws BeansException 豆子例外
+     * @return void
+     * @author 王强
      */
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         if (SpringContextUtils.applicationContext == null) {
           SpringContextUtils.applicationContext = applicationContext;
         }
@@ -34,7 +38,8 @@ public class SpringContextUtils implements ApplicationContextAware {
     /**
      * 让应用程序上下文
      *
-     * @return {@link ApplicationContext}
+     * @return org.springframework.context.ApplicationContext
+     * @author 王强
      */
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
@@ -44,7 +49,8 @@ public class SpringContextUtils implements ApplicationContextAware {
      * 通过name获取Bean
      *
      * @param name 名字
-     * @return {@link Object}
+     * @return java.lang.Object
+     * @author 王强
      */
     public static Object getBean(String name) {
         return getApplicationContext().getBean(name);
@@ -54,7 +60,8 @@ public class SpringContextUtils implements ApplicationContextAware {
      * 通过class获取Bean
      *
      * @param clazz clazz
-     * @return {@link T}
+     * @return T
+     * @author 王强
      */
     public static <T> T getBean(Class<T> clazz) {
         return getApplicationContext().getBean(clazz);
@@ -65,7 +72,8 @@ public class SpringContextUtils implements ApplicationContextAware {
      *
      * @param name  名字
      * @param clazz clazz
-     * @return {@link T}
+     * @return T
+     * @author 王强
      */
     public static <T> T getBean(String name, Class<T> clazz) {
         return getApplicationContext().getBean(name, clazz);

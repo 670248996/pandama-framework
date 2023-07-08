@@ -23,9 +23,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @description: 部门信息控制层
- * @author: 白剑民
- * @dateTime: 2022/10/21 17:03
+ * 部门信息控制层
+ *
+ * @author 王强
+ * @date 2023-07-08 15:41:56
  */
 @RestController
 @RequestMapping("/dept")
@@ -38,11 +39,10 @@ public class DeptController {
     private final DeptService deptService;
 
     /**
-     * @description: 获取部门编号
-     * @author: 王强
-     * @date: 2023-05-23 20:38:09
-     * @return: Response<String>
-     * @version: 1.0
+     * 获取编号
+     *
+     * @return com.pandama.top.core.global.response.Response<java.lang.String>
+     * @author 王强
      */
     @ApiOperation("获取部门编号")
     @GetMapping("/getNo")
@@ -51,13 +51,11 @@ public class DeptController {
     }
 
     /**
+     * 创建
+     *
      * @param dto 创建部门传参
-     * @description: 创建部门
-     * @author: 白剑民
-     * @date: 2022-10-24 17:39:34
-     * @return: com.gientech.iot.global.response.Response<
-            * * com.gientech.iot.user.entity.vo.DepartmentCreateResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<?>
+     * @author 王强
      */
     @ApiOperation("创建部门")
     @PostMapping
@@ -67,12 +65,11 @@ public class DeptController {
     }
 
     /**
+     * 详情
+     *
      * @param deptId 部门id
-     * @description: 部门详情
-     * @author: 王强
-     * @date: 2023-05-23 14:05:09
-     * @return: Response<PageResultVO < DepartmentSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.DeptDetailResultVO>
+     * @author 王强
      */
     @ApiOperation("部门详情")
     @GetMapping
@@ -81,12 +78,11 @@ public class DeptController {
     }
 
     /**
+     * 更新
+     *
      * @param dto 部门信息更新传参
-     * @description: 部门信息更新
-     * @author: 白剑民
-     * @date: 2022-10-25 09:49:31
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("部门信息更新")
     @PutMapping
@@ -96,12 +92,11 @@ public class DeptController {
     }
 
     /**
+     * 删除
+     *
      * @param deptIds 部门id列表
-     * @description: 删除部门信息
-     * @author: 白剑民
-     * @date: 2022-10-26 14:27:00
-     * @return: com.gientech.iot.global.response.Response<java.lang.Void>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
      */
     @ApiOperation("删除部门信息")
     @DeleteMapping
@@ -111,12 +106,11 @@ public class DeptController {
     }
 
     /**
+     * 列表
+     *
      * @param dto 查询部门信息传参
-     * @description: 查询部门信息列表
-     * @author: 王强
-     * @date: 2023-05-23 14:05:09
-     * @return: Response<PageResultVO < DepartmentSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.DeptSearchResultVO>>
+     * @author 王强
      */
     @ApiOperation("查询部门信息列表")
     @PostMapping("/list")
@@ -125,12 +119,11 @@ public class DeptController {
     }
 
     /**
+     * 树
+     *
      * @param dto 查询部门信息传参
-     * @description: 查询部门信息树
-     * @author: 王强
-     * @date: 2023-05-23 14:05:09
-     * @return: Response<PageResultVO < DepartmentSearchResultVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.DeptTreeVO>>
+     * @author 王强
      */
     @ApiOperation("查询部门信息树")
     @PostMapping("/tree")
@@ -139,13 +132,11 @@ public class DeptController {
     }
 
     /**
+     * 获取树通过部门id
+     *
      * @param deptId 部门id
-     * @description: 根据父级部门id获取部门树
-     * @author: 白剑民
-     * @date: 2022-10-24 16:31:48
-     * @return: com.gientech.iot.global.response.Response<
-            * java.util.List < com.gientech.iot.user.entity.vo.DepartmentTreeVO>>
-     * @version: 1.0
+     * @return com.pandama.top.core.global.response.Response<java.util.List < com.pandama.top.user.pojo.vo.DeptTreeVO>>
+     * @author 王强
      */
     @ApiOperation("根据父级部门id获取部门树")
     @GetMapping("/getTreeByDeptId")

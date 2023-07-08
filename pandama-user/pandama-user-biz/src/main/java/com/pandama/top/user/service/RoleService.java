@@ -11,126 +11,119 @@ import com.pandama.top.user.entity.SysRole;
 import java.util.List;
 
 /**
- * @description: 角色信息接口类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 角色服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:56:26
  */
 public interface RoleService extends IService<SysRole> {
 
     /**
+     * 创建
+     *
      * @param dto 创建角色传参
-     * @description: 创建角色
-     * @author: 白剑民
-     * @date: 2022-10-31 16:27:00
-     * @return: com.gientech.iot.user.entity.vo.RoleCreateResultVO
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void create(RoleCreateDTO dto);
 
     /**
+     * 详情
+     *
      * @param id 角色id
-     * @description: 角色详情
-     * @author: 白剑民
-     * @date: 2022-10-31 15:16:29
-     * @version: 1.0
+     * @return com.pandama.top.user.pojo.vo.RoleDetailResultVO
+     * @author 王强
      */
     RoleDetailResultVO detail(Long id);
 
     /**
+     * 更新
+     *
      * @param dto 角色信息更新传参
-     * @description: 角色信息更新
-     * @author: 白剑民
-     * @date: 2022-10-31 15:16:29
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void update(RoleUpdateDTO dto);
 
     /**
+     * 删除
+     *
      * @param roleIds 角色id列表
-     * @description: 删除角色信息
-     * @author: 白剑民
-     * @date: 2022-10-31 15:22:14
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void delete(List<Long> roleIds);
 
     /**
+     * 列表
+     *
      * @param dto 入参
-     * @description: 角色信息列表
-     * @author: 王强
-     * @date: 2023-05-22 17:32:05
-     * @return: List<RoleSearchResultVO>
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.pojo.vo.RoleSearchResultVO>
+     * @author 王强
      */
     List<RoleSearchResultVO> list(RoleSearchDTO dto);
 
     /**
+     * 页面
+     *
      * @param dto 入参
-     * @description: 角色信息列表
-     * @author: 王强
-     * @date: 2023-05-22 17:32:05
-     * @return: PageResultVO<RoleSearchResultVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.pojo.vo.PageVO<com.pandama.top.user.pojo.vo.RoleSearchResultVO>
+     * @author 王强
      */
     PageVO<RoleSearchResultVO> page(RoleSearchDTO dto);
 
     /**
+     * 通过用户id列表
+     *
      * @param userId 用户id
-     * @description: 根据用户id获取所有角色列表
-     * @author: 白剑民
-     * @date: 2022-10-31 11:10:57
-     * @return: java.util.List<com.gientech.iot.user.entity.Role>
-     * @version: 1.0
+     * @return java.util.List<com.pandama.top.user.entity.SysRole>
+     * @author 王强
      */
     List<SysRole> listByUserId(Long userId);
 
     /**
+     * 角色授权用户信息列表
+     *
      * @param dto 入参
-     * @description: 角色授权用户信息列表
-     * @author: 王强
-     * @date: 2023-05-23 12:18:48
-     * @return: PageResultVO<RoleAuthUserVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.pojo.vo.PageVO<com.pandama.top.user.pojo.vo.RoleAuthUserVO>
+     * @author 王强
      */
     PageVO<RoleAuthUserVO> authUserPage(RoleAuthUserSearchDTO dto);
 
     /**
+     * 角色授权用户信息列表
+     *
      * @param dto 入参
-     * @description: 角色授权用户信息列表
-     * @author: 王强
-     * @date: 2023-05-23 12:18:48
-     * @return: PageResultVO<RoleAuthUserVO>
-     * @version: 1.0
+     * @return com.pandama.top.core.pojo.vo.PageVO<com.pandama.top.user.pojo.vo.RoleAuthUserVO>
+     * @author 王强
      */
     PageVO<RoleAuthUserVO> unAuthUserPage(RoleAuthUserSearchDTO dto);
 
     /**
+     * 角色授权用户信息列表
+     *
      * @param dto 入参
-     * @description: 角色授权用户信息列表
-     * @author: 王强
-     * @date: 2023-05-23 12:18:48
-     * @return: PageResultVO<RoleAuthUserVO>
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void authUserCancel(RoleAuthUserCancelDTO dto);
 
     /**
+     * 角色授权用户
+     *
      * @param dto 入参
-     * @description: 角色授权用户
-     * @author: 王强
-     * @date: 2023-05-23 12:43:44
-     * @return: void
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void authUserConfirm(RoleAuthUserConfirmDTO dto);
 
     /**
-     * @param roleId   角色id
+     * 改变状态
+     *
+     * @param roleId 角色id
      * @param status 启用或禁用
-     * @description: 启用或禁用角色
-     * @author: 白剑民
-     * @date: 2022-10-31 17:24:28
-     * @version: 1.0
+     * @return void
+     * @author 王强
      */
     void changeStatus(Long roleId, Boolean status);
 }

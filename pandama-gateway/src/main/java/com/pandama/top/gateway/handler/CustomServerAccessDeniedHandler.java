@@ -18,9 +18,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 /**
- * @description: 用户身份认证成功，但无访问该资源权限的处理类
- * @author: 王强
- * @dateTime: 2022-10-17 21:46:28
+ * 用户身份认证成功，但无访问该资源权限的处理类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:39:21
  */
 @Slf4j
 @Component

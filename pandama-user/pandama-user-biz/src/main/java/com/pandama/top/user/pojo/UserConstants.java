@@ -2,16 +2,18 @@ package com.pandama.top.user.pojo;
 
 
 /**
- * @description: 常量属性类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 用户常量
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:27
  */
 public interface UserConstants {
 
     /**
-     * @description: 前端路由组件类型常量
-     * @author: 白剑民
-     * @dateTime: 2022/10/17 17:37
+     * 前端路由组件类型常量
+     *
+     * @author 王强
+     * @date 2023-07-08 15:53:31
      */
     interface RouterComponent {
         /**

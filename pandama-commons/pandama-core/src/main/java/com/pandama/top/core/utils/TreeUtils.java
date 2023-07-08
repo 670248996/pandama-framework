@@ -9,32 +9,31 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
- * @description: 树结构转换 (目标类需继承BaseTreeVO, 若未指定根节点ID, 则默认根节点ID为0)
- * @author: 王强
- * @dateTime: 2022-07-28 20:50:57
+ * 树结构转换 (目标类需继承BaseTreeVO, 若未指定根节点ID, 则默认根节点ID为0)
+ *
+ * @author 王强
+ * @date 2023-07-08 15:16:39
  */
 public class TreeUtils {
 
     /**
+     * 将源数据列表转为树结构列表
+     *
      * @param source 源数据列表
-     * @description: 将源数据列表转为树结构列表
-     * @author: 王强
-     * @date: 2022-07-28 21:24:41
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <V extends TreeVO> List<V> listToTree(List<V> source) {
         return listToTree(new ArrayList<>(), source);
     }
 
     /**
+     * 将源数据列表转为树结构列表并按传入的rootIdList作为根节点展示
+     *
      * @param rootIdList 根节点主键id列表
      * @param source     源数据列表
-     * @description: 将源数据列表转为树结构列表并按传入的rootIdList作为根节点展示
-     * @author: 王强
-     * @date: 2022-07-28 20:51:14
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <V extends TreeVO> List<V> listToTree(List<Long> rootIdList, List<V> source) {
         // 如果根节点id不为空，则调用展示根节点方法
@@ -42,13 +41,12 @@ public class TreeUtils {
     }
 
     /**
+     * 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换
+     *
      * @param source         源数据列表
      * @param targetSupplier 目标转换方法
-     * @description: 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换
-     * @author: 王强
-     * @date: 2022-07-28 21:24:41
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <E, V extends TreeVO> List<V> listToTree(List<E> source, Supplier<V> targetSupplier) {
         // 实体对象转换VO
@@ -58,14 +56,13 @@ public class TreeUtils {
     }
 
     /**
+     * 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换
+     *
      * @param source         源数据列表
      * @param targetSupplier 目标转换方法
      * @param callBack       回调方法（用于属性转换时的特殊转换）
-     * @description: 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换
-     * @author: 王强
-     * @date: 2022-07-28 21:24:41
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <E, V extends TreeVO> List<V> listToTree(List<E> source, Supplier<V> targetSupplier, BiConsumer<E, V> callBack) {
         // 实体对象转换VO
@@ -74,16 +71,14 @@ public class TreeUtils {
     }
 
     /**
+     * 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换，并按传入的rootIdList作为根节点列出
+     *
      * @param rootIdList     根节点主键id列表
      * @param source         源数据列表
      * @param targetSupplier 目标转换方法
      * @param callBack       回调方法（用于属性转换时的特殊转换）
-     * @description: 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换，
-     * 并按传入的rootIdList作为根节点列出
-     * @author: 王强
-     * @date: 2022-07-28 21:24:41
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <E, V extends TreeVO> List<V> listToTree(List<Long> rootIdList, List<E> source, Supplier<V> targetSupplier, BiConsumer<E, V> callBack) {
         // 实体对象转换VO
@@ -92,13 +87,12 @@ public class TreeUtils {
     }
 
     /**
+     * 将源数据列表转为树结构列表，传入的rootIdList不作为根节点展示
+     *
      * @param rootIdList 根节点主键id列表
      * @param source     源数据列表
-     * @description: 将源数据列表转为树结构列表，传入的rootIdList不作为根节点展示
-     * @author: 王强
-     * @date: 2022-07-28 20:51:14
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <V extends TreeVO> List<V> listToTreeWithoutRoot(List<Long> rootIdList, List<V> source) {
         // 不展示根节点
@@ -106,15 +100,14 @@ public class TreeUtils {
     }
 
     /**
+     * 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换，传入的rootIdList不作为根节点展示
+     *
      * @param rootIdList     根节点主键id列表
      * @param source         源数据列表
      * @param targetSupplier 目标转换方法
      * @param callBack       回调方法（用于属性转换时的特殊转换）
-     * @description: 将源数据列表转为树结构列表，并且按提供的目标转换方法进行属性赋值转换，传入的rootIdList不作为根节点展示
-     * @author: 王强
-     * @date: 2022-07-28 21:24:41
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     public static <E, V extends TreeVO> List<V> listToTreeWithoutRoot(List<Long> rootIdList, List<E> source, Supplier<V> targetSupplier,
                                                                       BiConsumer<E, V> callBack) {
@@ -124,13 +117,12 @@ public class TreeUtils {
     }
 
     /**
+     * 带根节点判断的树结构转换方法
+     *
      * @param rootIdList 根节点主键id列表
      * @param source     源数据列表
-     * @description: 带根节点判断的树结构转换方法
-     * @author: 王强
-     * @date: 2022-07-28 20:51:20
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     private static <V extends TreeVO> List<V> listToTreeByRootId(List<Long> rootIdList, List<V> source) {
         // 默认展示根节点
@@ -138,14 +130,13 @@ public class TreeUtils {
     }
 
     /**
+     * 带根节点判断的树结构转换方法
+     *
      * @param rootIdList 根节点主键id列表
      * @param source     源数据列表
      * @param showParent 树结构列表中是否显示父级节点
-     * @description: 带根节点判断的树结构转换方法
-     * @author: 王强
-     * @date: 2022-07-28 20:51:20
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     private static <V extends TreeVO> List<V> listToTreeByRootId(List<Long> rootIdList, List<V> source, Boolean showParent) {
         return source.stream()
@@ -184,13 +175,12 @@ public class TreeUtils {
     }
 
     /**
+     * 获取树结构的递归方法
+     *
      * @param parentId    父级id
      * @param allDataList 所有数据列表
-     * @description: 获取树结构的递归方法
-     * @author: 王强
-     * @date: 2022-07-28 20:51:31
-     * @return: java.util.List<V>
-     * @version: 1.0
+     * @return java.util.List<V>
+     * @author 王强
      */
     private static <V extends TreeVO> List<V> getTree(Long parentId, List<V> allDataList) {
         return allDataList.stream()
@@ -200,7 +190,6 @@ public class TreeUtils {
                 .peek(data -> {
                     // 递归对该子节点的children进行赋值
                     data.setChildren(getTree(data.getId(), allDataList));
-                })
-                .collect(Collectors.toList());
+                }).collect(Collectors.toList());
     }
 }

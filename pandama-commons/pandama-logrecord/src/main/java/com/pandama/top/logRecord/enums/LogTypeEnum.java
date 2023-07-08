@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @description: 日志类型枚举
- * @author: 王强
- * @dateTime: 2022-09-15 09:42:08
+ * 日志类型枚举
+ *
+ * @author 王强
+ * @date 2023-07-08 15:22:45
  */
 @Getter
 @AllArgsConstructor

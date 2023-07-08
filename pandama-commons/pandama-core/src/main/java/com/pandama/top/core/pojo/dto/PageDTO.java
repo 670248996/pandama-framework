@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 分页查询基础类
- * @author: 白剑民
- * @date : 2022/7/8 14:44
+ * 分页查询基础类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:13:04
  */
 @Data
 public class PageDTO {

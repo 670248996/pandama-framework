@@ -6,29 +6,28 @@ import com.pandama.top.user.entity.SysUserRole;
 import java.util.List;
 
 /**
- * @description: 用户与角色关联接口类
- * @author: 白剑民
- * @dateTime: 2022/10/17 17:37
+ * 用户角色服务
+ *
+ * @author 王强
+ * @date 2023-07-08 15:57:07
  */
 public interface UserRoleService extends IService<SysUserRole> {
 
     /**
+     * 获取用户id通过角色id
+     *
      * @param roleIds 角色id列表
-     * @description: 获取指定角色列表下的关联用户列表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getUserIdsByRoleIds(List<Long> roleIds);
 
     /**
+     * 获取角色id通过用户id
+     *
      * @param userIds 用户id列表
-     * @description: 获取指定用户列表下的关联角色表
-     * @author: 白剑民
-     * @date: 2022-10-31 15:30:49
-     * @return: java.util.List<java.lang.Long>
-     * @version: 1.0
+     * @return java.util.List<java.lang.Long>
+     * @author 王强
      */
     List<Long> getRoleIdsByUserIds(List<Long> userIds);
 }

@@ -7,9 +7,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @description: 树结构的基类
- * @author: 王强
- * @dateTime: 2022-07-29 09:51:33
+ * 树出参
+ *
+ * @author 王强
+ * @date 2023-07-08 15:13:20
  */
 @Data
 public class TreeVO implements Serializable {

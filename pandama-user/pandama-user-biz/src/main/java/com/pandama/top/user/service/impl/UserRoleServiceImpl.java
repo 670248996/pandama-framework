@@ -14,9 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 用户与角色关联实现类
- * @author: 白剑民
- * @dateTime: 2022/10/31 16:44
+ * 用户角色服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:54:07
  */
 @Slf4j
 @Service

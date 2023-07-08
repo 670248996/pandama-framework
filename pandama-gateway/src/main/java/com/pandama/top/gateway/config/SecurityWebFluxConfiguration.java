@@ -27,9 +27,10 @@ import org.springframework.util.AntPathMatcher;
 import reactor.core.publisher.Mono;
 
 /**
- * @description: SpringSecurity配置类
- * @author: 王强
- * @dateTime: 2022-10-17 16:02:25
+ * SpringSecurity配置类
+ *
+ * @author 王强
+ * @date 2023-07-08 15:38:11
  */
 @Component
 @EnableWebFluxSecurity

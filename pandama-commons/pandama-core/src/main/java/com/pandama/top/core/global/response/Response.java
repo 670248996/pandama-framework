@@ -3,9 +3,10 @@ package com.pandama.top.core.global.response;
 import org.apache.http.HttpStatus;
 
 /**
- * @description: 全局响应类
- * @author: 王强
- * @date : 2022/7/29 10:27
+ * 响应
+ *
+ * @author 王强
+ * @date 2023-07-08 15:12:46
  */
 public class Response<T> {
 

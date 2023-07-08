@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @description: 部门与用户关联Mapper接口
- * @author: 白剑民
- * @dateTime: 2022/10/26 14:28
+ * 部门用户mapper
+ *
+ * @author 王强
+ * @date 2023-07-08 15:47:57
  */
 @Repository
 public interface DeptUserMapper extends BaseMapper<SysDeptUser> {

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @description: Token信息
- * @author: 王强
- * @dateTime: 2023-06-21 22:14:20
+ * Token信息
  */
 @Data
 public class TokenInfo {

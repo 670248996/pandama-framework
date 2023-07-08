@@ -35,9 +35,10 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * @description: 部门信息实现类
- * @author: 白剑民
- * @dateTime: 2022/10/21 16:16
+ * 部门服务impl
+ *
+ * @author 王强
+ * @date 2023-07-08 15:53:38
  */
 @Slf4j
 @Service

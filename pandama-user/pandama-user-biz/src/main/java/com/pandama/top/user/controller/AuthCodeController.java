@@ -27,9 +27,10 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description: 验证码操作处理
- * @author: 白剑民
- * @dateTime: 2023/04/21 13:41
+ * 验证码操作处理
+ *
+ * @author 王强
+ * @date 2023-07-08 15:41:33
  */
 @Slf4j
 @Api(tags = "图形验证码相关接口")
@@ -61,11 +62,10 @@ public class AuthCodeController {
     }
 
     /**
-     * @description: 获取图形验证码，返回图片base64字符
-     * @author: 王强
-     * @date: 2023-06-06 13:09:51
-     * @return: Response<AuthCodeResultVO>
-     * @version: 1.0
+     * 获取图形验证码，返回图片base64字符
+     *
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.AuthCodeResultVO>
+     * @author 王强
      */
     @ApiOperation("获取图形验证码")
     @GetMapping
@@ -105,13 +105,12 @@ public class AuthCodeController {
     }
 
     /**
+     * 校验图片验证码
+     *
      * @param authCode 验证码
      * @param uuid     验证码缓存key
-     * @description: 校验图片验证码
-     * @author: 白剑民
-     * @date: 2023-04-24 10:18:22
-     * @return: boolean
-     * @version: 1.0
+     * @return boolean
+     * @author 王强
      */
     @ApiOperation("校验图片验证码")
     @GetMapping("/verify")
