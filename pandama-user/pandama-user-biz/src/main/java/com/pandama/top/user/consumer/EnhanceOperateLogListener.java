@@ -34,17 +34,19 @@ public class EnhanceOperateLogListener extends EnhanceMessageHandler<LogDTO> imp
 
     @Override
     protected void handleMessage(LogDTO message) throws Exception {
-//        // 此时这里才是最终的业务处理，代码只需要处理资源类关闭异常，其他的可以交给父类重试
-//        SysLog sysLog = BeanConvertUtils.convert(message, SysLog::new, (s, t) -> {
-//            t.setModule(s.getBizType());
-//            t.setEvent(s.getBizEvent());
-//            t.setMsg(s.getMsg());
-//            t.setExtra(s.getExtra());
-//            t.setType(Integer.valueOf(s.getTag()));
-//            t.setCreateTime(LocalDateTime.now());
-//            t.setCreateUserId(Long.parseLong(s.getOperatorId() == null ? "0" : s.getOperatorId()));
-//        }).orElse(new SysLog());
-//        logMapper.insert(sysLog);
+        // 此时这里才是最终的业务处理，代码只需要处理资源类关闭异常，其他的可以交给父类重试
+        SysLog sysLog = BeanConvertUtils.convert(message, SysLog::new, (s, t) -> {
+            t.setModule(s.getBizType());
+            t.setEvent(s.getBizEvent());
+            t.setMsg(s.getMsg());
+            t.setExtra(s.getExtra());
+            t.setType(Integer.valueOf(s.getTag()));
+            t.setCreateTime(LocalDateTime.now());
+            t.setCreateUserId(s.getOperatorId());
+            t.setCreateUserName(s.getOperatorName());
+            t.setCreateUserCode(s.getOperatorCode());
+        }).orElse(new SysLog());
+        logMapper.insert(sysLog);
     }
 
     @Override

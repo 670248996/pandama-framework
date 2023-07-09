@@ -54,6 +54,12 @@
             <artifactId>pandama-rocketmq</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--集成websocket-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-websocket</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

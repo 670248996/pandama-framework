@@ -25,6 +25,7 @@
         <module>pandama-starter</module>
         <module>pandama-thread</module>
         <module>pandama-minio</module>
+        <module>pandama-websocket</module>
     </modules>
 
     <properties>

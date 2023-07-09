@@ -88,7 +88,7 @@ public class LoginServiceImpl implements LoginService {
      * @description: 封装角色和权限信息
      * @author: 白剑民
      * @date: 2023-04-27 10:40:02
-     * @return: com.gientech.iot.user.api.entity.vo.SystemUserInfoVO
+     * @return: com.pandama.top.user.api.entity.vo.SystemUserInfoVO
      * @version: 1.0
      */
     private void setRoleAndPerm(SystemUserInfoVO userInfo) {

@@ -1,9 +1,6 @@
 spring:
   application:
     name: pandama-user
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
 
   cloud:
     nacos:

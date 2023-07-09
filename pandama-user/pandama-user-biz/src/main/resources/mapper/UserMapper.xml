@@ -5,7 +5,6 @@
     <select id="page" resultType="com.pandama.top.user.pojo.vo.UserSearchResultVO">
         select
         u.*,
-        u.id as user_id,
         d.dept_name,
         d.dept_code
         from sys_user u
@@ -36,7 +35,6 @@
     <select id="getUserListByDeptId" resultType="com.pandama.top.user.pojo.vo.UserDetailResultVO">
         SELECT
         u.*,
-        u.id as user_id,
         d.dept_name,
         d.dept_code
         FROM sys_user u
