@@ -1,6 +1,7 @@
 package com.pandama.top.websocket.server;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
@@ -14,7 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2023-07-09 16:24:10
  */
 @Slf4j
-public class WebSocketSessionCache {
+@Component
+public class WebSocketSessionManager {
 
     /**
      * 会话唯一标识key格式化模板
@@ -27,7 +29,7 @@ public class WebSocketSessionCache {
     private static final Map<String, WebSocketSession> SESSIONS = new ConcurrentHashMap<>();
 
     /**
-     * 添加会话缓存
+     * 添加本地会话缓存
      *
      * @param socketType 业务类型
      * @param socketId   业务唯一标识
@@ -36,11 +38,12 @@ public class WebSocketSessionCache {
      * @author 王强
      */
     public static void add(String socketType, String socketId, WebSocketSession session) {
-        SESSIONS.put(keyFormat(socketType, socketId), session);
+        String key = keyFormat(socketType, socketId);
+        SESSIONS.put(key, session);
     }
 
     /**
-     * 删除会话缓存
+     * 删除本地会话缓存
      *
      * @param socketType 业务类型
      * @param socketId   业务唯一标识
@@ -48,7 +51,8 @@ public class WebSocketSessionCache {
      * @author 王强
      */
     public static WebSocketSession remove(String socketType, String socketId) {
-        return SESSIONS.remove(keyFormat(socketType, socketId));
+        String key = keyFormat(socketType, socketId);
+        return SESSIONS.remove(key);
     }
 
     /**
@@ -71,7 +75,7 @@ public class WebSocketSessionCache {
     }
 
     /**
-     * 获取缓存会话
+     * 获取本地缓存会话
      *
      * @param socketType 业务类型
      * @param socketId   业务唯一标识
@@ -79,11 +83,12 @@ public class WebSocketSessionCache {
      * @author 王强
      */
     public static WebSocketSession get(String socketType, String socketId) {
-        return SESSIONS.get(keyFormat(socketType, socketId));
+        String key = keyFormat(socketType, socketId);
+        return SESSIONS.get(key);
     }
 
     /**
-     * 获取当前会话连接数
+     * 获取本地会话连接数
      *
      * @return java.lang.Integer
      * @author 王强

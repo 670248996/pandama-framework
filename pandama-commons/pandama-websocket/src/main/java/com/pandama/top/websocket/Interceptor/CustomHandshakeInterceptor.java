@@ -7,7 +7,7 @@ import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.starter.web.utils.IpAddressUtils;
 import com.pandama.top.starter.web.utils.WebContextUtils;
-import com.pandama.top.websocket.server.WebSocketSessionCache;
+import com.pandama.top.websocket.server.WebSocketSessionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.server.ServerHttpRequest;
@@ -47,7 +47,7 @@ public class CustomHandshakeInterceptor implements HandshakeInterceptor {
         // 设置当前用户信息
         setCurrentUserInfo();
         // 判断WebSocket连接是否已经存在
-        return WebSocketSessionCache.get(socketType, socketId) == null;
+        return WebSocketSessionManager.get(socketType, socketId) == null;
     }
 
     @Override

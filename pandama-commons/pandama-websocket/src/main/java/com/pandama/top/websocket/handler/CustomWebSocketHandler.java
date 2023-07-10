@@ -2,7 +2,7 @@ package com.pandama.top.websocket.handler;
 
 
 import com.pandama.top.core.global.exception.CommonException;
-import com.pandama.top.websocket.server.WebSocketSessionCache;
+import com.pandama.top.websocket.server.WebSocketSessionManager;
 import org.springframework.lang.NonNull;
 import org.springframework.web.socket.*;
 
@@ -13,14 +13,6 @@ import org.springframework.web.socket.*;
  * @date 2023-07-09 16:21:56
  */
 public interface CustomWebSocketHandler extends WebSocketHandler {
-
-    /**
-     * 路径
-     *
-     * @return java.lang.String
-     * @author 王强
-     */
-    String path();
 
     /**
      * 当websocket连接打开时执行
@@ -82,7 +74,7 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
         // 业务唯一标识
         String socketId = String.valueOf(session.getAttributes().get("socketId"));
         this.onOpen(socketType, socketId, session);
-        WebSocketSessionCache.add(socketType, socketId, session);
+        WebSocketSessionManager.add(socketType, socketId, session);
     }
 
     /**
@@ -122,7 +114,7 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
         // 业务唯一标识
         String socketId = String.valueOf(session.getAttributes().get("socketId"));
         this.onClose(socketType, socketId, session);
-        WebSocketSessionCache.remove(socketType, socketId);
+        WebSocketSessionManager.remove(socketType, socketId);
     }
 
     /**
@@ -140,7 +132,7 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
         // 业务唯一标识
         String socketId = String.valueOf(session.getAttributes().get("socketId"));
         this.onError(socketType, socketId, session, exception);
-        WebSocketSessionCache.removeAndClose(socketType, socketId);
+        WebSocketSessionManager.removeAndClose(socketType, socketId);
     }
 
     /**

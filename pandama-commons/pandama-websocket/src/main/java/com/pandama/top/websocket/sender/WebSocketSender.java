@@ -1,6 +1,6 @@
-package com.pandama.top.websocket.operation;
+package com.pandama.top.websocket.sender;
 
-import com.pandama.top.websocket.vo.WebSocketMessageVO;
+import com.pandama.top.websocket.model.WebSocketMessage;
 
 /**
  * WebSocket消息发送接口
@@ -17,5 +17,5 @@ public interface WebSocketSender {
      * @return boolean
      * @author 王强
      */
-    boolean send(WebSocketMessageVO message);
+    boolean send(WebSocketMessage message);
 }

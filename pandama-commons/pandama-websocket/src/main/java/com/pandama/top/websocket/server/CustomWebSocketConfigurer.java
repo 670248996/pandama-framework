@@ -1,6 +1,7 @@
 package com.pandama.top.websocket.server;
 
 import com.pandama.top.websocket.Interceptor.CustomHandshakeInterceptor;
+import com.pandama.top.websocket.annotation.WebSocketListener;
 import com.pandama.top.websocket.handler.CustomWebSocketHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -44,10 +45,14 @@ public class CustomWebSocketConfigurer implements WebSocketConfigurer {
         Map<String, CustomWebSocketHandler> handlers = context.getBeansOfType(CustomWebSocketHandler.class);
         // 校验这些实现类是否包含规定注解
         handlers.forEach((beanName, handler) -> {
-            if (StringUtils.isNotBlank(handler.path()) && !handler.path().startsWith(PATH_PREFIX)) {
+            WebSocketListener annotation = handler.getClass().getAnnotation(WebSocketListener.class);
+            if (annotation == null) {
+                throw new RuntimeException(handler.getClass().getSimpleName() + "实现了CustomWebSocketHandler接口，但是类上没有标注@WebSocketListener注解");
+            }
+            if (StringUtils.isNotBlank(annotation.value()) && !annotation.value().startsWith(PATH_PREFIX)) {
                 throw new RuntimeException(beanName + "监听路径需以'/'开头");
             }
-            String path = PREFIX + handler.path();
+            String path = PREFIX + annotation.value();
             if (handlerMap.containsKey(path)) {
                 throw new RuntimeException(beanName + "与" + handlerMap.get(path) + "监听路径重复");
             }

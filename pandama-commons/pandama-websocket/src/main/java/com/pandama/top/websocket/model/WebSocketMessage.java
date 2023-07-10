@@ -1,4 +1,4 @@
-package com.pandama.top.websocket.vo;
+package com.pandama.top.websocket.model;
 
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class WebSocketMessageVO {
+public class WebSocketMessage {
     /**
      * socket连接类型
      */
