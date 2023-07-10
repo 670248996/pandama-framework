@@ -1,6 +1,5 @@
 package com.pandama.top.websocket.operation;
 
-import com.pandama.top.websocket.server.WebSocketSender;
 import com.pandama.top.websocket.server.WebSocketSessionCache;
 import com.pandama.top.websocket.vo.WebSocketMessageVO;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +24,7 @@ public class CustomWebSocketSender implements WebSocketSender {
         if (session != null) {
             synchronized (this) {
                 try {
-                    TextMessage textMessage = new TextMessage(message.getContent());
+                    TextMessage textMessage = new TextMessage(message.getMessage());
                     session.sendMessage(textMessage);
                     result = true;
                 } catch (IOException e) {

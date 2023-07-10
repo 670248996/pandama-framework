@@ -15,6 +15,14 @@ import org.springframework.web.socket.*;
 public interface CustomWebSocketHandler extends WebSocketHandler {
 
     /**
+     * 路径
+     *
+     * @return java.lang.String
+     * @author 王强
+     */
+    String path();
+
+    /**
      * 当websocket连接打开时执行
      *
      * @param socketType socket类型

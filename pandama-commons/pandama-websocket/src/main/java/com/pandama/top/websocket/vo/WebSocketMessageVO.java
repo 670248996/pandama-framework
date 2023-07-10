@@ -23,5 +23,5 @@ public class WebSocketMessageVO {
     /**
      * 消息内容
      */
-    private String content;
+    private String message;
 }

@@ -39,7 +39,7 @@ public class WebSocketAutoConfiguration {
      * @author 王强
      */
     @Bean
-    public CustomWebSocketSender defaultWebSocketSender() {
+    public CustomWebSocketSender customWebSocketSender() {
         return new CustomWebSocketSender();
     }
 

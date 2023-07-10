@@ -1,6 +1,7 @@
 spring:
   application:
     name: pandama-gateway
+
   cloud:
     nacos:
       config:

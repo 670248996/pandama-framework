@@ -1,4 +1,4 @@
-package com.pandama.top.websocket.server;
+package com.pandama.top.websocket.operation;
 
 import com.pandama.top.websocket.vo.WebSocketMessageVO;
 

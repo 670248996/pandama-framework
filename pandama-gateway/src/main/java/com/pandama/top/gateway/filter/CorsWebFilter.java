@@ -1,5 +1,6 @@
 package com.pandama.top.gateway.filter;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -27,7 +28,8 @@ import reactor.core.publisher.Mono;
 public class CorsWebFilter implements WebFilter {
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    @NonNull
+    public Mono<Void> filter(ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         // 判断是否是跨域请求
         if (CorsUtils.isCorsRequest(request)) {
@@ -37,8 +39,7 @@ public class CorsWebFilter implements WebFilter {
             HttpMethod requestMethod = requestHeaders.getAccessControlRequestMethod();
             HttpHeaders headers = response.getHeaders();
             headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, requestHeaders.getOrigin());
-            headers.addAll(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, requestHeaders
-                    .getAccessControlRequestHeaders());
+            headers.addAll(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, requestHeaders.getAccessControlRequestHeaders());
             if (requestMethod != null) {
                 headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, requestMethod.name());
             }

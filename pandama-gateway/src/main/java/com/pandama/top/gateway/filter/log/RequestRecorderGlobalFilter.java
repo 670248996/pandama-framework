@@ -55,9 +55,7 @@ public class RequestRecorderGlobalFilter implements GlobalFilter, Ordered {
                 .response(response)
                 .build();
         //  观察者模式 打印一下请求log
-//        if (logger.isDebugEnabled()) {
         response.beforeCommit(() -> Mono.defer(() -> printLog(logBuilder, response)));
-//        }
         return recorderOriginalRequest(logBuilder, ex)
                 .then(chain.filter(ex))
                 .then();
@@ -70,13 +68,12 @@ public class RequestRecorderGlobalFilter implements GlobalFilter, Ordered {
     }
 
     /**
+     * 记录原始请求逻辑
+     *
      * @param request   请求
      * @param logBuffer 日志缓冲区
-     * @description: 记录原始请求逻辑
-     * @author: 王强
-     * @date: 2023-06-05 10:27:23
-     * @return: Mono<Void>
-     * @version: 1.0
+     * @return reactor.core.publisher.Mono<java.lang.Void>
+     * @author 王强
      */
     private Mono<Void> recorderRequest(ServerHttpRequest request, StringBuilder logBuffer) {
         URI uri = request.getURI();
@@ -120,13 +117,12 @@ public class RequestRecorderGlobalFilter implements GlobalFilter, Ordered {
     }
 
     /**
+     * 打印日志
+     *
      * @param logBuilder 日志建设者
      * @param response   响应
-     * @description: 日志输出返回值
-     * @author: 王强
-     * @date: 2023-06-05 10:26:22
-     * @return: Mono<Void>
-     * @version: 1.0
+     * @return reactor.core.publisher.Mono<java.lang.Void>
+     * @author 王强
      */
     private Mono<Void> printLog(StringBuilder logBuilder, ServerHttpResponse response) {
         HttpStatus statusCode = response.getStatusCode();
@@ -156,12 +152,11 @@ public class RequestRecorderGlobalFilter implements GlobalFilter, Ordered {
     }
 
     /**
+     * 记录简单的常见的文本类型的request的body和response的body
+     *
      * @param contentType 内容类型
-     * @description: 记录简单的常见的文本类型的request的body和response的body
-     * @author: 王强
-     * @date: 2023-06-05 10:26:40
-     * @return: boolean
-     * @version: 1.0
+     * @return boolean
+     * @author 王强
      */
     private boolean shouldRecordBody(MediaType contentType) {
         String type = contentType.getType();
@@ -176,14 +171,13 @@ public class RequestRecorderGlobalFilter implements GlobalFilter, Ordered {
     }
 
     /**
+     * 获取请求的参数
+     *
      * @param logBuffer 日志缓冲区
      * @param body      身体
      * @param charset   字符集
-     * @description: 获取请求的参数
-     * @author: 王强
-     * @date: 2023-06-05 10:26:50
-     * @return: Mono<Void>
-     * @version: 1.0
+     * @return reactor.core.publisher.Mono<java.lang.Void>
+     * @author 王强
      */
     private Mono<Void> doRecordReqBody(StringBuilder logBuffer, Flux<DataBuffer> body, Charset charset) {
         return DataBufferUtils.join(body).doOnNext(buffer -> {
