@@ -46,7 +46,6 @@ public class LogRecordContext {
      *
      * @param key   关键
      * @param value 价值
-     * @return void
      * @author 王强
      */
     public static void putVariables(String key, Object value) {
@@ -58,7 +57,6 @@ public class LogRecordContext {
     /**
      * 清除上下文信息
      *
-     * @return void
      * @author 王强
      */
     public static void clearContext() {
@@ -85,7 +83,6 @@ public class LogRecordContext {
      * 添加发生变化的数据
      *
      * @param diffDTO 发生变化的数据
-     * @return void
      * @author 王强
      */
     public static void addDiffDTO(DiffDTO diffDTO) {
@@ -99,7 +96,6 @@ public class LogRecordContext {
     /**
      * 清除发生变化的数据集合
      *
-     * @return void
      * @author 王强
      */
     public static void clearDiffDTOList() {

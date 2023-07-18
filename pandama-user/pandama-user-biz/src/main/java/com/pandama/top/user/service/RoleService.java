@@ -22,7 +22,6 @@ public interface RoleService extends IService<SysRole> {
      * 创建
      *
      * @param dto 创建角色传参
-     * @return void
      * @author 王强
      */
     void create(RoleCreateDTO dto);
@@ -40,7 +39,6 @@ public interface RoleService extends IService<SysRole> {
      * 更新
      *
      * @param dto 角色信息更新传参
-     * @return void
      * @author 王强
      */
     void update(RoleUpdateDTO dto);
@@ -49,7 +47,6 @@ public interface RoleService extends IService<SysRole> {
      * 删除
      *
      * @param ids 角色id列表
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);
@@ -103,7 +100,6 @@ public interface RoleService extends IService<SysRole> {
      * 角色授权用户信息列表
      *
      * @param dto 入参
-     * @return void
      * @author 王强
      */
     void authUserCancel(RoleAuthUserCancelDTO dto);
@@ -112,7 +108,6 @@ public interface RoleService extends IService<SysRole> {
      * 角色授权用户
      *
      * @param dto 入参
-     * @return void
      * @author 王强
      */
     void authUserConfirm(RoleAuthUserConfirmDTO dto);
@@ -122,7 +117,6 @@ public interface RoleService extends IService<SysRole> {
      *
      * @param id 角色id
      * @param status 启用或禁用
-     * @return void
      * @author 王强
      */
     void changeStatus(Long id, Boolean status);

@@ -32,7 +32,6 @@ public class UserInfoUtils {
      * 设置当前登录用户信息
      *
      * @param vo 出参
-     * @return void
      * @author 王强
      */
     public static void setUserInfo(CurrentUserInfo vo) {
@@ -42,7 +41,6 @@ public class UserInfoUtils {
     /**
      * 清除当前登录用户信息（防止内存泄露）
      *
-     * @return void
      * @author 王强
      */
     public static void clearUserInfo() {

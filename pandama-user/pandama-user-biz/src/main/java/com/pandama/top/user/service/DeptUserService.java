@@ -53,7 +53,6 @@ public interface DeptUserService extends IService<SysDeptUser> {
      * 按部门id删除
      *
      * @param deptIds 部门id列表
-     * @return void
      * @author 王强
      */
     void deleteByDeptIds(List<Long> deptIds);
@@ -62,7 +61,6 @@ public interface DeptUserService extends IService<SysDeptUser> {
      * 按用户id删除
      *
      * @param userIds 用户id列表
-     * @return void
      * @author 王强
      */
     void deleteByUserIds(List<Long> userIds);

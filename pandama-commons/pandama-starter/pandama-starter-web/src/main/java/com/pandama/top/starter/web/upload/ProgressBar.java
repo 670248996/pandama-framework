@@ -32,7 +32,6 @@ public class ProgressBar {
      *
      * @param bytesRead     字节读
      * @param contentLength 内容长度
-     * @return void
      * @author 王强
      */
     public void printPercentProcess(long bytesRead, long contentLength) {
@@ -57,7 +56,6 @@ public class ProgressBar {
      * @param bytesRead     字节读
      * @param contentLength 内容长度
      * @param unitEnum      单位枚举
-     * @return void
      * @author 王强
      */
     public void printByteProcess(long bytesRead, long contentLength, UnitEnum unitEnum) {

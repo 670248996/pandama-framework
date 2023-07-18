@@ -23,7 +23,6 @@ public interface UserService extends IService<SysUser> {
      * 注册
      *
      * @param dto 用户注册传参
-     * @return void
      * @author 王强
      */
     void register(UserRegisterDTO dto);
@@ -32,7 +31,6 @@ public interface UserService extends IService<SysUser> {
      * 批量注册
      *
      * @param dtoList 批量用户注册传参
-     * @return void
      * @author 王强
      */
     void batchRegister(List<UserRegisterDTO> dtoList);
@@ -41,7 +39,6 @@ public interface UserService extends IService<SysUser> {
      * 删除
      *
      * @param ids 用户id列表
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);
@@ -50,7 +47,6 @@ public interface UserService extends IService<SysUser> {
      * 更新
      *
      * @param dto 用户信息更新传参
-     * @return void
      * @author 王强
      */
     void update(UserUpdateDTO dto);
@@ -87,7 +83,6 @@ public interface UserService extends IService<SysUser> {
      *
      * @param id 用户id
      * @param status 启用或禁用
-     * @return void
      * @author 王强
      */
     void changeStatus(Long id, Boolean status);
@@ -96,7 +91,6 @@ public interface UserService extends IService<SysUser> {
      * 更新密码
      *
      * @param dto 用户密码修改传参
-     * @return void
      * @author 王强
      */
     void updatePassword(PasswordUpdateDTO dto);
@@ -123,7 +117,6 @@ public interface UserService extends IService<SysUser> {
      * 角色授权用户信息列表
      *
      * @param dto 入参
-     * @return void
      * @author 王强
      */
     void authRoleCancel(UserAuthRoleCancelDTO dto);
@@ -132,7 +125,6 @@ public interface UserService extends IService<SysUser> {
      * 角色授权用户
      *
      * @param dto 入参
-     * @return void
      * @author 王强
      */
     void authRoleConfirm(UserAuthRoleConfirmDTO dto);

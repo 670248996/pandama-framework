@@ -15,21 +15,27 @@ spring:
         group: PANDAMA
         ip: 127.0.0.1
 
+  kafka:
+    bootstrap-servers: 192.168.171.129:9092,192.168.171.130:9092,192.168.171.131:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
+      group-id: test-group1
+      auto-offset-reset: latest
+
 rocketmq:
-  enhance:
-    # 启动隔离，用于激活配置类EnvironmentIsolationConfig
-    # 启动后会自动在topic上拼接激活的配置文件，达到自动隔离的效果
-    enabled-isolation: false
-    # 隔离环境名称，拼接到topic后，topic_dev，默认空字符串
-    environment: dev
+  name-server: 121.36.56.159:9876
   consumer:
-    group: springboot_consumer_group
+    group: app_consumer_group
     # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
     pull-batch-size: 10
-  name-server: 121.36.56.159:9876
   producer:
     # 发送同一类消息的设置为同一个group，保证唯一
-    group: springboot_producer_group
+    group: app_producer_group
     # 发送消息超时时间，默认3000
     sendMessageTimeout: 10000
     # 发送消息失败重试次数，默认2

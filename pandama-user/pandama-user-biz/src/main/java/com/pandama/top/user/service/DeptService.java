@@ -33,7 +33,6 @@ public interface DeptService extends IService<SysDept> {
      * 创建
      *
      * @param dto 创建部门传参
-     * @return void
      * @author 王强
      */
     void create(DeptCreateDTO dto);
@@ -51,7 +50,6 @@ public interface DeptService extends IService<SysDept> {
      * 更新
      *
      * @param dto 部门信息更新传参
-     * @return void
      * @author 王强
      */
     void update(DeptUpdateDTO dto);
@@ -60,7 +58,6 @@ public interface DeptService extends IService<SysDept> {
      * 删除
      *
      * @param ids 部门id列表
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);

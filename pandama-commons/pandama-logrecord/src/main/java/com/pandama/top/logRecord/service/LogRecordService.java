@@ -14,7 +14,6 @@ public interface LogRecordService {
      * 自定义日志监听
      *
      * @param logDTO 日志传输实体
-     * @return void
      * @author 王强
      */
     void createLog(LogDTO logDTO);

@@ -23,7 +23,6 @@ public interface MenuService extends IService<SysMenu> {
      * 创建
      *
      * @param dto 创建菜单传参
-     * @return void
      * @author 王强
      */
     void create(MenuCreateDTO dto);
@@ -41,7 +40,6 @@ public interface MenuService extends IService<SysMenu> {
      * 更新
      *
      * @param dto 菜单信息更新传参
-     * @return void
      * @author 王强
      */
     void update(MenuUpdateDTO dto);
@@ -50,7 +48,6 @@ public interface MenuService extends IService<SysMenu> {
      * 删除
      *
      * @param ids 菜单id列表
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);
@@ -96,7 +93,6 @@ public interface MenuService extends IService<SysMenu> {
      *
      * @param roleId  角色id
      * @param menuIds 菜单id列表
-     * @return void
      * @author 王强
      */
     void assignMenu(Long roleId, List<Long> menuIds);
@@ -106,7 +102,6 @@ public interface MenuService extends IService<SysMenu> {
      *
      * @param menuId 菜单id
      * @param status 启用或禁用
-     * @return void
      * @author 王强
      */
     void changeStatus(Long menuId, Boolean status);

@@ -32,7 +32,6 @@ public class CustomFunctionRegistrar implements ApplicationContextAware {
      * 扫描使用@LogRecordFunc注解申明的自定义函数
      *
      * @param applicationContext 应用程序上下文
-     * @return void
      * @author 王强
      */
     @Override
@@ -68,7 +67,6 @@ public class CustomFunctionRegistrar implements ApplicationContextAware {
      * 注册
      *
      * @param context 上下文
-     * @return void
      * @author 王强
      */
     public static void register(StandardEvaluationContext context) {

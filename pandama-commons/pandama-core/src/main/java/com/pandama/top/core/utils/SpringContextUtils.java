@@ -24,7 +24,6 @@ public class SpringContextUtils implements ApplicationContextAware {
      * 设置应用程序上下文
      *
      * @param applicationContext 应用程序上下文
-     * @return void
      * @author 王强
      */
     @Override

@@ -20,7 +20,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      * @param socketType socket类型
      * @param socketId   socket唯一标识
      * @param session    socket会话
-     * @return void
      * @author 王强
      */
     void onOpen(String socketType, String socketId, WebSocketSession session);
@@ -31,7 +30,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      * @param socketType socket类型
      * @param socketId   socket唯一标识
      * @param session    socket会话
-     * @return void
      * @author 王强
      */
     void onClose(String socketType, String socketId, WebSocketSession session);
@@ -43,7 +41,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      * @param socketId   socket唯一标识
      * @param message    websocket服务端接收到的消息
      * @param session    socket会话
-     * @return void
      * @author 王强
      */
     void onMessage(String socketType, String socketId, String message, WebSocketSession session);
@@ -55,7 +52,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      * @param socketId   socket唯一标识
      * @param session    socket会话
      * @param error      socket异常
-     * @return void
      * @author 王强
      */
     void onError(String socketType, String socketId, WebSocketSession session, Throwable error);
@@ -64,7 +60,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      * 连接建立之后
      *
      * @param session 会话
-     * @return void
      * @author 王强
      */
     @Override
@@ -82,7 +77,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      *
      * @param session 会话
      * @param message 消息
-     * @return void
      * @author 王强
      */
     @Override
@@ -104,7 +98,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      *
      * @param session     会话
      * @param closeStatus 关闭状态
-     * @return void
      * @author 王强
      */
     @Override
@@ -122,7 +115,6 @@ public interface CustomWebSocketHandler extends WebSocketHandler {
      *
      * @param session   会话
      * @param exception 异常
-     * @return void
      * @author 王强
      */
     @Override

@@ -34,7 +34,6 @@ public class WebSocketSessionManager {
      * @param socketType 业务类型
      * @param socketId   业务唯一标识
      * @param session    会话对象
-     * @return void
      * @author 王强
      */
     public static void add(String socketType, String socketId, WebSocketSession session) {
@@ -60,7 +59,6 @@ public class WebSocketSessionManager {
      *
      * @param socketType 业务类型
      * @param socketId   业务唯一标识
-     * @return void
      * @author 王强
      */
     public static void removeAndClose(String socketType, String socketId) {

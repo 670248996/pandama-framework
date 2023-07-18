@@ -27,7 +27,6 @@ public interface OnlineService {
      * 删除
      *
      * @param ids 在线信息id
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);

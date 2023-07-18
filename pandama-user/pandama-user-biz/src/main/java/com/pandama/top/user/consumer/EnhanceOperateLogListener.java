@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
         consumerGroup = "operate_log_consumer_group",
         topic = "operate_log_topic",
         selectorExpression = "*",
-        consumeThreadNumber = 5)
+        consumeThreadNumber = 10)
 public class EnhanceOperateLogListener extends EnhanceMessageHandler<LogDTO> implements RocketMQListener<LogDTO> {
 
     private final LogMapper logMapper;

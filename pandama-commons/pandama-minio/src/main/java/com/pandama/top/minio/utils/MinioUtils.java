@@ -104,7 +104,6 @@ public class MinioUtils {
      * 根据bucketName删除Bucket，true：删除成功； false：删除失败，文件或已不存在
      *
      * @param bucketName
-     * @return void
      * @author 王强
      */
     @SneakyThrows(Exception.class)
@@ -403,7 +402,6 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param objectName 文件名称
-     * @return void
      * @author 王强
      */
     @SneakyThrows(Exception.class)
@@ -420,7 +418,6 @@ public class MinioUtils {
      *
      * @param bucketName 存储桶
      * @param keys       需要删除的文件列表
-     * @return void
      * @author 王强
      */
     public void removeFiles(String bucketName, List<String> keys) {

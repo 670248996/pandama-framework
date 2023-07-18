@@ -1630,7 +1630,6 @@ public class RedisUtils {
      * @param key   分布式锁的Key
      * @param value 锁的值
      * @param ttl   锁过期时间
-     * @return void
      * @author 王强
      */
     private void watchDog(String key, String value, long ttl) {

@@ -32,7 +32,6 @@ public interface FileFeignService {
      * 删除
      *
      * @param fileName 文件名称
-     * @return void
      * @author 王强
      */
     @DeleteMapping("/oss/")
@@ -63,7 +62,6 @@ public interface FileFeignService {
      *
      * @param fileName 文件名称
      * @param response 响应
-     * @return void
      * @author 王强
      */
     @GetMapping("/oss/download")

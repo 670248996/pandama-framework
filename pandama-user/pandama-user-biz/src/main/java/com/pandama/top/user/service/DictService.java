@@ -20,7 +20,6 @@ public interface DictService {
      * 创建
      *
      * @param dto 创建字典传参
-     * @return void
      * @author 王强
      */
     void create(DictCreateDTO dto);
@@ -29,7 +28,6 @@ public interface DictService {
      * 删除
      *
      * @param ids 字典主键id
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);
@@ -38,7 +36,6 @@ public interface DictService {
      * 更新
      *
      * @param dto 字典更新传参
-     * @return void
      * @author 王强
      */
     void update(DictUpdateDTO dto);
@@ -66,7 +63,6 @@ public interface DictService {
      *
      * @param id 字典主键id
      * @param status 状态
-     * @return void
      * @author 王强
      */
     void changeStatus(Long id, Boolean status);

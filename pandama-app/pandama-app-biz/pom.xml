@@ -61,6 +61,12 @@
             <artifactId>pandama-rocketmq</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--集成kafka-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-kafka</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

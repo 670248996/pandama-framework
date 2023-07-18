@@ -70,7 +70,6 @@ public class LogController {
      *
      * @param logType 日志类型
      * @param dto     日志导出传参
-     * @return void
      * @author 王强
      */
     @ApiOperation("日志导出")

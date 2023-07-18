@@ -33,7 +33,6 @@ public interface LogService extends IService<SysLog> {
      * 删除
      *
      * @param ids id
-     * @return void
      * @author 王强
      */
     void delete(List<Long> ids);
@@ -42,7 +41,6 @@ public interface LogService extends IService<SysLog> {
      * 导出excel
      *
      * @param dto 系统操作日志搜索传参
-     * @return void
      * @author 王强
      */
     void exportExcel(LogSearchDTO dto);
@@ -51,7 +49,6 @@ public interface LogService extends IService<SysLog> {
      * 清除
      *
      * @param logType 日志类型
-     * @return void
      * @author 王强
      */
     void clean(LogTypeEnum logType);

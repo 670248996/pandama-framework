@@ -32,7 +32,6 @@ public class LogRecordServiceImpl implements LogRecordService {
      * 创建日志
      *
      * @param message 消息
-     * @return void
      * @author 王强
      */
     @Override

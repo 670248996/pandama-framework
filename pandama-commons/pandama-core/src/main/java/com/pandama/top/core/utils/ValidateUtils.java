@@ -18,7 +18,6 @@ public class ValidateUtils {
      * 有效
      *
      * @param t 校验对象
-     * @return void
      * @author 王强
      */
     public static void valid(Object t) {

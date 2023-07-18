@@ -1,5 +1,6 @@
 package com.pandama.top.app.consumer;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -13,11 +14,13 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RocketMQMessageListener(topic = "app_topic", consumerGroup = "app_consumer_group")
-public class RocketConsumer implements RocketMQListener<String> {
+@RocketMQMessageListener(topic = "app_topic1", consumerGroup = "app_consumer_group1", consumeThreadNumber = 1)
+public class RocketConsumer1 implements RocketMQListener<String> {
+    @SneakyThrows
     @Override
     public void onMessage(String message) {
         // 处理消息的逻辑
         log.info("普通消费者 接收到消息: " + message);
+        Thread.sleep(100);
     }
 }

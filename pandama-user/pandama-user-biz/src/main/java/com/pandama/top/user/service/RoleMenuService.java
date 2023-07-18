@@ -35,7 +35,6 @@ public interface RoleMenuService extends IService<SysRoleMenu> {
      * 按角色删除id
      *
      * @param roleIds 角色id列表
-     * @return void
      * @author 王强
      */
     void deleteByRoleIds(List<Long> roleIds);
@@ -44,7 +43,6 @@ public interface RoleMenuService extends IService<SysRoleMenu> {
      * 按菜单删除id
      *
      * @param menuIds 权限id列表
-     * @return void
      * @author 王强
      */
     void deleteByMenuIds(List<Long> menuIds);
