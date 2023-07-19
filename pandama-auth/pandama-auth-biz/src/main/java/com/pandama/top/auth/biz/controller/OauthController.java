@@ -41,17 +41,17 @@ public class OauthController {
      */
     @OperationLog(bizEvent = "'1'", msg = "'【' + #user.realName + '】登录成功'", tag = "'1'")
     @RequestMapping(value = "/token", method = RequestMethod.POST)
-    public Response<Oauth2TokenDTO> login(Principal principal, @RequestParam Map<String, String> parameters)
+    public Response<OAuth2AccessToken> token(Principal principal, @RequestParam Map<String, String> parameters)
             throws HttpRequestMethodNotSupportedException {
         OAuth2AccessToken oAuth2AccessToken = tokenEndpoint.postAccessToken(principal, parameters).getBody();
-        assert oAuth2AccessToken != null;
-        Oauth2TokenDTO oauth2Token = Oauth2TokenDTO.builder()
-                .token(oAuth2AccessToken.getValue())
-                .refreshToken(oAuth2AccessToken.getRefreshToken().getValue())
-                .expiresIn(oAuth2AccessToken.getExpiresIn())
-                .tokenHead("Bearer ").build();
-        String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, oAuth2AccessToken.getAdditionalInformation().get("id"));
-        redisUtils.setEx(tokenRedisKey, oAuth2AccessToken.getValue(), oAuth2AccessToken.getExpiresIn(), TimeUnit.SECONDS);
-        return Response.success(MessageConstant.LOGIN_SUCCESS, oauth2Token);
+//        assert oAuth2AccessToken != null;
+//        Oauth2TokenDTO oauth2Token = Oauth2TokenDTO.builder()
+//                .token(oAuth2AccessToken.getValue())
+//                .refreshToken(oAuth2AccessToken.getRefreshToken().getValue())
+//                .expiresIn(oAuth2AccessToken.getExpiresIn())
+//                .tokenHead("Bearer ").build();
+//        String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, oAuth2AccessToken.getAdditionalInformation().get("id"));
+//        redisUtils.setEx(tokenRedisKey, oAuth2AccessToken.getValue(), oAuth2AccessToken.getExpiresIn(), TimeUnit.SECONDS);
+        return Response.success(MessageConstant.LOGIN_SUCCESS, oAuth2AccessToken);
     }
 }
