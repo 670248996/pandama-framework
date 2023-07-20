@@ -1,4 +1,4 @@
-package com.pandama.top.auth.api.pojo;
+package com.pandama.top.gateway.config;
 
 import lombok.Data;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Token信息
+ * 用户信息
+ *
+ * @author 王强
+ * @date 2023-07-20 11:19:13
  */
 @Data
-public class TokenInfo {
+public class LoginUser {
 
     private Long id;
 

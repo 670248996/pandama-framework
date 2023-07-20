@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.pandama.top.core.pojo.vo.PageVO;
 import com.pandama.top.user.entity.SysUser;
 import com.pandama.top.user.pojo.dto.*;
+import com.pandama.top.user.pojo.vo.SystemUserInfoVO;
 import com.pandama.top.user.pojo.vo.UserAuthRoleVO;
 import com.pandama.top.user.pojo.vo.UserDetailResultVO;
 import com.pandama.top.user.pojo.vo.UserSearchResultVO;
@@ -128,4 +129,12 @@ public interface UserService extends IService<SysUser> {
      * @author 王强
      */
     void authRoleConfirm(UserAuthRoleConfirmDTO dto);
+
+    /**
+     * 获取用户信息
+     *
+     * @return com.pandama.top.user.pojo.vo.SystemUserInfoVO
+     * @author 王强
+     */
+    SystemUserInfoVO getUserInfo();
 }

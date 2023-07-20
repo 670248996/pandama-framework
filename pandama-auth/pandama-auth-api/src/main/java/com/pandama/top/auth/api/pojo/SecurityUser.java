@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
  */
 @Data
 public class SecurityUser implements UserDetails {
-
     /**
      * ID
      */

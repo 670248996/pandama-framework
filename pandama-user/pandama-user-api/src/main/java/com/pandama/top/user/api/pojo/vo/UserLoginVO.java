@@ -25,17 +25,11 @@ public class UserLoginVO {
     @ApiModelProperty("密码")
     private String password;
 
-    @ApiModelProperty("账号")
+    @ApiModelProperty("姓名")
     private String realName;
 
     @ApiModelProperty("账号是否启用")
     private Boolean status;
-
-    @ApiModelProperty("重试次数")
-    private Integer retryNum;
-
-    @ApiModelProperty("冻结时长(单位: 小时, 默认5分钟)")
-    private Integer freezeTime;
 
     @ApiModelProperty("角色代码列表")
     private List<String> roleCodeList;

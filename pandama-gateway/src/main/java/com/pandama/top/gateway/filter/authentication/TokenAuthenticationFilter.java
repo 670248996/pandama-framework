@@ -2,11 +2,11 @@ package com.pandama.top.gateway.filter.authentication;
 
 import com.alibaba.fastjson.JSON;
 import com.nimbusds.jose.JWSObject;
+import com.pandama.top.auth.api.constant.AuthConstant;
 import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.constant.RedisConstant;
-import com.pandama.top.auth.api.pojo.TokenInfo;
 import com.pandama.top.core.global.Global;
-import com.pandama.top.auth.api.constant.AuthConstant;
+import com.pandama.top.gateway.config.LoginUser;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -58,10 +58,10 @@ public class TokenAuthenticationFilter implements WebFilter {
             log.info("=====================Token认证=====================");
             //从token中解析用户信息并设置到Header中去
             String authToken = authHeader.substring(AuthConstant.BEARER.length());
-            TokenInfo user = null;
+            LoginUser user = null;
             try {
                 JWSObject jwsObject = JWSObject.parse(authToken);
-                user = JSON.parseObject(jwsObject.getPayload().toString(), TokenInfo.class);
+                user = JSON.parseObject(jwsObject.getPayload().toString(), LoginUser.class);
             } catch (ParseException e) {
                 return Mono.error(new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED));
             }

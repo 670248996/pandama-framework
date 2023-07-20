@@ -25,9 +25,6 @@ public class SystemUserInfoVO extends BaseUserInfoVO {
     @ApiModelProperty("用户头像地址")
     private String avatar;
 
-    @ApiModelProperty("手机号")
-    private String phone;
-
     @ApiModelProperty("身份证号")
     private String idCardNo;
 
@@ -82,14 +79,8 @@ public class SystemUserInfoVO extends BaseUserInfoVO {
     @ApiModelProperty("路由信息列表")
     private List<RouterTreeResultVO> routerList;
 
-    @ApiModelProperty("过期提醒阈值(单位：天，默认：0，不提醒)")
-    private Integer remindThreshold;
-
     @ApiModelProperty("密码过期时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime passwordExpireTime;
-
-    @ApiModelProperty("密码到期天数")
-    private Long pwdExpireDays;
 
 }

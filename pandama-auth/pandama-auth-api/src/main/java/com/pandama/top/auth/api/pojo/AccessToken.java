@@ -5,24 +5,24 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Oauth2获取Token返回信息封装
+ * Token返回信息封装
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Builder
-public class Oauth2TokenDTO {
+public class AccessToken {
     /**
      * 访问令牌
      */
-    private String token;
+    private String accessToken;
     /**
      * 刷新令牌
      */
     private String refreshToken;
     /**
-     * 访问令牌头前缀
+     * 令牌类型
      */
-    private String tokenHead;
+    private String tokenType;
     /**
      * 有效时间（秒）
      */

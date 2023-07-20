@@ -1,7 +1,7 @@
 package com.pandama.top.auth.biz.service;
 
-import com.pandama.top.auth.api.pojo.SecurityUser;
 import com.pandama.top.auth.api.constant.MessageConstant;
+import com.pandama.top.auth.api.pojo.SecurityUser;
 import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.core.utils.BeanConvertUtils;
 import com.pandama.top.core.utils.UserInfoUtils;
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserLoginVO user = userFeignService.findUserByUsername(username);
+        UserLoginVO user = userFeignService.loadUserByUsername(username);
         LogRecordContext.putVariables("user", user);
         UserInfoUtils.setUserInfo(BeanConvertUtils.convert(user, CurrentUserInfo::new)
                 .orElse(new CurrentUserInfo()));

@@ -1,6 +1,5 @@
 package com.pandama.top.user.service;
 
-import com.pandama.top.user.pojo.vo.SystemUserInfoVO;
 import com.pandama.top.user.api.pojo.vo.UserLoginVO;
 
 /**
@@ -18,7 +17,7 @@ public interface LoginService {
      * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
      * @author 王强
      */
-    UserLoginVO loginByUsername(String username);
+    UserLoginVO loadUserByUsername(String username);
 
     /**
      * 登录通过电话
@@ -27,13 +26,5 @@ public interface LoginService {
      * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
      * @author 王强
      */
-    UserLoginVO loginByPhone(String phone);
-
-    /**
-     * 获取用户信息
-     *
-     * @return com.pandama.top.user.pojo.vo.SystemUserInfoVO
-     * @author 王强
-     */
-    SystemUserInfoVO getUserInfo();
+    UserLoginVO loadUserByPhone(String phone);
 }

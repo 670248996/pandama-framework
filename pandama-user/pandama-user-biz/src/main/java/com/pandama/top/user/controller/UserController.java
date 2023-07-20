@@ -1,6 +1,7 @@
 package com.pandama.top.user.controller;
 
 import com.pandama.top.user.pojo.dto.*;
+import com.pandama.top.user.pojo.vo.SystemUserInfoVO;
 import com.pandama.top.user.pojo.vo.UserAuthRoleVO;
 import com.pandama.top.user.pojo.vo.UserDetailResultVO;
 import com.pandama.top.user.pojo.vo.UserSearchResultVO;
@@ -235,5 +236,17 @@ public class UserController {
     public Response<Void> authUserConfirm(@Valid @RequestBody UserAuthRoleConfirmDTO dto) {
         userService.authRoleConfirm(dto);
         return Response.success();
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @return com.pandama.top.core.global.response.Response<com.pandama.top.user.pojo.vo.SystemUserInfoVO>
+     * @author 王强
+     */
+    @ApiOperation("根据token获取用户信息")
+    @GetMapping("/getUserInfo")
+    public Response<SystemUserInfoVO> getUserInfo() {
+        return Response.success(userService.getUserInfo());
     }
 }

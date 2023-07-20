@@ -21,8 +21,8 @@ public interface UserFeignService {
      * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
      * @author 王强
      */
-    @GetMapping(value = "/login/loginByUsername")
-    UserLoginVO findUserByUsername(@RequestParam("username") String username);
+    @GetMapping(value = "/login/loadUserByUsername")
+    UserLoginVO loadUserByUsername(@RequestParam("username") String username);
 
     /**
      * 根据手机号查询用户信息
@@ -31,8 +31,8 @@ public interface UserFeignService {
      * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
      * @author 王强
      */
-    @GetMapping(value = "/login/loginByPhone")
-    UserLoginVO findUserByPhone(@RequestParam("phone") String phone);
+    @GetMapping(value = "/login/loadUserByPhone")
+    UserLoginVO loadUserByPhone(@RequestParam("phone") String phone);
 
     /**
      * 校验验证码
