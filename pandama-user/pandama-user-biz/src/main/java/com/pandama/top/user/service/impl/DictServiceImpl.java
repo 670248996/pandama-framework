@@ -1,5 +1,6 @@
 package com.pandama.top.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pandama.top.core.global.exception.CommonException;
@@ -21,8 +22,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -58,6 +62,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
                 // 将传参字段转换赋值成字典实体属性
                 SysDict sysDict = BeanConvertUtils.convert(dto, SysDict::new, (s, t) -> {
                     t.setId(IdWorker.getId());
+                    t.setDictType(parent.getDictType());
                     t.setDictCode(dto.getDictCode());
                     t.setParentId(s.getParentId());
                     t.setIds(parent.getIds() == null ? String.valueOf(t.getId()) : parent.getIds() + "," + t.getId());
@@ -113,5 +118,25 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
         sysRole.setId(id);
         sysRole.setStatus(status);
         dictionaryMapper.updateById(sysRole);
+    }
+
+    /**
+     * 初始化数据
+     *
+     * @author 王强
+     */
+    @PostConstruct
+    public void initData() {
+        log.info("=====================初始化字典数据=====================");
+        List<SysDict> allDictList = dictionaryMapper.selectList(new LambdaQueryWrapper<SysDict>()
+                .select(SysDict::getId, SysDict::getIds, SysDict::getParentId));
+        Map<Long, String> dictIdsMap = new HashMap<>(allDictList.size());
+        for (SysDict dict : allDictList) {
+            String parentIds = dictIdsMap.get(dict.getParentId());
+            dict.setIds(parentIds == null ? String.valueOf(dict.getId()) : parentIds + "," + dict.getId());
+            dict.setLevel(dict.getIds().split(",").length);
+            dictIdsMap.put(dict.getId(), dict.getIds());
+        }
+        updateBatchById(allDictList);
     }
 }

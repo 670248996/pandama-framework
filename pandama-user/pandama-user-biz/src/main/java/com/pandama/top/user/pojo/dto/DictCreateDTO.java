@@ -19,10 +19,6 @@ public class DictCreateDTO {
     @ApiModelProperty("上级字典id")
     private Long parentId;
 
-    @NotBlank(message = "字典类型，dictType不能为null")
-    @ApiModelProperty("字典类型")
-    private String dictType;
-
     @NotBlank(message = "字典代码，dictCode不能为null")
     @ApiModelProperty("字典代码")
     private String dictCode;

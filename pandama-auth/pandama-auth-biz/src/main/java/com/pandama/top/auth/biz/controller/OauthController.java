@@ -6,7 +6,6 @@ import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.pojo.AccessToken;
 import com.pandama.top.auth.api.constant.RedisConstant;
 import com.pandama.top.core.global.response.Response;
-import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.logRecord.annotation.OperationLog;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
@@ -63,13 +62,5 @@ public class OauthController {
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAKey key = new RSAKey.Builder(publicKey).build();
         return new JWKSet(key).toJSONObject();
-    }
-
-    @OperationLog(bizEvent = "'1'", msg = "'【' + #user.realName + '】登出成功'", tag = "'2'")
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public Response<?> logout() {
-        String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, UserInfoUtils.getUserId());
-        redisUtils.delete(tokenRedisKey);
-        return Response.success(MessageConstant.LOGOUT_SUCCESS);
     }
 }
