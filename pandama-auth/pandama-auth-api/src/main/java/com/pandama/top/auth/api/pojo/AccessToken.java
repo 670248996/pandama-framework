@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Set;
+
 /**
  * Token返回信息封装
  */
@@ -27,4 +29,8 @@ public class AccessToken {
      * 有效时间（秒）
      */
     private Integer expiresIn;
+    /**
+     * 范围
+     */
+    private Set<String> scope;
 }

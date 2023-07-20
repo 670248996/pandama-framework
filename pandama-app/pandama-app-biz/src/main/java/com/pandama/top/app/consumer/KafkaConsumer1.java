@@ -17,7 +17,7 @@ import java.util.Map;
  * @date 2023-07-08 11:55:31
  */
 @Slf4j
-@Component
+//@Component
 public class KafkaConsumer1 implements ApplicationRunner {
 
     private final KafkaProperties kafkaProperties;

@@ -51,7 +51,8 @@ public class OauthController {
                 .accessToken(token.getValue())
                 .refreshToken(token.getRefreshToken() == null ? "" : token.getRefreshToken().getValue())
                 .expiresIn(token.getExpiresIn())
-                .tokenType(token.getTokenType()).build();
+                .tokenType(token.getTokenType())
+                .scope(token.getScope()).build();
         String tokenRedisKey = String.format(RedisConstant.ACCESS_TOKEN, token.getAdditionalInformation().get("id"));
         redisUtils.setEx(tokenRedisKey, token.getValue(), token.getExpiresIn(), TimeUnit.SECONDS);
         return Response.success(MessageConstant.LOGIN_SUCCESS, oauth2Token);

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RocketMQMessageListener(topic = "app_topic1", consumerGroup = "app_consumer_group1", consumeThreadNumber = 1)
 public class RocketConsumer1 implements RocketMQListener<String> {
+
     @SneakyThrows
     @Override
     public void onMessage(String message) {

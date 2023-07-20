@@ -6,7 +6,6 @@ import com.pandama.top.auth.api.constant.AuthConstant;
 import com.pandama.top.auth.api.constant.MessageConstant;
 import com.pandama.top.auth.api.constant.RedisConstant;
 import com.pandama.top.core.global.Global;
-import com.pandama.top.gateway.config.LoginUser;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -71,10 +70,10 @@ public class TokenAuthenticationFilter implements WebFilter {
                 return Mono.error(new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED));
             }
             // 校验用户权限
-            if (CollectionUtils.isEmpty(user.getGrantedAuthorities())) {
+            if (CollectionUtils.isEmpty(user.getAuthorities())) {
                 return Mono.error(new CredentialsExpiredException(MessageConstant.PERMISSION_DENIED));
             }
-            Authentication auth = new UsernamePasswordAuthenticationToken(user, user.getGrantedAuthorities());
+            Authentication auth = new UsernamePasswordAuthenticationToken(user, user.getId(), user.getGrantedAuthorities());
             try {
                 // 将用户信息放入Header中, URL加密解决中文乱码
                 request.mutate()

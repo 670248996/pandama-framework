@@ -1,4 +1,4 @@
-package com.pandama.top.gateway.config;
+package com.pandama.top.gateway.filter.authentication;
 
 import lombok.Data;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
