@@ -1,0 +1,50 @@
+server:
+  port: 8884
+  max-http-header-size: ENC(r++f4i1+fdqPcd3KVE1r0w==)
+  servlet:
+    context-path: ENC(lb2f54XQD/A+GOCXPiWBjS41PGYmCuNn)
+spring:
+  servlet:
+    multipart:
+      max-file-size: ENC(+75z+SHjOCNbud/TA9aAoQ==)
+      max-request-size: ENC(/uMbd6jMNQp6jlfJ4Nj1qA==)
+  mvc:
+    pathmatch:
+      matching-strategy: ENC(LxmY5ALnJ3QH23r16ze8BIoeUfiFW4nMcpsAtHn31PM=)
+  datasource:
+    driver-class-name: ENC(9j4wk8+uG3PV+pUp8hhXllDAuZTPGdNau1ee73hVxnDtXU9fllDXVw==)
+    type: ENC(g7CRWgPcqOJuNCzF3bj5tPFl6R3FV02kuy58TVRP0LHW+2DBqfx8V0OxnkXpsVRV)
+    druid:
+      url: ENC(Da48HZcOO576LRtdTyvDU+B51pNSAolDIkbyq5zXdDTzUjiJxUEZMk+U0K70JFPXVzrfsWv1//fHJIWYZM0oqTPZL92iJw6IS2Mkcmag8LvdDA8yuW9fO02BdojLWcyjjUB/iVujmsNNxPY122wdSoV7QTw1q2+yGvTbM6dtH48lez7MnJBtccoBYPEeEvCcM9eHG1j4xT+yuLvX5Gu4Og==)
+      username: ENC(TDH9I4+qqsnB+27BX45jCw==)
+      password: ENC(OpDi4bU1Zazt3L6lE7QlPe+I1wcBHyhG)
+      initialSize: 5
+      minIdle: 5
+      maxActive: 50
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: ENC(TYFl/IZPZLvdYJnRCMxUaEFV31L1lGckIMCGpMOMUxo=)
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      filters: ENC(hgszbS0iR/85zlsC6qdhfBP0JupVK+CpwkBqHJ5ThxU=)
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: ENC(ALiVgwSQMS71Ten7aVmDKIaLVjiXs6zha8bG357TsPoEDmJRoE3A4Cf9mm87t9F2xrh22ViLiSovgqt/o8cUbw==)
+  redis:
+    host: ENC(Zatm/MlyV3KHd1DeGHBn0XAXQs6pjQJY)
+    port: 6379
+    password: ENC(sNubjl3GVMeACbGGXg+aqwnwnEi1/LHQ)
+    timeout: ENC(vYfOlEiJe7OVJ3C8oongOw==)
+    lettuce:
+      pool:
+        max-active: 200
+        min-idle: 1
+        max-idle: 10
+        max-wait: ENC(FHrtHFScgtluTBNj6PCLIQ==)
+        time-between-eviction-runs: ENC(BY80gpL09vpfL0ljoWT/GQ==)
+      shutdown-timeout: ENC(8EkixXf0flIWPrNwBz4Sdg==)
+mybatis-plus:
+  mapper-locations: ENC(8Kcpt555uYjA99STXLXAl4fqFJzqVCdDa+doH0zAp5w=)

@@ -27,6 +27,7 @@ public class KafkaController {
 
     private final KafkaTemplate<String, String> template;
 
+
     @RequestMapping(value = "/generate", method = RequestMethod.GET)
     public Response<?> generate(String topic, Integer num) {
         Stream.iterate(0, n -> n + 1).parallel().limit(num).forEach(item -> {

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
  * @date 2023-07-08 11:55:31
  */
 @Slf4j
-@Component
-@RocketMQMessageListener(topic = "app_topic2", consumerGroup = "app_consumer_group2", consumeThreadNumber = 10)
+//@Component
+//@RocketMQMessageListener(topic = "app_topic2", consumerGroup = "app_consumer_group2", consumeThreadNumber = 10)
 public class RocketConsumer2 implements RocketMQListener<String> {
     @SneakyThrows
     @Override

@@ -67,6 +67,12 @@
             <artifactId>pandama-kafka</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--yml工具-->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.26</version>
+        </dependency>
     </dependencies>
 
     <build>

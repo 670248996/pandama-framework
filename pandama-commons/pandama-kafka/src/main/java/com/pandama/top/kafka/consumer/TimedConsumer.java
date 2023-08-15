@@ -1,12 +1,15 @@
 package com.pandama.top.kafka.consumer;
 
-import com.pandama.top.kafka.listener.MultiThreadedRebalanceListener;
 import com.pandama.top.kafka.worker.ConsumerWorker;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.PartitionInfo;
 import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.StringDeserializer;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -18,7 +21,8 @@ import java.util.concurrent.Executors;
  * @author 王强
  * @date 2023-07-15 20:58:11
  */
-public class MultiThreadedConsumer {
+@Slf4j
+public class TimedConsumer {
 
     /**
      * 分区和任务执行对象 映射表处理
@@ -53,16 +57,34 @@ public class MultiThreadedConsumer {
         return t;
     });
 
-    public MultiThreadedConsumer(String brokerId, String topic, String groupId) {
-        Properties props = new Properties();
-        props.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerId);
-        props.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
-        props.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-        props.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+    public TimedConsumer(Map<String, Object> props, String topic, LocalDateTime startDateTime) {
         consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Collections.singletonList(topic), new MultiThreadedRebalanceListener(consumer, outstandingWorkers, offsetsToCommit));
+        // 获取topic的partition信息
+        List<PartitionInfo> partitionInfos = consumer.partitionsFor(topic);
+        List<TopicPartition> topicPartitions = new ArrayList<>();
+        Map<TopicPartition, Long> timestampsToSearch = new HashMap<>();
+        long startTime = startDateTime.toInstant(ZoneOffset.ofHours(8)).toEpochMilli();
+        for (PartitionInfo partitionInfo : partitionInfos) {
+            topicPartitions.add(new TopicPartition(partitionInfo.topic(), partitionInfo.partition()));
+            timestampsToSearch.put(new TopicPartition(partitionInfo.topic(), partitionInfo.partition()), startTime);
+        }
+        consumer.assign(topicPartitions);
+        // 获取每个partition今天凌晨的偏移量
+        Map<TopicPartition, OffsetAndTimestamp> map = consumer.offsetsForTimes(timestampsToSearch);
+        OffsetAndTimestamp offsetTimestamp = null;
+        log.info("开始设置各分区初始偏移量...");
+        for (Map.Entry<TopicPartition, OffsetAndTimestamp> entry : map.entrySet()) {
+            // 如果设置的查询偏移量的时间点大于最大的索引记录时间，那么value就为空
+            offsetTimestamp = entry.getValue();
+            if (offsetTimestamp != null) {
+                int partition = entry.getKey().partition();
+                long timestamp = offsetTimestamp.timestamp();
+                long offset = offsetTimestamp.offset();
+                log.info("设置分区初始偏移量 分区:{}, time:{}, offset:{}", partition, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(timestamp)), offset);
+                // 设置读取消息的偏移量
+                consumer.seek(entry.getKey(), offset);
+            }
+        }
     }
 
     public void run() {
@@ -123,6 +145,7 @@ public class MultiThreadedConsumer {
              * 设置分区待提交的偏移量 offset
              */
             if (offset > 0L) {
+                offset = Math.max(10000, offset);
                 offsetsToCommit.put(tp, new OffsetAndMetadata(offset));
             }
         });
@@ -145,10 +168,16 @@ public class MultiThreadedConsumer {
         try {
             long currentTime = System.currentTimeMillis();
             if (currentTime - lastCommitTime > DEFAULT_COMMIT_INTERVAL && !offsetsToCommit.isEmpty()) {
+                /**
+                 * 同步提交偏移量
+                 */
                 consumer.commitSync(offsetsToCommit);
+                offsetsToCommit.forEach((partition, offset) -> {
+                    log.info("同步提交偏移量 分区:{}, offset:{}", partition.partition(), offset.offset());
+                });
                 offsetsToCommit.clear();
-                lastCommitTime = currentTime;
             }
+            lastCommitTime = currentTime;
         } catch (Exception e) {
             e.printStackTrace();
         }

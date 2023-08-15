@@ -2,9 +2,7 @@ package com.pandama.top.kafka.worker;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -44,6 +42,13 @@ public class ConsumerWorker<K, V> {
      * 使用CompletableFuture来保存Worker要提交的位移。
      */
     private final CompletableFuture<Long> future = new CompletableFuture<>();
+
+    private final static Executor executor = Executors.newFixedThreadPool(
+            Runtime.getRuntime().availableProcessors() * 2, r -> {
+                Thread t = new Thread(r);
+                t.setDaemon(true);
+                return t;
+            });
 
     public ConsumerWorker(List<ConsumerRecord<K, V>> recordsOfSamePartition) {
         this.recordsOfSamePartition = recordsOfSamePartition;
@@ -98,7 +103,8 @@ public class ConsumerWorker<K, V> {
      */
     private void handleRecord(ConsumerRecord<K, V> record) {
         try {
-            Thread.sleep(ThreadLocalRandom.current().nextInt(10));
+            System.out.println(record);
+            Thread.sleep(ThreadLocalRandom.current().nextInt(50));
         } catch (InterruptedException ignored) {
             Thread.currentThread().interrupt();
         }
