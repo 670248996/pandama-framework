@@ -1,7 +1,7 @@
 package com.pandama.top.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.pandama.top.user.entity.SysDeptUser;
+import com.pandama.top.user.entity.SysUserDept;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2023-07-08 15:47:57
  */
 @Repository
-public interface DeptUserMapper extends BaseMapper<SysDeptUser> {
+public interface UserDeptMapper extends BaseMapper<SysUserDept> {
 
     /**
      * @param deptIds 部门id列表
@@ -44,7 +44,7 @@ public interface DeptUserMapper extends BaseMapper<SysDeptUser> {
      * @return: java.util.List<java.lang.Long>
      * @version: 1.0
      */
-    List<SysDeptUser> getListByDeptIds(@Param("deptIds") List<Long> deptIds);
+    List<SysUserDept> getListByDeptIds(@Param("deptIds") List<Long> deptIds);
 
     /**
      * @param userIds 用户id列表
@@ -54,7 +54,7 @@ public interface DeptUserMapper extends BaseMapper<SysDeptUser> {
      * @return: java.util.List<java.lang.Long>
      * @version: 1.0
      */
-    List<SysDeptUser> getListByUserIds(@Param("userIds") List<Long> userIds);
+    List<SysUserDept> getListByUserIds(@Param("userIds") List<Long> userIds);
 
     /**
      * @param deptIds 部门id列表

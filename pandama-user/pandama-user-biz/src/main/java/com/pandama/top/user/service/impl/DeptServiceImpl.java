@@ -11,7 +11,7 @@ import com.pandama.top.user.pojo.vo.DeptSearchResultVO;
 import com.pandama.top.user.pojo.vo.DeptTreeVO;
 import com.pandama.top.user.constant.Constants;
 import com.pandama.top.user.entity.SysDept;
-import com.pandama.top.user.entity.SysDeptUser;
+import com.pandama.top.user.entity.SysUserDept;
 import com.pandama.top.user.mapper.DeptMapper;
 import com.pandama.top.user.service.DeptService;
 import com.pandama.top.user.service.DeptUserService;
@@ -227,8 +227,8 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, SysDept> implements
 
     @Override
     public Map<Long, DeptSearchResultVO> mapByUserIds(List<Long> userIds) {
-        List<SysDeptUser> deptUserList = departmentUserService.getListByUserIds(userIds);
-        Map<Long, Long> deptUserMap = deptUserList.stream().collect(Collectors.toMap(SysDeptUser::getDeptId, SysDeptUser::getUserId, (k1, k2) -> k1));
+        List<SysUserDept> deptUserList = departmentUserService.getListByUserIds(userIds);
+        Map<Long, Long> deptUserMap = deptUserList.stream().collect(Collectors.toMap(SysUserDept::getDeptId, SysUserDept::getUserId, (k1, k2) -> k1));
         List<DeptSearchResultVO> deptList = listByUserIds(userIds);
         return deptList.stream().collect(Collectors.toMap(p -> deptUserMap.get(p.getId()),
                 Function.identity(), (k1, k2) -> k1));

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysDeptUser {
+public class SysUserDept {
     /**
      * 部门id
      */

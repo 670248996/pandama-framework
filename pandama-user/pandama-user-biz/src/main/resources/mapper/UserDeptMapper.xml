@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pandama.top.user.mapper.DeptUserMapper">
+<mapper namespace="com.pandama.top.user.mapper.UserDeptMapper">
 
     <select id="getUserIdsByDeptIds" resultType="java.lang.Long">
         SELECT du.user_id
-        FROM sys_dept_user du
+        FROM sys_user_dept du
         LEFT JOIN sys_user u ON u.id = du.user_id
         WHERE u.is_delete = 0
         AND du.dept_id IN
@@ -15,7 +15,7 @@
 
     <select id="getDeptIdsByUserIds" resultType="java.lang.Long">
         SELECT du.dept_id
-        FROM sys_dept_user du
+        FROM sys_user_dept du
         LEFT JOIN sys_dept d ON d.id = du.dept_id
         WHERE d.is_delete = 0
         AND du.user_id IN
@@ -24,9 +24,9 @@
         </foreach>
     </select>
 
-    <select id="getListByDeptIds" resultType="com.pandama.top.user.entity.SysDeptUser">
+    <select id="getListByDeptIds" resultType="com.pandama.top.user.entity.SysUserDept">
         SELECT du.*
-        FROM sys_dept_user du
+        FROM sys_user_dept du
         LEFT JOIN sys_user u ON u.id = du.user_id
         WHERE u.is_delete = 0
         AND du.dept_id IN
@@ -35,9 +35,9 @@
         </foreach>
     </select>
 
-    <select id="getListByUserIds" resultType="com.pandama.top.user.entity.SysDeptUser">
+    <select id="getListByUserIds" resultType="com.pandama.top.user.entity.SysUserDept">
         SELECT du.*
-        FROM sys_dept_user du
+        FROM sys_user_dept du
         LEFT JOIN sys_dept d ON d.id = du.dept_id
         WHERE d.is_delete = 0
         AND du.user_id IN
@@ -47,14 +47,14 @@
     </select>
 
     <delete id="deleteByDeptIds" parameterType="java.util.List">
-        delete from sys_dept_user where dept_id in
+        delete from sys_user_dept where dept_id in
         <foreach collection="deptIds" item="deptId" separator="," open="(" close=")">
             #{deptId}
         </foreach>
     </delete>
 
     <delete id="deleteByUserIds" parameterType="java.util.List">
-        delete from sys_dept_user where user_id in
+        delete from sys_user_dept where user_id in
         <foreach collection="userIds" item="userId" separator="," open="(" close=")">
             #{userId}
         </foreach>

@@ -10,7 +10,7 @@ import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.redis.utils.RedisUtils;
 import com.pandama.top.core.global.exception.CommonException;
 import com.pandama.top.core.pojo.vo.PageVO;
-import com.pandama.top.user.entity.SysDeptUser;
+import com.pandama.top.user.entity.SysUserDept;
 import com.pandama.top.user.entity.SysRole;
 import com.pandama.top.user.entity.SysUser;
 import com.pandama.top.user.entity.SysUserRole;
@@ -80,7 +80,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
         userMapper.insert(user);
         if (dto.getDeptId() != null) {
             // 保存用户新关联的部门信息
-            departmentUserService.save(new SysDeptUser(dto.getDeptId(), user.getId()));
+            departmentUserService.save(new SysUserDept(dto.getDeptId(), user.getId()));
         }
     }
 
@@ -106,7 +106,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
         departmentUserService.deleteByUserIds(Collections.singletonList(dto.getId()));
         if (dto.getDeptId() != null) {
             // 保存用户新关联的部门信息
-            departmentUserService.save(new SysDeptUser(dto.getDeptId(), dto.getId()));
+            departmentUserService.save(new SysUserDept(dto.getDeptId(), dto.getId()));
         }
     }
 

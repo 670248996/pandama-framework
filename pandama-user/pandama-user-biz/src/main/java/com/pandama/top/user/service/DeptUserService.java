@@ -1,7 +1,7 @@
 package com.pandama.top.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.pandama.top.user.entity.SysDeptUser;
+import com.pandama.top.user.entity.SysUserDept;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @author 王强
  * @date 2023-07-08 15:54:52
  */
-public interface DeptUserService extends IService<SysDeptUser> {
+public interface DeptUserService extends IService<SysUserDept> {
 
     /**
      * 获取用户id通过部门id
@@ -38,7 +38,7 @@ public interface DeptUserService extends IService<SysDeptUser> {
      * @return java.util.List<com.pandama.top.user.entity.SysDeptUser>
      * @author 王强
      */
-    List<SysDeptUser> getListByDeptIds(List<Long> deptIds);
+    List<SysUserDept> getListByDeptIds(List<Long> deptIds);
 
     /**
      * 获取列表通过用户id
@@ -47,7 +47,7 @@ public interface DeptUserService extends IService<SysDeptUser> {
      * @return java.util.List<com.pandama.top.user.entity.SysDeptUser>
      * @author 王强
      */
-    List<SysDeptUser> getListByUserIds(List<Long> userIds);
+    List<SysUserDept> getListByUserIds(List<Long> userIds);
 
     /**
      * 按部门id删除

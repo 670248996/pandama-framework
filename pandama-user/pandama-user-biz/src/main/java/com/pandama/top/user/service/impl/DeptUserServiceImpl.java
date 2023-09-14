@@ -1,8 +1,8 @@
 package com.pandama.top.user.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.pandama.top.user.entity.SysDeptUser;
-import com.pandama.top.user.mapper.DeptUserMapper;
+import com.pandama.top.user.entity.SysUserDept;
+import com.pandama.top.user.mapper.UserDeptMapper;
 import com.pandama.top.user.service.DeptUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +22,9 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class DeptUserServiceImpl extends ServiceImpl<DeptUserMapper, SysDeptUser> implements DeptUserService {
+public class DeptUserServiceImpl extends ServiceImpl<UserDeptMapper, SysUserDept> implements DeptUserService {
 
-    private final DeptUserMapper departmentUserMapper;
+    private final UserDeptMapper departmentUserMapper;
 
     @Override
     public List<Long> getUserIdsByDeptIds(List<Long> deptIds) {
@@ -43,7 +43,7 @@ public class DeptUserServiceImpl extends ServiceImpl<DeptUserMapper, SysDeptUser
     }
 
     @Override
-    public List<SysDeptUser> getListByDeptIds(List<Long> deptIds) {
+    public List<SysUserDept> getListByDeptIds(List<Long> deptIds) {
         if (CollectionUtils.isNotEmpty(deptIds)) {
             return departmentUserMapper.getListByDeptIds(deptIds);
         }
@@ -51,7 +51,7 @@ public class DeptUserServiceImpl extends ServiceImpl<DeptUserMapper, SysDeptUser
     }
 
     @Override
-    public List<SysDeptUser> getListByUserIds(List<Long> userIds) {
+    public List<SysUserDept> getListByUserIds(List<Long> userIds) {
         if (CollectionUtils.isNotEmpty(userIds)) {
             return departmentUserMapper.getListByUserIds(userIds);
         }
