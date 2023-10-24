@@ -165,6 +165,11 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
+        <!--pushgateway依赖-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+        </dependency>
         <!--解决mac的启动dns解析报错-->
         <dependency>
             <groupId>io.netty</groupId>
