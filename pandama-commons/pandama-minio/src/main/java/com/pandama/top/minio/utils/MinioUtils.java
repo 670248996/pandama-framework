@@ -1,5 +1,6 @@
 package com.pandama.top.minio.utils;
 
+import com.pandama.top.minio.conf.MinioConfig;
 import io.minio.*;
 import io.minio.http.Method;
 import io.minio.messages.Bucket;
@@ -18,6 +19,8 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * minio工具
@@ -30,9 +33,8 @@ import java.util.*;
 @RequiredArgsConstructor
 public class MinioUtils {
 
-    /**
-     * minio客户
-     */
+    private final MinioConfig minioConfig;
+
     private final MinioClient minioClient;
 
     /******************************  Operate Bucket Start  ******************************/
@@ -474,5 +476,32 @@ public class MinioUtils {
     public String getUtf8ByURLDecoder(String str) throws UnsupportedEncodingException {
         String url = str.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
         return URLDecoder.decode(url, "UTF-8");
+    }
+
+    /**
+     * 合并分片对象
+     *
+     * @param bucketName  bucket名称
+     * @param objectName  object名称
+     * @param md5         文件md5
+     * @param totalChunks 总分片数
+     * @return io.minio.ObjectWriteResponse
+     * @author 王强
+     */
+    @SneakyThrows(Exception.class)
+    public ObjectWriteResponse mergeObject(String bucketName, String objectName, String md5, Integer totalChunks) {
+        List<ComposeSource> sourceObjectList = Stream.iterate(0, i -> ++i)
+                .limit(totalChunks)
+                .map(i -> ComposeSource.builder()
+                        .bucket(bucketName)
+                        .object(minioConfig.getTmpPath() + "/" + md5 + "/" + i)
+                        .build())
+                .collect(Collectors.toList());
+        ComposeObjectArgs build = ComposeObjectArgs.builder()
+                .bucket(bucketName)
+                .object(objectName)
+                .sources(sourceObjectList)
+                .build();
+        return minioClient.composeObject(build);
     }
 }

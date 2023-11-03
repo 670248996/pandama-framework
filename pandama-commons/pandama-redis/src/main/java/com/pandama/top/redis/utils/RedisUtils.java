@@ -3,6 +3,7 @@ package com.pandama.top.redis.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -272,6 +273,17 @@ public class RedisUtils {
      */
     public Optional<Boolean> setBit(String key, long offset, boolean value) {
         return Optional.ofNullable(redisTemplate.opsForValue().setBit(key, offset, value));
+    }
+
+    /**
+     * bit统计一共有多少位是1
+     *
+     * @param key   键
+     * @return java.util.Optional<java.lang.Long>
+     * @author 王强
+     */
+    public Optional<Long> bitCount(String key) {
+        return Optional.ofNullable(redisTemplate.execute((RedisCallback<Long>) conn -> conn.bitCount(key.getBytes())));
     }
 
     /**

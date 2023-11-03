@@ -36,6 +36,11 @@ public class MinioConfig {
      */
     private String bucketName;
 
+    /**
+     * 临时文件路径
+     */
+    private String tmpPath = "tmp";
+
     @Bean
     public MinioClient minioClient() {
         return MinioClient.builder()

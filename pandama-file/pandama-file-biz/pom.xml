@@ -32,7 +32,25 @@
 
         <dependency>
             <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-commons</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-file-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pandama.top</groupId>
             <artifactId>pandama-minio</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
