@@ -6,9 +6,9 @@ spring:
     nacos:
       config:
         file-extension: yml
-        server-addr: 121.36.56.159:8848
+        server-addr: 10.211.55.4:8848
         group: PANDAMA
       discovery:
-        server-addr: 121.36.56.159:8848
+        server-addr: 10.211.55.4:8848
         group: PANDAMA
         ip: 127.0.0.1

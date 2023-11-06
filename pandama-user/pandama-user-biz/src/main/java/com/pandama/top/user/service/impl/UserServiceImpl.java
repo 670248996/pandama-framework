@@ -156,6 +156,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     }
 
     @Override
+    public void updateAvatar(AvatarUpdateDTO dto) {
+        SysUser sysUser = new SysUser();
+        sysUser.setId(dto.getUserId());
+        sysUser.setAvatar(dto.getAvatar());
+        userMapper.updateById(sysUser);
+    }
+
+    @Override
     public PageVO<UserAuthRoleVO> authRolePage(UserAuthRoleSearchDTO dto) {
         List<Long> roleIds = userRoleService.getRoleIdsByUserIds(Collections.singletonList(dto.getUserId()));
         Page<SysRole> page = roleService.page(new Page<>(dto.getCurrent(), dto.getSize()),

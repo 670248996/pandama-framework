@@ -49,6 +49,6 @@ public class SliceUploadDTO {
     private MultipartFile chunkFile;
 
     @ApiModelProperty("上传路径")
-    private String path = "upload";
+    private String path = "sliceUpload";
 
 }

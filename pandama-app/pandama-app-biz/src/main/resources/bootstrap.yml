@@ -6,12 +6,10 @@ spring:
     nacos:
       config:
         file-extension: yml
-        server-addr: 121.36.56.159:8848
-        namespace: f15e71cc-5606-4806-acca-28421744c45f
+        server-addr: 10.211.55.4:8848
         group: PANDAMA
       discovery:
-        server-addr: 121.36.56.159:8848
-        namespace: f15e71cc-5606-4806-acca-28421744c45f
+        server-addr: 10.211.55.4:8848
         group: PANDAMA
         ip: 127.0.0.1
 
@@ -28,7 +26,7 @@ spring:
       auto-offset-reset: earliest
 
 rocketmq:
-  name-server: 121.36.56.159:9876
+  name-server: 10.211.55.4:9876
   consumer:
     group: app_consumer_group
     # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值

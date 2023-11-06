@@ -97,6 +97,14 @@ public interface UserService extends IService<SysUser> {
     void updatePassword(PasswordUpdateDTO dto);
 
     /**
+     * 更新头像
+     *
+     * @param dto 用户头像修改传参
+     * @author 王强
+     */
+    void updateAvatar(AvatarUpdateDTO dto);
+
+    /**
      * 用户查询授权角色分页
      *
      * @param dto 入参

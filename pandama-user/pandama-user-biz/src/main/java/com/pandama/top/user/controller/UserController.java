@@ -185,6 +185,21 @@ public class UserController {
     }
 
     /**
+     * 更新头像
+     *
+     * @param dto 用户头像修改传参
+     * @return com.pandama.top.core.global.response.Response<java.lang.Void>
+     * @author 王强
+     */
+    @ApiOperation("用户头像修改")
+    @PutMapping("/updateAvatar")
+    public Response<Void> updateAvatar(@Valid @RequestBody AvatarUpdateDTO dto) {
+        dto.setUserId(UserInfoUtils.getUserId());
+        userService.updateAvatar(dto);
+        return Response.success();
+    }
+
+    /**
      * 获取用户授权角色信息分页
      *
      * @param dto 查询入参

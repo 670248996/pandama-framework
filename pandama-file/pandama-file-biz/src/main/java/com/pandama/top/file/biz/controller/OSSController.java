@@ -2,7 +2,7 @@ package com.pandama.top.file.biz.controller;
 
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.file.api.pojo.dto.SliceUploadDTO;
-import com.pandama.top.file.api.pojo.dto.UploadDTO;
+import com.pandama.top.file.api.pojo.vo.SliceUploadVO;
 import com.pandama.top.file.api.pojo.vo.UploadVO;
 import com.pandama.top.minio.conf.MinioConfig;
 import com.pandama.top.minio.utils.MinioUtils;
@@ -45,17 +45,35 @@ public class OSSController {
      * @param dto 入参
      */
     @PostMapping("/upload")
-    public Response<?> upload(@Validated UploadDTO dto) {
+    public Response<UploadVO> upload(@RequestParam("file") MultipartFile file) {
         try {
-            MultipartFile file = dto.getFile();
-            String fileName = dto.getFileName();
-            String filePath = dto.getPath() + "/" + fileName;
+            String fileName  = file.getOriginalFilename();
+            String filePath = "upload" + "/" + fileName;
             minioUtils.uploadFile(minioConfig.getBucketName(), file, filePath, file.getContentType());
-            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).build());
+            String url = minioConfig.getEndpoint() + "/" + minioConfig.getBucketName() + "/" + filePath;
+            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).fileUrl(url).build());
         } catch (Exception e) {
             return Response.fail("上传失败");
         }
     }
+
+//    /**
+//     * 文件上传
+//     *
+//     * @param dto 入参
+//     */
+//    @PostMapping("/upload")
+//    public Response<UploadVO> upload(@Validated UploadDTO dto) {
+//        try {
+//            MultipartFile file = dto.getFile();
+//            String fileName = dto.getFileName();
+//            String filePath = dto.getPath() + "/" + fileName;
+//            minioUtils.uploadFile(minioConfig.getBucketName(), file, filePath, file.getContentType());
+//            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).build());
+//        } catch (Exception e) {
+//            return Response.fail("上传失败");
+//        }
+//    }
 
     /**
      * 删除
@@ -114,11 +132,12 @@ public class OSSController {
      * @author 王强
      */
     @PostMapping("/sliceUpload")
-    public Response<UploadVO> sliceUpload(@Validated SliceUploadDTO dto, HttpServletRequest request) throws Exception {
+    public Response<SliceUploadVO> sliceUpload(@Validated SliceUploadDTO dto, HttpServletRequest request) throws Exception {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         MultipartFile file = dto.getChunkFile();
         String filePath = dto.getPath() + "/" + dto.getFileName();
-        UploadVO uploadVO = UploadVO.builder().fileName(dto.getFileName()).filePath(filePath).build();
+        String url = minioConfig.getEndpoint() + "/" + minioConfig.getBucketName() + "/" + filePath;
+        SliceUploadVO uploadVO = SliceUploadVO.builder().fileName(dto.getFileName()).filePath(filePath).fileUrl(url).build();
         if (isMultipart) {
             // 分片数量大于1，则需要将分片文件上传到临时目录，上传完成后合并
             if (dto.getChunkIndex() != null && dto.getChunkCount() > 1) {

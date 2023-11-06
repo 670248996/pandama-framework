@@ -16,13 +16,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UploadVO {
+public class SliceUploadVO {
 
     @ApiModelProperty("文件名称")
     private String fileName;
 
     @ApiModelProperty("文件路径")
     private String filePath;
+
+    @ApiModelProperty("分片路径")
+    private String chunkPath;
 
     @ApiModelProperty("访问路径")
     private String fileUrl;
