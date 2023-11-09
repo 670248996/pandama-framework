@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+        <!--核心模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
@@ -30,6 +31,7 @@
             <artifactId>rocketmq-spring-boot-starter</artifactId>
             <version>2.2.3</version>
         </dependency>
+        <!--集成rocketmq-->
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-spring-boot</artifactId>

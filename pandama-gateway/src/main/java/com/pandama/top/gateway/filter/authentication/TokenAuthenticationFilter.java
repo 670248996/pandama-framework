@@ -2,9 +2,9 @@ package com.pandama.top.gateway.filter.authentication;
 
 import com.alibaba.fastjson.JSON;
 import com.nimbusds.jose.JWSObject;
-import com.pandama.top.auth.api.constant.AuthConstant;
-import com.pandama.top.auth.api.constant.MessageConstant;
-import com.pandama.top.auth.api.constant.RedisConstant;
+import com.pandama.top.auth.open.constant.AuthConstant;
+import com.pandama.top.auth.open.constant.MessageConstant;
+import com.pandama.top.auth.open.constant.RedisConstant;
 import com.pandama.top.core.global.Global;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.NonNull;

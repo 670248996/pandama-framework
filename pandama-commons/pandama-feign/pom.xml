@@ -18,13 +18,13 @@
     </properties>
 
     <dependencies>
-        <!--核心模块-->
+        <!--核心模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--openfeign-->
+        <!--openfeign依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -34,7 +34,7 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
         </dependency>
-
+        <!--loadbalancer依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>

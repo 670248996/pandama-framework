@@ -18,6 +18,7 @@
     </properties>
 
     <dependencies>
+        <!--web模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-starter-web</artifactId>

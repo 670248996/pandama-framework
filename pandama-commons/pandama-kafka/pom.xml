@@ -18,17 +18,18 @@
     </properties>
 
     <dependencies>
+        <!--核心模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
         </dependency>
-
+        <!--kafka依赖-->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
         </dependency>
-
+        <!--kafka依赖-->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>

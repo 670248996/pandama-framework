@@ -33,13 +33,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--core模块-->
+        <!--核心模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--redis模块-->
+        <!--redis模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-redis</artifactId>

@@ -12,33 +12,24 @@
     <artifactId>pandama-logrecord</artifactId>
 
     <dependencies>
-        <!-- 必要依赖 -->
+        <!--web模块依赖-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-starter-web</artifactId>
+            <version>1.0.0</version>
+            <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>1.9</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!--rocketmq模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-rocketmq</artifactId>
             <version>1.0.0</version>
             <optional>true</optional>
         </dependency>
+        <!--aop依赖-->
         <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-starter-web</artifactId>
-            <version>1.0.0</version>
-            <optional>true</optional>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 

@@ -27,6 +27,7 @@
         <module>pandama-minio</module>
         <module>pandama-websocket</module>
         <module>pandama-kafka</module>
+        <module>pandama-dubbo</module>
     </modules>
 
     <properties>

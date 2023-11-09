@@ -49,30 +49,31 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-jose</artifactId>
         </dependency>
-        <!--引入自定义工具包中的core-->
+        <!--核心库依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--引入自定义工具包中的core-->
+        <!--auth-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-auth-api</artifactId>
+            <artifactId>pandama-auth-open</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--引入自定义工具包中的cache-->
+        <!--redis模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--引入swagger相关依赖-->
+        <!--swagger依赖-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>${swagger.version}</version>
         </dependency>
+        <!--swagger依赖-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>

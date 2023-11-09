@@ -24,8 +24,7 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.4</version>
         </dependency>
-
-        <!--图形验证码-->
+        <!--图形验证码依赖-->
         <dependency>
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>

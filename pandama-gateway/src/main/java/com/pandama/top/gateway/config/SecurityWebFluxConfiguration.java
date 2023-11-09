@@ -1,7 +1,7 @@
 package com.pandama.top.gateway.config;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.pandama.top.auth.api.constant.AuthConstant;
+import com.pandama.top.auth.open.constant.AuthConstant;
 import com.pandama.top.gateway.filter.authentication.IgnoreUrlsRemoveJwtFilter;
 import com.pandama.top.gateway.handler.*;
 import com.pandama.top.gateway.filter.authorization.CustomReactiveAuthorizationManager;

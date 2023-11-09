@@ -14,8 +14,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>pandama-user-api</module>
-        <module>pandama-user-biz</module>
+        <module>pandama-user-open</module>
+        <module>pandama-user-service</module>
     </modules>
 
 </project>
