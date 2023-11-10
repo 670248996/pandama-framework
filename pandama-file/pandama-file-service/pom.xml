@@ -47,10 +47,17 @@
             <artifactId>pandama-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--dubbo模块-->
+        <!--dubbo模块依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-dubbo</artifactId>
+            <version>1.0.0</version>
+            <optional>true</optional>
+        </dependency>
+        <!--user-open模块依赖-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-user-open</artifactId>
             <version>1.0.0</version>
             <optional>true</optional>
         </dependency>

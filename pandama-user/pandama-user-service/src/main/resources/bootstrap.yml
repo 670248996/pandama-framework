@@ -15,10 +15,16 @@ spring:
 
 dubbo:
   application:
-    name: pandana-user
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
   registry:
-    address: zookeeper://10.211.55.4:2181
-    protocol: zookeeper
+    address: nacos://${spring.cloud.nacos.discovery.server-addr}
+    group: ${spring.cloud.nacos.discovery.group}
+  provider:
+    version: 1.0.0
+    filter: userInfoProvider
 
 rocketmq:
   name-server: 121.36.56.159:9876

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-@DubboService(version = "1.0.0")
+@DubboService
 public class LoginServiceImpl implements LoginDubboService {
 
     private final UserMapper userMapper;

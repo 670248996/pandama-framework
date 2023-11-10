@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class UserServiceImpl implements UserDetailsService {
 
-    @DubboReference(version = "1.0.0")
+    @DubboReference
     private LoginDubboService loginDubboService;
 
     @Override

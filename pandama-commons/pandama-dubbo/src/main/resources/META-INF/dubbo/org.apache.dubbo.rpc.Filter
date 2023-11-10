@@ -1,0 +1,2 @@
+userInfoConsumer=com.pandama.top.dubbo.filter.UserInfoConsumerFilter
+userInfoProvider=com.pandama.top.dubbo.filter.UserInfoProviderFilter

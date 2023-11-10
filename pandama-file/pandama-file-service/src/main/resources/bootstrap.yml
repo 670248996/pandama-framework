@@ -18,6 +18,14 @@ spring:
 
 dubbo:
   application:
-    name: pandama-file
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
   registry:
-    address: zookeeper://10.211.55.4:2181
+    address: nacos://${spring.cloud.nacos.discovery.server-addr}
+    group: ${spring.cloud.nacos.discovery.group}
+  consumer:
+    check: false
+    version: 1.0.0
+    filter: userInfoConsumer
