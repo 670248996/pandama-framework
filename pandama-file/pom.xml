@@ -12,8 +12,8 @@
     <artifactId>pandama-file</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>pandama-file-api</module>
-        <module>pandama-file-biz</module>
+        <module>pandama-file-open</module>
+        <module>pandama-file-service</module>
     </modules>
 
     <properties>

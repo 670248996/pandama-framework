@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+        <!--核心库依赖-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--mybatis-plus依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -48,12 +54,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <!--核心库依赖-->
-        <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-core</artifactId>
-            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

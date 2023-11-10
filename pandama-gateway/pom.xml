@@ -58,7 +58,7 @@
         <!--引入自定义工具包中的core-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-auth-api</artifactId>
+            <artifactId>pandama-auth-open</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--引入自定义工具包中的cache-->

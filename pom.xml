@@ -46,6 +46,8 @@
         <redis.version>2.6.3</redis.version>
         <!--数据库连接池-->
         <druid.version>1.2.6</druid.version>
+        <!--minio版本-->
+        <minio.version>8.2.2</minio.version>
 
         <!--插件工具-->
         <!--mybatis-plus版本-->
@@ -64,6 +66,8 @@
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
         <!--jwt版本-->
         <nimbus-jose-jwt.version>9.23</nimbus-jose-jwt.version>
+        <!--jackson版本-->
+        <jackson.version>2.13.1</jackson.version>
     </properties>
 
     <!--依赖包管理器，提供子模块继承-->
@@ -107,6 +111,11 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <!--loadbalancer负载均衡依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
         <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -138,10 +147,19 @@
             <artifactId>UserAgentUtils</artifactId>
             <version>${bitwalker.version}</version>
         </dependency>
-        <!--apache的工具包依赖，例如StringUtils-->
+        <!--apache的工具包依赖-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.10.0</version>
         </dependency>
         <!--配置文件敏感数据加密-->
         <dependency>
@@ -169,6 +187,12 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_pushgateway</artifactId>
+        </dependency>
+        <!--单元测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <!--解决mac的启动dns解析报错-->
         <dependency>

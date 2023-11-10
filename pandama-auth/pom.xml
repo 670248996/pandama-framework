@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>pandama-auth-api</module>
-        <module>pandama-auth-biz</module>
+        <module>pandama-auth-open</module>
+        <module>pandama-auth-service</module>
     </modules>
 </project>

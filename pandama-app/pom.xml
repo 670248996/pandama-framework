@@ -14,8 +14,8 @@
 
     <!--模块依赖-->
     <modules>
-        <module>pandama-app-api</module>
-        <module>pandama-app-biz</module>
+        <module>pandama-app-open</module>
+        <module>pandama-app-service</module>
     </modules>
 
     <properties>
