@@ -1,8 +1,5 @@
 package com.pandama.top.core.utils;
 
-import org.apache.commons.lang3.time.DateFormatUtils;
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -19,12 +16,32 @@ public class DateUtils {
     /**
      * 默认datetime格式器
      */
-    private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER = TimeFormat.LONG_DATE_PATTERN_LINE.formatter;
+    private static final DateTimeFormatter DEFAULT_FORMATTER = TimeFormat.YMD_HMS_LINE.formatter;
 
     /**
      * 无参数的构造函数,防止被实例化
      */
     private DateUtils() {}
+
+    /**
+     * 获取当前时间
+     *
+     * @return java.lang.String
+     * @author 王强
+     */
+    public static String now() {
+        return DEFAULT_FORMATTER.format(LocalDateTime.now());
+    }
+
+    /**
+     * 获取当前时间
+     *
+     * @return java.lang.String
+     * @author 王强
+     */
+    public static String getCurrentDateTime() {
+        return DEFAULT_FORMATTER.format(LocalDateTime.now());
+    }
 
     /**
      * String 转化为 LocalDateTime
@@ -34,7 +51,7 @@ public class DateUtils {
      * @author 王强
      */
     public static LocalDateTime parseTime(String timeStr) {
-        return LocalDateTime.parse(timeStr, DEFAULT_DATETIME_FORMATTER);
+        return LocalDateTime.parse(timeStr, DEFAULT_FORMATTER);
 
     }
 
@@ -59,8 +76,19 @@ public class DateUtils {
      * @author 王强
      */
     public static String parseTime(LocalDateTime time) {
-        return DEFAULT_DATETIME_FORMATTER.format(time);
+        return DEFAULT_FORMATTER.format(time);
 
+    }
+
+    /**
+     * LocalDateTime 时间转 String
+     *
+     * @param timeFormat 时间格式
+     * @return java.lang.String
+     * @author 王强
+     */
+    public static String parseTime(TimeFormat timeFormat) {
+        return timeFormat.formatter.format(LocalDateTime.now());
     }
 
     /**
@@ -73,38 +101,6 @@ public class DateUtils {
      */
     public static String parseTime(LocalDateTime time, TimeFormat format) {
         return format.formatter.format(time);
-
-    }
-
-    /**
-     * 获取当前时间
-     *
-     * @return java.lang.String
-     * @author 王强
-     */
-    public static String getCurrentDateTime() {
-        return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
-    }
-
-    /**
-     * 获取当前时间
-     *
-     * @return java.lang.String
-     * @author 王强
-     */
-    public static String now() {
-        return DEFAULT_DATETIME_FORMATTER.format(LocalDateTime.now());
-    }
-
-    /**
-     * 获取当前时间
-     *
-     * @param timeFormat 时间格式
-     * @return java.lang.String
-     * @author 王强
-     */
-    public static String getCurrentDateTime(TimeFormat timeFormat) {
-        return timeFormat.formatter.format(LocalDateTime.now());
     }
 
     /**
@@ -151,61 +147,37 @@ public class DateUtils {
      * @date 2023-07-08 15:14:10
      */
     public enum TimeFormat {
-        // 短时间格式 年月日
-        /**
-         * 时间格式：yyyy-MM-dd
-         */
-        SHORT_DATE_PATTERN_LINE("yyyy-MM-dd"),
-        /**
-         * 时间格式：yyyy/MM/dd
-         */
-        SHORT_DATE_PATTERN_SLASH("yyyy/MM/dd"),
-        /**
-         * 时间格式：yyyy\\MM\\dd
-         */
-        SHORT_DATE_PATTERN_DOUBLE_SLASH("yyyy\\MM\\dd"),
-        /**
-         * 时间格式：yyyyMMdd
-         */
-        SHORT_DATE_PATTERN_NONE("yyyyMMdd"),
 
-        // 长时间格式 年月日时分秒
-        /**
-         * 时间格式：yyyy-MM-dd HH:mm:ss
-         */
-        LONG_DATE_PATTERN_LINE("yyyy-MM-dd HH:mm:ss"),
+        YM_LINE("yyyy-MM"),
 
-        /**
-         * 时间格式：yyyy/MM/dd HH:mm:ss
-         */
-        LONG_DATE_PATTERN_SLASH("yyyy/MM/dd HH:mm:ss"),
-        /**
-         * 时间格式：yyyy\\MM\\dd HH:mm:ss
-         */
-        LONG_DATE_PATTERN_DOUBLE_SLASH("yyyy\\MM\\dd HH:mm:ss"),
-        /**
-         * 时间格式：yyyyMMdd HH:mm:ss
-         */
-        LONG_DATE_PATTERN_NONE("yyyyMMdd HH:mm:ss"),
-        /**
-         * 时间格式：yyyyMMddHHmmss
-         */
-        LONG_DATE_PATTERN_NONE_OTHER("yyyyMMddHHmmss"),
+        YM_SLASH("yyyy/MM"),
 
-        // 长时间格式 年月日时分秒 带毫秒
-        LONG_DATE_PATTERN_WITH_MILSEC_LINE("yyyy-MM-dd HH:mm:ss.SSS"),
+        YM_NONE("yyyyMM"),
 
-        LONG_DATE_PATTERN_WITH_MILSEC_SLASH("yyyy/MM/dd HH:mm:ss.SSS"),
+        YMD_LINE("yyyy-MM-dd"),
 
-        LONG_DATE_PATTERN_WITH_MILSEC_DOUBLE_SLASH("yyyy\\MM\\dd HH:mm:ss.SSS"),
+        YMD_SLASH("yyyy/MM/dd"),
 
-        LONG_DATE_PATTERN_WITH_MILSEC_NONE("yyyyMMdd HH:mm:ss.SSS");
+        YMD_NONE("yyyyMMdd"),
+
+        YMD_HMS_LINE("yyyy-MM-dd HH:mm:ss"),
+
+        YMD_HMS_SLASH("yyyy/MM/dd HH:mm:ss"),
+
+        YMD_HMS_NONE("yyyyMMdd HH:mm:ss"),
+
+        YMD_HMS_OTHER("yyyyMMddHHmmss"),
+
+        YMD_HMS_SSS_LINE("yyyy-MM-dd HH:mm:ss.SSS"),
+
+        YMD_HMS_SSS_SLASH("yyyy/MM/dd HH:mm:ss.SSS"),
+
+        YMD_HMS_SSS_NONE("yyyyMMdd HH:mm:ss.SSS");
 
         private final transient DateTimeFormatter formatter;
 
         TimeFormat(String pattern) {
             formatter = DateTimeFormatter.ofPattern(pattern);
-
         }
     }
 }

@@ -61,6 +61,18 @@
             <version>1.0.0</version>
             <optional>true</optional>
         </dependency>
+        <!--日志模块依赖-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-logrecord</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--rocketmq模块依赖-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-rocketmq</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

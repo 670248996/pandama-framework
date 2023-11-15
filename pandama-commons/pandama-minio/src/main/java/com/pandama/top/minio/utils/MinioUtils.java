@@ -33,8 +33,6 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class MinioUtils {
 
-    private final MinioConfig minioConfig;
-
     private final MinioClient minioClient;
 
     /******************************  Operate Bucket Start  ******************************/
@@ -275,13 +273,10 @@ public class MinioUtils {
      * @return io.minio.ObjectWriteResponse
      * @author 王强
      */
-    public ObjectWriteResponse uploadImage(String bucketName, String imageBase64, String imageName) {
+    public ObjectWriteResponse uploadImage(String bucketName, String imageBase64, String objectName) {
         if (!StringUtils.isEmpty(imageBase64)) {
             InputStream in = base64ToInputStream(imageBase64);
-            String newName = System.currentTimeMillis() + "_" + imageName + ".jpg";
-            String year = String.valueOf(new Date().getYear());
-            String month = String.valueOf(new Date().getMonth());
-            return uploadFile(bucketName, year + "/" + month + "/" + newName, in);
+            return uploadFile(bucketName, objectName, in);
 
         }
         return null;
@@ -494,7 +489,7 @@ public class MinioUtils {
                 .limit(totalChunks)
                 .map(i -> ComposeSource.builder()
                         .bucket(bucketName)
-                        .object(minioConfig.getTmpPath() + "/" + md5 + "/" + i)
+                        .object("tmp/" + md5 + "/" + i)
                         .build())
                 .collect(Collectors.toList());
         ComposeObjectArgs build = ComposeObjectArgs.builder()

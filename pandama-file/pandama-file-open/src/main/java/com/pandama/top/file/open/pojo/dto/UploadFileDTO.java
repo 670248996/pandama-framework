@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UploadDTO {
+public class UploadFileDTO {
 
     @ApiModelProperty("文件名称")
     @NotBlank(message = "文件名称不能为空")
@@ -29,8 +29,5 @@ public class UploadDTO {
     @ApiModelProperty("文件对象")
     @NotNull(message = "文件对象不能为空")
     private MultipartFile file;
-
-    @ApiModelProperty("上传路径")
-    private String path = "upload";
 
 }

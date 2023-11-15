@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 @DubboService
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class LoginServiceImpl implements LoginDubboService {
 
     private final UserMapper userMapper;
