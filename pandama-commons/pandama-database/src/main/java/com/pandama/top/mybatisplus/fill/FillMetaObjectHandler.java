@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
  * @date 2023-07-08 15:19:07
  */
 @Slf4j
-@Component
 public class FillMetaObjectHandler implements MetaObjectHandler {
 
     @Override

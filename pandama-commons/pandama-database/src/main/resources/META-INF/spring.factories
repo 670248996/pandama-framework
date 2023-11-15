@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.pandama.top.mybatisplus.MybatisPlusAutoConfiguration
+  com.pandama.top.mybatisplus.MybatisPlusAutoConfiguration,\
+  com.pandama.top.mybatisplus.MybatisAutoConfiguration

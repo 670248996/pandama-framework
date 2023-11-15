@@ -18,8 +18,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@Import({FillMetaObjectHandler.class})
 public class MybatisPlusAutoConfiguration {
+
+    @Bean
+    public FillMetaObjectHandler fillMetaObjectHandler() {
+        return new FillMetaObjectHandler();
+    }
 
     /**
      * 乐观锁及分页插件配置
