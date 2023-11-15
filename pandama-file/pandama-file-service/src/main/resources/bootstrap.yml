@@ -4,7 +4,6 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
   cloud:
     nacos:
       config:
@@ -23,8 +22,7 @@ dubbo:
     name: dubbo
     port: -1
   registry:
-    address: nacos://${spring.cloud.nacos.discovery.server-addr}
-    group: ${spring.cloud.nacos.discovery.group}
+    address: zookeeper://10.211.55.4:2181
   consumer:
     check: false
     version: 1.0.0

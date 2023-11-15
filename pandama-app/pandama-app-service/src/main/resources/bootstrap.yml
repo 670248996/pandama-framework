@@ -1,7 +1,6 @@
 spring:
   application:
     name: pandama-app
-
   cloud:
     nacos:
       config:
@@ -26,7 +25,7 @@ spring:
       auto-offset-reset: earliest
 
 rocketmq:
-  name-server: 10.211.55.4:9876
+  name-server: 121.36.56.159:9876
   consumer:
     group: app_consumer_group
     # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值

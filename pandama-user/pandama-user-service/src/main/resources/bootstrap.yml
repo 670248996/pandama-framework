@@ -1,7 +1,6 @@
 spring:
   application:
     name: pandama-user
-
   cloud:
     nacos:
       config:
@@ -20,8 +19,7 @@ dubbo:
     name: dubbo
     port: -1
   registry:
-    address: nacos://${spring.cloud.nacos.discovery.server-addr}
-    group: ${spring.cloud.nacos.discovery.group}
+    address: zookeeper://10.211.55.4:2181
   provider:
     version: 1.0.0
     filter: userInfoProvider
