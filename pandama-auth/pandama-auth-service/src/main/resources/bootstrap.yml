@@ -11,6 +11,10 @@ spring:
         server-addr: 10.211.55.4:8848
       discovery:
         server-addr: 10.211.55.4:8848
+        metadata:
+          node-name: ${MY_NODE_NAME}
+          node-ip: ${MY_NODE_IP}
+          pod-ip: ${MY_POD_IP}
 
 rocketmq:
   name-server: 121.36.56.159:9876

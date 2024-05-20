@@ -7,11 +7,12 @@ spring:
       config:
         file-extension: yml
         server-addr: 10.211.55.4:8848
-        group: PANDAMA
       discovery:
         server-addr: 10.211.55.4:8848
-        group: PANDAMA
-        ip: 127.0.0.1
+        metadata:
+          node-name: ${MY_NODE_NAME}
+          node-ip: ${MY_NODE_IP}
+          pod-ip: ${MY_POD_IP}
 
   kafka:
     bootstrap-servers: 192.168.171.129:9092,192.168.171.130:9092,192.168.171.131:9092
