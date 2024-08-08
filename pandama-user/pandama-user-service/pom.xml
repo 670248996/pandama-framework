@@ -49,11 +49,11 @@
             <version>0.9.11</version>
         </dependency>
         <!--集成rocketmq-->
-        <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-rocketmq</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.pandama.top</groupId>-->
+<!--            <artifactId>pandama-rocketmq</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
         <!--集成websocket-->
         <dependency>
             <groupId>com.pandama.top</groupId>

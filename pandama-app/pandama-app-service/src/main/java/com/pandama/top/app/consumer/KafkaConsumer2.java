@@ -25,7 +25,7 @@ import java.util.*;
  * @date 2023-07-08 11:55:31
  */
 @Slf4j
-//@Component
+@Component
 public class KafkaConsumer2 implements ApplicationRunner {
 
     private final KafkaProperties kafkaProperties;

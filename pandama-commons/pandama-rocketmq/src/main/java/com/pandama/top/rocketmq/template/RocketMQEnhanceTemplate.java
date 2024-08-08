@@ -2,7 +2,7 @@ package com.pandama.top.rocketmq.template;
 
 import com.alibaba.fastjson.JSONObject;
 import com.pandama.top.rocketmq.configuration.RocketEnhanceProperties;
-import com.pandama.top.rocketmq.pojo.BaseMessage;
+import com.pandama.top.core.pojo.BaseMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;

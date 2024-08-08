@@ -1,4 +1,4 @@
-package com.pandama.top.rocketmq.pojo;
+package com.pandama.top.core.pojo;
 
 import lombok.Data;
 

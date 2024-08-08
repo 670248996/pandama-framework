@@ -27,10 +27,9 @@ public class KafkaController {
 
     private final KafkaTemplate<String, String> template;
 
-
     @RequestMapping(value = "/generate", method = RequestMethod.GET)
-    public Response<?> generate(String topic, Integer num) {
-        Stream.iterate(0, n -> n + 1).parallel().limit(num).forEach(item -> {
+    public Response<?> generate(String topic, Integer num, Integer start) {
+        Stream.iterate(start, n -> n + 1).parallel().limit(num).forEach(item -> {
             template.send(topic, String.valueOf(item)).addCallback(result -> {
                 log.info("发送成功: {}, result: {}", item, result);
             }, ex -> {

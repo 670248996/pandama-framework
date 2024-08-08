@@ -68,6 +68,8 @@
         <nimbus-jose-jwt.version>9.23</nimbus-jose-jwt.version>
         <!--jackson版本-->
         <jackson.version>2.13.1</jackson.version>
+        <!--milvus版本-->
+        <milvus.sdk.java>2.4.2</milvus.sdk.java>
     </properties>
 
     <!--依赖包管理器，提供子模块继承-->
@@ -178,16 +180,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--prometheus监控-->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <!--pushgateway依赖-->
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_pushgateway</artifactId>
-        </dependency>
+<!--        &lt;!&ndash;prometheus监控&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.micrometer</groupId>-->
+<!--            <artifactId>micrometer-registry-prometheus</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;pushgateway依赖&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.prometheus</groupId>-->
+<!--            <artifactId>simpleclient_pushgateway</artifactId>-->
+<!--        </dependency>-->
         <!--单元测试依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

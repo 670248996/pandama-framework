@@ -1,7 +1,7 @@
 package com.pandama.top.logRecord.bean;
 
 
-import com.pandama.top.rocketmq.pojo.BaseMessage;
+import com.pandama.top.core.pojo.BaseMessage;
 import lombok.Data;
 
 import java.util.Date;

@@ -6,16 +6,16 @@ spring:
     nacos:
       config:
         file-extension: yml
-        server-addr: 10.211.55.4:8848
+        server-addr: 123.60.104.105:8848
       discovery:
-        server-addr: 10.211.55.4:8848
-        metadata:
-          node-name: ${MY_NODE_NAME}
-          node-ip: ${MY_NODE_IP}
-          pod-ip: ${MY_POD_IP}
+        server-addr: 123.60.104.105:8848
+#        metadata:
+#          node-name: ${MY_NODE_NAME}
+#          node-ip: ${MY_NODE_IP}
+#          pod-ip: ${MY_POD_IP}
 
   kafka:
-    bootstrap-servers: 192.168.171.129:9092,192.168.171.130:9092,192.168.171.131:9092
+    bootstrap-servers: 123.60.104.105:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -25,6 +25,16 @@ spring:
       enable-auto-commit: false
       group-id: test-group1
       auto-offset-reset: earliest
+
+kafka:
+  consumer:
+    startTime: '2024-08-08 16:03:30'
+
+
+milvus:
+  config:
+    ipAddr: 10.211.55.7
+    port: 19530
 
 rocketmq:
   name-server: 10.211.55.4:9876

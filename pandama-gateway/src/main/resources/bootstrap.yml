@@ -6,9 +6,9 @@ spring:
     nacos:
       config:
         file-extension: yml
-        server-addr: 10.211.55.4:8848
+        server-addr: 123.60.104.105:8848
       discovery:
-        server-addr: 10.211.55.4:8848
+        server-addr: 123.60.104.105:8848
         metadata:
           node-name: ${MY_NODE_NAME}
           node-ip: ${MY_NODE_IP}
