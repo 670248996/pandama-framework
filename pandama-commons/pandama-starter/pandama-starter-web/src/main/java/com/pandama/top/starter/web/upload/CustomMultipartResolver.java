@@ -1,10 +1,13 @@
 package com.pandama.top.starter.web.upload;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartException;
@@ -19,14 +22,12 @@ import java.util.List;
  * @author 王强
  * @date 2023-07-08 15:32:52
  */
+@Log4j2
 @Component
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CustomMultipartResolver extends CommonsMultipartResolver {
-
-    @Autowired
-    private FileUploadProgressListener listener;
-
-    @Autowired
-    private ProgressBar progressBar;
+    private final FileUploadProgressListener listener;
+    private final ProgressBar progressBar;
 
     @Override
     protected MultipartParsingResult parseRequest(@NonNull HttpServletRequest request) throws MultipartException {
@@ -44,7 +45,8 @@ public class CustomMultipartResolver extends CommonsMultipartResolver {
             List<FileItem> fileItems = ((ServletFileUpload) fileUpload).parseRequest(request);
             return parseFileItems(fileItems, encoding);
         } catch (FileUploadException e) {
-            e.printStackTrace();
+            System.out.println("\n");
+            log.error("文件上传异常: {}", e.getMessage());
         } finally {
             System.out.println();
         }

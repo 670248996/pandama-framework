@@ -1,9 +1,8 @@
-package com.pandama.top.app.consumer;
+package com.pandama.top.app.consumer.kafka;
 
 import cn.hutool.core.date.DateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetAndTimestamp;
@@ -13,10 +12,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Kafka消费者(指定时间开始消费)
@@ -25,14 +25,13 @@ import java.util.*;
  * @date 2023-07-08 11:55:31
  */
 @Slf4j
-@Component
-public class KafkaConsumer2 implements ApplicationRunner {
+//@Component
+public class StartTimeKafkaConsumer implements ApplicationRunner {
 
     private final KafkaProperties kafkaProperties;
-
     private final Environment environment;
 
-    public KafkaConsumer2(KafkaProperties kafkaProperties, Environment environment) {
+    public StartTimeKafkaConsumer(KafkaProperties kafkaProperties, Environment environment) {
         this.kafkaProperties = kafkaProperties;
         this.environment = environment;
     }
@@ -42,14 +41,15 @@ public class KafkaConsumer2 implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         // 通过配置文件或者启动参数指定
         String property = environment.getProperty("kafka.consumer.startTime");
-        if (StringUtils.isBlank(property)) {
-            log.info("未指定起始消费时间 kafka.consumer.startTime");
+        String topic = environment.getProperty("kafka.consumer.topic");
+        if (StringUtils.isAnyBlank(property, topic)) {
+            log.info("未指定 消费主题 kafka.consumer.topic 和 起始消费时间 kafka.consumer.startTime");
             return;
         }
         Map<String, Object> properties = kafkaProperties.buildConsumerProperties();
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
         // 获取topic的partition信息
-        List<PartitionInfo> partitionInfos = consumer.partitionsFor("test1");
+        List<PartitionInfo> partitionInfos = consumer.partitionsFor(topic);
         List<TopicPartition> topicPartitions = new ArrayList<>();
         Map<TopicPartition, Long> timestampsToSearch = new HashMap<>();
         long startTime = new DateTime(property).toInstant().toEpochMilli();
@@ -76,11 +76,25 @@ public class KafkaConsumer2 implements ApplicationRunner {
         }
 
         while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records) {
-                String value = record.value();
-                System.out.println(value);
-            }
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
+            // 定义 CompletableFuture 任务集合
+            List<CompletableFuture<Void>> futures = new ArrayList<>(records.count());
+//            log.info("records.size:[{}]", records.count());
+            // 遍历每组任务分析结果
+            records.forEach(record -> {
+                // 创建 CompletableFuture 对象
+                CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                    String messageTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(record.timestamp()));
+                    if (record.value().contains("1823616908444831745")) {
+                        log.info("time:[{}], partition:[{}], offset:[{}], message:[{}]", messageTime, record.partition(), record.offset(), record.value());
+                    }
+                });
+                // 将 CompletableFuture 任务放到集合中
+                futures.add(future);
+            });
+            // 等待所有的异步任务完成
+            CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+            allOf.join();
         }
     }
 }

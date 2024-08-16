@@ -9,6 +9,6 @@ public class AliPayment implements Payment {
 
     @Override
     public void pay() {
-
+        System.out.println("ali");
     }
 }

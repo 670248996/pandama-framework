@@ -1,10 +1,8 @@
-package com.pandama.top.app.consumer;
+package com.pandama.top.app.consumer.rocketmq;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
-import org.springframework.stereotype.Component;
 
 /**
  * Rocket消费者
@@ -14,8 +12,9 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 //@Component
-//@RocketMQMessageListener(topic = "app_topic2", consumerGroup = "app_consumer_group2", consumeThreadNumber = 10)
-public class RocketConsumer2 implements RocketMQListener<String> {
+//@RocketMQMessageListener(topic = "app_topic1", consumerGroup = "app_consumer_group1", consumeThreadNumber = 1)
+public class CommonRocketConsumer implements RocketMQListener<String> {
+
     @SneakyThrows
     @Override
     public void onMessage(String message) {

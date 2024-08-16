@@ -9,6 +9,6 @@ public class WechatPayment implements Payment {
 
     @Override
     public void pay() {
-
+        System.out.println("wechat");
     }
 }

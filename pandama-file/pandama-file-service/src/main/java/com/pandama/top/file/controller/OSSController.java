@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.util.IOUtils;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +45,7 @@ public class OSSController {
      *
      * @param dto 入参
      */
-    @PostMapping("/upload")
+    @PostMapping(value = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Response<UploadVO> upload(@RequestParam("file") MultipartFile file) {
         try {
             String fileName  = file.getOriginalFilename();
@@ -53,6 +54,7 @@ public class OSSController {
             String url = minioConfig.getEndpoint() + "/" + minioConfig.getBucketName() + "/" + filePath;
             return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).fileUrl(url).build());
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.fail("上传失败");
         }
     }

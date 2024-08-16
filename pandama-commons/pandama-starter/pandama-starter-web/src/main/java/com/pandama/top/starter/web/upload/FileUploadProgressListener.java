@@ -1,5 +1,6 @@
 package com.pandama.top.starter.web.upload;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.fileupload.ProgressListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ import javax.servlet.http.HttpSession;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class FileUploadProgressListener implements ProgressListener {
-    @Autowired
-    private ProgressBar progressBar;
+    private final ProgressBar progressBar;
     private HttpSession session;
 
     public void setSession(HttpSession session) {

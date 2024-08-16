@@ -15,7 +15,8 @@ spring:
 #          pod-ip: ${MY_POD_IP}
 
   kafka:
-    bootstrap-servers: 123.60.104.105:9092
+#    bootstrap-servers: 123.60.104.105:9092
+    bootstrap-servers: 10.15.11.27:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -25,10 +26,12 @@ spring:
       enable-auto-commit: false
       group-id: test-group1
       auto-offset-reset: earliest
+      max-poll-records: 100
 
 kafka:
   consumer:
-    startTime: '2024-08-08 16:03:30'
+    topic: 'topicOfflineAnalysisObjectDetect'
+    startTime: '2024-08-16 13:30:30'
 
 
 milvus:

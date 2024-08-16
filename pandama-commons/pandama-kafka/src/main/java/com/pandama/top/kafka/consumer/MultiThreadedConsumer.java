@@ -8,9 +8,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * 多消费者线程
@@ -39,7 +37,7 @@ public class MultiThreadedConsumer {
     /**
      * 默认提交时间间隔
      */
-    private final int DEFAULT_COMMIT_INTERVAL = 3000;
+    private static final int DEFAULT_COMMIT_INTERVAL = 3000;
     /**
      * 当前消费的offset
      */

@@ -43,13 +43,6 @@ public class ConsumerWorker<K, V> {
      */
     private final CompletableFuture<Long> future = new CompletableFuture<>();
 
-    private final static Executor executor = Executors.newFixedThreadPool(
-            Runtime.getRuntime().availableProcessors() * 2, r -> {
-                Thread t = new Thread(r);
-                t.setDaemon(true);
-                return t;
-            });
-
     public ConsumerWorker(List<ConsumerRecord<K, V>> recordsOfSamePartition) {
         this.recordsOfSamePartition = recordsOfSamePartition;
     }

@@ -7,6 +7,7 @@ import com.pandama.top.starter.web.intercepter.CustomHandlerInterceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 @Import({CommonExtHandler.class, AuthCodeConfiguration.class})
+@ComponentScan(basePackages = {"com.pandama.top.starter.web"})
 public class WebAutoConfiguration implements WebMvcConfigurer {
 
     /**
