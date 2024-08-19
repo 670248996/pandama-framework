@@ -1,0 +1,114 @@
+spring:
+  application:
+    name: pandama-auth
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 10.211.55.4:8848
+      discovery:
+        server-addr: 10.211.55.4:8848
+        metadata:
+          node-name: ${MY_NODE_NAME}
+          node-ip: ${MY_NODE_IP}
+          pod-ip: ${MY_POD_IP}
+
+  datasource:
+    url: jdbc:mysql://123.60.104.105:3306/pandama_auth?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&useAffectedRows=true
+    username: admin
+    password: Admin@123!@#
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    # Redis 连接地址
+    host: 123.60.104.105
+    # Redis 连接端口
+    port: 6379
+    # Redis 服务器连接密码
+    password: Redis@123!@#
+    # Redis 数据库索引
+    database: 0
+    # 连接超时时间, Unit: 毫秒
+    timeout: 60000
+    # 集群配置
+    cluster:
+      # 集群所有(主、从)节点地址信息
+      nodes: 123.60.104.105:6379
+      # 重定向的最大次数
+      max-redirects: 3
+    # Redis客户端Lettuce配置
+    lettuce:
+      # 集群配置
+      cluster:
+        refresh:
+          # 使能集群拓扑自适应刷新，默认值：false
+          adaptive: true
+          # 集群拓扑定时刷新周期，Unit：毫秒
+          period: 30000
+      # 连接池配置
+      pool:
+        # 连接时测试连接有效性
+        test-on-borrow: true
+        # 连接空闲时测试连接的有效性
+        pool.test-while-idle: true
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 200
+        # 连接池中最小空闲连接
+        min-idle: 1
+        # 连接池中最大空闲连接
+        max-idle: 10
+        # 最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        max-wait: 6000s
+        # 空闲链接检测线程检测周期毫秒（负值表示不检测）(类型为Duration，添加秒)
+        time-between-eviction-runs: 60s
+      # 关闭超时时间
+      shutdown-timeout: 1s
+
+rocketmq:
+  name-server: 121.36.56.159:9876
+  producer:
+    # 发送同一类消息的设置为同一个group，保证唯一
+    group: auth_producer_group
+    # 发送消息超时时间，默认3000
+    sendMessageTimeout: 10000
+    # 发送消息失败重试次数，默认2
+    retryTimesWhenSendFailed: 2
+    # 异步消息重试此处，默认2
+    retryTimesWhenSendAsyncFailed: 2
+    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
+    maxMessageSize: 4096
+    # 压缩消息阈值，默认4k(1024 * 4)
+    compressMessageBodyThreshold: 4096
+    # 是否在内部发送失败时重试另一个broker，默认false
+    retryNextServer: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env,beans
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        pushgateway:
+          #PUSHGATEWAY address
+          baseUrl: 10.211.55.4:9091
+          # Push cycle
+          pushRate: 15s
+          #job definition name
+          job: ${spring.application.name}
+          # Enable push
+          enabled: true
+          grouping-key:
+            group: pandama
