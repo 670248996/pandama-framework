@@ -95,6 +95,14 @@ spring:
         allow:
         deny:
 
+  cache:
+    # 本地环境选用 caffeine
+    type: CAFFEINE
+    # caffeine配置
+    caffeine:
+      # 初始大小，最大缓存数量，超时时长
+      spec: initialCapacity=100,maximumSize=500,expireAfterAccess=60s
+
   redis:
     # Redis 连接地址
     host: 123.60.104.105
@@ -158,6 +166,12 @@ kafka:
   consumer:
     topic: 'topicOfflineAnalysisObjectDetect'
     startTime: '2024-08-16 13:30:30'
+
+minio:
+  endpoint: 123.60.104.105:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucketName: pandama
 
 rocketmq:
   name-server: 10.211.55.4:9876

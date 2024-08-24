@@ -67,11 +67,22 @@
             <artifactId>snakeyaml</artifactId>
             <version>1.26</version>
         </dependency>
-        <!--milvus库-->
+        <!--minio-->
+<!--        <dependency>-->
+<!--            <groupId>com.pandama.top</groupId>-->
+<!--            <artifactId>pandama-minio</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+        <!--cache缓存-->
         <dependency>
-            <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-milvus</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!--caffeine-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>2.6.0</version>
         </dependency>
     </dependencies>
 

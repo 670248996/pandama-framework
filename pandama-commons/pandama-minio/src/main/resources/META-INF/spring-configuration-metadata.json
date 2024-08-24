@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "minio",
+      "type": "om.pandama.top.minio.conf.MinioConfig",
+      "sourceType": "om.pandama.top.minio.conf.MinioConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "minio.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "om.pandama.top.minio.conf.MinioConfig",
+      "defaultValue": "127.0.0.1:9000"
+    },
+    {
+      "name": "minio.accessKey",
+      "type": "java.lang.String",
+      "sourceType": "om.pandama.top.minio.conf.MinioConfig",
+      "defaultValue": "minioadmin"
+    },
+    {
+      "name": "minio.secretKey",
+      "type": "java.lang.String",
+      "sourceType": "om.pandama.top.minio.conf.MinioConfig",
+      "defaultValue": "minioadmin"
+    },
+    {
+      "name": "minio.bucketName",
+      "type": "java.lang.String",
+      "sourceType": "om.pandama.top.minio.conf.MinioConfig",
+      "defaultValue": "default"
+    },
+    {
+      "name": "minio.tmpPath",
+      "type": "java.lang.String",
+      "sourceType": "om.pandama.top.minio.conf.MinioConfig",
+      "defaultValue": "/tmp"
+    }
+  ],
+  "hints": []
+}
