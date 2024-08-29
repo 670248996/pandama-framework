@@ -58,8 +58,6 @@
         <projectlombok.lombok.version>1.18.24</projectlombok.lombok.version>
         <!--log4j2版本-->
         <log4j2.version>2.7.4</log4j2.version>
-        <!--swagger版本-->
-        <swagger.version>3.0.0</swagger.version>
         <!--bitwalker版本-->
         <bitwalker.version>1.21</bitwalker.version>
         <!--oauth2版本-->
