@@ -17,8 +17,8 @@ import javax.validation.constraints.NotNull;
 public class UserUpdateDTO {
 
     @ApiModelProperty("用户ID")
-    @NotNull(message = "用户id，idId不能为null")
-    private Long id;
+    @NotNull(message = "用户id，userId不能为null")
+    private Long userId;
 
     @ApiModelProperty("用户编号")
     private String code;

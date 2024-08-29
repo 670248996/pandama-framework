@@ -15,9 +15,10 @@ import java.util.concurrent.TimeUnit;
 public class MilvusRestClientFactory {
 
     private static String IP_ADDR;
-
     private static Integer PORT;
     private static String DATABASE;
+    private static String USERNAME;
+    private static String PASSWORD;
 
     private MilvusServiceClient milvusServiceClient;
 
@@ -27,21 +28,25 @@ public class MilvusRestClientFactory {
 
     }
 
-    public static MilvusRestClientFactory build(String ipAddr, Integer port, String database) {
+    public static MilvusRestClientFactory build(String ipAddr, Integer port, String database, String username, String password) {
         IP_ADDR = ipAddr;
         PORT = port;
         DATABASE = database;
+        USERNAME = username;
+        PASSWORD = password;
         return milvusRestClientFactory;
     }
 
     public void init() {
-        ConnectParam connectParam = ConnectParam.newBuilder()
+        ConnectParam.Builder builder = ConnectParam.newBuilder()
                 .withHost(IP_ADDR)
                 .withPort(PORT)
                 .withDatabaseName(DATABASE)
-                .withConnectTimeout(2, TimeUnit.SECONDS)
-                .build();
-        milvusServiceClient = new MilvusServiceClient(connectParam);
+                .withConnectTimeout(2, TimeUnit.SECONDS);
+        if (!StringUtils.isAnyBlank(USERNAME, PASSWORD)) {
+            builder.withAuthorization(USERNAME, PASSWORD);
+        }
+        milvusServiceClient = new MilvusServiceClient(builder.build());
     }
 
     public MilvusServiceClient getMilvusClient() {

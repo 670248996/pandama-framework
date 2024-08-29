@@ -1,16 +1,17 @@
 package com.pandama.top.app.controller;
 
-import com.pandama.top.app.thread.MyTask;
+import com.pandama.top.app.thread.MyTaskRunnable;
 import com.pandama.top.core.global.response.Response;
-import com.pandama.top.redis.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -26,51 +27,44 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/thread")
 public class ThreadController {
 
-    @Autowired
-    private RedisUtils redisUtils;
-
-    private final ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10));
+    private final ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<>(1));
 
     @RequestMapping(value = "/start", method = RequestMethod.GET)
-    public Response<?> start() {
-        MyTask myTask1 = new MyTask("task1") {
+    public Response<?> start(@RequestParam("id") String id) {
+        CompletableFuture.runAsync(new MyTaskRunnable() {
             @Override
-            public boolean executeBefore() {
-                return redisUtils.tryReentrantLock(getTaskId(), getSecurityId(), 1000, 5000);
+            public String executeBefore() {
+                log.info("创建任务: {}", id);
+                heartbeatThread.setName("Offline-Analysis-Heartbeat-Image-" + id);
+                return "request";
             }
 
             @Override
-            public boolean heartbeat() {
-                return redisUtils.tryReentrantLock(getTaskId(), getSecurityId(), 1000, 5000);
+            public void heartbeat() {
+                if (StringUtils.isBlank(result)) {
+                    log.info("任务心跳: {}", id);
+                }
             }
 
             @Override
-            public String doExecute() {
-                System.out.println("task1运行中");
-                return null;
-            }
-        };
-
-        MyTask myTask2 = new MyTask("task1") {
-            @Override
-            public boolean executeBefore() {
-                return redisUtils.tryReentrantLock(getTaskId(), getSecurityId(), 1000, 5000);
+            public String doExecute(String request) throws Exception {
+                log.info("执行任务: {}", id);
+                Thread.sleep(10000);
+                return "success";
             }
 
             @Override
-            public boolean heartbeat() {
-                return redisUtils.tryReentrantLock(getTaskId(), getSecurityId(), 1000, 5000);
+            public void executeError(Exception e) {
+                result = "false";
+                log.error("任务异常: {}", id);
+                e.printStackTrace();
             }
 
             @Override
-            public String doExecute() {
-                System.out.println("task2运行中");
-                return null;
+            public void executeFinally() {
+                log.info("任务结束: {}", id);
             }
-        };
-
-        executor.submit(myTask1);
-        executor.submit(myTask2);
+        }, executor);
         return Response.success();
     }
 }

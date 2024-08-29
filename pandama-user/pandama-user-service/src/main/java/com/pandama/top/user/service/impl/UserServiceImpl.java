@@ -100,13 +100,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     @Transactional(rollbackFor = Exception.class)
     public void update(UserUpdateDTO dto) {
         // 将传参字段转换赋值成用户实体属性
-        SysUser user = BeanConvertUtils.convert(dto, SysUser::new, (s, t) -> t.setId(dto.getId())).orElse(new SysUser());
+        SysUser user = BeanConvertUtils.convert(dto, SysUser::new, (s, t) -> t.setId(dto.getUserId())).orElse(new SysUser());
         userMapper.updateById(user);
         // 删除用户之前关联的部门信息
-        departmentUserService.deleteByUserIds(Collections.singletonList(dto.getId()));
+        departmentUserService.deleteByUserIds(Collections.singletonList(dto.getUserId()));
         if (dto.getDeptId() != null) {
             // 保存用户新关联的部门信息
-            departmentUserService.save(new SysUserDept(dto.getDeptId(), dto.getId()));
+            departmentUserService.save(new SysUserDept(dto.getDeptId(), dto.getUserId()));
         }
     }
 

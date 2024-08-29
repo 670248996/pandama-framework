@@ -24,7 +24,4 @@ public class UploadVO {
     @ApiModelProperty("文件路径")
     private String filePath;
 
-    @ApiModelProperty("访问路径")
-    private String fileUrl;
-
 }

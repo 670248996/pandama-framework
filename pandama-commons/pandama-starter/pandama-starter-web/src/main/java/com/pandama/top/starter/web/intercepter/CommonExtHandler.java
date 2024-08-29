@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolationException;
@@ -36,6 +37,7 @@ public class CommonExtHandler {
      * @return com.pandama.top.core.global.response.Response<?>
      * @author 王强
      */
+    @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Response<?> handleException(Exception e) {
         e.printStackTrace();
@@ -50,10 +52,11 @@ public class CommonExtHandler {
      * @return com.pandama.top.core.global.response.Response<?>
      * @author 王强
      */
+    @ResponseBody
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
     public Response<?> validJson(HttpMessageNotReadableException e) {
         e.printStackTrace();
-        log.info("Json异常: {}", e.getMessage());
+        log.info("HttpMessageNotReadableException异常: {}", e.getMessage());
         return Response.fail("非法的JSON格式");
     }
 
@@ -64,8 +67,11 @@ public class CommonExtHandler {
      * @return com.pandama.top.core.global.response.Response<?>
      * @author 王强
      */
+    @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Response<?> validEntity(MethodArgumentNotValidException e) {
+        e.printStackTrace();
+        log.info("MethodArgumentNotValidException异常: {}", e.getMessage());
         Map<String, String> collect = e.getBindingResult().getFieldErrors().stream()
                 .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
         String msg = String.join(",", collect.values());
@@ -79,8 +85,11 @@ public class CommonExtHandler {
      * @return com.pandama.top.core.global.response.Response<?>
      * @author 王强
      */
+    @ResponseBody
     @ExceptionHandler(ConstraintViolationException.class)
     public Response<?> validParam(ConstraintViolationException e) {
+        e.printStackTrace();
+        log.info("ConstraintViolationException异常: {}", e.getMessage());
         Map<String, Object> collect = new HashMap<>(16);
         e.getConstraintViolations().forEach(c -> {
             PathImpl propertyPath = (PathImpl) c.getPropertyPath();
@@ -100,8 +109,11 @@ public class CommonExtHandler {
      * @return com.pandama.top.core.global.response.Response<?>
      * @author 王强
      */
+    @ResponseBody
     @ExceptionHandler(BindException.class)
     public Response<?> exceptionHandler(BindException e) {
+        e.printStackTrace();
+        log.info("BindException异常: {}", e.getMessage());
         List<ObjectError> allErrors = e.getBindingResult().getAllErrors();
         Map<String, String> collect = new HashMap<>(16);
         allErrors.forEach(error -> {
@@ -119,6 +131,7 @@ public class CommonExtHandler {
      * @return com.pandama.top.core.global.response.Response<?>
      * @author 王强
      */
+    @ResponseBody
     @ExceptionHandler(value = CommonException.class)
     public Response<?> handleMyException(CommonException e) {
         e.printStackTrace();

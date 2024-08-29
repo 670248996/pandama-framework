@@ -16,14 +16,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MilvusConfiguration {
 
-    @Value("${milvus.config.ipAddr}")
+    @Value("${milvus.ipAddr}")
     private String ipAddr;
-
-    @Value("${milvus.config.port}")
+    @Value("${milvus.port}")
     private Integer port;
-
-    @Value("${milvus.config.database:default}")
+    @Value("${milvus.database:default}")
     private String database;
+    @Value("${milvus.username:}")
+    private String username;
+    @Value("${milvus.password:}")
+    private String password;
 
     @Bean
     public MilvusServiceClient getMilvusClient() {
@@ -37,6 +39,6 @@ public class MilvusConfiguration {
 
     @Bean(initMethod = "init", destroyMethod = "close")
     public MilvusRestClientFactory getMilvusFactory() {
-        return  MilvusRestClientFactory.build(ipAddr, port, database);
+        return  MilvusRestClientFactory.build(ipAddr, port, database, username, password);
     }
 }

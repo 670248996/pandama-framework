@@ -2,10 +2,12 @@ package com.pandama.top.file.controller;
 
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.file.open.pojo.dto.SliceUploadDTO;
+import com.pandama.top.file.open.pojo.dto.UploadDTO;
 import com.pandama.top.file.open.pojo.vo.SliceUploadVO;
 import com.pandama.top.file.open.pojo.vo.UploadVO;
 import com.pandama.top.minio.conf.MinioConfig;
 import com.pandama.top.minio.utils.MinioUtils;
+import com.pandama.top.minio.utils.UploadPathUtils;
 import com.pandama.top.redis.utils.RedisUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +34,7 @@ import java.io.InputStream;
 @RestController
 @RequestMapping("/oss")
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class OSSController {
+public class OssController {
 
     private final MinioUtils minioUtils;
 
@@ -43,39 +45,38 @@ public class OSSController {
     /**
      * 文件上传
      *
-     * @param dto 入参
+     * @param file 入参
      */
     @PostMapping(value = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Response<UploadVO> upload(@RequestParam("file") MultipartFile file) {
         try {
             String fileName  = file.getOriginalFilename();
-            String filePath = "upload" + "/" + fileName;
+            String filePath = UploadPathUtils.getCommonUploadPath(fileName);
             minioUtils.uploadFile(minioConfig.getBucketName(), file, filePath, file.getContentType());
-            String url = minioConfig.getEndpoint() + "/" + minioConfig.getBucketName() + "/" + filePath;
-            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).fileUrl(url).build());
+            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).build());
         } catch (Exception e) {
             e.printStackTrace();
             return Response.fail("上传失败");
         }
     }
 
-//    /**
-//     * 文件上传
-//     *
-//     * @param dto 入参
-//     */
-//    @PostMapping("/upload")
-//    public Response<UploadVO> upload(@Validated UploadDTO dto) {
-//        try {
-//            MultipartFile file = dto.getFile();
-//            String fileName = dto.getFileName();
-//            String filePath = dto.getPath() + "/" + fileName;
-//            minioUtils.uploadFile(minioConfig.getBucketName(), file, filePath, file.getContentType());
-//            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).build());
-//        } catch (Exception e) {
-//            return Response.fail("上传失败");
-//        }
-//    }
+    /**
+     * 文件上传
+     *
+     * @param dto 入参
+     */
+    @PostMapping(value = "/upload2", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public Response<UploadVO> upload2(@Validated UploadDTO dto) {
+        try {
+            MultipartFile file = dto.getFile();
+            String fileName = dto.getFileName();
+            String filePath = UploadPathUtils.getUploadPath(dto.getPath(), fileName);
+            minioUtils.uploadFile(minioConfig.getBucketName(), file, filePath, file.getContentType());
+            return Response.success(UploadVO.builder().fileName(fileName).filePath(filePath).build());
+        } catch (Exception e) {
+            return Response.fail("上传失败");
+        }
+    }
 
     /**
      * 删除
@@ -137,9 +138,8 @@ public class OSSController {
     public Response<SliceUploadVO> sliceUpload(@Validated SliceUploadDTO dto, HttpServletRequest request) throws Exception {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         MultipartFile file = dto.getChunkFile();
-        String filePath = dto.getPath() + "/" + dto.getFileName();
-        String url = minioConfig.getEndpoint() + "/" + minioConfig.getBucketName() + "/" + filePath;
-        SliceUploadVO uploadVO = SliceUploadVO.builder().fileName(dto.getFileName()).filePath(filePath).fileUrl(url).build();
+        String filePath = UploadPathUtils.getUploadPath(dto.getPath(), dto.getFileName());
+        SliceUploadVO uploadVO = SliceUploadVO.builder().fileName(dto.getFileName()).filePath(filePath).build();
         if (isMultipart) {
             // 分片数量大于1，则需要将分片文件上传到临时目录，上传完成后合并
             if (dto.getChunkIndex() != null && dto.getChunkCount() > 1) {

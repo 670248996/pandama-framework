@@ -41,7 +41,7 @@ public class OauthController {
     /**
      * Oauth2登录认证
      */
-    @OperationLog(bizEvent = "'1'", msg = "'【' + #user.realName + '】登录成功'", tag = "'1'")
+    @OperationLog(condition = "#user != null", bizEvent = "'1'", msg = "'【' + #user.realName + '】登录成功'", tag = "'1'")
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public Response<AccessToken> token(Principal principal, @RequestParam Map<String, String> parameters)
             throws HttpRequestMethodNotSupportedException {

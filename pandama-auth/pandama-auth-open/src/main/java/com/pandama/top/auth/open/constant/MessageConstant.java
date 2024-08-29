@@ -12,6 +12,8 @@ public class MessageConstant {
 
     public static final String LOGIN_SUCCESS = "登录成功!";
 
+    public static final String USER_SERVER_EXCEPTION = "用户服务异常!";
+
     public static final String USERNAME_PASSWORD_ERROR = "用户名或密码错误!";
 
     public static final String CREDENTIALS_EXPIRED = "该账户的登录凭证已过期，请重新登录!";

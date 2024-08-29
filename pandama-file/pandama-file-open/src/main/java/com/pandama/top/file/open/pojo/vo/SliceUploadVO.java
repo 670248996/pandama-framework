@@ -27,7 +27,4 @@ public class SliceUploadVO {
     @ApiModelProperty("分片路径")
     private String chunkPath;
 
-    @ApiModelProperty("访问路径")
-    private String fileUrl;
-
 }

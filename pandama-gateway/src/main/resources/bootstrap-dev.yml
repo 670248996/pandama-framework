@@ -67,9 +67,9 @@ spring:
         - /pandama/user/authCode
         - /pandama/auth/oauth/token
         - /pandama/auth/oauth/publicKey
-        - /actuator/**
         - /pandama/*/actuator/**
-        - /pandama/file/oss/upload
+        - /pandama/*/druid/**
+        - /actuator/**
 
   redis:
     # Redis 连接地址
@@ -83,20 +83,20 @@ spring:
     # 连接超时时间, Unit: 毫秒
     timeout: 60000
     # 集群配置
-    cluster:
-      # 集群所有(主、从)节点地址信息
-      nodes: 123.60.104.105:6379
-      # 重定向的最大次数
-      max-redirects: 3
+#    cluster:
+#      # 集群所有(主、从)节点地址信息
+#      nodes: 123.60.104.105:6379
+#      # 重定向的最大次数
+#      max-redirects: 3
     # Redis客户端Lettuce配置
     lettuce:
       # 集群配置
-      cluster:
-        refresh:
-          # 使能集群拓扑自适应刷新，默认值：false
-          adaptive: true
-          # 集群拓扑定时刷新周期，Unit：毫秒
-          period: 30000
+#      cluster:
+#        refresh:
+#          # 使能集群拓扑自适应刷新，默认值：false
+#          adaptive: true
+#          # 集群拓扑定时刷新周期，Unit：毫秒
+#          period: 30000
       # 连接池配置
       pool:
         # 连接时测试连接有效性

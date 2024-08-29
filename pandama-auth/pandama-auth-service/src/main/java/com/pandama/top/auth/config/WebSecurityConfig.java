@@ -19,10 +19,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // 开放的访问路径
         http.authorizeRequests()
                 .antMatchers("/oauth/**").permitAll()
+                .antMatchers("/druid/**").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 .anyRequest().authenticated();
+        http.csrf().ignoringAntMatchers("/druid/**");
     }
 
     @Bean

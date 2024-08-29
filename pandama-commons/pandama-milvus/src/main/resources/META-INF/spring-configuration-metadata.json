@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "milvus",
+      "type": "com.pandama.top.milvus.MilvusConfiguration",
+      "sourceType": "com.pandama.top.milvus.MilvusConfiguration"
+    }
+  ],
+  "properties": [
+    {
+      "name": "milvus.ipAddr",
+      "type": "java.lang.String",
+      "sourceType": "com.pandama.top.milvus.MilvusConfiguration",
+      "defaultValue": "127.0.0.1"
+    },
+    {
+      "name": "milvus.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.pandama.top.milvus.MilvusConfiguration",
+      "defaultValue": 19530
+    },
+    {
+      "name": "milvus.database",
+      "type": "java.lang.String",
+      "sourceType": "com.pandama.top.milvus.MilvusConfiguration",
+      "defaultValue": "default"
+    },
+    {
+      "name": "milvus.username",
+      "type": "java.lang.String",
+      "sourceType": "com.pandama.top.milvus.MilvusConfiguration",
+      "defaultValue": "root"
+    },
+    {
+      "name": "milvus.password",
+      "type": "java.lang.String",
+      "sourceType": "com.pandama.top.milvus.MilvusConfiguration",
+      "defaultValue": "Milvus"
+    }
+  ],
+  "hints": []
+}
