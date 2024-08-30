@@ -10,11 +10,11 @@
     </parent>
 
     <!--用户权限模块-->
-    <artifactId>pandama-auth</artifactId>
+    <artifactId>pandama-module-auth</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>pandama-auth-open</module>
-        <module>pandama-auth-service</module>
+        <module>pandama-module-auth-open</module>
+        <module>pandama-module-auth-service</module>
     </modules>
 </project>

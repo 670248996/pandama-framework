@@ -10,11 +10,11 @@
     </parent>
 
     <!--文件服务模块-->
-    <artifactId>pandama-file</artifactId>
+    <artifactId>pandama-module-file</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>pandama-file-open</module>
-        <module>pandama-file-service</module>
+        <module>pandama-module-file-open</module>
+        <module>pandama-module-file-service</module>
     </modules>
 
 </project>

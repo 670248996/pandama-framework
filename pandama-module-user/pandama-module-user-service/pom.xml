@@ -2,15 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
+        <artifactId>pandama-module-user</artifactId>
         <groupId>com.pandama.top</groupId>
-        <artifactId>pandama-activiti</artifactId>
         <version>1.0.0</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pandama-activiti-service</artifactId>
-
+    <artifactId>pandama-module-user-service</artifactId>
 
     <dependencies>
         <!--web模块-->
@@ -19,35 +18,17 @@
             <artifactId>pandama-starter-web</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--activiti-open模块-->
+        <!--user-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-activiti-open</artifactId>
+            <artifactId>pandama-module-user-open</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--camunda工作流web依赖-->
+        <!--auth-open模块-->
         <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${camunda.version}</version>
-        </dependency>
-        <!--camunda工作流api依赖-->
-        <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
-            <version>${camunda.version}</version>
-        </dependency>
-        <!--camunda工作流外部任务客户端依赖-->
-        <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-external-task-client</artifactId>
-            <version>${camunda.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-module-auth-open</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <!--database模块-->
         <dependency>
@@ -55,10 +36,35 @@
             <artifactId>pandama-database</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--redis模块-->
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.6</version>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--日志模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-logrecord</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--java反射框架-->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
+        <!--集成rocketmq-->
+<!--        <dependency>-->
+<!--            <groupId>com.pandama.top</groupId>-->
+<!--            <artifactId>pandama-rocketmq</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+        <!--websocket模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-websocket</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 
@@ -94,4 +100,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

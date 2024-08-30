@@ -13,13 +13,14 @@
 
     <!--模块依赖-->
     <modules>
+        <module>pandama-starter-web</module>
         <module>pandama-gateway</module>
         <module>pandama-commons</module>
-        <module>pandama-app</module>
-        <module>pandama-user</module>
-        <module>pandama-file</module>
-        <module>pandama-auth</module>
-        <module>pandama-activiti</module>
+        <module>pandama-module-app</module>
+        <module>pandama-module-user</module>
+        <module>pandama-module-file</module>
+        <module>pandama-module-auth</module>
+        <module>pandama-module-activiti</module>
     </modules>
 
     <properties>
@@ -142,7 +143,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.11</version>
+            <version>5.8.25</version>
         </dependency>
         <!-- 解析客户端操作系统、浏览器等 -->
         <dependency>

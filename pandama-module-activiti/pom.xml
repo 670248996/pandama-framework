@@ -9,13 +9,13 @@
         <version>1.0.0</version>
     </parent>
 
-    <!--用户权限模块-->
-    <artifactId>pandama-user</artifactId>
+    <artifactId>pandama-module-activiti</artifactId>
     <packaging>pom</packaging>
 
+    <!--工作流模块-->
     <modules>
-        <module>pandama-user-open</module>
-        <module>pandama-user-service</module>
+        <module>pandama-module-activiti-open</module>
+        <module>pandama-module-activiti-service</module>
     </modules>
 
 </project>

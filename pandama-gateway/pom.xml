@@ -63,7 +63,7 @@
         <!--auth-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-auth-open</artifactId>
+            <artifactId>pandama-module-auth-open</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--redis模块-->

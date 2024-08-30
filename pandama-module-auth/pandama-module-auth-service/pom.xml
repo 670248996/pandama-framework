@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <artifactId>pandama-module-auth</artifactId>
         <groupId>com.pandama.top</groupId>
-        <artifactId>pandama-file</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pandama-file-service</artifactId>
+    <artifactId>pandama-module-auth-service</artifactId>
 
     <dependencies>
         <!--web模块-->
@@ -18,22 +18,58 @@
             <artifactId>pandama-starter-web</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--file-open模块-->
+        <!--auth-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-file-open</artifactId>
+            <artifactId>pandama-module-auth-open</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--minio模块-->
+        <!--user-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-minio</artifactId>
+            <artifactId>pandama-module-user-open</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--core模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--database模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-database</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--redis模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--jwt依赖-->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>${nimbus-jose-jwt.version}</version>
+        </dependency>
+        <!--oauth2依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <version>${spring-cloud-starter-oauth2.version}</version>
+        </dependency>
+        <!--日志模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-logrecord</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--rocketmq模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-rocketmq</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

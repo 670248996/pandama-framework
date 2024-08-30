@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.pandama.top</groupId>
-        <artifactId>pandama-activiti</artifactId>
+        <artifactId>pandama-module-activiti</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>pandama-activiti-open</artifactId>
+    <artifactId>pandama-module-activiti-open</artifactId>
 
     <dependencies>
         <!--Feign模块-->

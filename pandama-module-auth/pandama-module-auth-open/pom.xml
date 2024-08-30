@@ -3,19 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <artifactId>pandama-module-auth</artifactId>
         <groupId>com.pandama.top</groupId>
-        <artifactId>pandama-file</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pandama-file-open</artifactId>
+    <artifactId>pandama-module-auth-open</artifactId>
 
     <dependencies>
-        <!--feign模块-->
+        <!--oauth2依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <version>${spring-cloud-starter-oauth2.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--user-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-feign</artifactId>
+            <artifactId>pandama-module-user-open</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
