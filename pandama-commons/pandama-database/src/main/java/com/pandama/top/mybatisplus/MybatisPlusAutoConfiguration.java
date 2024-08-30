@@ -2,12 +2,12 @@ package com.pandama.top.mybatisplus;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.pandama.top.mybatisplus.fill.FillMetaObjectHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -36,6 +36,8 @@ public class MybatisPlusAutoConfiguration {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        // 针对 update 和 delete 语句 作用: 阻止恶意的全表更新删除
+        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
         return interceptor;
     }
 }

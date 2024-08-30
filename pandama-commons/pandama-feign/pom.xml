@@ -18,7 +18,7 @@
     </properties>
 
     <dependencies>
-        <!--核心模块-->
+        <!--core模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>

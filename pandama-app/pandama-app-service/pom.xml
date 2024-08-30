@@ -20,7 +20,13 @@
             <artifactId>pandama-starter-web</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--核心模块-->
+        <!--app-open模块-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-app-open</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--core模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-core</artifactId>
@@ -32,10 +38,10 @@
             <artifactId>pandama-database</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--api模块-->
+        <!--redis模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
-            <artifactId>pandama-app-open</artifactId>
+            <artifactId>pandama-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!--java反射框架-->

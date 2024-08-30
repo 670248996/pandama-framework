@@ -12,24 +12,25 @@
     <artifactId>pandama-file-service</artifactId>
 
     <dependencies>
+        <!--web模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-starter-web</artifactId>
             <version>1.0.0</version>
         </dependency>
-
+        <!--file-open模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-file-open</artifactId>
             <version>1.0.0</version>
         </dependency>
-
+        <!--minio模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-minio</artifactId>
             <version>1.0.0</version>
         </dependency>
-
+        <!--redis模块-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-redis</artifactId>
