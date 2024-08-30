@@ -5,7 +5,6 @@ import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.core.utils.UserInfoUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
