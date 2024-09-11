@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: pandama-app
   cloud:
     nacos:
       config:
@@ -200,6 +198,20 @@ rocketmq:
     compressMessageBodyThreshold: 4096
     # 是否在内部发送失败时重试另一个broker，默认false
     retryNextServer: false
+
+# camunda配置
+camunda:
+  bpm:
+    client:
+      base-url: http://127.0.0.1:8884/pandama/camunda/engine-rest
+#      basic-auth:
+#        username: admin
+#        password: admin
+      async-response-timeout: 20000
+      worker-id: pandama-app-01
+      lock-duration: 10000
+      max-tasks: 1
+
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml

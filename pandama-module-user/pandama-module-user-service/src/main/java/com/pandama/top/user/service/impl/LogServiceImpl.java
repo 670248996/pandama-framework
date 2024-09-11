@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pandama.top.core.enums.LoginTypeEnum;
+import com.pandama.top.core.pojo.dto.Sort;
 import com.pandama.top.core.pojo.vo.PageVO;
 import com.pandama.top.core.utils.BeanConvertUtils;
 import com.pandama.top.logRecord.enums.LogTypeEnum;
@@ -19,6 +20,7 @@ import com.pandama.top.user.pojo.vo.OperateLogExportResultVO;
 import com.pandama.top.user.service.LogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,9 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements Lo
 
     @Override
     public PageVO<LogSearchResultVO> page(LogSearchDTO dto) {
+        if (CollectionUtils.isEmpty(dto.getSorts())) {
+            dto.getSorts().add(new Sort("create_time", "desc"));
+        }
         IPage<LogSearchResultVO> search = logMapper.page(new Page<>(dto.getCurrent(), dto.getSize()), dto);
         return BeanConvertUtils.convert(search, PageVO<LogSearchResultVO>::new).orElse(new PageVO<>());
     }
@@ -80,6 +85,9 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements Lo
 
     @Override
     public PageVO<OnlineSearchResultVO> onlineUserPage(OnlineSearchDTO dto) {
+        if (CollectionUtils.isEmpty(dto.getSorts())) {
+            dto.getSorts().add(new Sort("create_time", "desc"));
+        }
         dto.setEvent(LoginTypeEnum.LOGIN.getCode());
         dto.setStartCreateTime(LocalDateTime.now().plusHours(-8));
         IPage<OnlineSearchResultVO> search = logMapper.onlineUserPage(new Page<>(dto.getCurrent(), dto.getSize()), dto);

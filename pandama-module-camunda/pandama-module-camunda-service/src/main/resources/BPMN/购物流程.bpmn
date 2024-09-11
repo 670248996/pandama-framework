@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0xutgf8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.19.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_0uwey2a" name="购物流程" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1v9l2n1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1v9l2n1" sourceRef="StartEvent_1" targetRef="Activity_1wscxvy" />
+    <bpmn:serviceTask id="Activity_1wscxvy" name="加入购物车" camunda:type="external" camunda:topic="shopping">
+      <bpmn:incoming>Flow_1v9l2n1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c2kn1q</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0c2kn1q" sourceRef="Activity_1wscxvy" targetRef="Activity_1gbp5w6" />
+    <bpmn:serviceTask id="Activity_1gbp5w6" name="付款" camunda:type="external" camunda:topic="pay">
+      <bpmn:incoming>Flow_0c2kn1q</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wv4nj8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0wv4nj8" sourceRef="Activity_1gbp5w6" targetRef="Activity_0tc46tr" />
+    <bpmn:serviceTask id="Activity_0tc46tr" name="物流发货" camunda:type="external" camunda:topic="shipments">
+      <bpmn:incoming>Flow_0wv4nj8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1sq0k8y</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0mggy00">
+      <bpmn:incoming>Flow_1sq0k8y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1sq0k8y" sourceRef="Activity_0tc46tr" targetRef="Event_0mggy00" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0uwey2a">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19l5156_di" bpmnElement="Activity_1wscxvy">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1issfji_di" bpmnElement="Activity_1gbp5w6">
+        <dc:Bounds x="400" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0u3qj88_di" bpmnElement="Activity_0tc46tr">
+        <dc:Bounds x="560" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0mggy00_di" bpmnElement="Event_0mggy00">
+        <dc:Bounds x="722" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1v9l2n1_di" bpmnElement="Flow_1v9l2n1">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c2kn1q_di" bpmnElement="Flow_0c2kn1q">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="400" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wv4nj8_di" bpmnElement="Flow_0wv4nj8">
+        <di:waypoint x="500" y="120" />
+        <di:waypoint x="560" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1sq0k8y_di" bpmnElement="Flow_1sq0k8y">
+        <di:waypoint x="660" y="120" />
+        <di:waypoint x="722" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

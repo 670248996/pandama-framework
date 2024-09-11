@@ -2,6 +2,7 @@ package com.pandama.top.logRecord.aop;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.pandama.top.core.pojo.vo.CurrentUserInfo;
 import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.logRecord.annotation.OperationLog;
 import com.pandama.top.logRecord.bean.LogDTO;
@@ -242,6 +243,7 @@ public class SystemLogAspect {
      * @author 王强
      */
     private LogDTO resolveExpress(OperationLog annotation, JoinPoint joinPoint) {
+        CurrentUserInfo userInfo = Optional.ofNullable(UserInfoUtils.getUserInfo()).orElse(new CurrentUserInfo());
         // 定义LogDTO对象，Spel解析后的对象
         LogDTO logDTO = null;
         // 业务ID，SpEL表达式
@@ -373,9 +375,9 @@ public class SystemLogAspect {
             logDTO.setOperateDate(new Date());
             logDTO.setMsg(msg);
             logDTO.setExtra(extra);
-            logDTO.setOperatorId(UserInfoUtils.getUserId());
-            logDTO.setOperatorCode(UserInfoUtils.getUserInfo().getUsername());
-            logDTO.setOperatorName(UserInfoUtils.getUserInfo().getRealName());
+            logDTO.setOperatorId(userInfo.getId());
+            logDTO.setOperatorCode(userInfo.getUsername());
+            logDTO.setOperatorName(userInfo.getRealName());
             logDTO.setSuccess(functionExecuteSuccess);
             logDTO.setDiffDTOList(LogRecordContext.getDiffDTOList());
         } catch (Exception e) {

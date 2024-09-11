@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0gjkikw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.19.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_analysis" name="分析流程" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1" name="开始">
+      <bpmn:outgoing>Flow_0fqyfk1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0fqyfk1" sourceRef="StartEvent_1" targetRef="Activity_17x3zad" />
+    <bpmn:serviceTask id="Activity_17x3zad" name="启动分析" camunda:type="external" camunda:topic="enable_analysis">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0fqyfk1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gf2wxe</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1gf2wxe" sourceRef="Activity_17x3zad" targetRef="Activity_1pzefxe" />
+    <bpmn:serviceTask id="Activity_1pzefxe" name="算法分析" camunda:type="external" camunda:topic="algorithm_analysis">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1gf2wxe</bpmn:incoming>
+      <bpmn:outgoing>Flow_10n4hre</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_10n4hre" sourceRef="Activity_1pzefxe" targetRef="Activity_1h4wpa6" />
+    <bpmn:endEvent id="Event_0kegg0j">
+      <bpmn:incoming>Flow_0sbavjy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0sbavjy" sourceRef="Activity_1h4wpa6" targetRef="Event_0kegg0j" />
+    <bpmn:serviceTask id="Activity_1h4wpa6" name="分析结果" camunda:type="external" camunda:topic="analysis_result">
+      <bpmn:incoming>Flow_10n4hre</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sbavjy</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_analysis">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="186" y="142" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09qbw09_di" bpmnElement="Activity_17x3zad">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cloirw_di" bpmnElement="Activity_1pzefxe">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0kegg0j_di" bpmnElement="Event_0kegg0j">
+        <dc:Bounds x="732" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14d3ij4_di" bpmnElement="Activity_1h4wpa6">
+        <dc:Bounds x="580" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0fqyfk1_di" bpmnElement="Flow_0fqyfk1">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gf2wxe_di" bpmnElement="Flow_1gf2wxe">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10n4hre_di" bpmnElement="Flow_10n4hre">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="580" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sbavjy_di" bpmnElement="Flow_0sbavjy">
+        <di:waypoint x="680" y="117" />
+        <di:waypoint x="732" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

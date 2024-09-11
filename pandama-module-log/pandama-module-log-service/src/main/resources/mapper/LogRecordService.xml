@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.user.mapper.LogMapper">
+
+    <select id="page" resultType="com.pandama.top.log.pojo.vo.LogSearchResultVO">
+        select
+        sl.*,
+        sl.id as log_id
+        from sys_log sl
+        <where>
+            sl.is_delete = 0
+            <if test="dto.logType != null">
+                and sl.type = #{dto.logType.code}
+            </if>
+            <if test="dto.event != null and dto.event != ''">
+                and sl.event = #{dto.event}
+            </if>
+            <if test="dto.createUserCode != null and dto.createUserCode != ''">
+               and sl.create_user_code like concat('%', #{dto.createUserCode}, '%')
+            </if>
+            <if test="dto.startCreateTime != null">
+               and sl.create_time between #{dto.startCreateTime} and #{dto.endCreateTime}
+            </if>
+            <if test="dto.ids != null and dto.ids.size() > 0">
+                and sl.id in
+                <foreach collection="dto.ids" item="id" separator="," open="(" close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+        <foreach collection="dto.sorts" item="sort" separator="," open="order by " close="">
+            ${sort.orderField} ${sort.orderType}
+        </foreach>
+    </select>
+
+</mapper>

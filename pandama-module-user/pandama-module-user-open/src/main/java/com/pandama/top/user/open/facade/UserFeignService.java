@@ -3,7 +3,10 @@ package com.pandama.top.user.open.facade;
 import com.pandama.top.user.open.pojo.vo.UserLoginVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * 用户Feign服务
@@ -44,5 +47,14 @@ public interface UserFeignService {
      */
     @GetMapping(value = "/authCode/verify")
     Boolean verify(@RequestParam("authCode") String authCode, @RequestParam("uuid") String uuid);
+
+    /**
+     * 根据用户名查询用户信息
+     *
+     * @return com.pandama.top.user.api.pojo.vo.UserLoginVO
+     * @author 王强
+     */
+    @PostMapping(value = "/testFeign/test")
+    List<Long> test();
 
 }

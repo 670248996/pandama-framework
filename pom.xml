@@ -20,7 +20,9 @@
         <module>pandama-module-user</module>
         <module>pandama-module-file</module>
         <module>pandama-module-auth</module>
-        <module>pandama-module-activiti</module>
+        <module>pandama-module-camunda</module>
+        <module>pandama-module-log</module>
+        <module>pandama-generate</module>
     </modules>
 
     <properties>

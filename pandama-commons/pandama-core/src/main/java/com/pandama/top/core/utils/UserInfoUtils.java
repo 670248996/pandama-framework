@@ -25,7 +25,7 @@ public class UserInfoUtils {
      * @author 王强
      */
     public static CurrentUserInfo getUserInfo() {
-        return USER_LOCAL.get() == null ? new CurrentUserInfo(): USER_LOCAL.get();
+        return USER_LOCAL.get();
     }
 
     /**
@@ -54,7 +54,8 @@ public class UserInfoUtils {
      * @author 王强
      */
     public static Long getUserId() {
-        return getUserInfo().getId();
+        CurrentUserInfo userInfo = getUserInfo();
+        return userInfo == null ? null : userInfo.getId();
     }
 
     /**
@@ -64,6 +65,7 @@ public class UserInfoUtils {
      * @author 王强
      */
     public static String getIpAddress() {
-        return getUserInfo().getIpAddress();
+        CurrentUserInfo userInfo = getUserInfo();
+        return userInfo == null ? "" : userInfo.getIpAddress();
     }
 }

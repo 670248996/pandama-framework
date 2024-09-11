@@ -24,7 +24,9 @@
         <if test="dto.startCreateTime != null">
             and d.create_time between #{dto.startCreateTime} and #{dto.endCreateTime}
         </if>
-        order by d.create_time
+        <foreach collection="dto.sorts" item="sort" separator="," open="order by " close="">
+            ${sort.orderField} ${sort.orderType}
+        </foreach>
     </select>
 
     <select id="getDictListByParentIds" resultType="com.pandama.top.user.entity.SysDict">

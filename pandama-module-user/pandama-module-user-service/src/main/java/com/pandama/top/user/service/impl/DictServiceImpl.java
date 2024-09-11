@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pandama.top.core.global.exception.CommonException;
+import com.pandama.top.core.pojo.dto.Sort;
 import com.pandama.top.user.pojo.dto.DictCreateDTO;
 import com.pandama.top.user.pojo.dto.DictSearchDTO;
 import com.pandama.top.user.pojo.dto.DictUpdateDTO;
@@ -18,6 +19,7 @@ import com.pandama.top.core.utils.BeanConvertUtils;
 import io.lettuce.core.RedisException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -108,6 +110,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, SysDict> implements
 
     @Override
     public List<DictSearchResultVO> list(DictSearchDTO dto) {
+        if (CollectionUtils.isEmpty(dto.getSorts())) {
+            dto.getSorts().add(new Sort("create_time", "desc"));
+        }
         List<SysDict> list = dictionaryMapper.list(dto);
         return (List<DictSearchResultVO>) BeanConvertUtils.convertCollection(list, DictSearchResultVO::new).orElse(new ArrayList<>());
     }

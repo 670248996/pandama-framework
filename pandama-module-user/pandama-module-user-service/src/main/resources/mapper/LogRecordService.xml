@@ -27,8 +27,10 @@
                     #{id}
                 </foreach>
             </if>
-            order by sl.create_time desc
         </where>
+        <foreach collection="dto.sorts" item="sort" separator="," open="order by " close="">
+            ${sort.orderField} ${sort.orderType}
+        </foreach>
     </select>
 
     <select id="onlineUserPage" resultType="com.pandama.top.user.pojo.vo.OnlineSearchResultVO">
@@ -51,7 +53,9 @@
         <if test="dto.username != null and dto.username != ''">
             and sl.create_user_code like concat('%', #{dto.username}, '%')
         </if>
-        order by sl.create_time desc
+        <foreach collection="dto.sorts" item="sort" separator="," open="order by " close="">
+            ${sort.orderField} ${sort.orderType}
+        </foreach>
     </select>
 
 </mapper>

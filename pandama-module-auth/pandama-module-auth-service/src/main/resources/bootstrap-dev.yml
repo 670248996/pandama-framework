@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: pandama-auth
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

@@ -4,7 +4,6 @@ import com.pandama.top.app.thread.MyTaskRunnable;
 import com.pandama.top.core.global.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +29,6 @@ public class ThreadController {
 
     private final ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<>(1));
 
-    @PreAuthorize("@ss.hasPermi('monitor:server:list')")
     @RequestMapping(value = "/start", method = RequestMethod.GET)
     public Response<?> start(@RequestParam("id") String id) {
         CompletableFuture.runAsync(new MyTaskRunnable() {

@@ -4,6 +4,9 @@ package com.pandama.top.core.pojo.dto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 分页查询基础类
  *
@@ -19,8 +22,12 @@ public class PageDTO {
     @ApiModelProperty("每页大小")
     private Long size;
 
+    @ApiModelProperty("自定义排序")
+    private List<Sort> sorts;
+
     public PageDTO() {
         this.current = 1L;
         this.size = 10L;
+        this.sorts = new ArrayList<>();
     }
 }

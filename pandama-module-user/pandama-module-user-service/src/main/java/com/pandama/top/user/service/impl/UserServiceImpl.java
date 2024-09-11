@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pandama.top.auth.open.constant.RedisConstant;
+import com.pandama.top.core.pojo.dto.Sort;
 import com.pandama.top.core.utils.TreeUtils;
 import com.pandama.top.core.utils.UserInfoUtils;
 import com.pandama.top.redis.utils.RedisUtils;
@@ -112,6 +113,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
 
     @Override
     public PageVO<UserSearchResultVO> page(UserSearchDTO dto) {
+        if (CollectionUtils.isEmpty(dto.getSorts())) {
+            dto.getSorts().add(new Sort("create_time", "desc"));
+        }
         Page<UserSearchResultVO> page = userMapper.page(new Page<>(dto.getCurrent(), dto.getSize()), dto);
         return new PageVO<>(page.getTotal(), page.getSize(), page.getCurrent(), page.getPages(), page.getRecords());
     }
