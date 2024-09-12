@@ -1,14 +1,12 @@
 package com.pandama.top.camunda.controller;
 
-import camundajar.impl.com.google.gson.Gson;
-import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.pandama.top.camunda.service.CamundaTaskService;
 import com.pandama.top.core.global.response.Response;
+import com.pandama.top.core.pojo.dto.PageDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.history.HistoricDetail;
-import org.camunda.bpm.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * 任务控制器
@@ -33,18 +30,20 @@ public class TaskController {
     private final CamundaTaskService taskService;
 
     @GetMapping("/list/{assignee}")
-    public Response<?> list(@NotBlank(message = "接收人不能为空") @PathVariable("assignee") String assignee) {
-        List<Task> taskList = taskService.list(assignee);
-        List<JSONObject> collect = taskList.stream()
-                .map(p -> JSON.parseObject(new Gson().toJson(p))).collect(Collectors.toList());
-        return Response.success(collect);
+    public Response<?> page(@NotBlank(message = "接收人不能为空") @PathVariable("assignee") String assignee) {
+        return Response.success(taskService.list(assignee));
+    }
+
+    @PostMapping("/page/{assignee}")
+    public Response<?> page(@NotBlank(message = "接收人不能为空") @PathVariable("assignee") String assignee, @RequestBody PageDTO dto) {
+        return Response.success(taskService.page(assignee, dto));
     }
 
     @PostMapping("/start/{definitionId}")
     public Response<?> start(@NotBlank(message = "流程定义ID不能为空") @PathVariable("definitionId") String definitionId,
                              @RequestBody Map<String, Object> variables) {
-        Task taskInfo = taskService.start(definitionId, variables, task -> log.info("流程启动成功: {}", task.getName()));
-        return Response.success(JSON.parseObject(new Gson().toJson(taskInfo)));
+        JSONObject taskInfo = taskService.start(definitionId, variables, task -> log.info("流程启动成功: {}", task.getName()));
+        return Response.success(taskInfo);
     }
 
     @PostMapping("/approve/{taskId}")

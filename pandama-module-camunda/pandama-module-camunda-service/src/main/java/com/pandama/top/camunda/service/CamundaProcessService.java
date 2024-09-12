@@ -1,5 +1,8 @@
 package com.pandama.top.camunda.service;
 
+import com.alibaba.fastjson2.JSONObject;
+import com.pandama.top.core.pojo.dto.PageDTO;
+import com.pandama.top.core.pojo.vo.PageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.RepositoryService;
@@ -11,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * 流程定义服务
@@ -25,8 +30,31 @@ public class CamundaProcessService {
     private final RepositoryService repositoryService;
     private final RuntimeService runtimeService;
 
-    public List<ProcessDefinition> getList() {
-        return repositoryService.createProcessDefinitionQuery().list();
+    public List<JSONObject> list() {
+        List<ProcessDefinition> definitionList = repositoryService.createProcessDefinitionQuery()
+                .latestVersion().orderByDeploymentTime().desc().list();
+        return definitionList.stream()
+                .collect(Collectors.toMap(ProcessDefinition::getKey, Function.identity(), (k1, k2) -> k1)).values().stream()
+                .map(p -> {
+                    JSONObject json = new JSONObject();
+                    json.put("id", p.getId());
+                    json.put("name", p.getName());
+                    return json;
+                }).collect(Collectors.toList());
+    }
+
+    public PageVO<JSONObject> page(PageDTO dto) {
+        long count = repositoryService.createProcessDefinitionQuery().latestVersion().count();
+        List<ProcessDefinition> definitionList = repositoryService.createProcessDefinitionQuery()
+                .latestVersion().orderByDeploymentTime().desc().listPage(dto.getFirstSize(), dto.getLastSize());
+        List<JSONObject> collect = definitionList.stream()
+                .map(p -> {
+                    JSONObject json = new JSONObject();
+                    json.put("id", p.getId());
+                    json.put("name", p.getName());
+                    return json;
+                }).collect(Collectors.toList());
+        return new PageVO<>(count, dto.getSize().longValue(), dto.getCurrent().longValue(), collect);
     }
 
     public ProcessInstance start(String definitionId, String businessId, Map<String, Object> variables) {

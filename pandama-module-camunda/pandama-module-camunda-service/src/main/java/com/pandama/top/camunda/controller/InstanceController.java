@@ -1,20 +1,15 @@
 package com.pandama.top.camunda.controller;
 
-import camundajar.impl.com.google.gson.Gson;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
 import com.pandama.top.camunda.service.CamundaInstanceService;
 import com.pandama.top.core.global.response.Response;
+import com.pandama.top.core.pojo.dto.PageDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 实例控制器
@@ -32,10 +27,12 @@ public class InstanceController {
 
     @GetMapping("/list")
     public Response<?> list() {
-        List<ProcessInstance> processInstanceList = instanceService.getList();
-        List<JSONObject> collect = processInstanceList.stream()
-                .map(p -> JSON.parseObject(new Gson().toJson(p))).collect(Collectors.toList());
-        return Response.success(collect);
+        return Response.success(instanceService.list());
+    }
+
+    @PostMapping("/page")
+    public Response<?> list(@RequestBody PageDTO dto) {
+        return Response.success(instanceService.page(dto));
     }
 
     @PutMapping("/suspend/{instanceId}")

@@ -1,6 +1,12 @@
 package com.pandama.top.camunda.service;
 
+import camundajar.impl.com.google.gson.Gson;
+import camundajar.impl.com.google.gson.GsonBuilder;
 import cn.hutool.core.lang.Assert;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
+import com.pandama.top.core.pojo.dto.PageDTO;
+import com.pandama.top.core.pojo.vo.PageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.*;
@@ -8,6 +14,7 @@ import org.camunda.bpm.engine.history.HistoricDetail;
 import org.camunda.bpm.engine.history.HistoricTaskInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,20 +33,30 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-@RequiredArgsConstructor(onConstructor_ = {@Lazy})
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CamundaTaskService {
+    private final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
     private final org.camunda.bpm.engine.TaskService taskService;
     private final HistoryService historyService;
     private final RuntimeService runtimeService;
-    private final CamundaProcessService processInfoService;
 
-    public List<Task> list(String assignee) {
-        return taskService.createTaskQuery().taskAssignee(assignee).list();
+    public List<JSONObject> list(String assignee) {
+        List<Task> taskList = taskService.createTaskQuery().taskAssignee(assignee).orderByDueDate().desc().list();
+        return taskList.stream().map(p -> JSON.parseObject(gson.toJson(p))).collect(Collectors.toList());
+    }
+
+    public PageVO<JSONObject> page(String assignee, PageDTO dto) {
+        long count = taskService.createTaskQuery().taskAssignee(assignee).count();
+        List<Task> taskList = taskService.createTaskQuery().taskAssignee(assignee)
+                .orderByDueDate().desc().listPage(dto.getFirstSize(), dto.getLastSize());
+        List<JSONObject> collect = taskList.stream()
+                .map(p -> JSON.parseObject(gson.toJson(p))).collect(Collectors.toList());
+        return new PageVO<>(count, dto.getSize().longValue(), dto.getCurrent().longValue(), collect);
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public Task start(String definitionId, Map<String, Object> variables, Consumer<Task> consumer) {
-        ProcessInstance instance = processInfoService.start(definitionId, null, variables);
+    public JSONObject start(String definitionId, Map<String, Object> variables, Consumer<Task> consumer) {
+        ProcessInstance instance = runtimeService.startProcessInstanceById(definitionId, null, variables);
         Task task = taskService.createTaskQuery().processInstanceId(instance.getId()).singleResult();
         taskService.setVariables(task.getId(), variables);
         taskService.complete(task.getId());
@@ -47,7 +64,7 @@ public class CamundaTaskService {
         if (count == 0) {
             consumer.accept(task);
         }
-        return task;
+        return JSON.parseObject(gson.toJson(task));
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -95,4 +112,5 @@ public class CamundaTaskService {
     public List<HistoricDetail> history(String instanceId) {
         return historyService.createHistoricDetailQuery().processInstanceId(instanceId).list();
     }
+
 }

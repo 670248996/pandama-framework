@@ -1,5 +1,10 @@
 package com.pandama.top.camunda.service;
 
+import camundajar.impl.com.google.gson.Gson;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
+import com.pandama.top.core.pojo.dto.PageDTO;
+import com.pandama.top.core.pojo.vo.PageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.RuntimeService;
@@ -8,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 流程实例服务
@@ -21,8 +27,17 @@ import java.util.List;
 public class CamundaInstanceService {
     private final RuntimeService runtimeService;
 
-    public List<ProcessInstance> getList() {
-        return runtimeService.createProcessInstanceQuery().list();
+    public List<JSONObject> list() {
+        List<ProcessInstance> instanceList = runtimeService.createProcessInstanceQuery().list();
+        return instanceList.stream().map(p -> JSON.parseObject(new Gson().toJson(p))).collect(Collectors.toList());
+    }
+
+    public PageVO<JSONObject> page(PageDTO dto) {
+        long count = runtimeService.createProcessInstanceQuery().count();
+        List<ProcessInstance> instanceList = runtimeService.createProcessInstanceQuery().listPage(dto.getFirstSize(), dto.getLastSize());
+        List<JSONObject> collect = instanceList.stream()
+                .map(p -> JSON.parseObject(new Gson().toJson(p))).collect(Collectors.toList());
+        return new PageVO<>(count, dto.getSize().longValue(), dto.getCurrent().longValue(), collect);
     }
 
     public void suspend(String instanceId) {

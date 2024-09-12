@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,5 +61,13 @@ public class PageVO<T> {
 
     public List<T> getRecords() {
         return this.records == null ? new ArrayList<>() : this.records;
+    }
+
+    public PageVO(Long total, Long size, Long current, List<T> records) {
+        this.total = total;
+        this.size = size;
+        this.current = current;
+        this.pages = BigDecimal.valueOf(total).divide(BigDecimal.valueOf(size), RoundingMode.UP).longValue();
+        this.records = records;
     }
 }

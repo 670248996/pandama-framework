@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pandama.top.starter.web.authCode.AuthCodeConfiguration;
 import com.pandama.top.starter.web.intercepter.CommonExtHandler;
 import com.pandama.top.starter.web.intercepter.CustomHandlerInterceptor;
+import com.pandama.top.starter.web.serializers.DateDeserializer;
+import com.pandama.top.starter.web.serializers.DateSerializer;
 import com.pandama.top.starter.web.serializers.LocalDateTimeDeserializer;
 import com.pandama.top.starter.web.serializers.LocalDateTimeSerializer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 全局服务自动配置类
@@ -41,6 +44,8 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         return builder -> {
             builder.serializerByType(Long.class, new ToStringSerializer());
+            builder.serializerByType(Date.class, new DateSerializer());
+            builder.deserializerByType(Date.class, new DateDeserializer());
             builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer());
             builder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
         };
