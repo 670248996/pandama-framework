@@ -178,7 +178,7 @@ milvus:
   password: "Root@123!@#"
 
 rocketmq:
-  name-server: 10.211.55.4:9876
+  name-server: 123.60.104.105:9876
   consumer:
     group: app_consumer_group
     # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
@@ -210,7 +210,7 @@ camunda:
       async-response-timeout: 20000
       worker-id: pandama-app-01
       lock-duration: 10000
-      max-tasks: 1
+      max-tasks: 50
 
 
 mybatis-plus:
@@ -234,7 +234,7 @@ management:
       prometheus:
         pushgateway:
           #PUSHGATEWAY address
-          baseUrl: 10.211.55.4:9091
+          baseUrl: 123.60.104.105:9091
           # Push cycle
           pushRate: 15s
           #job definition name

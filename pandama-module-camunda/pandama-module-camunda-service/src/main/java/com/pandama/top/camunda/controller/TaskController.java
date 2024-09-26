@@ -1,7 +1,6 @@
 package com.pandama.top.camunda.controller;
 
-import com.alibaba.fastjson2.JSONObject;
-import com.pandama.top.camunda.service.CamundaTaskService;
+import com.pandama.top.camunda.camunda.CamundaTaskService;
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.core.pojo.dto.PageDTO;
 import lombok.RequiredArgsConstructor;
@@ -42,27 +41,27 @@ public class TaskController {
     @PostMapping("/start/{definitionId}")
     public Response<?> start(@NotBlank(message = "流程定义ID不能为空") @PathVariable("definitionId") String definitionId,
                              @RequestBody Map<String, Object> variables) {
-        JSONObject taskInfo = taskService.start(definitionId, variables, task -> log.info("流程启动成功: {}", task.getName()));
-        return Response.success(taskInfo);
+        taskService.start(definitionId, variables, task -> log.info("流程启动成功: {}", task.getName()));
+        return Response.success();
     }
 
     @PostMapping("/approve/{taskId}")
     public Response<?> approve(@NotBlank(message = "任务实例ID不能为空") @PathVariable("taskId") String taskId,
                                @RequestBody Map<String, Object> variables) {
-        taskService.approve(taskId, variables, task -> log.info("流程审批通过: {}", task.getName()));
+        taskService.approve(taskId, variables, task -> log.info("任务审批通过: {}", task.getName()));
         return Response.success();
     }
 
     @PostMapping("/reject/{taskId}")
     public Response<?> reject(@NotBlank(message = "任务实例ID不能为空") @PathVariable("taskId") String taskId,
                               @RequestBody Map<String, Object> variables) {
-        taskService.reject(taskId, variables, task -> log.info("流程审批拒绝: {}", task.getName()));
+        taskService.reject(taskId, variables, task -> log.info("任务审批拒绝: {}", task.getName()));
         return Response.success();
     }
 
     @PostMapping("/reback/{taskId}")
     public Response<?> reback(@NotBlank(message = "任务实例ID不能为空") @PathVariable("taskId") String taskId) {
-        taskService.reback(taskId, task -> log.info("流程回退成功: {}", task.getName()));
+        taskService.reback(taskId, task -> log.info("任务回退成功: {}", task.getName()));
         return Response.success();
     }
 

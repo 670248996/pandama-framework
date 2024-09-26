@@ -1,5 +1,5 @@
 server:
-  port: 8884
+  port: 8885
   max-http-header-size: ENC(r++f4i1+fdqPcd3KVE1r0w==)
   servlet:
     context-path: ENC(lb2f54XQD/A+GOCXPiWBjS41PGYmCuNn)

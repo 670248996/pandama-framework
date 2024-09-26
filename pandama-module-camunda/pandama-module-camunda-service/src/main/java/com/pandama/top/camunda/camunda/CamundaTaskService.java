@@ -1,4 +1,4 @@
-package com.pandama.top.camunda.service;
+package com.pandama.top.camunda.camunda;
 
 import camundajar.impl.com.google.gson.Gson;
 import camundajar.impl.com.google.gson.GsonBuilder;
@@ -9,13 +9,13 @@ import com.pandama.top.core.pojo.dto.PageDTO;
 import com.pandama.top.core.pojo.vo.PageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.camunda.bpm.engine.*;
+import org.camunda.bpm.engine.HistoryService;
+import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.history.HistoricDetail;
 import org.camunda.bpm.engine.history.HistoricTaskInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,7 +55,7 @@ public class CamundaTaskService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public JSONObject start(String definitionId, Map<String, Object> variables, Consumer<Task> consumer) {
+    public void start(String definitionId, Map<String, Object> variables, Consumer<Task> consumer) {
         ProcessInstance instance = runtimeService.startProcessInstanceById(definitionId, null, variables);
         Task task = taskService.createTaskQuery().processInstanceId(instance.getId()).singleResult();
         taskService.setVariables(task.getId(), variables);
@@ -64,14 +64,13 @@ public class CamundaTaskService {
         if (count == 0) {
             consumer.accept(task);
         }
-        return JSON.parseObject(gson.toJson(task));
     }
 
     @Transactional(rollbackFor = Exception.class)
     public void approve(String taskId, Map<String, Object> variables, Consumer<Task> consumer) {
         Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
         Optional.ofNullable(task).orElseThrow(() -> new RuntimeException("任务【" + taskId + "】不存在"));
-        taskService.setVariables(task.getId(), variables);
+        taskService.setVariablesLocal(taskId, variables);
         taskService.complete(task.getId());
         long count = runtimeService.createExecutionQuery().processInstanceId(task.getProcessInstanceId()).count();
         if (count == 0) {
@@ -83,7 +82,7 @@ public class CamundaTaskService {
     public void reject(String taskId, Map<String, Object> variables, Consumer<Task> consumer) {
         Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
         Optional.ofNullable(task).orElseThrow(() -> new RuntimeException("任务【" + taskId + "】不存在"));
-        taskService.setVariables(task.getId(), variables);
+        taskService.setVariablesLocal(taskId, variables);
         taskService.complete(task.getId());
         long count = runtimeService.createExecutionQuery().processInstanceId(task.getProcessInstanceId()).count();
         if (count == 0) {
@@ -94,12 +93,14 @@ public class CamundaTaskService {
     @Transactional(rollbackFor = Exception.class)
     public void reback(String taskId, Consumer<Task> consumer) {
         Task task = taskService.createTaskQuery().taskId(taskId).active().singleResult();
+        Optional.ofNullable(task).orElseThrow(() -> new RuntimeException("任务【" + taskId + "】不存在"));
         String instanceId = task.getProcessInstanceId();
         List<HistoricTaskInstance> historicTaskInstance = historyService.createHistoricTaskInstanceQuery()
                 .processInstanceId(instanceId).orderByHistoricActivityInstanceStartTime().desc().list();
         List<HistoricTaskInstance> historicTaskInstances = historicTaskInstance.stream()
                 .filter(v -> !v.getTaskDefinitionKey().equals(task.getTaskDefinitionKey())).collect(Collectors.toList());
         Assert.notEmpty(historicTaskInstances, "当前已是初始任务！");
+        // 上一步
         HistoricTaskInstance curr = historicTaskInstances.get(0);
         runtimeService.createProcessInstanceModification(instanceId)
                 .cancelAllForActivity(task.getTaskDefinitionKey())
@@ -109,6 +110,7 @@ public class CamundaTaskService {
         consumer.accept(task);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public List<HistoricDetail> history(String instanceId) {
         return historyService.createHistoricDetailQuery().processInstanceId(instanceId).list();
     }

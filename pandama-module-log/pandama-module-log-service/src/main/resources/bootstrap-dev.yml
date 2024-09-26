@@ -6,6 +6,7 @@ spring:
         server-addr: 123.60.104.105:8848
       discovery:
         server-addr: 123.60.104.105:8848
+        port: ${server.port}
         metadata:
           node-name: ${MY_NODE_NAME}
           node-ip: ${MY_NODE_IP}
@@ -181,7 +182,7 @@ management:
       prometheus:
         pushgateway:
           #PUSHGATEWAY address
-          baseUrl: 10.211.55.4:9091
+          baseUrl: 123.60.104.105:9091
           # Push cycle
           pushRate: 15s
           #job definition name

@@ -1,16 +1,18 @@
-package com.pandama.top.camunda.service;
+package com.pandama.top.camunda.camunda;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.pandama.top.core.pojo.dto.PageDTO;
 import com.pandama.top.core.pojo.vo.PageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.camunda.bpm.engine.RepositoryService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.repository.ProcessDefinition;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -69,7 +71,14 @@ public class CamundaProcessService {
         repositoryService.activateProcessDefinitionById(definitionId);
     }
 
+
+    @Transactional(rollbackFor = Exception.class)
     public void delete(String definitionId) {
-        repositoryService.deleteProcessDefinition(definitionId);
+        repositoryService.suspendProcessDefinitionById(definitionId);
+        List<ProcessInstance> instanceList = runtimeService.createProcessInstanceQuery().processDefinitionId(definitionId).list();
+        if (CollectionUtils.isNotEmpty(instanceList)) {
+            throw new RuntimeException("流程存在流转中的实例，无法删除！");
+        }
+        repositoryService.deleteProcessDefinition(definitionId, true);
     }
 }

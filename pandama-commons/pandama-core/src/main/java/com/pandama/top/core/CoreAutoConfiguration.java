@@ -1,5 +1,6 @@
 package com.pandama.top.core;
 
+import com.pandama.top.core.healthy.NacosHealthyCheck;
 import com.pandama.top.core.utils.SpringContextUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Import;
  * @date 2023-07-08 15:18:38
  */
 @Configuration
-@Import({SpringContextUtils.class})
+@Import({SpringContextUtils.class, NacosHealthyCheck.class})
 public class CoreAutoConfiguration {
 
 }

@@ -11,8 +11,8 @@ spec: #定义Service资源需要的参数属性
   ports:
   - name: app-service-port
     protocol: TCP
-    port: 8884
-    targetPort: 8884
+    port: 8885
+    targetPort: 8885
   selector: #此处定义的selector要与deployment所定义的selector相同
     app: app  #service依靠标签选择器来检索提供服务的nodes
 
@@ -48,7 +48,7 @@ spec: #定义deployment资源需要的参数属性，诸如是否在容器失败
         image: registry.cn-hangzhou.aliyuncs.com/pandama/pandama-app:v1.0.0
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8884 #定义容器对外的端口
+        - containerPort: 8885 #定义容器对外的端口
         env:  #定义环境变量
         - name: MY_NODE_NAME
           valueFrom:
@@ -90,9 +90,9 @@ data:
         nacos:
           config:
             file-extension: yml
-            server-addr: 10.211.55.4:8848
+            server-addr: 123.60.104.105:8848
           discovery:
-            server-addr: 10.211.55.4:8848
+            server-addr: 123.60.104.105:8848
             metadata:
               node-name: ${MY_NODE_NAME}
               node-ip: ${MY_NODE_IP}

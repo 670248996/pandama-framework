@@ -2,7 +2,7 @@ package com.pandama.top.camunda.controller;
 
 import camundajar.impl.com.google.gson.Gson;
 import com.alibaba.fastjson2.JSON;
-import com.pandama.top.camunda.service.CamundaProcessService;
+import com.pandama.top.camunda.camunda.CamundaProcessService;
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.core.pojo.dto.PageDTO;
 import lombok.RequiredArgsConstructor;

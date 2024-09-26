@@ -6,6 +6,7 @@ spring:
         server-addr: 123.60.104.105:8848
       discovery:
         server-addr: 123.60.104.105:8848
+        port: ${server.port}
         metadata:
           node-name: ${MY_NODE_NAME}
           node-ip: ${MY_NODE_IP}
@@ -110,6 +111,8 @@ camunda:
       schema-update: true
     # 禁止自动部署 resources 下的 bpmn文件
     auto-deployment-enabled: false
+    # 历史数据存储级别 full audit auto none
+    history-level: audit
     # 禁止index 跳转到 Camunda 自带的管理页面
     webapp:
       index-redirect-enabled: true
@@ -135,7 +138,7 @@ management:
       prometheus:
         pushgateway:
           #PUSHGATEWAY address
-          baseUrl: 10.211.55.4:9091
+          baseUrl: 123.60.104.105:9091
           # Push cycle
           pushRate: 15s
           #job definition name

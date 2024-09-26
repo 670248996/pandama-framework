@@ -1,5 +1,5 @@
 server:
-  port: 8884
+  port: 8885
   max-http-header-size: 1MB
   servlet:
     context-path: /pandama/app

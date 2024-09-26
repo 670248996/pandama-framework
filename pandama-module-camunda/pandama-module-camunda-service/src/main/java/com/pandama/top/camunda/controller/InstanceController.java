@@ -1,6 +1,6 @@
 package com.pandama.top.camunda.controller;
 
-import com.pandama.top.camunda.service.CamundaInstanceService;
+import com.pandama.top.camunda.camunda.CamundaInstanceService;
 import com.pandama.top.core.global.response.Response;
 import com.pandama.top.core.pojo.dto.PageDTO;
 import lombok.RequiredArgsConstructor;
@@ -48,8 +48,8 @@ public class InstanceController {
     }
 
     @DeleteMapping("/delete/{instanceId}")
-    public Response<?> delete(@NotBlank(message = "流程实例ID不能为空") @PathVariable("instanceId") String definitionId) {
-        instanceService.delete(definitionId);
+    public Response<?> delete(@NotBlank(message = "流程实例ID不能为空") @PathVariable("instanceId") String instanceId) {
+        instanceService.delete(instanceId);
         return Response.success("删除成功");
     }
 }

@@ -1,4 +1,4 @@
-package com.pandama.top.camunda.service;
+package com.pandama.top.camunda.camunda;
 
 import camundajar.impl.com.google.gson.Gson;
 import com.alibaba.fastjson2.JSON;
@@ -11,6 +11,7 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,7 +49,9 @@ public class CamundaInstanceService {
         runtimeService.activateProcessInstanceById(instanceId);
     }
 
-    public void delete(String definitionId) {
-        runtimeService.deleteProcessInstance(definitionId, "手动删除");
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(String instanceId) {
+        runtimeService.suspendProcessInstanceById(instanceId);
+        runtimeService.deleteProcessInstance(instanceId, "手动删除");
     }
 }

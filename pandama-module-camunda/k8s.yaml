@@ -2,19 +2,19 @@
 apiVersion: v1  #指定api版本标签
 kind: Service #资源类型可以是Deployment、Job、Ingress、Service等
 metadata: #资源的元数据信息，比如资源的名称、namespace、标签等信息
-  name: file-svc #定义资源的名称
+  name: camunda-svc #定义资源的名称
   namespace: pandama
   labels: #定义资源的标签
-    app: file
+    app: camunda
 spec: #定义Service资源需要的参数属性
   type: ClusterIP
   ports:
-  - name: file-service-port
+  - name: camunda-service-port
     protocol: TCP
-    port: 8883
-    targetPort: 8883
+    port: 8884
+    targetPort: 8884
   selector: #此处定义的selector要与deployment所定义的selector相同
-    app: file  #service依靠标签选择器来检索提供服务的nodes
+    app: camunda  #service依靠标签选择器来检索提供服务的nodes
 
 ---
 
@@ -22,16 +22,16 @@ spec: #定义Service资源需要的参数属性
 apiVersion: apps/v1 #指定api版本标签
 kind: Deployment  #资源类型
 metadata: #资源的元数据信息，比如资源的名称、namespace、标签等信息
-  name: file-deploy  #定义资源的名称
+  name: camunda-deploy  #定义资源的名称
   namespace: pandama
   labels: #定义资源的标签
-    app: file
+    app: camunda
 spec: #定义deployment资源需要的参数属性，诸如是否在容器失败时重新启动容器的属性
   replicas: 2 #定义副本数量
   revisionHistoryLimit: 10  #滚动更新保留的历史版本数
   selector: #定义标签选择器
     matchLabels:  #定义匹配标签
-      app: file  #需与后面的.spec.template.metadata.labels定义的标签保持一致
+      app: camunda  #需与后面的.spec.template.metadata.labels定义的标签保持一致
   strategy: #更新策略
     rollingUpdate:  #滚动更新配置
       maxSurge: 25% #滚动更新，更新的个数最多可以超过期望副本个数/比例
@@ -41,14 +41,14 @@ spec: #定义deployment资源需要的参数属性，诸如是否在容器失败
   template: #Pod模板
     metadata: #Pod元数据
       labels: #定义Pod的标签
-        app: file
+        app: camunda
     spec:
       containers: #定义容器属性
-      - name: file
-        image: registry.cn-hangzhou.aliyuncs.com/pandama/pandama-file:v1.0.0
+      - name: camunda
+        image: registry.cn-hangzhou.aliyuncs.com/pandama/pandama-camunda:v1.0.0
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8883 #定义容器对外的端口
+        - containerPort: 8884 #定义容器对外的端口
         env:  #定义环境变量
         - name: MY_NODE_NAME
           valueFrom:
@@ -77,15 +77,15 @@ spec: #定义deployment资源需要的参数属性，诸如是否在容器失败
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: file-config
+  name: camunda-config
   namespace: pandama
   labels: #定义资源的标签
-    app: file
+    app: camunda
 data:
   bootstrap.yml: |
     spring:
       application:
-        name: pandama-file
+        name: pandama-camunda
       cloud:
         nacos:
           config:
