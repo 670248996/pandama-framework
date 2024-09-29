@@ -1,0 +1,99 @@
+# 创建Service对象
+apiVersion: v1  #指定api版本标签
+kind: Service #资源类型可以是Deployment、Job、Ingress、Service等
+metadata: #资源的元数据信息，比如资源的名称、namespace、标签等信息
+  name: job-svc #定义资源的名称
+  namespace: pandama
+  labels: #定义资源的标签
+    app: job
+spec: #定义Service资源需要的参数属性
+  type: ClusterIP
+  ports:
+  - name: job-service-port
+    protocol: TCP
+    port: 8882
+    targetPort: 8882
+  selector: #此处定义的selector要与deployment所定义的selector相同
+    app: job  #service依靠标签选择器来检索提供服务的nodes
+
+---
+
+# 创建Deployment对象
+apiVersion: apps/v1 #指定api版本标签
+kind: Deployment  #资源类型
+metadata: #资源的元数据信息，比如资源的名称、namespace、标签等信息
+  name: job-deploy  #定义资源的名称
+  namespace: pandama
+  labels: #定义资源的标签
+    app: job
+spec: #定义deployment资源需要的参数属性，诸如是否在容器失败时重新启动容器的属性
+  replicas: 2 #定义副本数量
+  revisionHistoryLimit: 10  #滚动更新保留的历史版本数
+  selector: #定义标签选择器
+    matchLabels:  #定义匹配标签
+      app: job  #需与后面的.spec.template.metadata.labels定义的标签保持一致
+  strategy: #更新策略
+    rollingUpdate:  #滚动更新配置
+      maxSurge: 25% #滚动更新，更新的个数最多可以超过期望副本个数/比例
+      maxUnavailable: 25% #滚动更新，最多可以有多少比例的副本不更新成功
+    type: RollingUpdate #更新类型滚动更新，修改template时触发
+
+  template: #Pod模板
+    metadata: #Pod元数据
+      labels: #定义Pod的标签
+        app: job
+    spec:
+      containers: #定义容器属性
+      - name: job
+        image: registry.cn-hangzhou.aliyuncs.com/pandama/pandama-job:v1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8882 #定义容器对外的端口
+        env:  #定义环境变量
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MY_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        volumeMounts: #pod文件挂载
+        - name: config-volume
+          mountPath: /apps/bootstrap.yml
+          subPath: bootstrap.yml
+      volumes:  #引用configMap配置
+        - name: config-volume
+          configMap:
+            name: job-config
+
+---
+
+# 创建ConfigMap配置
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: job-config
+  namespace: pandama
+  labels: #定义资源的标签
+    app: job
+data:
+  bootstrap.yml: |
+    spring:
+      application:
+        name: pandama-job
+      cloud:
+        nacos:
+          config:
+            file-extension: yml
+            server-addr: 123.60.104.105:8848
+          discovery:
+            server-addr: 123.60.104.105:8848
+            metadata:
+              node-name: ${MY_NODE_NAME}
+              node-ip: ${MY_NODE_IP}
+              pod-ip: ${MY_POD_IP}

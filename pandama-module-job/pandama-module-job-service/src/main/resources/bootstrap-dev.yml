@@ -1,0 +1,54 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 123.60.104.105:8848
+      discovery:
+        server-addr: 123.60.104.105:8848
+        port: ${server.port}
+        metadata:
+          node-name: ${MY_NODE_NAME}
+          node-ip: ${MY_NODE_IP}
+          pod-ip: ${MY_POD_IP}
+
+xxl:
+  job:
+    accessToken: default_token
+    admin:
+      addresses: http://10.211.55.4:8091/xxl-job-admin
+    executor:
+      appname: xxl-job-executor-sample
+      address:
+      ip:
+      port: 9999
+      logpath: logs/jobhandler
+      logretentiondays: 7
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env,beans
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        pushgateway:
+          #PUSHGATEWAY address
+          baseUrl: 123.60.104.105:9091
+          # Push cycle
+          pushRate: 15s
+          #job definition name
+          job: ${spring.application.name}
+          # Enable push
+          enabled: true
+          grouping-key:
+            group: pandama

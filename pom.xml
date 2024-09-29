@@ -23,6 +23,7 @@
         <module>pandama-module-camunda</module>
         <module>pandama-module-log</module>
         <module>pandama-generate</module>
+        <module>pandama-module-job</module>
     </modules>
 
     <properties>
