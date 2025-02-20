@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.sync.mapper.FlowDataMapper">
+
+    <insert id="insertFlowData" parameterType="com.pandama.top.sync.entity.FlowData">
+        insert into jx_flow (ts, deviceid,forwardflow,forwarderrortype,reverseflow,reverseerrortype,instantflow,flowerrortype,flowspeed,flowspeederrortype,create_time,origin,orgid)
+        values (#{ts},#{deviceid},#{forwardflow},#{forwarderrortype},#{reverseflow},#{reverseerrortype},#{instantflow},#{flowerrortype},#{flowspeed},#{flowspeederrortype},#{createTime},#{origin},#{orgid})
+        ON CONFLICT(ts, deviceid) do update
+        set flowspeed = excluded.flowspeed,
+        forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        instantflow = excluded.instantflow
+    </insert>
+
+    <insert id="batchInsertFlowData" parameterType="java.util.List">
+        insert into jx_flow (ts, deviceid,forwardflow,forwarderrortype,reverseflow,reverseerrortype,instantflow,flowerrortype,flowspeed,flowspeederrortype,create_time,origin,orgid)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.forwarderrortype},#{item.reverseflow},#{item.reverseerrortype},#{item.instantflow},#{item.flowerrortype},#{item.flowspeed},#{item.flowspeederrortype},#{item.createTime},#{item.origin},#{item.orgid})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set flowspeed = excluded.flowspeed,
+        forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        instantflow = excluded.instantflow
+    </insert>
+</mapper>

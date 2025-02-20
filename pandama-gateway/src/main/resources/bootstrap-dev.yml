@@ -13,6 +13,8 @@ spring:
           node-name: ${MY_NODE_NAME}
           node-ip: ${MY_NODE_IP}
           pod-ip: ${MY_POD_IP}
+      username: nacos
+      password: nacos
 
     gateway:
       routes:

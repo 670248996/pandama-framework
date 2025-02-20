@@ -16,9 +16,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://121.36.56.159:3306/pandama_app?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
-      username: admin
-      password: zUc5tJpiZwO-
+      url: jdbc:mysql://10.211.55.4:3306/pandama_app?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
+      username: root
+      password: Root@123!@#
       #  初始连接数
       initialSize: 5
       # 最小空闲连接数

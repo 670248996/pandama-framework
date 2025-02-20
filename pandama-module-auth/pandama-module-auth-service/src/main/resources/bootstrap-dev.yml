@@ -14,14 +14,16 @@ spring:
           node-name: ${MY_NODE_NAME}
           node-ip: ${MY_NODE_IP}
           pod-ip: ${MY_POD_IP}
+      username: nacos
+      password: nacos
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://123.60.104.105:3306/pandama_auth?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
-      username: admin
-      password: Admin@123!@#
+      url: jdbc:mysql://10.211.55.4:3306/pandama_auth?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
+      username: root
+      password: Root@123!@#
       #  初始连接数
       initialSize: 5
       # 最小空闲连接数

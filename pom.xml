@@ -24,6 +24,7 @@
         <module>pandama-module-log</module>
         <module>pandama-generate</module>
         <module>pandama-module-job</module>
+        <module>pandama-module-sync</module>
     </modules>
 
     <properties>

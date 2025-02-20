@@ -39,6 +39,6 @@ public class MilvusConfiguration {
 
     @Bean(initMethod = "init", destroyMethod = "close")
     public MilvusRestClientFactory getMilvusFactory() {
-        return  MilvusRestClientFactory.build(ipAddr, port, database, username, password);
+        return MilvusRestClientFactory.build(ipAddr, port, database, username, password);
     }
 }

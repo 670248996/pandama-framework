@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.sync.mapper.FlowAreaDataRealMapper">
+
+    <insert id="insertFlowAreaData" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(deviceid) do update
+        set forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        reading = excluded.reading,
+        pressure = excluded.pressure,
+        valuestatus = excluded.valuestatus,
+        flow = excluded.flow,
+        voltage = excluded.voltage,
+        mark = excluded.mark,
+        ts = excluded.ts,
+        flow_modify = excluded.flow_modify
+    </insert>
+
+    <insert id="insertFlowAreaDataPressure" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark})
+        ON CONFLICT(deviceid) do update
+        set pressure = excluded.pressure,
+        ts = excluded.ts
+    </insert>
+
+    <insert id="insertFlowAreaFlow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(deviceid) do update
+        set flow = excluded.flow,
+        flow_modify = excluded.flow_modify
+    </insert>
+
+    <insert id="insertFlowAreaDataForwardflow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark})
+        ON CONFLICT(deviceid) do update
+        set forwardflow = excluded.forwardflow
+    </insert>
+
+    <insert id="insertFlowAreaDataReverseflow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark})
+        ON CONFLICT(deviceid) do update
+        set reverseflow = excluded.reverseflow
+    </insert>
+
+    <insert id="insertFlowAreaDataRealTotal" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,real_total)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{realTotal})
+        ON CONFLICT(deviceid) do update
+        set real_total = excluded.real_total
+    </insert>
+
+    <insert id="insertFlowAreaDataFlow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area_real(ts, deviceid,forwardflow,reverseflow,reading,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(deviceid) do update
+        set forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        reading = excluded.reading,
+        flow = excluded.flow,
+        ts = excluded.ts,
+        flow_modify = excluded.flow_modify
+    </insert>
+</mapper>

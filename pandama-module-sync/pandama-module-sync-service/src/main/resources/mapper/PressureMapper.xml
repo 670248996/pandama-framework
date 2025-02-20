@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.sync.mapper.PressureDataMapper">
+
+    <insert id="insertPressureData" parameterType="com.pandama.top.sync.entity.PressureData">
+        insert into jx_pressure (ts, deviceid ,errortype,pressure,create_time,origin,orgid)
+        values (#{ts},#{deviceid},#{errortype},#{pressure},#{createTime},#{origin},#{orgid})
+        ON CONFLICT(ts, deviceid) do update
+        set pressure = excluded.pressure
+    </insert>
+
+    <insert id="batchInsertPressureData" parameterType="java.util.List">
+        insert into jx_pressure (ts, deviceid ,errortype,pressure,create_time,origin,orgid)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.errortype},#{item.pressure},#{item.createTime},#{item.origin},#{item.orgid})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set pressure = excluded.pressure
+    </insert>
+</mapper>

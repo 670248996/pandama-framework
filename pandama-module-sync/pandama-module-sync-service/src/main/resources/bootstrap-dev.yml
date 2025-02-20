@@ -14,18 +14,14 @@ spring:
       username: nacos
       password: nacos
 
-xxl:
-  job:
-    accessToken: default_token
-    admin:
-      addresses: http://10.211.55.4:8091/xxl-job-admin
-    executor:
-      appname: xxl-job-executor-sample
-      address:
-      ip:
-      port: 9999
-      logpath: logs/jobhandler
-      logretentiondays: 7
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://123.60.104.105:5432/postgres
+    username: postgres
+    password: 123456
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
 
 management:
   endpoints:

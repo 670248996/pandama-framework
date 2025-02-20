@@ -2,6 +2,7 @@ package com.pandama.top.milvus.factory;
 
 import io.milvus.client.MilvusServiceClient;
 import io.milvus.param.ConnectParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @author 王强
  * @date 2024-04-09 09:50:30
  */
+@Slf4j
 public class MilvusRestClientFactory {
 
     private static String IP_ADDR;

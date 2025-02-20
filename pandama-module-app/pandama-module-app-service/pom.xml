@@ -14,6 +14,12 @@
     <version>1.0.0</version>
 
     <dependencies>
+        <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.18.2</version> <!-- 请替换为最新版本号 -->
+        </dependency>
+
         <!--web依赖包，去除自带的logging依赖-->
         <dependency>
             <groupId>com.pandama.top</groupId>
@@ -90,12 +96,24 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--获取视频-->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>ffmpeg-platform</artifactId>
+            <version>5.0-1.5.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv</artifactId>
+            <version>1.5.7</version>
+        </dependency>
         <!--milvus-->
-<!--        <dependency>-->
-<!--            <groupId>com.pandama.top</groupId>-->
-<!--            <artifactId>pandama-milvus</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.pandama.top</groupId>
+            <artifactId>pandama-milvus</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--camunda-->
         <dependency>
             <groupId>com.pandama.top</groupId>
             <artifactId>pandama-module-camunda-open</artifactId>
@@ -135,5 +153,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

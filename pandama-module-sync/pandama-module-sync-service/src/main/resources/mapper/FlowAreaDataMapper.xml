@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pandama.top.sync.mapper.FlowAreaDataMapper">
+
+    <insert id="insertFlowAreaData" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(ts, deviceid) do update
+        set forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        reading = excluded.reading,
+        pressure = excluded.pressure,
+        valuestatus = excluded.valuestatus,
+        flow = excluded.flow,
+        voltage = excluded.voltage,
+        mark = excluded.mark,
+        flow_modify = excluded.flow_modify
+    </insert>
+
+    <insert id="insertFlowAreaDataPressure" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(ts, deviceid) do update
+        set pressure = excluded.pressure
+    </insert>
+
+    <insert id="insertFlowAreaFlow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(ts, deviceid) do update
+        set flow = excluded.flow,
+        flow_modify = excluded.flow_modify
+    </insert>
+
+    <insert id="insertFlowAreaDataForwardflow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark})
+        ON CONFLICT(ts, deviceid) do update
+        set forwardflow = excluded.forwardflow
+    </insert>
+
+    <insert id="insertFlowAreaDataReverseflow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark})
+        ON CONFLICT(ts, deviceid) do update
+        set reverseflow = excluded.reverseflow
+    </insert>
+
+    <insert id="insertFlowAreaDataRealTotal" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,real_total)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{pressure},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{realTotal})
+        ON CONFLICT(ts, deviceid) do update
+        set real_total = excluded.real_total
+    </insert>
+
+    <insert id="insertFlowAreaDataFlow" parameterType="com.pandama.top.sync.entity.FlowAreaData">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values(#{ts},#{deviceid},#{forwardflow},#{reverseflow},#{reading},#{valuestatus},#{flow},#{voltage},#{createTime},#{origin},#{orgid},#{mark},#{flowModify})
+        ON CONFLICT(ts, deviceid) do update
+        set forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        reading = excluded.reading,
+        flow = excluded.flow,
+        flow_modify = #{flowModify}
+    </insert>
+
+
+    <insert id="batchInsertFlowAreaData" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.pressure},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark},#{item.flowModify})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        reading = excluded.reading,
+        pressure = excluded.pressure,
+        valuestatus = excluded.valuestatus,
+        flow = excluded.flow,
+        voltage = excluded.voltage,
+        mark = excluded.mark,
+        flow_modify = excluded.flow_modify
+    </insert>
+
+    <insert id="batchInsertFlowAreaDataPressure" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.pressure},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark},#{item.flowModify})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set pressure = excluded.pressure
+    </insert>
+
+    <insert id="batchInsertFlowAreaFlow" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.pressure},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark},#{item.flowModify})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set flow = excluded.flow,
+        flow_modify = excluded.flow_modify
+    </insert>
+
+    <insert id="batchInsertFlowAreaDataForwardflow" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.pressure},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set forwardflow = excluded.forwardflow
+    </insert>
+
+    <insert id="batchInsertFlowAreaDataReverseflow" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.pressure},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set reverseflow = excluded.reverseflow
+    </insert>
+
+    <insert id="batchInsertFlowAreaDataRealTotal" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,pressure,valuestatus,flow,voltage,create_time,origin,orgid,mark,real_total)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.pressure},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark},#{item.realTotal})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set real_total = excluded.real_total
+    </insert>
+
+    <insert id="batchInsertFlowAreaDataFlow" parameterType="java.util.List">
+        insert into jx_flow_area(ts, deviceid,forwardflow,reverseflow,reading,valuestatus,flow,voltage,create_time,origin,orgid,mark,flow_modify)
+        values
+        <foreach item="item" index="index" collection="list" open="" separator="," close="">
+            (#{item.ts},#{item.deviceid},#{item.forwardflow},#{item.reverseflow},#{item.reading},#{item.valuestatus},#{item.flow},#{item.voltage},#{item.createTime},#{item.origin},#{item.orgid},#{item.mark},#{item.flowModify})
+        </foreach>
+        ON CONFLICT(ts, deviceid) do update
+        set forwardflow = excluded.forwardflow,
+        reverseflow = excluded.reverseflow,
+        reading = excluded.reading,
+        flow = excluded.flow,
+        flow_modify = excluded.flowModify
+    </insert>
+</mapper>

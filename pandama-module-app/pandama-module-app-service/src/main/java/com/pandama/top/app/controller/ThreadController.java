@@ -35,7 +35,7 @@ public class ThreadController {
             @Override
             public String executeBefore() {
                 log.info("创建任务: {}", id);
-                heartbeatThread.setName("Offline-Analysis-Heartbeat-Image-" + id);
+                heartbeatThread.setName("Heartbeat-" + id);
                 return "request";
             }
 
