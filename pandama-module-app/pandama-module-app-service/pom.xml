@@ -119,6 +119,16 @@
             <artifactId>pandama-module-camunda-open</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--micrometer-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <!--pushgateway-->
+<!--        <dependency>-->
+<!--            <groupId>io.prometheus</groupId>-->
+<!--            <artifactId>simpleclient_pushgateway</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

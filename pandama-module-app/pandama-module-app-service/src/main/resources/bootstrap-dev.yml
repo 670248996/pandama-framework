@@ -222,6 +222,8 @@ management:
       exposure:
         include: "*"
         exclude: env,beans
+      cors:
+        allowed-origins: "*"
   endpoint:
     metrics:
       enabled: true
@@ -230,16 +232,16 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-    export:
-      prometheus:
-        pushgateway:
-          #PUSHGATEWAY address
-          baseUrl: 123.60.104.105:9091
-          # Push cycle
-          pushRate: 15s
-          #job definition name
-          job: ${spring.application.name}
-          # Enable push
-          enabled: true
-          grouping-key:
-            group: pandama
+#    export:
+#      prometheus:
+#        pushgateway:
+#          #PUSHGATEWAY address
+#          baseUrl: 10.211.55.4:9091
+#          # Push cycle
+#          pushRate: 5s
+#          #job definition name
+#          job: ${spring.application.name}
+#          # Enable push
+#          enabled: true
+#          grouping-key:
+#            group: pandama
