@@ -76,6 +76,8 @@
         <milvus.sdk.java>2.4.2</milvus.sdk.java>
         <!--camunda版本-->
         <camunda.version>7.17.0</camunda.version>
+        <!--docker-java版本-->
+        <docker-java.version>3.4.0</docker-java.version>
     </properties>
 
     <!--依赖包管理器，提供子模块继承-->

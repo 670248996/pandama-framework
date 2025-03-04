@@ -48,15 +48,14 @@ public class MetricsTask {
     }
     @Scheduled(fixedRate = 5000)
     public void task() {
-        int algNumber = 10;
-        int channelNum = 100;
+        int algNumber = 20;
+        int channelNum = 3000;
         int frameNum = 5;
         Random random = new Random();
         AtomicInteger algorithmSuccess = new AtomicInteger();
         AtomicInteger algorithmFail = new AtomicInteger();
         for (int i = 0; i < algNumber; i++) {
-            int randomNum = random.nextInt(10);
-            if (randomNum > 2) {
+            if (random.nextInt(10) > 2) {
                 algorithmSuccess.getAndIncrement();
             } else {
                 algorithmFail.getAndIncrement();
@@ -74,10 +73,11 @@ public class MetricsTask {
                     if (random.nextInt(10) > 1) {
                         producerNumber.labels("default", String.format("%020d", i), "0").inc();
                         consumerNumber.labels("default", String.format("%020d", i), "0").inc();
+                        handlerNumber.labels("default", String.format("%020d", i), String.format("%010d", i1), "0").inc();
                     } else {
                         producerNumber.labels("default", String.format("%020d", i), "1").inc();
+                        handlerNumber.labels("default", String.format("%020d", i), String.format("%010d", i1), "1").inc();
                     }
-                    handlerNumber.labels("default", String.format("%020d", i), String.format("%010d", i1), "0").inc();
                 }
             } else {
                 threadFail.getAndIncrement();

@@ -26,6 +26,7 @@
         <module>pandama-websocket</module>
         <module>pandama-kafka</module>
         <module>pandama-milvus</module>
+        <module>pandama-container</module>
     </modules>
 
     <properties>
